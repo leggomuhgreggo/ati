@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "All That's Interesting",
+    "description": "Sexy site for sexy kids",
+    "slug": "ati",
+    "scheme": "ati",
+    "privacy": "unlisted",
+    "primaryColor": "#1F4F46",
+    "sdkVersion": "26.0.0",
+    "platforms": ["ios", "android"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/logo.svg",
+    "splash": {
+      "image": "./src/logo.svg",
+      "resizeMode": "contain",
+      "backgroundColor": "#F8F8F6"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pbh.ait"
+    },
+    "android": {
+      "package": "com.pbh.ati"
+    }
+  }
+}
