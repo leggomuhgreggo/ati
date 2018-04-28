@@ -54,7 +54,7 @@
     "commitizen": "^2.9.6",
     "cypress": "^2.1.0",
     "cz-conventional-changelog": "^2.1.0",
-    "eslint": "4.19.1",
+    "eslint": "4.15.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-cypress-dev": "^1.1.2",
