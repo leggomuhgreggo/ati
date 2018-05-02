@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import { View } from "../../../primitives";
 import { CATEGORY_COLOR_MAP } from "../../../../constants";

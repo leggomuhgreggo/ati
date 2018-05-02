@@ -6,11 +6,16 @@ import { StyleSheet } from "react-native";
 import elevation from "../../../elevation";
 
 import { Container } from "../../primitives";
+import Pattern from "./Pattern";
 
 class ModuleWrap extends Component<Props> {
   render() {
     const { children, style } = this.props;
-    return <Container style={[styles.wrap, style]}>{children}</Container>;
+    return (
+      <Pattern color="purple">
+        <Container style={[styles.wrap, style]}>{children}</Container>
+      </Pattern>
+    );
   }
 }
 

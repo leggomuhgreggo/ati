@@ -14,7 +14,7 @@ class MostRecent extends Component<Props> {
     } = this.props;
     return (
       <ModuleWrap style={styles.wrap}>
-        <MainPost post={mainPost} />
+        <MainPost post={mainPost} style={styles.mainPost} />
         <SecondaryPosts posts={secondaryPosts} style={styles.secondaryPosts} />
       </ModuleWrap>
     );
@@ -26,9 +26,11 @@ export default MostRecent;
 const styles = StyleSheet.create({
   wrap: {
     flexDirection: "row",
-    flexShrink: 3,
+  },
+  mainPost: {
+    width: "66%",
   },
   secondaryPosts: {
-    width: 200,
+    width: "33%",
   },
 });

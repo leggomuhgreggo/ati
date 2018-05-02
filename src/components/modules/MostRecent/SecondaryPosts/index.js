@@ -11,7 +11,7 @@ class ContentList extends Component<ContentListProps> {
   render() {
     const { posts, style } = this.props;
     return (
-      <View style={style}>
+      <View style={[styles.listBox, style]}>
         {posts.map(({ id, ...post }) => <ContentItem key={id} post={post} />)}
       </View>
     );
@@ -36,12 +36,12 @@ export default ContentList;
 const styles = StyleSheet.create({
   listBox: {
     // flexDirection: "column",
+    paddingVertical: 50,
   },
 
   postBox: {
     width: "100%",
     height: "25%",
-    flex: 1,
     justifyContent: "center",
     padding: 20,
   },

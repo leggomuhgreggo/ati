@@ -11,9 +11,9 @@ import ContrastOverlay from "./ContrastOverlay";
 
 class MainPost extends Component<Props> {
   render() {
-    const { imageSrc, title, category } = this.props.post;
+    const { imageSrc, title, category, style } = this.props.post;
     return (
-      <Container>
+      <Container style={[style]}>
         <PostImage imageSrc={imageSrc} />
         <ContrastOverlay />
         <View style={styles.postDetailsPosition}>
