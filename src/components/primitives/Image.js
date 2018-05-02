@@ -5,38 +5,46 @@ import { Image as RNImage, StyleSheet } from "react-native";
 import Ratio from "./Ratio";
 
 type Props = {
-  rest: any,
+  source: any,
   resizeMode?: string,
-  imageAPIEndpoint?: string,
-  templateSrc?: string,
-  dimensionsArray?: Array<number>,
+  ratio: string,
 };
 
-class Image extends Component<Props> {
+class ResponsiveImage extends Component<Props> {
   static defaultProps = {
-    resizeMode: "responsive",
-    imageAPIEndpoint: "",
+    resizeMode: "cover",
   };
 
-  getResizeMode = () =>
-    this.props.resizeMode === "responsive" ? "cover" : this.props.resizeMode;
+  getRatio = () => {
+    const {
+      ratio,
+      source: { uri, width, height },
+    } = this.props;
 
-  // getRatio = () =>
-  //   this.props.resizeMode === "responsive" ? "cover" : this.props.resizeMode;
+    if (ratio) {
+      return ratio;
+    }
 
-  handleGetSize = src =>
-    Image.getSize(src, (width, height) => ({
-      width,
-      height,
-    }));
+    if (width && height) {
+      return `${width}:${height}`;
+    }
+
+    if (uri) {
+      return this.getRatioFromImageSize(uri);
+    }
+  };
+
+  getRatioFromImageSize = src =>
+    RNImage.getSize(src, (width, height) => `${width}:${height}`);
 
   render() {
-    const { style, ...rest } = this.props;
+    const { style, source, resizeMode, ...rest } = this.props;
     return (
-      <Ratio>
+      <Ratio ratio={this.getRatio()}>
         <RNImage
           style={[styles.expand, style]}
-          resizeMode={this.getResizeMode()}
+          resizeMode={resizeMode}
+          source={source}
           {...rest}
         />
       </Ratio>
@@ -44,7 +52,7 @@ class Image extends Component<Props> {
   }
 }
 
-export default Image;
+export default ResponsiveImage;
 
 const styles = StyleSheet.create({
   expand: {
