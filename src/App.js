@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import { MostRecent, TagSection } from "./components/modules";
-import { AppWrap, Header } from "./components/general";
+import { AppWrap, Header, Main } from "./components/general";
 import { Container } from "components/primitives";
 import { POST_CATEGORIES } from "./constants";
 
@@ -52,14 +52,15 @@ class App extends Component {
     return (
       <AppWrap>
         <Header />
+        <Main>
+          <Container type="content">
+            <MostRecent posts={DATA} />
+          </Container>
 
-        <Container type="content">
-          <MostRecent posts={DATA} />
-        </Container>
-
-        <Container type="content">
-          <TagSection />
-        </Container>
+          <Container type="content">
+            <TagSection />
+          </Container>
+        </Main>
       </AppWrap>
     );
   }

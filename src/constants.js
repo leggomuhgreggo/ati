@@ -15,6 +15,7 @@ export const COLOR_MAP = {
   RED: "#ff3000",
   LIGHT_RED: "#f1453d",
   VERMILLION: "#f72666",
+  SITE_BG: "#f7f7f9",
 };
 
 export const CATEGORY_COLOR_MAP = {
