@@ -7,12 +7,37 @@ import { CATEGORY_COLOR_MAP } from "../../../constants";
 
 const HEADER_HEIGHT = 60;
 
+const OFFSET = {
+  LEFT: "left",
+  RIGHT: "right",
+};
+
 type Props = {
-  color?: $Values<typeof CATEGORY_COLOR_MAP>,
+  color: $Values<typeof COLOR_MAP>,
+  offsetDirection?: OFFSET.LEFT | OFFSET.RIGHT,
   children: any,
 };
 
 class Pattern extends Component<Props> {
+  static defaultProps = {
+    offsetDirection: OFFSET.LEFT,
+  };
+
+  getOffsetStyles = () => {
+    const { offsetDirection } = this.props;
+    const offsetDistance = this.getOffsetDistance();
+
+    return {
+      bottom: -offsetDistance,
+      [offsetDirection]: -offsetDistance,
+    };
+  };
+
+  getOffsetDistance = () => {
+    const OFFSET = 30;
+    return OFFSET;
+  };
+
   getGradient = () => {
     const { color } = this.props;
     const bg = "white";
@@ -29,9 +54,17 @@ class Pattern extends Component<Props> {
     };
   };
   render() {
+    const { style } = this.props;
     return (
       <View style={[styles.wrap]}>
-        <View style={[styles.pattern, this.getGradient()]} />
+        <View
+          style={[
+            styles.pattern,
+            this.getGradient(),
+            this.getOffsetStyles(),
+            style,
+          ]}
+        />
         {this.props.children}
       </View>
     );
@@ -40,16 +73,12 @@ class Pattern extends Component<Props> {
 
 export default Pattern;
 
-const OFFSET = 30;
-
 const styles = StyleSheet.create({
   wrap: {
     position: "relative",
   },
   pattern: {
     position: "absolute",
-    bottom: -OFFSET,
-    left: -OFFSET,
     width: "100%",
     height: "100%",
   },
