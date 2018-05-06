@@ -6,6 +6,8 @@ import { View, StyleSheet } from "react-native";
 import CategoryLabel from "./CategoryLabel";
 import PostTitle from "./PostTitle";
 
+import { LABEL_HEIGHT } from "./constants";
+
 type ContentListProps = {};
 class ContentList extends Component<ContentListProps> {
   render() {
@@ -24,8 +26,10 @@ class ContentItem extends Component<ContentItemProps> {
     const { imageSrc, category, title } = this.props.post;
     return (
       <View style={styles.postBox}>
-        <CategoryLabel category={category} />
-        <PostTitle title={title} />
+        <View style={styles.postTitleWrap}>
+          <CategoryLabel style={styles.labelPosition} category={category} />
+          <PostTitle title={title} />
+        </View>
       </View>
     );
   }
@@ -38,10 +42,24 @@ const styles = StyleSheet.create({
     paddingVertical: 40,
   },
 
+  postTitleWrap: {
+    position: "relative",
+  },
+
+  labelPosition: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    transform: [
+      {
+        translateY: -LABEL_HEIGHT,
+      },
+    ],
+  },
   postBox: {
     width: "100%",
     height: "25%",
     justifyContent: "center",
-    padding: 20,
+    paddingHorizontal: 20,
   },
 });

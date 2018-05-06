@@ -24,6 +24,6 @@ export default PostTitle;
 
 const styles = StyleSheet.create({
   text: {
-    fontWeight: 600,
+    fontWeight: "600",
   },
 });

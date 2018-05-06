@@ -3,7 +3,9 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 
-import ModuleWrap from "./ModuleWrap";
+import { ModuleBox } from "components/modules";
+import { Container } from "components/primitives";
+
 import MainPost from "./MainPost/";
 import SecondaryPosts from "./SecondaryPosts";
 
@@ -13,10 +15,15 @@ class MostRecent extends Component<Props> {
       posts: [mainPost, ...secondaryPosts],
     } = this.props;
     return (
-      <ModuleWrap style={styles.wrap}>
-        <MainPost post={mainPost} style={styles.mainPost} />
-        <SecondaryPosts posts={secondaryPosts} style={styles.secondaryPosts} />
-      </ModuleWrap>
+      <Container>
+        <ModuleBox style={styles.wrap}>
+          <MainPost post={mainPost} style={styles.mainPost} />
+          <SecondaryPosts
+            posts={secondaryPosts}
+            style={styles.secondaryPosts}
+          />
+        </ModuleBox>
+      </Container>
     );
   }
 }

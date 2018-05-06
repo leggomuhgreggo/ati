@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { CATEGORY_COLOR_MAP } from "../../../constants";
+import { COLOR_MAP } from "constants.js";
 
 const HEADER_HEIGHT = 60;
 
