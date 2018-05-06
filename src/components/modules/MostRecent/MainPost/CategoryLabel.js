@@ -34,5 +34,6 @@ const styles = StyleSheet.create({
   },
   categoryLabel: {
     color: "white",
+    fontSize: 11,
   },
 });

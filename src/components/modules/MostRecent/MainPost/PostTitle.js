@@ -1,7 +1,9 @@
 // @flow
 
 import React, { Component } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
+
+import { Text } from "./../../../primitives";
 
 type TitleProps = {
   title: string,
@@ -12,7 +14,9 @@ class PostTitle extends Component<TitleProps> {
     const { title } = this.props;
     return (
       <View style={styles.titleWrap}>
-        <Text style={styles.text}>{title}</Text>
+        <Text sizeRange={[20, 34]} style={styles.text}>
+          {title}
+        </Text>
       </View>
     );
   }
@@ -22,7 +26,6 @@ export default PostTitle;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 40,
     color: "white",
   },
   titleWrap: {

@@ -12,7 +12,11 @@ type TitleProps = {
 class PostTitle extends Component<TitleProps> {
   render() {
     const { title } = this.props;
-    return <Text style={styles.text}>{title}</Text>;
+    return (
+      <Text sizeRange={[16, 17]} style={styles.text}>
+        {title}
+      </Text>
+    );
   }
 }
 
