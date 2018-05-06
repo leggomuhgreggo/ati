@@ -12,18 +12,16 @@ type Props = {
 
 class ModuleTitle extends Component<Props> {
   getBorderTop = () => ({
-    borderColor: this.props.color,
-    borderSize: 2,
+    // borderColor: this.props.color,
+    // borderSize: 2,
   });
 
   render() {
-    const { color } = this.props;
+    const { color, style } = this.props;
     return (
-      <Pattern color={color}>
-        <ModuleBox style={[this.getBorderTop()]}>
-          {this.props.children}
-        </ModuleBox>
-      </Pattern>
+      <ModuleBox style={[this.getBorderTop(), style]}>
+        {this.props.children}
+      </ModuleBox>
     );
   }
 }

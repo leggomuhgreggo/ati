@@ -8,12 +8,22 @@ import { Pattern } from "components/modules";
 
 import { COLOR_MAP } from "constants.js";
 
+type Props = {
+  style: any,
+  contentStyles: any,
+  children: any,
+};
+
 class ModuleBox extends Component<Props> {
+  static defaultProps = {
+    style: {},
+    contentStyles: {},
+  };
   render() {
-    const { children, style } = this.props;
+    const { children, style, contentStyles } = this.props;
     return (
-      <Pattern color={COLOR_MAP.PURPLE}>
-        <View style={[styles.wrap, style]}>{children}</View>
+      <Pattern>
+        <View style={[styles.wrap, styles.inner, style]}>{children}</View>
       </Pattern>
     );
   }
@@ -22,9 +32,11 @@ class ModuleBox extends Component<Props> {
 export default ModuleBox;
 
 const styles = StyleSheet.create({
-  wrap: {
-    backgroundColor: "white",
+  inner: {
     padding: 30,
+  },
+  wrap: {
     ...elevation(1),
+    backgroundColor: "white",
   },
 });

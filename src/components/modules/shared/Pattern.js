@@ -19,6 +19,7 @@ type Props = {
 class Pattern extends Component<Props> {
   static defaultProps = {
     offsetDirection: OFFSET.LEFT,
+    color: COLOR_MAP.VIOLET,
   };
 
   getOffsetStyles = () => {
@@ -53,16 +54,11 @@ class Pattern extends Component<Props> {
   render() {
     const { style } = this.props;
     return (
-      <View style={[styles.wrap]}>
+      <View style={[styles.wrap, style]}>
         <View
-          style={[
-            styles.pattern,
-            this.getGradient(),
-            this.getOffsetStyles(),
-            style,
-          ]}
+          style={[styles.pattern, this.getGradient(), this.getOffsetStyles()]}
         />
-        {this.props.children}
+        <View>{this.props.children}</View>
       </View>
     );
   }
