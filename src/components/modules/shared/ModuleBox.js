@@ -1,27 +1,25 @@
-// DotsWrap
 // @flow
 
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import elevation from "elevation.js";
 
-import { Container } from "components/primitives";
-import Pattern from "./Pattern";
+import { Pattern } from "components/modules";
 
 import { COLOR_MAP } from "constants.js";
 
-class ModuleWrap extends Component<Props> {
+class ModuleBox extends Component<Props> {
   render() {
     const { children, style } = this.props;
     return (
       <Pattern color={COLOR_MAP.PURPLE}>
-        <Container style={[styles.wrap, style]}>{children}</Container>
+        <View style={[styles.wrap, style]}>{children}</View>
       </Pattern>
     );
   }
 }
 
-export default ModuleWrap;
+export default ModuleBox;
 
 const styles = StyleSheet.create({
   wrap: {

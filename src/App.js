@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import { Text } from "react-native";
-import MostRecent from "./components/modules/MostRecent";
+import { MostRecent, TagSection } from "./components/modules";
 import AppWrap from "./components/AppWrap";
 import { POST_CATEGORIES } from "./constants";
 
@@ -52,6 +52,9 @@ class App extends Component {
     return (
       <AppWrap>
         <MostRecent posts={DATA} />
+
+        <TagSection />
+
         <Text>To get started, edit and save to reload.</Text>
       </AppWrap>
     );
