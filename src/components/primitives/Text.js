@@ -8,8 +8,8 @@ import createLockFunction from "../../lock";
 const TEXT_COLOR = "#242424";
 
 const FONT_FAMILIES = {
-  SANS_SERIF: "sans-serif",
-  SERIF: "serif",
+  SANS_SERIF: "Work Sans",
+  SERIF: "Libre Baskerville",
 };
 
 type Props = {
@@ -28,13 +28,18 @@ class MyText extends PureComponent<Props> {
     size: 1,
     sizeRange: [17, 21],
     screenWidth: Dimensions.get("window").width,
+    serif: false,
+    sansSerif: true,
   };
 
   getValueFromStyleProp = cssProperty =>
     !!StyleSheet.flatten(this.props.style)[cssProperty] &&
     StyleSheet.flatten(this.props.style)[cssProperty];
 
-  getFontFamily = () => FONT_FAMILIES.SANS_SERIF;
+  getFontFamily = () =>
+    this.props.serif && !this.props.sansSerif
+      ? FONT_FAMILIES.SERIF
+      : FONT_FAMILIES.SANS_SERIF;
 
   getFontSizeFromLockFunc = () => {
     const {
