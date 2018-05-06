@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
 
-import { PostDetails, PostLabel } from "components/modules";
 import type { PostList as PostListType, StyleObj } from "components/modules";
 
 import PostListItem from "./PostListItem";

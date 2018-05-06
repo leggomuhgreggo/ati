@@ -6,9 +6,14 @@ import { View, StyleSheet } from "react-native";
 import { PostDetails, PostLabel } from "components/modules";
 import PostTitle from "./PostTitle";
 
-type Props = {};
+import type { Category } from "components/modules";
 
-class PostListItem extends Component<ContentItemProps> {
+type Props = {
+  category: Category,
+  title: string,
+};
+
+class PostListItem extends Component<Props> {
   render() {
     const { category, title } = this.props.post;
     return (

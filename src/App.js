@@ -1,9 +1,9 @@
 // @flow
 
 import React, { Component } from "react";
-import { Text } from "react-native";
 import { MostRecent, TagSection } from "./components/modules";
-import AppWrap from "./components/AppWrap";
+import { AppWrap, Header } from "./components/general";
+import { Container } from "components/primitives";
 import { POST_CATEGORIES } from "./constants";
 
 const DATA = [
@@ -51,11 +51,15 @@ class App extends Component {
   render() {
     return (
       <AppWrap>
-        <MostRecent posts={DATA} />
+        <Header />
 
-        <TagSection />
+        <Container type="content">
+          <MostRecent posts={DATA} />
+        </Container>
 
-        <Text>To get started, edit and save to reload.</Text>
+        <Container type="content">
+          <TagSection />
+        </Container>
       </AppWrap>
     );
   }

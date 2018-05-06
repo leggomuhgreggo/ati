@@ -2,7 +2,6 @@
 
 import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
-import { Container } from "./primitives";
 
 type Props = {
   children: React.Node,
@@ -11,11 +10,7 @@ type Props = {
 class AppWrap extends Component<Props> {
   render() {
     const { children } = this.props;
-    return (
-      <View style={styles.app}>
-        <Container type="content">{children}</Container>
-      </View>
-    );
+    return <View style={styles.app}>{children}</View>;
   }
 }
 
