@@ -3,8 +3,8 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 
-import { Text } from "../../../primitives";
-import { CATEGORY_COLOR_MAP } from "../../../../constants";
+import { Text } from "components/primitives";
+import { CATEGORY_COLOR_MAP } from "constants.js";
 
 type CategoryProps = {
   category: string,
@@ -28,5 +28,7 @@ export default CategoryLabel;
 const styles = StyleSheet.create({
   categoryLabel: {
     fontSize: 11,
+    fontSize: 12,
+    fontWeight: "600",
   },
 });

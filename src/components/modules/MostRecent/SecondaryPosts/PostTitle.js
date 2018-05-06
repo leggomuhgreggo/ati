@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 
-import { Text } from "../../../primitives";
+import { Text } from "components/primitives";
 
 type TitleProps = {
   title: string,
@@ -24,6 +24,6 @@ export default PostTitle;
 
 const styles = StyleSheet.create({
   text: {
-    // color: "white",
+    fontWeight: 600,
   },
 });

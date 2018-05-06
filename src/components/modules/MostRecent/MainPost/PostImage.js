@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import { Image } from "../../../primitives";
+import { Image } from "components/primitives";
 
 class PostImage extends Component {
   render() {
