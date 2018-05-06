@@ -37,9 +37,9 @@
     "react-dom": "^16.3.2",
     "react-final-form": "^3.1.5",
     "react-native": "https://github.com/expo/react-native/archive/sdk-26.0.0.tar.gz",
-    "react-native-web": "^0.6.0",
+    "react-native-web": "^0.6.1",
     "react-redux": "^5.0.6",
-    "react-scripts": "2.0.0-next.66cc7a90",
+    "react-scripts": "^1.1.4",
     "redux": "^4.0.0",
     "redux-first-router": "^0.0.20-next",
     "redux-logger": "^3.0.6",
@@ -80,18 +80,5 @@
     "hooks": {
       "precommit": "yarn lint"
     }
-  },
-  "browserslist": {
-    "development": [
-      "last 2 chrome versions",
-      "last 2 firefox versions",
-      "last 2 edge versions"
-    ],
-    "production": [
-      ">1%",
-      "last 4 versions",
-      "Firefox ESR",
-      "not ie < 11"
-    ]
   }
 }

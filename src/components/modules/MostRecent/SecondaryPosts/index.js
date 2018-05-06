@@ -35,8 +35,7 @@ export default ContentList;
 
 const styles = StyleSheet.create({
   listBox: {
-    // flexDirection: "column",
-    paddingVertical: 50,
+    paddingVertical: 40,
   },
 
   postBox: {
