@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import { MostRecent, TagSection } from "./components/modules";
+import { MostRecent, TagSection, Newsletter } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { LeaderBoard } from "./components/ads";
 import { Container, Row } from "components/primitives";
@@ -68,16 +68,17 @@ class App extends Component {
               <MostRecent posts={DATA} />
             </Container>
           </Row>
+
           <Row>
             <Container type="content">
               <MostRecent posts={DATA} />
             </Container>
           </Row>
+
           <Row>
-            <Container type="content">
-              <MostRecent posts={DATA} />
-            </Container>
+            <Newsletter />
           </Row>
+
           <Row>
             <Container type="content">
               <TagSection />
