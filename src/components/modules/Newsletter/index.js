@@ -17,8 +17,8 @@ class Newsletter extends Component<Props> {
     return (
       <View style={styles.wrap}>
         <Container type="content" style={styles.container}>
-          <View style={[styles.column]}>
-            <Illustration style={styles.Illustration} />
+          <View style={[styles.column, styles.illustration]}>
+            <Illustration style={styles.illustration} />
           </View>
           <View style={styles.column}>
             <Callout style={styles.callout} />
@@ -45,15 +45,22 @@ const styles = StyleSheet.create({
     position: "realtive",
   },
   column: {
-    width: "50%",
-    height: "100%",
+    // width: "50%",
+    // maxHeight: "90%",
+    // height: "100%",
+    flex: 1,
+    paddingHorizontal: 20,
     justifyContent: "center",
-    alignItems: "center",
+    // alignItems: "center",
   },
   illustration: {
-    alignSelf: "flexEnd",
-    width: "100%",
-    height: "100%",
+    backgroundPosition: "right",
+    // maxHeight: "90%",
+    // alignContent: "flex-end",
+    // alignItems: "flex-end",
+    justifyContent: "flex-end",
+    // width: "100%",
+    // height: "80%",
   },
   callout: {},
 });

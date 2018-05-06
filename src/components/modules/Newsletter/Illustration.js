@@ -1,16 +1,14 @@
 // @flow
 
 import React, { Component } from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View } from "react-native";
+
+import { Image } from "components/primitives";
 
 import NewsletterImg from "./newsletter.png";
 
 const Illustration = ({ style }) => (
-  <Image
-    style={style}
-    resizeMode="contain"
-    source={{ uri: NewsletterImg, width: "100%", height: "100%" }}
-  />
+  <Image style={style} resizeMode="contain" source={{ uri: NewsletterImg }} />
 );
 
 export default Illustration;
