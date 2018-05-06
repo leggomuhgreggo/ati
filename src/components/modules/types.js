@@ -4,8 +4,8 @@ export type {
   StyleObj,
 } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
-export type Categories = $Keys<typeof POST_CATEGORIES>;
-export type CategoryColors = $Values<typeof POST_CATEGORIES>;
+export type Categories = $Keys<typeof CATEGORY_COLOR_MAP>;
+export type CategoryColors = $Values<typeof CATEGORY_COLOR_MAP>;
 
 export type Post = {
   id: string,

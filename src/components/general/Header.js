@@ -2,9 +2,7 @@
 
 import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
-
-import { View } from "../../../primitives";
-import { CATEGORY_COLOR_MAP } from "../../../../constants";
+import { Text } from "components/primitives";
 
 const HEADER_HEIGHT = 60;
 
@@ -21,7 +19,7 @@ class Header extends Component<Props> {
     const { style } = this.props;
     return (
       <View style={[styles.headerWrap, { style }]}>
-        <Text>ATI</Text>
+        <Text style={[styles.headerText]}>ATI</Text>
       </View>
     );
   }
@@ -31,8 +29,13 @@ export default Header;
 
 const styles = StyleSheet.create({
   headerWrap: {
-    width: "100%"
+    width: "100%",
     height: HEADER_HEIGHT,
     backgroundColor: "black",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  headerText: {
+    color: "white",
   },
 });

@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 
 import { Text } from "components/primitives";
 
@@ -82,7 +82,7 @@ class PostLabel extends PureComponent<Props> {
   getLableText = (): string => this.props.category.toUpperCase();
 
   render() {
-    const { category, containerStyles, textStyles } = this.props;
+    const { containerStyles, textStyles } = this.props;
 
     const localContainerStyles = this.getContainerStyles();
     const localTextStyles = this.getTextStyles();
@@ -97,5 +97,5 @@ class PostLabel extends PureComponent<Props> {
 
 export default PostLabel;
 
-const getCategoryColor = (category: Categories): CategoriesColors =>
+const getCategoryColor = (category: Categories): CategoryColors =>
   CATEGORY_COLOR_MAP[category];
