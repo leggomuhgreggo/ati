@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   categoryLabel: {
     fontSize: 12,
     fontWeight: "600",
+    justifyContent: "center",
     height: LABEL_HEIGHT,
   },
 });

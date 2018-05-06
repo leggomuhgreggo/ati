@@ -1,7 +1,6 @@
 // @flow
 
 import React, { Component } from "react";
-import { View } from "react-native";
 
 import { COLOR_MAP } from "constants.js";
 import { Pattern, ModuleBox } from "components/modules";

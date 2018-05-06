@@ -5,8 +5,6 @@ import { StyleSheet, View } from "react-native";
 
 import { COLOR_MAP } from "constants.js";
 
-const HEADER_HEIGHT = 60;
-
 const OFFSET = {
   LEFT: "left",
   RIGHT: "right",
@@ -43,7 +41,6 @@ class Pattern extends Component<Props> {
     const bg = "white";
     const space = 10;
     const dot = 2.5;
-    const dotPercent = `${dot / space * 100}%`;
     const emptyPercent = `${100 - dot / space * 100}%`;
 
     return {

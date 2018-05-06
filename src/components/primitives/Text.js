@@ -86,7 +86,7 @@ class MyText extends PureComponent<Props> {
   };
 
   render() {
-    const { style, screenWidth, children } = this.props;
+    const { style, children } = this.props;
     return (
       <Text style={[styles.text, this.getDynamicStyles(), style]}>
         {children}

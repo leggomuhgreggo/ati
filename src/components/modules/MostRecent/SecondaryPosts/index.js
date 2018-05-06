@@ -23,7 +23,7 @@ class ContentList extends Component<ContentListProps> {
 type ContentItemProps = {};
 class ContentItem extends Component<ContentItemProps> {
   render() {
-    const { imageSrc, category, title } = this.props.post;
+    const { category, title } = this.props.post;
     return (
       <View style={styles.postBox}>
         <View style={styles.postTitleWrap}>
