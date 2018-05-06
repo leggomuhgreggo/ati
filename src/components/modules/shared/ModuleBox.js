@@ -24,7 +24,7 @@ export default ModuleBox;
 const styles = StyleSheet.create({
   wrap: {
     backgroundColor: "white",
-    padding: 20,
+    padding: 30,
     ...elevation(1),
   },
 });
