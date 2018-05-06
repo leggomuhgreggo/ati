@@ -8,14 +8,16 @@ import { LeaderBoard } from "components/ads";
 
 import { Container, Text } from "components/primitives";
 
+import { COLOR_MAP } from "constants.js";
+
 class TagSection extends Component<Props> {
   render() {
     return (
       <Container>
         <View style={styles.titleRow}>
           <View style={styles.titleWrap}>
-            <ModuleTitle>
-              <Text>Hey</Text>
+            <ModuleTitle color="blue">
+              <Text>History Uncovered</Text>
             </ModuleTitle>
           </View>
           <View>

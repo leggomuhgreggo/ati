@@ -20,9 +20,9 @@ class ModuleBox extends Component<Props> {
     contentStyles: {},
   };
   render() {
-    const { children, style, contentStyles } = this.props;
+    const { children, style, color, contentStyles } = this.props;
     return (
-      <Pattern>
+      <Pattern color={color}>
         <View style={[styles.wrap, styles.inner, style]}>{children}</View>
       </Pattern>
     );

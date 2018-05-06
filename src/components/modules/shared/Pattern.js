@@ -19,7 +19,7 @@ type Props = {
 class Pattern extends Component<Props> {
   static defaultProps = {
     offsetDirection: OFFSET.LEFT,
-    color: COLOR_MAP.VIOLET,
+    color: COLOR_MAP.ORANGE,
   };
 
   getOffsetStyles = () => {
