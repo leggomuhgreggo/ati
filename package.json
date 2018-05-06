@@ -14,11 +14,9 @@
     "flow:start": "flow start",
     "flow:stop": "flow stop",
     "flow:coverage": "flow coverage",
-    "flow:report":
-      "flow-coverage-report -i 'src/**/*.js' -x 'src/test/**' -x 'src/**/*.test.js' -x 'src/**/*.spec.js' -t html -t json -t text --threshold 90 -o ./reports/flow/",
+    "flow:report": "flow-coverage-report -i 'src/**/*.js' -x 'src/test/**' -x 'src/**/*.test.js' -x 'src/**/*.spec.js' -t html -t json -t text --threshold 90 -o ./reports/flow/",
     "build": "react-scripts build",
-    "build:report":
-      "source-map-explorer  --html ./build/static/js/main.* > ./reports/bundle-report.html",
+    "build:report": "source-map-explorer  --html ./build/static/js/main.* > ./reports/bundle-report.html",
     "debugger": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081'",
     "eject:cra-dont-do": "react-scripts eject",
     "cz": "git-cz",
@@ -38,8 +36,7 @@
     "react-art": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-final-form": "^3.1.5",
-    "react-native":
-      "https://github.com/expo/react-native/archive/sdk-26.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-26.0.0.tar.gz",
     "react-native-web": "^0.6.1",
     "react-redux": "^5.0.6",
     "react-scripts": "^1.1.4",
