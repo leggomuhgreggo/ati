@@ -5,7 +5,8 @@ export { default as PostLabel } from "./shared/PostLabel";
 export { default as PostDetails } from "./shared/PostDetails";
 
 export { default as MostRecent } from "./MostRecent";
-export { default as TagSection } from "./TagSection";
+export { default as TagSingleCol } from "./TagSingleCol";
+export { default as TagTwoCol } from "./TagTwoCol";
 export { default as Newsletter } from "./Newsletter";
 
-export * from "./types";
+export * from "./shared/types";
