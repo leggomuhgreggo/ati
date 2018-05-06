@@ -15,7 +15,7 @@ type FluidSizeType = {
 const getSlope = ([[x1, y1], [x2, y2]]: GetSlope) => (y2 - y1) / (x2 - x1);
 const getIntercept = ({ point: [x, y], slope }: GetIntercept) => y - slope * x;
 
-const createFluidSizeFunction = ({
+const createLockFunction = ({
   min: y1,
   max: y2,
   lockMin: x1 = 400,
@@ -30,4 +30,4 @@ const createFluidSizeFunction = ({
     width < x1 ? y1 : width >= x2 ? y2 : slope * width + intercept;
 };
 
-export default createFluidSizeFunction;
+export default createLockFunction;

@@ -1,12 +1,9 @@
 // @flow
 
-import React, { Component } from "react";
-import { Text as RNText, StyleSheet } from "react-native";
+import React, { PureComponent } from "react";
+import { Text, StyleSheet, Dimensions } from "react-native";
 
-type Props = {
-  style?: any,
-  rest?: any,
-};
+import createLockFunction from "../../lock";
 
 const TEXT_COLOR = "#242424";
 
@@ -15,54 +12,89 @@ const FONT_FAMILIES = {
   SERIF: "serif",
 };
 
-class Text extends Component<Props> {
+type Props = {
+  style?: any,
+  size?: 1 | 2 | 3 | 4 | 5 | 6,
+  sizeRange?: [number, number],
+  serif?: boolean,
+  sansSerif?: boolean,
+  screenWidth?: number,
+};
+
+class MyText extends PureComponent<Props> {
   static defaultProps = {
     style: {},
     rest: {},
+    size: 1,
+    sizeRange: [17, 21],
+    screenWidth: Dimensions.get("window").width,
   };
 
-  getFontFamily = () => {
-    return { fontFamily: FONT_FAMILIES.SANS_SERIF };
+  getValueFromStyleProp = cssProperty =>
+    !!StyleSheet.flatten(this.props.style)[cssProperty] &&
+    StyleSheet.flatten(this.props.style)[cssProperty];
+
+  getFontFamily = () => FONT_FAMILIES.SANS_SERIF;
+
+  getFontSizeFromLockFunc = () => {
+    const {
+      screenWidth,
+      size,
+      sizeRange: [min, max],
+    } = this.props;
+
+    const sizeMod = Math.pow(1.22, size - 1) * size;
+
+    return createLockFunction({ min, max })(screenWidth) * sizeMod;
   };
 
-  getFluidSize = () => 17;
+  getFontSize = () =>
+    this.getValueFromStyleProp("fontSize") || this.getFontSizeFromLockFunc();
 
-  getFontSize = () => {
-    return { fontSize: this.getFluidSize() };
-  };
-
-  getLineHeight = () => {
-    return { lineHeight: 1.1 * this.getFluidSize() };
-  };
-
-  getLetterSpacing = () => {
-    // return { letterSpacing: 0 };
-    return {};
-  };
-
-  getDynamicStyles = () => {
+  //
+  getLineHeightCoordinates = () => {
     return {
-      ...this.getFontFamily(),
-      ...this.getFontSize(),
-      ...this.getLineHeight(),
-      ...this.getLetterSpacing(),
+      min: 1.25,
+      max: 1.1,
+      lockMin: 16,
+      lockMax: 30,
     };
   };
 
-  // getStyles = () => {}
+  getLineHeightFromLockFunc = () => {
+    const fontSize = this.getFontSize();
+    const lockConfig = this.getLineHeightCoordinates();
+    return createLockFunction(lockConfig)(fontSize);
+  };
+
+  getLineHeight = () =>
+    this.getValueFromStyleProp("lineHeight") ||
+    this.getLineHeightFromLockFunc();
+
+  getDynamicStyles = () => {
+    // console.log(this.getLineHeight(), this.getFontSize());
+    return {
+      fontFamily: this.getFontFamily(),
+      fontSize: ~~this.getFontSize(),
+      lineHeight: ~~(this.getLineHeight() * this.getFontSize()),
+    };
+  };
 
   render() {
-    const { style, ...rest } = this.props;
+    const { style, screenWidth, children } = this.props;
     return (
-      <RNText style={[styles.text, this.getDynamicStyles(), style]} {...rest} />
+      <Text style={[styles.text, this.getDynamicStyles(), style]}>
+        {children}
+      </Text>
     );
   }
 }
 
-export default Text;
+export default MyText;
 
 const styles = StyleSheet.create({
   text: {
     color: TEXT_COLOR,
+    fontFamily: "sans-serif",
   },
 });
