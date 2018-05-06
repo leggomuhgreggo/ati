@@ -1,12 +1,14 @@
 // @flow
 
 import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { Container } from "components/primitives";
 
-import PostDetails from "./PostDetails";
+import { PostDetails, PostLabel } from "components/modules";
+
 import PostImage from "./PostImage";
+import PostTitle from "./PostTitle";
 import ContrastOverlay from "./ContrastOverlay";
 
 class MainPost extends Component<Props> {
@@ -15,10 +17,17 @@ class MainPost extends Component<Props> {
     return (
       <Container style={[style]}>
         <PostImage imageSrc={imageSrc} />
+
         <ContrastOverlay />
-        <View style={styles.postDetailsPosition}>
-          <PostDetails category={category} title={title} />
-        </View>
+
+        <PostDetails
+          style={styles.postDetails}
+          category={category}
+          title={title}
+        >
+          <PostLabel fill category={category} />
+          <PostTitle title={title} />
+        </PostDetails>
       </Container>
     );
   }
@@ -27,9 +36,10 @@ class MainPost extends Component<Props> {
 export default MainPost;
 
 const styles = StyleSheet.create({
-  postDetailsPosition: {
+  postDetails: {
     position: "absolute",
     bottom: 0,
     left: 0,
+    padding: 15,
   },
 });
