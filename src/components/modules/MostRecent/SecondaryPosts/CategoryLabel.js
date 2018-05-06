@@ -4,8 +4,8 @@ import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 
 import { Text } from "components/primitives";
-
-import { LABEL_HEIGHT, CATEGORY_COLOR_MAP } from "constants.js";
+import { CATEGORY_COLOR_MAP } from "constants.js";
+import { LABEL_HEIGHT } from "./constants";
 
 type CategoryProps = {
   category: string,
