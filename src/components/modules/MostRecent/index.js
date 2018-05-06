@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import { ModuleBox } from "components/modules";
 import { Container } from "components/primitives";
@@ -16,12 +16,15 @@ class MostRecent extends Component<Props> {
     } = this.props;
     return (
       <Container>
-        <ModuleBox style={styles.wrap}>
-          <MainPost post={mainPost} style={styles.mainPost} />
-          <SecondaryPosts
-            posts={secondaryPosts}
-            style={styles.secondaryPosts}
-          />
+        <ModuleBox>
+          <View style={styles.wrap}>
+            <View style={styles.left}>
+              <MainPost post={mainPost} />
+            </View>
+            <View style={styles.right}>
+              <SecondaryPosts posts={secondaryPosts} />
+            </View>
+          </View>
         </ModuleBox>
       </Container>
     );
@@ -34,10 +37,10 @@ const styles = StyleSheet.create({
   wrap: {
     flexDirection: "row",
   },
-  mainPost: {
+  left: {
     width: "66%",
   },
-  secondaryPosts: {
+  right: {
     width: "33%",
   },
 });

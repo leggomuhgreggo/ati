@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import { MostRecent, TagSection, Newsletter } from "./components/modules";
+import { MostRecent, TagSingleCol, Newsletter } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { LeaderBoard } from "./components/ads";
 import { Container, Row } from "components/primitives";
@@ -22,6 +22,12 @@ class App extends Component {
             </Container>
           </Row>
 
+          <Row>
+            <Container type="content">
+              <TagSingleCol />
+            </Container>
+          </Row>
+
           <Row spacer={30}>
             <Container type="content">
               <MostRecent posts={DATA} />
@@ -33,11 +39,8 @@ class App extends Component {
           </Row>
 
           <Row>
-            <Container type="content">
-              <TagSection />
-            </Container>
+            <Header />
           </Row>
-          <Header />
         </Main>
       </AppWrap>
     );
