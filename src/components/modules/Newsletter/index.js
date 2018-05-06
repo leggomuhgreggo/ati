@@ -1,9 +1,9 @@
 // @flow
 
 import React, { Component } from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View } from "react-native";
 
-import { Text, Container } from "components/primitives";
+import { Container } from "components/primitives";
 
 import Illustration from "./Illustration";
 import Callout from "./Callout";
@@ -45,22 +45,13 @@ const styles = StyleSheet.create({
     position: "realtive",
   },
   column: {
-    // width: "50%",
-    // maxHeight: "90%",
-    // height: "100%",
     flex: 1,
     paddingHorizontal: 20,
     justifyContent: "center",
-    // alignItems: "center",
   },
   illustration: {
     backgroundPosition: "right",
-    // maxHeight: "90%",
-    // alignContent: "flex-end",
-    // alignItems: "flex-end",
     justifyContent: "flex-end",
-    // width: "100%",
-    // height: "80%",
   },
   callout: {},
 });
