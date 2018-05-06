@@ -32,15 +32,15 @@ class Pattern extends Component<Props> {
   };
 
   getOffsetDistance = () => {
-    const OFFSET = 30;
+    const OFFSET = 15;
     return OFFSET;
   };
 
   getGradient = () => {
     const { color } = this.props;
     const bg = "white";
-    const space = 10;
-    const dot = 2.5;
+    const space = 5;
+    const dot = 2;
     const emptyPercent = `${100 - dot / space * 100}%`;
 
     return {

@@ -1,9 +1,12 @@
 // @flow
 
 import React, { Component } from "react";
+
 import { MostRecent, TagSection } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
-import { Container } from "components/primitives";
+import { LeaderBoard } from "./components/ads";
+import { Container, Row } from "components/primitives";
+
 import { POST_CATEGORIES } from "./constants";
 
 const DATA = [
@@ -52,14 +55,35 @@ class App extends Component {
     return (
       <AppWrap>
         <Header />
-        <Main>
-          <Container type="content">
-            <MostRecent posts={DATA} />
-          </Container>
 
-          <Container type="content">
-            <TagSection />
-          </Container>
+        <Main>
+          <Row spacer={30}>
+            <Container style={{ alignItems: "center" }} type="content">
+              <LeaderBoard />
+            </Container>
+          </Row>
+
+          <Row spacer={30}>
+            <Container type="content">
+              <MostRecent posts={DATA} />
+            </Container>
+          </Row>
+          <Row>
+            <Container type="content">
+              <MostRecent posts={DATA} />
+            </Container>
+          </Row>
+          <Row>
+            <Container type="content">
+              <MostRecent posts={DATA} />
+            </Container>
+          </Row>
+          <Row>
+            <Container type="content">
+              <TagSection />
+            </Container>
+          </Row>
+          <Header />
         </Main>
       </AppWrap>
     );
