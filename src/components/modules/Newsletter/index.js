@@ -1,39 +1,14 @@
 // @flow
 
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 
-import { Text, Image } from "components/primitives";
+import { Text, Container } from "components/primitives";
+
+import Illustration from "./Illustration";
+import Callout from "./Callout";
 
 import { COLOR_MAP } from "constants.js";
-
-import NewsletterImg from "./newsletter.png";
-
-const COPY = {
-  HEADLINE: `Sign up to our newsletter`,
-  SUB_HEAD: `Just enter your email and stay updated`,
-};
-
-const Illustration = ({ style }) => (
-  <View style={style}>
-    <Image style={style} source={{ uri: NewsletterImg }} />
-  </View>
-);
-
-const Callout = ({ style }) => (
-  <View style={style}>
-    <View>
-      <Text sizeRange={[28, 40]} style={[styles.calloutText]}>
-        {COPY.HEADLINE}
-      </Text>
-    </View>
-    <View>
-      <Text sizeRange={[16, 24]} style={[styles.calloutText]}>
-        {COPY.SUB_HEAD}
-      </Text>
-    </View>
-  </View>
-);
 
 type Props = {};
 
@@ -41,8 +16,14 @@ class Newsletter extends Component<Props> {
   render() {
     return (
       <View style={styles.wrap}>
-        <Illustration style={styles.illustration} />
-        <Callout style={styles.illustration} />
+        <Container type="content" style={styles.container}>
+          <View style={[styles.column]}>
+            <Illustration style={styles.Illustration} />
+          </View>
+          <View style={styles.column}>
+            <Callout style={styles.callout} />
+          </View>
+        </Container>
       </View>
     );
   }
@@ -57,13 +38,22 @@ const styles = StyleSheet.create({
     height: 300,
     justifyContent: "center",
     alignItems: "center",
+  },
+  container: {
     flexDirection: "row",
     flexWrap: "nowrap",
+    position: "realtive",
+  },
+  column: {
+    width: "50%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
   illustration: {
-    width: "50%",
+    alignSelf: "flexEnd",
+    width: "100%",
+    height: "100%",
   },
-  calloutText: {
-    color: "white",
-  },
+  callout: {},
 });

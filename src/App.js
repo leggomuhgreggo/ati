@@ -56,10 +56,6 @@ class App extends Component {
       <AppWrap>
         <Header />
 
-        <Row>
-          <Newsletter />
-        </Row>
-
         <Main>
           <Row spacer={30}>
             <Container style={{ alignItems: "center" }} type="content">
@@ -77,6 +73,10 @@ class App extends Component {
             <Container type="content">
               <MostRecent posts={DATA} />
             </Container>
+          </Row>
+
+          <Row>
+            <Newsletter />
           </Row>
 
           <Row>
