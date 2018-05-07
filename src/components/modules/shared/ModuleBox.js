@@ -19,12 +19,19 @@ class ModuleBox extends Component<Props> {
     style: {},
     contentStyles: {},
   };
+  renderInner = () => {
+    const { children, style } = this.props;
+    return <View style={[styles.wrap, styles.inner, style]}>{children}</View>;
+  };
   render() {
-    const { children, style, color, contentStyles } = this.props;
-    return (
-      <Pattern color={color}>
-        <View style={[styles.wrap, styles.inner, style]}>{children}</View>
+    const { color, offsetDirection } = this.props;
+
+    return color ? (
+      <Pattern offsetDirection={offsetDirection} color={color}>
+        {this.renderInner()}
       </Pattern>
+    ) : (
+      this.renderInner()
     );
   }
 }

@@ -39,7 +39,7 @@ class Pattern extends Component<Props> {
 
   getGradient = () => {
     const { color } = this.props;
-    const bg = "white";
+    const bg = COLOR_MAP.SITE_BG;
     const space = 5;
     const dot = 2;
     const emptyPercent = `${100 - dot / space * 100}%`;
