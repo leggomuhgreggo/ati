@@ -8,10 +8,14 @@ import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes
 
 type TitleProps = {
   children: Node,
-  style: StyleObj,
+  style?: StyleObj,
 };
 
 class PostDetails extends Component<TitleProps> {
+  static defaultProps = {
+    styles: {},
+  };
+
   render() {
     const { children, style } = this.props;
     return (

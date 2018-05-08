@@ -8,26 +8,24 @@ import { LeaderBoard } from "components/ads";
 
 import { Container, Text } from "components/primitives";
 
-class TagSection extends Component<Props> {
+class TitleRow extends Component<Props> {
   render() {
     return (
-      <Container>
-        <View style={styles.titleRow}>
-          <View style={styles.titleWrap}>
-            <ModuleTitle>
-              <Text>Hey</Text>
-            </ModuleTitle>
-          </View>
-          <View>
-            <LeaderBoard />
-          </View>
+      <View style={styles.titleRow}>
+        <View style={styles.titleWrap}>
+          <ModuleTitle color="blue">
+            <Text>History Uncovered</Text>
+          </ModuleTitle>
         </View>
-      </Container>
+        <View>
+          <LeaderBoard />
+        </View>
+      </View>
     );
   }
 }
 
-export default TagSection;
+export default TitleRow;
 
 const styles = StyleSheet.create({
   titleRow: {
@@ -35,10 +33,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   titleWrap: {
-    // display: "flex",
     flexGrow: 1,
     marginRight: 30,
-    // minWidth: "100%",
-    // flexShrink: 0,
   },
 });

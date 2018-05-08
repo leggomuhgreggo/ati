@@ -11,15 +11,19 @@ type Props = {
 };
 
 class ModuleTitle extends Component<Props> {
+  static defaultProps = {
+    color: COLOR_MAP.ORANGE,
+  };
+
   getBorderTop = () => ({
-    // borderColor: this.props.color,
-    // borderSize: 2,
+    borderTopColor: this.props.color,
+    borderTopWidth: 2,
   });
 
   render() {
     const { color, style } = this.props;
     return (
-      <ModuleBox style={[this.getBorderTop(), style]}>
+      <ModuleBox color={color} style={[this.getBorderTop(), style]}>
         {this.props.children}
       </ModuleBox>
     );

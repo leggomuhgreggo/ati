@@ -4,9 +4,10 @@ import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
 
 import type { Node } from "react";
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 type Props = {
-  style?: any,
+  style?: StyleObj,
   spacer?: number,
   children: Node,
 };

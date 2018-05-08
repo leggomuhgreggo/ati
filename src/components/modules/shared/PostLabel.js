@@ -82,13 +82,13 @@ class PostLabel extends PureComponent<Props> {
   getLableText = (): string => this.props.category.toUpperCase();
 
   render() {
-    const { containerStyles, textStyles } = this.props;
+    const { style, textStyles } = this.props;
 
     const localContainerStyles = this.getContainerStyles();
     const localTextStyles = this.getTextStyles();
 
     return (
-      <View style={[localContainerStyles, containerStyles]}>
+      <View style={[localContainerStyles, style]}>
         <Text style={[localTextStyles, textStyles]}>{this.getLableText()}</Text>
       </View>
     );

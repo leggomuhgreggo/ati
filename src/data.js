@@ -1,6 +1,6 @@
 import { POST_CATEGORIES } from "./constants";
 
-const DATA = [
+const POSTS = [
   {
     title:
       "Inside The Darvaza Gas Crater, Turkmenistanian’s Fiery Door To Hell",
@@ -40,5 +40,10 @@ const DATA = [
     id: "1affeg234",
   },
 ];
+
+const DATA = {
+  sectionTitle: "History Uncovered",
+  posts: POSTS,
+};
 
 export default DATA;

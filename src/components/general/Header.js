@@ -4,10 +4,12 @@ import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
 
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+
 const HEADER_HEIGHT = 60;
 
 type Props = {
-  style?: any,
+  style?: StyleObj,
 };
 
 class Header extends Component<Props> {

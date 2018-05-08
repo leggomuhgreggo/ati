@@ -19,7 +19,7 @@ type Props = {
 class Pattern extends Component<Props> {
   static defaultProps = {
     offsetDirection: OFFSET.LEFT,
-    color: COLOR_MAP.VIOLET,
+    color: COLOR_MAP.ORANGE,
   };
 
   getOffsetStyles = () => {
@@ -39,7 +39,7 @@ class Pattern extends Component<Props> {
 
   getGradient = () => {
     const { color } = this.props;
-    const bg = "white";
+    const bg = COLOR_MAP.SITE_BG;
     const space = 5;
     const dot = 2;
     const emptyPercent = `${100 - dot / space * 100}%`;

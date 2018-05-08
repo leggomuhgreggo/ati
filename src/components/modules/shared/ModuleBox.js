@@ -7,9 +7,10 @@ import elevation from "elevation.js";
 import { Pattern } from "components/modules";
 
 import { COLOR_MAP } from "constants.js";
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 type Props = {
-  style: any,
+  style?: StyleObj,
   contentStyles: any,
   children: any,
 };
@@ -19,12 +20,19 @@ class ModuleBox extends Component<Props> {
     style: {},
     contentStyles: {},
   };
+  renderInner = () => {
+    const { children, style } = this.props;
+    return <View style={[styles.wrap, styles.inner, style]}>{children}</View>;
+  };
   render() {
-    const { children, style, contentStyles } = this.props;
-    return (
-      <Pattern>
-        <View style={[styles.wrap, styles.inner, style]}>{children}</View>
+    const { color, offsetDirection } = this.props;
+
+    return color ? (
+      <Pattern offsetDirection={offsetDirection} color={color}>
+        {this.renderInner()}
       </Pattern>
+    ) : (
+      this.renderInner()
     );
   }
 }
