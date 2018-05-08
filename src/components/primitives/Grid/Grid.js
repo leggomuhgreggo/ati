@@ -15,7 +15,7 @@ type Props = {
 
 class Grid extends PureComponent<Props> {
   static defaultProps = {
-    spacer: 20,
+    spacer: 10,
     style: {},
   };
 
@@ -35,7 +35,7 @@ class Grid extends PureComponent<Props> {
     const { style, spacer } = this.props;
     return (
       <View style={{ position: "relative", width: "100%" }}>
-        <View style={[styles.listWrap, { padding: spacer / 2 }, style]}>
+        <View style={[styles.listWrap, { margin: -(spacer / 2) }, style]}>
           {this.renderChildren()}
         </View>
       </View>
