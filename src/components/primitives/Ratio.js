@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     position: "relative",
     height: 0,
+    width: "100%",
   },
   content: {
     bottom: 0,

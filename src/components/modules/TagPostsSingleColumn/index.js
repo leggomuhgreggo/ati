@@ -11,6 +11,8 @@ import { Container, Image } from "components/primitives";
 import TitleRow from "./TitleRow";
 import MainPost from "./MainPost";
 import OverlappingPostsWrap from "./OverlappingPostsWrap";
+import PostsOverlapMock from "./PostsOverlapMock";
+import Post from "./Post";
 
 class TagPostsSingleColumn extends PureComponent<Props> {
   render() {
@@ -28,7 +30,7 @@ class TagPostsSingleColumn extends PureComponent<Props> {
 
         <Container style={{ marginTop: 30 }}>
           <MainPost style={{ zIndex: 10 }} post={mainPost}>
-            <OverlapMock />
+            <PostsOverlapMock />
           </MainPost>
 
           <OverlappingPostsWrap>
@@ -44,36 +46,27 @@ export default TagPostsSingleColumn;
 
 class Posts extends PureComponent {
   render() {
-    const { children } = this.props;
+    const { children, posts } = this.props;
     return (
       <View
         style={{
           marginTop: -30,
           paddingHorizontal: 45,
+          flexDirection: "row",
+          flexWrap: "wrap",
         }}
       >
-        {children}
+        {posts.map(({ id, ...post }) => (
+          <PostWrap>
+            <Post key={id} post={post} />
+          </PostWrap>
+        ))}
       </View>
     );
   }
 }
-
-const OverlapMock = () => (
-  <View
-    style={{
-      // marginTop: -30,
-      paddingHorizontal: 45,
-      position: "absolute",
-      width: "100%",
-      bottom: 0,
-      zIndex: 5,
-    }}
-  >
-    <View
-      style={{
-        height: 30,
-        backgroundColor: "white",
-      }}
-    />
+const PostWrap = ({ children }) => (
+  <View style={{ padding: 10, width: "33%", backgroundColor: "green" }}>
+    {children}
   </View>
 );
