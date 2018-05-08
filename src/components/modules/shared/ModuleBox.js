@@ -7,9 +7,10 @@ import elevation from "elevation.js";
 import { Pattern } from "components/modules";
 
 import { COLOR_MAP } from "constants.js";
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 type Props = {
-  style: any,
+  style?: StyleObj,
   contentStyles: any,
   children: any,
 };

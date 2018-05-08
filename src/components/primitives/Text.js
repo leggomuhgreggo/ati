@@ -5,6 +5,8 @@ import { Text, StyleSheet, Dimensions } from "react-native";
 
 import createLockFunction from "../../lock";
 
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+
 const TEXT_COLOR = "#242424";
 
 const FONT_FAMILIES = {
@@ -13,7 +15,7 @@ const FONT_FAMILIES = {
 };
 
 type Props = {
-  style?: any,
+  style?: StyleObj,
   size?: 1 | 2 | 3 | 4 | 5 | 6,
   sizeRange?: [number, number],
   serif?: boolean,

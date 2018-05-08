@@ -3,6 +3,8 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+
 const CONTAINER_TYPES = {
   READABILITY: "readability",
   CONTENT: "content",
@@ -17,7 +19,7 @@ const MAX_WIDTHS = {
 
 type Props = {
   rest?: any,
-  style?: any,
+  style?: StyleObj,
   type?: $Values<typeof CONTAINER_TYPES>,
 };
 

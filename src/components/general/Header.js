@@ -6,8 +6,10 @@ import { Text } from "components/primitives";
 
 const HEADER_HEIGHT = 60;
 
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+
 type Props = {
-  style?: any,
+  style?: StyleObj,
 };
 
 class Header extends Component<Props> {

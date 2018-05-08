@@ -2,10 +2,11 @@
 
 import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
-// import { Text } from "components/primitives";
+
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 type Props = {
-  style?: any,
+  style?: StyleObj,
 };
 
 class LeaderBoard extends Component<Props> {

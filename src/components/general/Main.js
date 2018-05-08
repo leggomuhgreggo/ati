@@ -5,10 +5,12 @@ import { ScrollView, StyleSheet } from "react-native";
 
 import type { Node } from "react";
 
+import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+
 type Props = {
   children: Node,
-  contentContainerStyle?: any,
-  style?: any,
+  contentContainerStyle?: StyleObj,
+  style?: StyleObj,
 };
 
 type State = {
