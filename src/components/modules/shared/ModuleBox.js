@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import elevation from "elevation.js";
 
@@ -17,7 +17,7 @@ type Props = {
   offsetDirection: "left" | "right",
 };
 
-class ModuleBox extends Component<Props> {
+class ModuleBox extends PureComponent<Props> {
   static defaultProps = {
     style: {},
   };

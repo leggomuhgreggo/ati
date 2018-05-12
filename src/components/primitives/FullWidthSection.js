@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import type { Node } from "react";
@@ -12,7 +12,7 @@ type Props = {
   children: Node,
 };
 
-class FullWidthSection extends Component<Props> {
+class FullWidthSection extends PureComponent<Props> {
   static defaultProps = {
     spacer: 100,
     style: {},

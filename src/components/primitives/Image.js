@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Image as RNImage, StyleSheet } from "react-native";
 import Ratio from "./Ratio";
 
@@ -10,7 +10,7 @@ type Props = {
   ratio: string,
 };
 
-class ResponsiveImage extends Component<Props> {
+class ResponsiveImage extends PureComponent<Props> {
   static defaultProps = {
     resizeMode: "cover",
   };

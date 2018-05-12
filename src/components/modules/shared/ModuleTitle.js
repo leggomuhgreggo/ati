@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { COLOR_MAP } from "constants.js";
 import { Pattern, ModuleBox } from "components/modules";
@@ -10,7 +10,7 @@ type Props = {
   children: string,
 };
 
-class ModuleTitle extends Component<Props> {
+class ModuleTitle extends PureComponent<Props> {
   static defaultProps = {
     color: COLOR_MAP.TEXT_COLOR,
   };

@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   children: any,
 };
 
-class Ratio extends Component<Props> {
+class Ratio extends PureComponent<Props> {
   static defaultProps = {
     overflowHidden: true,
     ratio: "1.88:1",

@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { PostDetails, PostLabel } from "components/modules";
@@ -13,7 +13,7 @@ type Props = {
   title: string,
 };
 
-class PostListItem extends Component<Props> {
+class PostListItem extends PureComponent<Props> {
   render() {
     const { category, title } = this.props.post;
     return (

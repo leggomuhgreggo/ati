@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import {
   MostRecent,
@@ -15,7 +15,7 @@ import { POST_LIST, TAG_SECTION } from "data.js";
 
 // console.log(POST_LIST);
 
-class App extends Component {
+class App extends PureComponent {
   render() {
     return (
       <AppWrap>

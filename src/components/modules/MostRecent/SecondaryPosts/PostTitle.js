@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { StyleSheet } from "react-native";
 
 import { Text } from "components/primitives";
@@ -9,7 +9,7 @@ type TitleProps = {
   title: string,
 };
 
-class PostTitle extends Component<TitleProps> {
+class PostTitle extends PureComponent<TitleProps> {
   render() {
     const { title } = this.props;
     return (

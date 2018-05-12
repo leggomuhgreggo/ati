@@ -1,9 +1,9 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
-class ContrastOverlay extends Component {
+class ContrastOverlay extends PureComponent {
   render() {
     return <View style={styles.overlay} />;
   }

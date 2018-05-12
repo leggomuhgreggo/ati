@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { COLOR_MAP } from "constants.js";
@@ -16,7 +16,7 @@ type Props = {
   children: any,
 };
 
-class Pattern extends Component<Props> {
+class Pattern extends PureComponent<Props> {
   static defaultProps = {
     offsetDirection: OFFSET.LEFT,
     color: COLOR_MAP.ORANGE,

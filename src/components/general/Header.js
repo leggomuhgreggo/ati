@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
 
@@ -12,7 +12,7 @@ type Props = {
   style?: StyleObj,
 };
 
-class Header extends Component<Props> {
+class Header extends PureComponent<Props> {
   static defaultProps = {
     style: {},
   };

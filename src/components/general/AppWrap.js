@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import {
   Platform,
@@ -16,7 +16,7 @@ import type { Node } from "react";
 type Props = {
   children: Node,
 };
-class AppWrap extends Component<Props> {
+class AppWrap extends PureComponent<Props> {
   render() {
     return (
       <SafeAreaView style={styles.root}>

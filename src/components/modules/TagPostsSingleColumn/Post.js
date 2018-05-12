@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { PostDetails, PostLabel } from "components/modules";
@@ -17,7 +17,7 @@ type Props = {
   overlayDetails?: boolean,
 };
 
-class PostListItem extends Component<Props> {
+class PostListItem extends PureComponent<Props> {
   static defaultProps = {
     postType: "med",
     overlayDetails: false,

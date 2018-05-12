@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { Text } from "components/primitives";
@@ -18,7 +18,7 @@ type Props = {
   textAlign: AlignType,
 };
 
-class PostTitle extends Component<Props> {
+class PostTitle extends PureComponent<Props> {
   static defaultProps = {
     textAlign: "left",
   };

@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { StyleSheet } from "react-native";
 
 import { Container } from "components/primitives";
@@ -11,7 +11,7 @@ import PostImage from "./PostImage";
 import PostTitle from "./PostTitle";
 import ContrastOverlay from "./ContrastOverlay";
 
-class MainPost extends Component<Props> {
+class MainPost extends PureComponent<Props> {
   render() {
     const { imageSrc, title, category, style } = this.props.post;
     return (

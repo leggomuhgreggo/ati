@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { ModuleTitle, ModuleBox } from "components/modules";
@@ -14,7 +14,7 @@ type Props = {
   link: string,
 };
 
-class TitleRow extends Component<Props> {
+class TitleRow extends PureComponent<Props> {
   render() {
     const { color, title, link } = this.props;
     return (

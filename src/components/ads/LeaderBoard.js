@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
@@ -9,7 +9,7 @@ type Props = {
   style?: StyleObj,
 };
 
-class LeaderBoard extends Component<Props> {
+class LeaderBoard extends PureComponent<Props> {
   static defaultProps = {
     style: {},
   };

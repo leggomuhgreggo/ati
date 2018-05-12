@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { Container } from "components/primitives";
@@ -12,7 +12,7 @@ import { COLOR_MAP } from "constants.js";
 
 type Props = {};
 
-class Newsletter extends Component<Props> {
+class Newsletter extends PureComponent<Props> {
   render() {
     return (
       <View style={styles.wrap}>

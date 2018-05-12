@@ -1,10 +1,10 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 import { Image } from "components/primitives";
 
-class PostImage extends Component {
+class PostImage extends PureComponent {
   render() {
     const { imageSrc } = this.props;
     return (

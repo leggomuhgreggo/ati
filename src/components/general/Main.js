@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 
 import type { Node } from "react";
@@ -17,7 +17,7 @@ type State = {
   contentHeight: number,
 };
 
-class Main extends Component<Props, State> {
+class Main extends PureComponent<Props, State> {
   static defaultProps = {
     contentContainerStyle: {},
     style: {},

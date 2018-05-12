@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View as RNView, StyleSheet } from "react-native";
 
 import type { Node } from "react";
@@ -15,7 +15,7 @@ type Props = {
   children: Node,
 } & Direction;
 
-class View extends Component<Props> {
+class View extends PureComponent<Props> {
   static defaultProps = {
     spacer: 100,
     row: false,

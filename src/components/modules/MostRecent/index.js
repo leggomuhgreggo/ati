@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { ModuleBox } from "components/modules";
@@ -9,7 +9,7 @@ import { Container } from "components/primitives";
 import MainPost from "./MainPost/";
 import SecondaryPosts from "./SecondaryPosts";
 
-class MostRecent extends Component<Props> {
+class MostRecent extends PureComponent<Props> {
   render() {
     const {
       posts: [mainPost, ...secondaryPosts],

@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import type { Node } from "react";
@@ -11,7 +11,7 @@ type TitleProps = {
   style?: StyleObj,
 };
 
-class PostDetails extends Component<TitleProps> {
+class PostDetails extends PureComponent<TitleProps> {
   static defaultProps = {
     styles: {},
   };
