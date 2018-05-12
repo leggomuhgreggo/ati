@@ -12,7 +12,7 @@ type Props = {
   children: Node,
 };
 
-class Row extends Component<Props> {
+class FullWidthSection extends Component<Props> {
   static defaultProps = {
     spacer: 100,
     style: {},
@@ -26,7 +26,7 @@ class Row extends Component<Props> {
   }
 }
 
-export default Row;
+export default FullWidthSection;
 
 const styles = StyleSheet.create({
   row: {
