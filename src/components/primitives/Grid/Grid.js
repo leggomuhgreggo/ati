@@ -21,32 +21,44 @@ class Grid extends PureComponent<Props> {
     itemsPerRow: 3,
   };
 
-  getWidth = () => {
-    const { itemsPerRow } = this.props;
+  getItemStyles = () => {
+    const { itemsPerRow, spacer } = this.props;
 
-    return { width: `${100 / itemsPerRow}%` };
+    const styles = StyleSheet.create({
+      item: {
+        flexBasis: `${100 / itemsPerRow}%`,
+        padding: spacer / 2,
+      },
+    });
+
+    return styles.item;
+  };
+
+  getListStyles = () => {
+    const { spacer } = this.props;
+
+    return {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      margin: -spacer / 2,
+    };
   };
 
   renderChildren = () => {
-    const { spacer, children } = this.props;
+    const { children } = this.props;
     return React.Children.map(children, child => {
-      const widthStyle = this.getWidth();
       return (
-        <View style={[styles.listItem, widthStyle, { padding: spacer / 2 }]}>
-          {React.cloneElement(child)}
-        </View>
+        <View style={this.getItemStyles()}>{React.cloneElement(child)}</View>
       );
     });
     return;
   };
 
   render() {
-    const { style, spacer } = this.props;
+    const { spacer } = this.props;
     return (
-      <View style={[{ position: "relative", width: "100%" }, style]}>
-        <View style={[styles.listWrap, { margin: -(spacer / 2) }]}>
-          {this.renderChildren()}
-        </View>
+      <View style={[{ position: "relative" }]}>
+        <View style={[this.getListStyles()]}>{this.renderChildren()}</View>
       </View>
     );
   }
@@ -57,7 +69,6 @@ const styles = StyleSheet.create({
   listWrap: {
     flexDirection: "row",
     flexWrap: "wrap",
-    width: "100%",
   },
   listItem: {},
 });

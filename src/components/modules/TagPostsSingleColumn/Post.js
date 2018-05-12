@@ -17,7 +17,7 @@ type Props = {
   overlayDetails?: boolean,
 };
 
-class PostListItem extends PureComponent<Props> {
+class Post extends PureComponent<Props> {
   static defaultProps = {
     postType: "med",
     overlayDetails: false,
@@ -41,7 +41,7 @@ class PostListItem extends PureComponent<Props> {
   }
 }
 
-export default PostListItem;
+export default Post;
 
 const styles = StyleSheet.create({
   postBox: {
