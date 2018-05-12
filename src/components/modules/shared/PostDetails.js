@@ -18,11 +18,7 @@ class PostDetails extends Component<TitleProps> {
 
   render() {
     const { children, style } = this.props;
-    return (
-      <View style={style}>
-        <View style={styles.context}>{children}</View>
-      </View>
-    );
+    return <View style={[styles.context, style]}>{children}</View>;
   }
 }
 
@@ -31,5 +27,6 @@ export default PostDetails;
 const styles = StyleSheet.create({
   context: {
     position: "relative",
+    width: "100%",
   },
 });

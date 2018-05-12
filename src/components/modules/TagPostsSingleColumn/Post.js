@@ -12,17 +12,28 @@ import type { Category } from "components/modules";
 type Props = {
   category: Category,
   title: string,
+  imageSrc: string,
+  postType?: "sm" | "med" | "lg",
+  overlayDetails?: boolean,
 };
 
 class PostListItem extends Component<Props> {
+  static defaultProps = {
+    postType: "med",
+    overlayDetails: false,
+  };
+
   render() {
-    const { category, title, imageSrc } = this.props.post;
+    const { category, title, imageSrc, width } = this.props;
     return (
-      <View style={styles.postBox}>
+      <View style={[styles.postBox]}>
         <View>
           <PostImage imageSrc={imageSrc} />
-          <PostLabel inline category={category} />
-          <PostTitle title={title} />
+
+          <View>
+            <PostLabel inline category={category} />
+            <PostTitle title={title} />
+          </View>
         </View>
         <Line />
       </View>
@@ -36,7 +47,6 @@ const styles = StyleSheet.create({
   postBox: {
     width: "100%",
     flex: 1,
-    hieght: "100%",
     justifyContent: "space-between",
   },
 });

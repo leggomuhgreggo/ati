@@ -6,33 +6,31 @@ import elevation from "elevation.js";
 
 import { Pattern } from "components/modules";
 
-import { COLOR_MAP } from "constants.js";
+import type { CategoryColors } from "components/types";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { Node } from "react";
 
 type Props = {
   style?: StyleObj,
-  contentStyles: any,
-  children: any,
+  children: Node,
+  color: CategoryColors,
+  offsetDirection: "left" | "right",
 };
 
 class ModuleBox extends Component<Props> {
   static defaultProps = {
     style: {},
-    contentStyles: {},
   };
-  renderInner = () => {
-    const { children, style } = this.props;
-    return <View style={[styles.wrap, styles.inner, style]}>{children}</View>;
-  };
+
   render() {
-    const { color, offsetDirection } = this.props;
+    const { children, color, offsetDirection, styles } = this.props;
 
     return color ? (
       <Pattern offsetDirection={offsetDirection} color={color}>
-        {this.renderInner()}
+        <Box styles={styles}>{children}</Box>
       </Pattern>
     ) : (
-      this.renderInner()
+      <Box styles={styles}>{children}</Box>
     );
   }
 }
@@ -48,3 +46,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
 });
+
+const Box = ({ children, style }) => (
+  <View style={[styles.wrap, styles.inner, style]}>{children}</View>
+);

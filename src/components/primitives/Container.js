@@ -36,7 +36,6 @@ class Container extends PureComponent<Props> {
     const { style, ...rest } = this.props;
 
     const maxWidth = this.getMaxWidth();
-    console.log(maxWidth);
 
     return <View style={[styles.container, { maxWidth }, style]} {...rest} />;
   }

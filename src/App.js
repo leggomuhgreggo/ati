@@ -9,9 +9,11 @@ import {
 } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { LeaderBoard } from "./components/ads";
-import { Container, FullWidthSection } from "components/primitives";
+import { FullWidthSection } from "components/primitives";
 
-import DATA from "data.js";
+import { POST_LIST, TAG_SECTION } from "data.js";
+
+// console.log(POST_LIST);
 
 class App extends Component {
   render() {
@@ -21,15 +23,11 @@ class App extends Component {
 
         <Main>
           <FullWidthSection spacer={30}>
-            <Container style={{ alignItems: "center" }} type="content">
-              <LeaderBoard />
-            </Container>
+            <LeaderBoard />
           </FullWidthSection>
 
           <FullWidthSection spacer={30}>
-            <Container type="content">
-              <TagPostsSingleColumn data={DATA} />
-            </Container>
+            <TagPostsSingleColumn data={TAG_SECTION} />
           </FullWidthSection>
 
           <FullWidthSection>

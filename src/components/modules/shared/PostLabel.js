@@ -4,9 +4,7 @@ import React, { PureComponent } from "react";
 import { View } from "react-native";
 
 import { Text } from "components/primitives";
-
-import { CATEGORY_COLOR_MAP } from "constants.js";
-import type { Categories, CategoryColors } from "components/modules";
+import type { Categories, colors } from "components/modules";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 type Props = {
@@ -28,11 +26,9 @@ class PostLabel extends PureComponent<Props> {
   };
 
   getContainerStyles = (): StyleObj => {
-    const { fill, category, inline, spacer } = this.props;
-    const categoryColor = getCategoryColor(category);
-    const LABEL_HEIGHT = 30;
+    const { fill, category, color, inline, spacer } = this.props;
 
-    console.log(fill);
+    const LABEL_HEIGHT = 30;
 
     const baseStyles = () => ({});
 
@@ -53,7 +49,7 @@ class PostLabel extends PureComponent<Props> {
     const fillStyles = () =>
       fill
         ? {
-            backgroundColor: categoryColor,
+            backgroundColor: color,
             paddingHorizontal: 10,
             height: LABEL_HEIGHT,
             justifyContent: "center",
@@ -68,12 +64,10 @@ class PostLabel extends PureComponent<Props> {
   };
 
   getTextStyles = (): StyleObj => {
-    const { fill, category } = this.props;
-
-    const color = fill ? "white" : getCategoryColor(category);
+    const { fill, color } = this.props;
 
     return {
-      color,
+      color: fill ? "white" : color,
       fontSize: 12,
       fontWeight: "600",
     };
@@ -96,6 +90,3 @@ class PostLabel extends PureComponent<Props> {
 }
 
 export default PostLabel;
-
-const getCategoryColor = (category: Categories): CategoryColors =>
-  CATEGORY_COLOR_MAP[category];

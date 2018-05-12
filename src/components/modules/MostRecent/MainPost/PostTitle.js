@@ -5,16 +5,30 @@ import { View, StyleSheet } from "react-native";
 
 import { Text } from "components/primitives";
 
-type TitleProps = {
-  title: string,
+const ALIGN = {
+  CENTER: "center",
+  RIGHT: "right",
+  LEFT: "left",
 };
 
-class PostTitle extends Component<TitleProps> {
+type AlignType = $values<ALIGN>;
+
+type Props = {
+  title: string,
+  textAlign: AlignType,
+};
+
+class PostTitle extends Component<Props> {
+  static defaultProps = {
+    textAlign: "left",
+  };
+
   render() {
-    const { title } = this.props;
+    const { title, textStyles, textAlign } = this.props;
+    const alignStyles = getWrapAlignStyles(textAlign);
     return (
-      <View style={styles.titleWrap}>
-        <Text sizeRange={[20, 34]} style={styles.text}>
+      <View style={[styles.titleWrap, alignStyles]}>
+        <Text sizeRange={[20, 34]} style={[styles.titleText, { textAlign }]}>
           {title}
         </Text>
       </View>
@@ -25,10 +39,21 @@ class PostTitle extends Component<TitleProps> {
 export default PostTitle;
 
 const styles = StyleSheet.create({
-  text: {
+  titleText: {
     color: "white",
   },
   titleWrap: {
     position: "relative",
+    width: "100%",
   },
+});
+
+const ALIGN_MAP = {
+  center: "center",
+  left: "flex-start",
+  right: "flex-start",
+};
+
+const getWrapAlignStyles = (textAlign: AlignType) => ({
+  alignItems: ALIGN_MAP[textAlign],
 });

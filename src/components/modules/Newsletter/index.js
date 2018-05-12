@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     flexWrap: "nowrap",
-    position: "realtive",
   },
   column: {
     flex: 1,

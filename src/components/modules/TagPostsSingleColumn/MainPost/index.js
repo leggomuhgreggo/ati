@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from "react";
-import { StyleSheet, Platform } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { Container } from "components/primitives";
 
@@ -14,7 +14,7 @@ import ContrastOverlay from "./ContrastOverlay";
 class MainPost extends Component<Props> {
   render() {
     const {
-      post: { imageSrc, title, category },
+      post: { imageSrc, title, category, categoryColor, categoryLink },
       style,
       children,
     } = this.props;
@@ -24,18 +24,19 @@ class MainPost extends Component<Props> {
 
         <ContrastOverlay />
 
-        <PostDetails
-          style={styles.postDetails}
-          category={category}
-          title={title}
-        >
+        <PostDetails style={styles.postDetails} title={title}>
           <PostLabel
             inline
             fill
-            style={{ alignSelf: "center" }}
+            style={styles.postLabel}
+            color={categoryColor}
             category={category}
           />
-          <PostTitle style={styles.postTitle} title={title} />
+          <PostTitle
+            textAlign="center"
+            textStyles={styles.postTitle}
+            title={title}
+          />
         </PostDetails>
         {children}
       </Container>
@@ -47,11 +48,10 @@ export default MainPost;
 
 const styles = StyleSheet.create({
   postTitle: {
-    ...Platform.select({
-      web: {
-        textAlign: "center",
-      },
-    }),
+    textAlign: "center",
+  },
+  postLabel: {
+    alignSelf: "center",
   },
   postDetails: {
     position: "absolute",

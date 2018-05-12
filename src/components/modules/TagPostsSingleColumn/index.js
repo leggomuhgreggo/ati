@@ -1,43 +1,47 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 
-import { ModuleTitle, ModuleBox } from "components/modules";
-import { LeaderBoard } from "components/ads";
-
-import { Container, Image } from "components/primitives";
+import { Container, Grid } from "components/primitives";
 
 import TitleRow from "./TitleRow";
 import MainPost from "./MainPost";
 import OverlappingPostsWrap from "./OverlappingPostsWrap";
 import PostsOverlapMock from "./PostsOverlapMock";
 import Post from "./Post";
+import InnerContainer from "./InnerContainer";
 
 class TagPostsSingleColumn extends PureComponent<Props> {
   render() {
     const {
       data: {
         sectionTitle,
+        sectionLink,
+        sectionColor,
         posts: [mainPost, ...posts],
       },
     } = this.props;
     return (
-      <View>
-        <Container>
-          <TitleRow title={sectionTitle} />
-        </Container>
+      <Container type="content">
+        <View>
+          <TitleRow
+            color={sectionColor}
+            link={sectionLink}
+            title={sectionTitle}
+          />
+        </View>
 
-        <Container style={{ marginTop: 30 }}>
+        <View style={{ marginTop: 30 }}>
           <MainPost style={{ zIndex: 10 }} post={mainPost}>
             <PostsOverlapMock />
           </MainPost>
 
-          <OverlappingPostsWrap>
+          <InnerContainer>
             <Posts posts={posts} />
-          </OverlappingPostsWrap>
-        </Container>
-      </View>
+          </InnerContainer>
+        </View>
+      </Container>
     );
   }
 }
@@ -46,27 +50,16 @@ export default TagPostsSingleColumn;
 
 class Posts extends PureComponent {
   render() {
-    const { children, posts } = this.props;
+    const { posts } = this.props;
     return (
-      <View
+      <Grid
         style={{
-          marginTop: -30,
-          paddingHorizontal: 45,
           flexDirection: "row",
           flexWrap: "wrap",
         }}
       >
-        {posts.map(({ id, ...post }) => (
-          <PostWrap>
-            <Post key={id} post={post} />
-          </PostWrap>
-        ))}
-      </View>
+        {posts.map(post => <Post key={post.id} {...post} />)}
+      </Grid>
     );
   }
 }
-const PostWrap = ({ children }) => (
-  <View style={{ padding: 10, width: "33%", backgroundColor: "green" }}>
-    {children}
-  </View>
-);

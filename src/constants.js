@@ -17,6 +17,7 @@ export const COLOR_MAP = {
   VERMILLION: "#f72666",
   SITE_BG: "#f7f7f9",
   BLUE: "#0255f9",
+  TEXT_COLOR: "#242424",
 };
 
 export const CATEGORY_COLOR_MAP = {

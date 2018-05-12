@@ -12,7 +12,7 @@ type Props = {
 
 class ModuleTitle extends Component<Props> {
   static defaultProps = {
-    color: COLOR_MAP.ORANGE,
+    color: COLOR_MAP.TEXT_COLOR,
   };
 
   getBorderTop = () => ({
