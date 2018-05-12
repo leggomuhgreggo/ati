@@ -20,7 +20,7 @@ class Header extends Component<Props> {
   render() {
     const { style } = this.props;
     return (
-      <View style={[styles.headerWrap, { style }]}>
+      <View style={[styles.headerWrap, style]}>
         <Text style={[styles.headerText]}>ATI</Text>
       </View>
     );

@@ -16,7 +16,7 @@ class LeaderBoard extends Component<Props> {
 
   render() {
     const { style } = this.props;
-    return <View style={[styles.ad, { style }]} />;
+    return <View style={[styles.ad, style]} />;
   }
 }
 
