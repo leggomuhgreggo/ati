@@ -9,7 +9,7 @@ import {
 } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { LeaderBoard } from "./components/ads";
-import { Container, Row } from "components/primitives";
+import { Container, FullWidthSection } from "components/primitives";
 
 import DATA from "data.js";
 
@@ -20,21 +20,21 @@ class App extends Component {
         <Header />
 
         <Main>
-          <Row spacer={30}>
+          <FullWidthSection spacer={30}>
             <Container style={{ alignItems: "center" }} type="content">
               <LeaderBoard />
             </Container>
-          </Row>
+          </FullWidthSection>
 
-          <Row spacer={30}>
+          <FullWidthSection spacer={30}>
             <Container type="content">
               <TagPostsSingleColumn data={DATA} />
             </Container>
-          </Row>
+          </FullWidthSection>
 
-          <Row>
+          <FullWidthSection>
             <Header />
-          </Row>
+          </FullWidthSection>
         </Main>
       </AppWrap>
     );
@@ -42,13 +42,3 @@ class App extends Component {
 }
 
 export default App;
-
-// <Row spacer={30}>
-// <Container type="content">
-//   <MostRecent posts={DATA.posts} />
-// </Container>
-// </Row>
-
-// <Row>
-// <Newsletter />
-// </Row>
