@@ -6,10 +6,14 @@ import { Container, Grid, Row } from "components/primitives";
 
 import TitleRow from "./TitleRow";
 import MainPost from "./MainPost";
-import { getPostWrapComponents } from "./OverlappingPostsWrap";
-import Post from "./Post";
 
-const { OverlappingPostsWrap, OverlapSpoof } = getPostWrapComponents(60);
+import { getPostWrapComponents } from "./OverlappingPostsWrap";
+
+import Posts from "./Posts";
+
+const { OverlappingPostsWrap, OverlapSpoof } = getPostWrapComponents({
+  offset: 30,
+});
 
 class TagPostsSingleColumn extends PureComponent<Props> {
   render() {
@@ -43,10 +47,3 @@ class TagPostsSingleColumn extends PureComponent<Props> {
 }
 
 export default TagPostsSingleColumn;
-
-class Posts extends PureComponent {
-  render() {
-    const { posts } = this.props;
-    return <Grid>{posts.map(post => <Post key={post.id} {...post} />)}</Grid>;
-  }
-}
