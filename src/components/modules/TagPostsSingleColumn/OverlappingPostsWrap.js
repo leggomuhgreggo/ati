@@ -10,7 +10,13 @@ export class OverlappingPostsWrap extends PureComponent {
     const { children, style, patternColor, offSet = 30 } = this.props;
     return (
       <PostContainer style={{ marginTop: -offSet }}>
-        <ModuleBox offsetDirection="right" patternColor={patternColor}>
+        <ModuleBox
+          offsetDirection="right"
+          patternColor={patternColor}
+          style={{
+            padding: offSet,
+          }}
+        >
           {children}
         </ModuleBox>
       </PostContainer>

@@ -44,16 +44,14 @@ class ModuleBox extends PureComponent<Props> {
 export default ModuleBox;
 
 const styles = StyleSheet.create({
-  inner: {
+  box: {
+    ...elevation(1),
     padding: 30,
     width: "100%",
-  },
-  wrap: {
-    ...elevation(1),
     backgroundColor: "white",
   },
 });
 
 const Box = ({ children, style }) => (
-  <View style={[styles.wrap, styles.inner, style]}>{children}</View>
+  <View style={[styles.box, style]}>{children}</View>
 );
