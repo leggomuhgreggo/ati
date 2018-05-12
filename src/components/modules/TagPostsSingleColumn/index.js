@@ -1,16 +1,15 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { View } from "react-native";
 
-import { Container, Grid } from "components/primitives";
+import { Container, Grid, Row } from "components/primitives";
 
 import TitleRow from "./TitleRow";
 import MainPost from "./MainPost";
-import OverlappingPostsWrap from "./OverlappingPostsWrap";
-import PostsOverlapMock from "./PostsOverlapMock";
+import { getPostWrapComponents } from "./OverlappingPostsWrap";
 import Post from "./Post";
-import InnerContainer from "./InnerContainer";
+
+const { OverlappingPostsWrap, OverlapSpoof } = getPostWrapComponents(60);
 
 class TagPostsSingleColumn extends PureComponent<Props> {
   render() {
@@ -24,23 +23,20 @@ class TagPostsSingleColumn extends PureComponent<Props> {
     } = this.props;
     return (
       <Container type="content">
-        <View>
-          <TitleRow
-            color={sectionColor}
-            link={sectionLink}
-            title={sectionTitle}
-          />
-        </View>
-
-        <View style={{ marginTop: 30 }}>
+        <TitleRow
+          patternColor={sectionColor}
+          link={sectionLink}
+          title={sectionTitle}
+        />
+        <Row style={{ marginTop: 30 }}>
           <MainPost style={{ zIndex: 10 }} post={mainPost}>
-            <PostsOverlapMock />
+            <OverlapSpoof />
           </MainPost>
 
-          <InnerContainer>
+          <OverlappingPostsWrap patternColor={sectionColor}>
             <Posts posts={posts} />
-          </InnerContainer>
-        </View>
+          </OverlappingPostsWrap>
+        </Row>
       </Container>
     );
   }
@@ -51,15 +47,6 @@ export default TagPostsSingleColumn;
 class Posts extends PureComponent {
   render() {
     const { posts } = this.props;
-    return (
-      <Grid
-        style={{
-          flexDirection: "row",
-          flexWrap: "wrap",
-        }}
-      >
-        {posts.map(post => <Post key={post.id} {...post} />)}
-      </Grid>
-    );
+    return <Grid>{posts.map(post => <Post key={post.id} {...post} />)}</Grid>;
   }
 }

@@ -9,7 +9,7 @@ import {
 } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { LeaderBoard } from "./components/ads";
-import { FullWidthSection } from "components/primitives";
+import { Row } from "components/primitives";
 
 import { POST_LIST, TAG_SECTION } from "data.js";
 
@@ -22,17 +22,17 @@ class App extends PureComponent {
         <Header />
 
         <Main>
-          <FullWidthSection spacer={30}>
+          <Section style={{ marginTop: 30 }}>
             <LeaderBoard />
-          </FullWidthSection>
+          </Section>
 
-          <FullWidthSection spacer={30}>
+          <Section style={{ marginTop: 30 }}>
             <TagPostsSingleColumn data={TAG_SECTION} />
-          </FullWidthSection>
+          </Section>
 
-          <FullWidthSection>
+          <Section>
             <Header />
-          </FullWidthSection>
+          </Section>
         </Main>
       </AppWrap>
     );
@@ -40,3 +40,9 @@ class App extends PureComponent {
 }
 
 export default App;
+
+const Section = ({ children, style }) => (
+  <Row style={[{ alignItems: "center", marginTop: 100 }, style]}>
+    {children}
+  </Row>
+);

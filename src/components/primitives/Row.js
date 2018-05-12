@@ -8,29 +8,29 @@ import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes
 
 type Props = {
   style?: StyleObj,
-  spacer?: number,
   children: Node,
+  rest: any,
 };
 
-class FullWidthSection extends PureComponent<Props> {
+class Row extends PureComponent<Props> {
   static defaultProps = {
-    spacer: 100,
     style: {},
   };
 
   render() {
-    const { style, spacer, children } = this.props;
+    const { style, spacer, children, ...rest } = this.props;
     return (
-      <View style={[styles.row, { marginTop: spacer }, style]}>{children}</View>
+      <View style={[styles.row, style]} {...rest}>
+        {children}
+      </View>
     );
   }
 }
 
-export default FullWidthSection;
+export default Row;
 
 const styles = StyleSheet.create({
   row: {
     width: "100%",
-    alignItems: "center",
   },
 });

@@ -10,27 +10,33 @@ import type { CategoryColors } from "components/types";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 import type { Node } from "react";
 
+const OFFSET = {
+  LEFT: "left",
+  RIGHT: "right",
+};
+
 type Props = {
   style?: StyleObj,
   children: Node,
-  color: CategoryColors,
-  offsetDirection: "left" | "right",
+  patternColor: CategoryColors,
+  offsetDirection?: OFFSET.LEFT | OFFSET.RIGHT,
 };
 
 class ModuleBox extends PureComponent<Props> {
   static defaultProps = {
     style: {},
+    offsetDirection: OFFSET.LEFT,
   };
 
   render() {
-    const { children, color, offsetDirection, styles } = this.props;
+    const { children, patternColor, offsetDirection, style } = this.props;
 
-    return color ? (
-      <Pattern offsetDirection={offsetDirection} color={color}>
-        <Box styles={styles}>{children}</Box>
+    return patternColor ? (
+      <Pattern offsetDirection={offsetDirection} color={patternColor}>
+        <Box style={style}>{children}</Box>
       </Pattern>
     ) : (
-      <Box styles={styles}>{children}</Box>
+      <Box style={style}>{children}</Box>
     );
   }
 }
@@ -40,6 +46,7 @@ export default ModuleBox;
 const styles = StyleSheet.create({
   inner: {
     padding: 30,
+    width: "100%",
   },
   wrap: {
     ...elevation(1),

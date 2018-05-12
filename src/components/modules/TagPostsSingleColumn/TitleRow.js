@@ -9,18 +9,18 @@ import { LeaderBoard } from "components/ads";
 import { Container, Text } from "components/primitives";
 
 type Props = {
-  color: string,
+  patternColor: string,
   title: string,
   link: string,
 };
 
 class TitleRow extends PureComponent<Props> {
   render() {
-    const { color, title, link } = this.props;
+    const { patternColor, title, link } = this.props;
     return (
       <View style={styles.titleRow}>
         <View style={styles.titleWrap}>
-          <ModuleTitle color={color}>
+          <ModuleTitle patternColor={patternColor}>
             <Text>{title}</Text>
           </ModuleTitle>
         </View>

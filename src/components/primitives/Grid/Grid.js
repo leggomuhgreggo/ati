@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
   listWrap: {
     flexDirection: "row",
     flexWrap: "wrap",
+    width: "100%",
   },
   listItem: {},
 });
