@@ -14,6 +14,7 @@ type Props = {
   textStyles?: StyleObj,
   inline: boolean,
   spacer: number,
+  color: string,
 };
 
 class PostLabel extends PureComponent<Props> {

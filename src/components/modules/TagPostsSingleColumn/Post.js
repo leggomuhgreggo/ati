@@ -24,15 +24,20 @@ class Post extends PureComponent<Props> {
   };
 
   render() {
-    const { category, title, imageSrc, width } = this.props;
+    const { categoryColor, category, title, imageSrc, width } = this.props;
     return (
       <View style={[styles.postBox]}>
         <View>
           <PostImage imageSrc={imageSrc} />
 
           <View>
-            <PostLabel inline category={category} />
-            <PostTitle title={title} />
+            <PostLabel
+              style={styles.postLabel}
+              color={categoryColor}
+              inline
+              category={category}
+            />
+            <PostTitle style={styles.postTitle} title={title} />
           </View>
         </View>
         <Line />
@@ -49,6 +54,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-between",
   },
+  postLabel: {
+    marginTop: 20,
+  },
+  postTitle: {
+    marginTop: 10,
+  },
+  postLine: {
+    marginTop: 30,
+    backgroundColor: "black",
+    height: 3,
+    width: "100%",
+  },
 });
 
 const PostImage = ({ imageSrc }) => (
@@ -61,12 +78,4 @@ const PostImage = ({ imageSrc }) => (
   />
 );
 
-const Line = ({ imageSrc }) => (
-  <View
-    style={{
-      backgroundColor: "black",
-      height: 3,
-      width: "100%",
-    }}
-  />
-);
+const Line = ({ imageSrc }) => <View style={styles.postLine} />;

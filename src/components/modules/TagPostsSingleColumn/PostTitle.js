@@ -11,9 +11,9 @@ type TitleProps = {
 
 class PostTitle extends PureComponent<TitleProps> {
   render() {
-    const { title } = this.props;
+    const { title, style } = this.props;
     return (
-      <Text sizeRange={[16, 17]} style={styles.text}>
+      <Text sizeRange={[16, 17]} style={[styles.text, style]}>
         {title}
       </Text>
     );

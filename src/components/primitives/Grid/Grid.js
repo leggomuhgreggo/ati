@@ -21,12 +21,12 @@ class Grid extends PureComponent<Props> {
     itemsPerRow: 3,
   };
 
-  getItemStyles = () => {
+  getItemStyles = (multiplier = 1) => {
     const { itemsPerRow, spacer } = this.props;
 
     const styles = StyleSheet.create({
       item: {
-        flexBasis: `${100 / itemsPerRow}%`,
+        flexBasis: `${100 / itemsPerRow * multiplier}%`,
         padding: spacer / 2,
       },
     });
@@ -47,6 +47,7 @@ class Grid extends PureComponent<Props> {
   renderChildren = () => {
     const { children } = this.props;
     return React.Children.map(children, child => {
+      // const multiplier = child.type !== Card
       return (
         <View style={this.getItemStyles()}>{React.cloneElement(child)}</View>
       );
