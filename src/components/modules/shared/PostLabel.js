@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
 import { View } from "react-native";
 
 import { Text } from "components/primitives";
-import type { Categories, colors } from "components/modules";
+import type { Categories } from "components/modules";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 type Props = {
@@ -15,6 +15,7 @@ type Props = {
   inline: boolean,
   spacer: number,
   color: string,
+  labelHeight?: number,
 };
 
 class PostLabel extends PureComponent<Props> {
@@ -24,43 +25,42 @@ class PostLabel extends PureComponent<Props> {
     containerStyles: {},
     textStyles: {},
     spacer: 8,
+    labelHeight: 30,
+  };
+
+  getPositionStyles = () => {
+    const { inline, spacer } = this.props;
+    return inline
+      ? null
+      : {
+          position: "absolute",
+          top: 0,
+          left: 0,
+          transform: [
+            {
+              translateY: `calc(-100% - ${spacer}px)`,
+            },
+          ],
+        };
+  };
+
+  getFillStyles = () => {
+    const { labelHieght, fill, color } = this.props;
+
+    return fill
+      ? {
+          backgroundColor: color,
+          paddingHorizontal: 10,
+          height: labelHieght,
+          justifyContent: "center",
+        }
+      : null;
   };
 
   getContainerStyles = (): StyleObj => {
-    const { fill, category, color, inline, spacer } = this.props;
-
-    const LABEL_HEIGHT = 30;
-
-    const baseStyles = () => ({});
-
-    const positionStyles = () =>
-      inline
-        ? null
-        : {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            transform: [
-              {
-                translateY: `calc(-100% - ${spacer}px)`,
-              },
-            ],
-          };
-
-    const fillStyles = () =>
-      fill
-        ? {
-            backgroundColor: color,
-            paddingHorizontal: 10,
-            height: LABEL_HEIGHT,
-            justifyContent: "center",
-          }
-        : null;
-
     return {
-      ...baseStyles(),
-      ...fillStyles(),
-      ...positionStyles(),
+      ...this.getFillStyles(),
+      ...this.getPositionStyles(),
     };
   };
 

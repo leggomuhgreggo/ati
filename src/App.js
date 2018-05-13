@@ -2,18 +2,12 @@
 
 import React, { PureComponent } from "react";
 
-import {
-  MostRecent,
-  TagPostsSingleColumn,
-  Newsletter,
-} from "./components/modules";
+import { TagPostsSingleColumn } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { LeaderBoard } from "./components/ads";
 import { Row } from "components/primitives";
 
-import { POST_LIST, TAG_SECTION } from "data.js";
-
-// console.log(POST_LIST);
+import { TAG_SECTION } from "data.js";
 
 class App extends PureComponent {
   render() {

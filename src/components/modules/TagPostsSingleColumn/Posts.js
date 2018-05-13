@@ -2,13 +2,9 @@
 
 import React, { PureComponent } from "react";
 
-import { Container, Grid, Row } from "components/primitives";
+import { Grid } from "components/primitives";
 
-import {
-  POST_COMPONENTS,
-  GRID_COMPONENTS,
-  getComposedComponents,
-} from "./posts-helpers";
+import { GRID_COMPONENTS, getComposedComponents } from "./posts-helpers";
 
 const ORDER_1 = [
   GRID_COMPONENTS.LG,
@@ -30,7 +26,7 @@ type Props = {
   order: 1 | 2,
 };
 
-class Posts extends PureComponent {
+class Posts extends PureComponent<Props> {
   static defaultProps = {
     order: 1,
   };

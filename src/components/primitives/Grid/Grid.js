@@ -2,7 +2,6 @@
 
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
-import { Ratio } from "components/primitives";
 
 import type { ChildrenArray } from "react";
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
@@ -52,11 +51,9 @@ class Grid extends PureComponent<Props> {
         <View style={this.getItemStyles()}>{React.cloneElement(child)}</View>
       );
     });
-    return;
   };
 
   render() {
-    const { spacer } = this.props;
     return (
       <View style={[{ position: "relative" }]}>
         <View style={[this.getListStyles()]}>{this.renderChildren()}</View>
@@ -65,11 +62,3 @@ class Grid extends PureComponent<Props> {
   }
 }
 export default Grid;
-
-const styles = StyleSheet.create({
-  listWrap: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  listItem: {},
-});

@@ -24,7 +24,7 @@ class PostTitle extends PureComponent<Props> {
   };
 
   render() {
-    const { title, textStyles, textAlign } = this.props;
+    const { title, textAlign } = this.props;
     const alignStyles = getWrapAlignStyles(textAlign);
     return (
       <View style={[styles.titleWrap, alignStyles]}>

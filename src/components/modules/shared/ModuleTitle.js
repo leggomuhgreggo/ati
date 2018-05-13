@@ -3,7 +3,7 @@
 import React, { PureComponent } from "react";
 
 import { COLOR_MAP } from "constants.js";
-import { Pattern, ModuleBox } from "components/modules";
+import { ModuleBox } from "components/modules";
 
 type Props = {
   patternColor: $Values<typeof COLOR_MAP>,

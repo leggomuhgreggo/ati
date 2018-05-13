@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from "react";
 
-import { Container, Grid, Row } from "components/primitives";
+import { Container, Row } from "components/primitives";
 
 import TitleRow from "./TitleRow";
 import MainPost from "./MainPost";

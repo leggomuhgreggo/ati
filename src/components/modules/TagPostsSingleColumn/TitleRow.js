@@ -3,10 +3,10 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
-import { ModuleTitle, ModuleBox } from "components/modules";
+import { ModuleTitle } from "components/modules";
 import { LeaderBoard } from "components/ads";
 
-import { Container, Text } from "components/primitives";
+import { Text } from "components/primitives";
 
 type Props = {
   patternColor: string,
@@ -16,7 +16,7 @@ type Props = {
 
 class TitleRow extends PureComponent<Props> {
   render() {
-    const { patternColor, title, link } = this.props;
+    const { patternColor, title } = this.props;
     return (
       <View style={styles.titleRow}>
         <View style={styles.titleWrap}>

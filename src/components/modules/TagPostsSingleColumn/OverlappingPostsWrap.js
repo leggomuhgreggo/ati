@@ -7,7 +7,7 @@ import { ModuleBox } from "components/modules";
 
 export class OverlappingPostsWrap extends PureComponent {
   render() {
-    const { children, style, patternColor, offSet = 30 } = this.props;
+    const { children, patternColor, offSet = 30 } = this.props;
     return (
       <PostContainer style={{ marginTop: -offSet }}>
         <ModuleBox

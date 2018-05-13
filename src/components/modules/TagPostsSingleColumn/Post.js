@@ -24,13 +24,13 @@ class Post extends PureComponent<Props> {
   };
 
   render() {
-    const { categoryColor, category, title, imageSrc, width } = this.props;
+    const { categoryColor, category, title, imageSrc } = this.props;
     return (
       <View style={[styles.postBox]}>
         <View>
           <PostImage imageSrc={imageSrc} />
 
-          <View>
+          <PostDetails>
             <PostLabel
               style={styles.postLabel}
               color={categoryColor}
@@ -38,7 +38,7 @@ class Post extends PureComponent<Props> {
               category={category}
             />
             <PostTitle style={styles.postTitle} title={title} />
-          </View>
+          </PostDetails>
         </View>
         <Line />
       </View>

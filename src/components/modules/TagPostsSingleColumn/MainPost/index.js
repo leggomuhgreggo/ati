@@ -14,7 +14,7 @@ import ContrastOverlay from "./ContrastOverlay";
 class MainPost extends PureComponent<Props> {
   render() {
     const {
-      post: { imageSrc, title, category, categoryColor, categoryLink },
+      post: { imageSrc, title, category, categoryColor },
       style,
       children,
     } = this.props;
