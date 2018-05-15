@@ -3,11 +3,8 @@
 import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { ModuleBox } from "components/modules";
+import { ModuleBox, Post } from "components/modules";
 import { Container } from "components/primitives";
-
-import MainPost from "./MainPost/";
-import SecondaryPosts from "./SecondaryPosts";
 
 class MostRecent extends PureComponent<Props> {
   render() {
@@ -16,13 +13,15 @@ class MostRecent extends PureComponent<Props> {
     } = this.props;
     return (
       <Container>
-        <ModuleBox>
+        <ModuleBox patternColor={mainPost.categoryColor}>
           <View style={styles.wrap}>
             <View style={styles.left}>
-              <MainPost post={mainPost} />
+              <Post layoutVariant="overlay" {...mainPost} />
             </View>
             <View style={styles.right}>
-              <SecondaryPosts posts={secondaryPosts} />
+              {secondaryPosts.map(post => (
+                <Post layoutVariant="reduced" key={post.id} {...post} />
+              ))}
             </View>
           </View>
         </ModuleBox>
@@ -42,5 +41,6 @@ const styles = StyleSheet.create({
   },
   right: {
     width: "33%",
+    paddingLeft: 15,
   },
 });

@@ -15,18 +15,21 @@ type Props = {
   imageSrc: string,
   postType?: "sm" | "med" | "lg",
   overlayDetails?: boolean,
+  categoryColor: string,
+  style?: any,
 };
 
-class Post extends PureComponent<Props> {
+class TagPost extends PureComponent<Props> {
   static defaultProps = {
     postType: "med",
     overlayDetails: false,
+    style: {},
   };
 
   render() {
-    const { categoryColor, category, title, imageSrc } = this.props;
+    const { style, categoryColor, category, title, imageSrc } = this.props;
     return (
-      <View style={[styles.postBox]}>
+      <View style={[styles.postBox, style]}>
         <View>
           <PostImage imageSrc={imageSrc} />
 
@@ -46,7 +49,7 @@ class Post extends PureComponent<Props> {
   }
 }
 
-export default Post;
+export default TagPost;
 
 const styles = StyleSheet.create({
   postBox: {

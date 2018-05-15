@@ -3,7 +3,7 @@
 import React from "react";
 
 import { Mrec } from "components/ads";
-import Post from "./Post";
+import Post from "./TagPost";
 
 export const POST_COMPONENTS = {
   LG: Post,

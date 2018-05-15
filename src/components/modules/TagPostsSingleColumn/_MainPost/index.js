@@ -11,7 +11,7 @@ import PostImage from "./PostImage";
 import PostTitle from "./PostTitle";
 import ContrastOverlay from "./ContrastOverlay";
 
-class MainPost extends PureComponent<Props> {
+class _MainPost extends PureComponent<Props> {
   render() {
     const {
       post: { imageSrc, title, category, categoryColor },
@@ -44,7 +44,7 @@ class MainPost extends PureComponent<Props> {
   }
 }
 
-export default MainPost;
+export default _MainPost;
 
 const styles = StyleSheet.create({
   postTitle: {

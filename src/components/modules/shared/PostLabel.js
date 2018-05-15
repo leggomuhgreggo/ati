@@ -9,7 +9,6 @@ import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes
 
 type Props = {
   category: Categories,
-  box?: boolean,
   containerStyles?: StyleObj,
   textStyles?: StyleObj,
   inline: boolean,
@@ -35,7 +34,6 @@ class PostLabel extends PureComponent<Props> {
       : {
           position: "absolute",
           top: 0,
-          left: 0,
           transform: [
             {
               translateY: `calc(-100% - ${spacer}px)`,
@@ -70,7 +68,7 @@ class PostLabel extends PureComponent<Props> {
     return {
       color: fill ? "white" : color,
       fontSize: 12,
-      fontWeight: "600",
+      fontWeight: fill ? "400" : "600",
     };
   };
 

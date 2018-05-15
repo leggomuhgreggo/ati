@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { Text, StyleSheet, Dimensions } from "react-native";
+import { Text as RNText, StyleSheet, Dimensions } from "react-native";
 
 import createLockFunction from "../../lock";
 
@@ -23,7 +23,7 @@ type Props = {
   screenWidth?: number,
 };
 
-class MyText extends PureComponent<Props> {
+class Text extends PureComponent<Props> {
   static defaultProps = {
     style: {},
     rest: {},
@@ -90,14 +90,14 @@ class MyText extends PureComponent<Props> {
   render() {
     const { style, children } = this.props;
     return (
-      <Text style={[styles.text, this.getDynamicStyles(), style]}>
+      <RNText style={[styles.text, this.getDynamicStyles(), style]}>
         {children}
-      </Text>
+      </RNText>
     );
   }
 }
 
-export default MyText;
+export default Text;
 
 const styles = StyleSheet.create({
   text: {
