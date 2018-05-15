@@ -1,11 +1,12 @@
 // @flow
 
 import React, { PureComponent } from "react";
-
+import { View } from "react-native";
 import { Container, Row } from "components/primitives";
+import { Post } from "components/modules";
 
 import TitleRow from "./TitleRow";
-import MainPost from "./_MainPost";
+// import MainPost from "./_MainPost";
 
 import { getPostWrapComponents } from "./OverlappingPostsWrap";
 
@@ -33,9 +34,10 @@ class TagPostsSingleColumn extends PureComponent<Props> {
           title={sectionTitle}
         />
         <Row style={{ marginTop: 30 }}>
-          <MainPost style={{ zIndex: 10 }} post={mainPost}>
+          <View style={{ zIndex: 10 }}>
+            <Post layoutVariant="overlay" {...mainPost} />
             <OverlapSpoof />
-          </MainPost>
+          </View>
 
           <OverlappingPostsWrap patternColor={sectionColor}>
             <Posts posts={posts} />
