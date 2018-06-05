@@ -2,49 +2,88 @@
 
 import React, { PureComponent } from "react";
 import { Image as RNImage, StyleSheet } from "react-native";
+
 import Ratio from "./Ratio";
 
 type Props = {
-  source: any,
-  resizeMode?: string,
-  ratio: string,
+  src: string,
+  alt: string,
+  width: string,
+  height: string,
 };
 
-class ResponsiveImage extends PureComponent<Props> {
+/**
+ * To Do
+ * transform api
+ * srcset
+ * alt
+ */
+
+class Image extends PureComponent<Props> {
   static defaultProps = {
+    src: "http://placehold.it/350x150",
     resizeMode: "cover",
   };
 
-  getRatio = () => {
-    const {
-      ratio,
-      source: { uri, width, height },
-    } = this.props;
+  getValueFromStyleProp = cssProperty =>
+    this.props.style &&
+    !!StyleSheet.flatten(this.props.style)[cssProperty] &&
+    StyleSheet.flatten(this.props.style)[cssProperty];
 
-    if (ratio) {
-      return ratio;
-    }
+  getDimensionsFromProps = () => {
+    const { width, height } = this.props;
 
-    if (width && height) {
-      return `${width}:${height}`;
-    }
-
-    if (uri) {
-      return this.getRatioFromImageSize(uri);
-    }
+    return !isNaN(width) && !isNaN(height)
+      ? {
+          width,
+          height,
+        }
+      : null;
   };
 
-  getRatioFromImageSize = src =>
-    RNImage.getSize(src, (width, height) => `${width}:${height}`);
+  getDimensionsFromStyles = () => {
+    const width = this.getValueFromStyleProp("width");
+    const height = this.getValueFromStyleProp("height");
+
+    return !isNaN(width) && !isNaN(height)
+      ? {
+          width,
+          height,
+        }
+      : null;
+  };
+
+  getStaticDimensions = () =>
+    this.getDimensionsFromProps()
+      ? this.getDimensionsFromProps()
+      : this.getDimensionsFromStyles()
+        ? this.getDimensionsFromStyles()
+        : {};
+
+  getRatioString = ({ width, height }) => `${width}:${height}`;
+
+  getRatio = () => {
+    const { width, height } = this.getStaticDimensions();
+    return !isNaN(width) && !isNaN(height)
+      ? this.getRatioString({
+          width,
+          height,
+        })
+      : undefined;
+  };
 
   render() {
-    const { style, source, resizeMode, ...rest } = this.props;
+    const { style, src, alt, resizeMode, ...rest } = this.props;
+
     return (
       <Ratio ratio={this.getRatio()}>
         <RNImage
-          style={[styles.expand, style]}
+          source={{
+            uri: src,
+          }}
+          accessibilityLabel={alt}
+          style={[styles.expand]}
           resizeMode={resizeMode}
-          source={source}
           {...rest}
         />
       </Ratio>
@@ -52,7 +91,7 @@ class ResponsiveImage extends PureComponent<Props> {
   }
 }
 
-export default ResponsiveImage;
+export default Image;
 
 const styles = StyleSheet.create({
   expand: {
