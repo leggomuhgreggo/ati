@@ -1,7 +1,6 @@
 const path = require("path");
 
 module.exports = {
-  // require: [path.resolve(__dirname, "styleguide/setup.js")],
   ignore: [
     path.resolve(__dirname, "src/components/ads/index.js"),
     path.resolve(__dirname, "src/components/primitives/index.js"),
