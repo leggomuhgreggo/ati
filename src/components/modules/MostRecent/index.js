@@ -12,7 +12,7 @@ class MostRecent extends PureComponent<Props> {
       posts: [mainPost, ...secondaryPosts],
     } = this.props;
     return (
-      <Container>
+      <Container type="content">
         <ModuleBox patternColor={mainPost.categoryColor}>
           <View style={styles.wrap}>
             <View style={styles.left}>

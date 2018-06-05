@@ -39,10 +39,11 @@ class Posts extends PureComponent<Props> {
   render() {
     const { posts } = this.props;
     const componentOrderMap = this.getComponentOrder();
+    const postsArray = getComposedComponents(componentOrderMap, posts);
 
-    return (
-      <Grid spacer={30}>{getComposedComponents(componentOrderMap, posts)}</Grid>
-    );
+    // console.log(postsArray);
+
+    return <Grid spacer={30}>{postsArray}</Grid>;
   }
 }
 

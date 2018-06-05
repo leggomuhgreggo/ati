@@ -2,12 +2,16 @@
 
 import React, { PureComponent } from "react";
 
-import { TagPostsSingleColumn } from "./components/modules";
+import {
+  TagPostsSingleColumn,
+  MostRecent,
+  Newsletter,
+} from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { LeaderBoard } from "./components/ads";
 import { Row } from "components/primitives";
 
-import { TAG_SECTION } from "data.js";
+import { TAG_SECTION, POST_LIST } from "data.js";
 
 class App extends PureComponent {
   render() {
@@ -21,7 +25,19 @@ class App extends PureComponent {
           </Section>
 
           <Section style={{ marginTop: 30 }}>
-            <TagPostsSingleColumn data={TAG_SECTION} />
+            <MostRecent posts={POST_LIST} />
+          </Section>
+
+          <Section style={{ marginTop: 100 }}>
+            <TagPostsSingleColumn order={1} data={TAG_SECTION} />
+          </Section>
+
+          <Section style={{ marginTop: 100 }}>
+            <Newsletter />
+          </Section>
+
+          <Section style={{ marginTop: 100 }}>
+            <TagPostsSingleColumn order={2} data={TAG_SECTION} />
           </Section>
 
           <Section>

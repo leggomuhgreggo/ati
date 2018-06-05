@@ -15,9 +15,18 @@ const { OverlappingPostsWrap, OverlapSpoof } = getPostWrapComponents({
   offset: 30,
 });
 
+type Props = {
+  order: number,
+};
+
 class TagPostsSingleColumn extends PureComponent<Props> {
+  static defaultProps = {
+    order: 1,
+  };
+
   render() {
     const {
+      order,
       data: {
         sectionTitle,
         sectionLink,
@@ -43,7 +52,7 @@ class TagPostsSingleColumn extends PureComponent<Props> {
           </Post>
 
           <OverlappingPostsWrap patternColor={sectionColor}>
-            <Posts posts={posts} />
+            <Posts order={order} posts={posts} />
           </OverlappingPostsWrap>
         </Row>
       </Container>
