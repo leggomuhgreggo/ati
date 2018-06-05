@@ -39,9 +39,7 @@ class Text extends PureComponent<Props> {
     StyleSheet.flatten(this.props.style)[cssProperty];
 
   getFontFamily = () =>
-    this.props.serif && !this.props.sansSerif
-      ? FONT_FAMILIES.SERIF
-      : FONT_FAMILIES.SANS_SERIF;
+    this.props.serif ? FONT_FAMILIES.SERIF : FONT_FAMILIES.SANS_SERIF;
 
   getFontSizeFromLockFunc = () => {
     const {
@@ -50,7 +48,7 @@ class Text extends PureComponent<Props> {
       sizeRange: [min, max],
     } = this.props;
 
-    const sizeMod = Math.pow(1.22, size - 1) * size;
+    const sizeMod = Math.pow(1.0054, size - 1) * size;
 
     return createLockFunction({ min, max })(screenWidth) * sizeMod;
   };
