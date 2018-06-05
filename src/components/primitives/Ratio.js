@@ -3,40 +3,61 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
+import type { Node } from "react";
+
+/**
+ * To Do
+ * enforce single child type
+ * apply content styles to child
+ * error handling?
+ * expand API?
+ */
+
 type Props = {
-  overflowHidden?: boolean,
   ratio?: string,
-  renderComponent?: any,
-  children: any,
+  children?: Node,
 };
+
+const FB_RATIO = "1.88:1";
 
 class Ratio extends PureComponent<Props> {
   static defaultProps = {
-    overflowHidden: true,
-    ratio: "1.88:1",
+    ratio: FB_RATIO,
+    children: <View style={{ backgroundColor: "#ebebeb" }} />,
   };
 
-  getRatioPercentage = (ratio: string): string => {
-    const [width, height] = ratio.split(":");
-
+  getRatioPercentageFromRatioString = () => {
+    const { width, height } = this.getDimensionsFromRatio();
     return height / width * 100 + "%";
   };
 
-  getPaddingBottom = (): string => {
+  getDimensionsFromRatio = () => {
     const { ratio } = this.props;
-    return this.getRatioPercentage(ratio);
+    const [width, height] = ratio.split(":");
+    return { width, height };
+  };
+
+  getPaddingBottom = () => ({
+    paddingBottom: this.getRatioPercentageFromRatioString(),
+  });
+
+  renderChild = () => {
+    const { children } = this.props;
+
+    return children
+      ? React.Children.map(children, child => {
+          return React.cloneElement(child, {
+            style: [styles.content, child.props.style],
+          });
+        })
+      : null;
   };
 
   render() {
-    const { children, renderComponent } = this.props;
     return (
       <View>
-        <View style={[styles.wrap, { paddingBottom: this.getPaddingBottom() }]}>
-          {renderComponent ? (
-            renderComponent
-          ) : (
-            <View style={styles.content}>{children}</View>
-          )}
+        <View style={[styles.wrap, this.getPaddingBottom()]}>
+          {this.renderChild()}
         </View>
       </View>
     );

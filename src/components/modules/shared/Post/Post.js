@@ -26,6 +26,7 @@ type Props = {
   categoryColor: string,
   imageSrc?: string,
   containerStyle?: any,
+  detailsOffset?: number,
   layoutVariant?: $values<typeof POST_LAYOUT_VARIANT>,
   postType?: $values<typeof POST_TYPE>,
 };
@@ -35,13 +36,15 @@ class Post extends PureComponent<Props> {
     layoutVariant: POST_LAYOUT_VARIANT.DEFAULT,
     overlayDetails: false,
     style: {},
+    detailsOffset: 0,
   };
 
   getDetailsStyles = () => {
+    const { detailsOffset } = this.props;
     return this.showOverlay()
       ? {
           position: "absolute",
-          bottom: 0,
+          bottom: detailsOffset,
           left: 0,
           padding: 10,
         }
@@ -81,6 +84,7 @@ class Post extends PureComponent<Props> {
       title,
       imageSrc,
       layoutVariant,
+      children,
     } = this.props;
     return (
       <View style={[styles.postBox, containerStyle]}>
@@ -100,6 +104,7 @@ class Post extends PureComponent<Props> {
             />
             <PostTitle title={title} style={this.getTitleStyles()} />
           </PostDetails>
+          {children}
         </View>
 
         {this.showLine() && <Line />}
