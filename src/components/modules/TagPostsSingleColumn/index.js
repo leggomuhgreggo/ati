@@ -3,11 +3,11 @@
 import React, { PureComponent } from "react";
 
 import { Container, Row } from "components/primitives";
+import { Post } from "components/modules";
 
 import TitleRow from "./TitleRow";
-import MainPost from "./_MainPost";
 
-import { getPostWrapComponents } from "./OverlappingPostsWrap";
+import { getPostWrapComponents } from "./MakeOverlappingComponents";
 
 import Posts from "./Posts";
 
@@ -33,9 +33,14 @@ class TagPostsSingleColumn extends PureComponent<Props> {
           title={sectionTitle}
         />
         <Row style={{ marginTop: 30 }}>
-          <MainPost style={{ zIndex: 10 }} post={mainPost}>
+          <Post
+            layoutVariant="overlay"
+            detailsOffset={30}
+            containerStyle={{ zIndex: 10 }}
+            {...mainPost}
+          >
             <OverlapSpoof />
-          </MainPost>
+          </Post>
 
           <OverlappingPostsWrap patternColor={sectionColor}>
             <Posts posts={posts} />
