@@ -1,0 +1,5 @@
+LeaderBoard example:
+
+```js
+<LeaderBoard  />
+```

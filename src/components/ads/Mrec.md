@@ -1,0 +1,5 @@
+Mrec example:
+
+```js
+<Mrec />
+```
