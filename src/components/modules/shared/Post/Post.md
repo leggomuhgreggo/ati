@@ -4,7 +4,7 @@ Reguler Post:
 const getPostArray = require("../../../../data.js").getPostArray;
 
 const post = getPostArray(1)[0];
-<Post {...post} containerStyle={{ width: 300 }} />;
+<Post {...post} key={1} containerStyle={{ width: 300 }} />;
 ```
 
 Overlay Post:
@@ -13,7 +13,12 @@ Overlay Post:
 const getPostArray = require("../../../../data.js").getPostArray;
 
 const post = getPostArray(1)[0];
-<Post layoutVariant="overlay" {...post} containerStyle={{ width: 300 }} />;
+<Post
+  key={2}
+  layoutVariant="overlay"
+  {...post}
+  containerStyle={{ width: 300 }}
+/>;
 ```
 
 Reduced Post:
@@ -22,5 +27,10 @@ Reduced Post:
 const getPostArray = require("../../../../data.js").getPostArray;
 
 const post = getPostArray(1)[0];
-<Post layoutVariant="reduced" {...post} containerStyle={{ width: 300 }} />;
+<Post
+  key={3}
+  layoutVariant="reduced"
+  {...post}
+  containerStyle={{ width: 300 }}
+/>;
 ```
