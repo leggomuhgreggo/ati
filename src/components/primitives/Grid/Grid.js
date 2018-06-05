@@ -46,9 +46,13 @@ class Grid extends PureComponent<Props> {
   renderChildren = () => {
     const { children } = this.props;
     return React.Children.map(children, child => {
-      // const multiplier = child.type !== Card
+      const multiplier = child.type.name === "LG" ? 2 : 1;
+
+      console.log();
       return (
-        <View style={this.getItemStyles()}>{React.cloneElement(child)}</View>
+        <View style={this.getItemStyles(multiplier)}>
+          {React.cloneElement(child)}
+        </View>
       );
     });
   };
