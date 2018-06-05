@@ -6,8 +6,8 @@ import { Image } from "components/primitives";
 
 class PostImage extends PureComponent {
   render() {
-    const { imageSrc } = this.props;
-    return <Image source={{ uri: imageSrc, width: 1397, height: 1091 }} />;
+    const { imageSrc, width, height } = this.props;
+    return <Image width={width} height={height} uri={imageSrc} />;
   }
 }
 

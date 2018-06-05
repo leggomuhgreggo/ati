@@ -6,8 +6,16 @@ import { Mrec } from "components/ads";
 import { Post } from "components/modules";
 
 export const POST_COMPONENTS = {
-  LG: props => <Post layoutVariant="overlay" multiplier={2} {...props} />,
-  MD: props => <Post {...props} />,
+  LG: props => (
+    <Post
+      imageWidth={735}
+      imageHeight={430}
+      layoutVariant="overlay"
+      multiplier={2}
+      {...props}
+    />
+  ),
+  MD: props => <Post imageWidth={300} imageHeight={250} {...props} />,
 };
 
 export const GRID_COMPONENTS = {

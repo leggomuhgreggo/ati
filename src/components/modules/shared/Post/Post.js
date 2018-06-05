@@ -6,6 +6,7 @@ import { View, StyleSheet } from "react-native";
 import { PostDetails, PostLabel } from "components/modules";
 import { Image } from "components/primitives";
 import PostTitle from "../PostTitle";
+// import PostImage from "../PostImage";
 
 import type { Category } from "components/modules";
 
@@ -29,6 +30,8 @@ type Props = {
   detailsOffset?: number,
   layoutVariant?: $values<typeof POST_LAYOUT_VARIANT>,
   postType?: $values<typeof POST_TYPE>,
+  imageWidth?: number,
+  imageHeight?: number,
 };
 
 class Post extends PureComponent<Props> {
@@ -84,12 +87,16 @@ class Post extends PureComponent<Props> {
       title,
       imageSrc,
       layoutVariant,
+      imageWidth,
+      imageHeight,
       children,
     } = this.props;
     return (
       <View style={[styles.postBox, containerStyle]}>
         <View>
-          {this.showImage() && <PostImage imageSrc={imageSrc} />}
+          {this.showImage() && (
+            <Image width={imageWidth} height={imageHeight} src={imageSrc} />
+          )}
 
           {this.showOverlay() && <ContrastOverlay />}
 
@@ -139,16 +146,6 @@ const styles = StyleSheet.create({
       "linear-gradient(to bottom,transparent 0,rgba(0,0,0,.02) 14%,rgba(0,0,0,.05) 23%,rgba(0,0,0,.18) 43%,rgba(0,0,0,.41) 62%,rgba(0,0,0,.8) 88%,rgba(0,0,0,.81) 90%,rgba(0,0,0,.9) 95%,rgba(0,0,0,.94) 100%)",
   },
 });
-
-const PostImage = ({ imageSrc }) => (
-  <Image
-    source={{
-      uri: imageSrc,
-      width: 2218,
-      height: 1090,
-    }}
-  />
-);
 
 const Line = ({ imageSrc }) => <View style={styles.postLine} />;
 
