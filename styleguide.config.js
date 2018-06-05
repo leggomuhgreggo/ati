@@ -26,11 +26,24 @@ module.exports = {
     //   name: "General App Components",
     //   components: "./src/components/general/*.js",
     // },
-    // {
-    //   name: "Modules",
-    //   components:
-    //     "./src/components/modules/{*.js,!(shared)/**/*.js,!(shared)/*.js}",
-    // },
+    {
+      name: "Modules",
+      sections: [
+        {
+          components: "./src/components/modules/MostRecent/index.js",
+        },
+        {
+          components: "./src/components/modules/Tag*/index.js",
+        },
+        {
+          components: "./src/components/modules/Trending/index.js",
+        },
+        {
+          components: "./src/components/modules/Newsletter/index.js",
+        },
+      ],
+      // "./src/components/modules/{*.js,!(shared)/**/*.js,!(shared)/*.js}",
+    },
   ],
   template: {
     head: {

@@ -19,7 +19,7 @@ const capitalize = string =>
 casual.define("post", function() {
   return {
     id: casual.uuid,
-    title: capitalize(casual.title),
+    title: capitalize(casual.words(7)),
     imageSrc: "//fillmurray.com/1397/1091",
     link: "#",
     ...getCategory(),
