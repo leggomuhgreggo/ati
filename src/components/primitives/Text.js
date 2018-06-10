@@ -48,7 +48,7 @@ class Text extends PureComponent<Props> {
       sizeRange: [min, max],
     } = this.props;
 
-    const sizeMod = Math.pow(1.0054, size - 1) * size;
+    const sizeMod = Math.pow(0.9, size - 1) * size;
 
     return createLockFunction({ min, max })(screenWidth) * sizeMod;
   };
