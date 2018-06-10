@@ -1,6 +1,9 @@
 const path = require("path");
 
 module.exports = {
+  theme: {
+    maxWidth: 2000,
+  },
   ignore: [
     path.resolve(__dirname, "src/components/ads/index.js"),
     path.resolve(__dirname, "src/components/primitives/index.js"),
