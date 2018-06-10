@@ -16,7 +16,12 @@ class MostRecent extends PureComponent<Props> {
         <ModuleBox patternColor={mainPost.categoryColor}>
           <View style={styles.wrap}>
             <View style={styles.left}>
-              <Post layoutVariant="overlay" {...mainPost} />
+              <Post
+                imageWidth={1397}
+                imageHeight={1091}
+                layoutVariant="overlay"
+                {...mainPost}
+              />
             </View>
             <View style={styles.right}>
               {secondaryPosts.map(post => (
