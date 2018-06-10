@@ -29,19 +29,19 @@ class App extends PureComponent {
             <MostRecent posts={getPostArray(5)} />
           </Section>
 
-          <Section style={{ marginTop: 100 }}>
+          <Section style={{ marginTop: 70 }}>
             <TagPostsSingleColumn order={1} data={getSectionData(5)} />
           </Section>
 
-          <Section style={{ marginTop: 100 }}>
+          <Section style={{ marginTop: 70 }}>
             <Newsletter />
           </Section>
 
-          <Section style={{ marginTop: 100 }}>
+          <Section style={{ marginTop: 70 }}>
             <Trending data={getSectionData(9)} />
           </Section>
 
-          <Section style={{ marginTop: 100 }}>
+          <Section style={{ marginTop: 70 }}>
             <TagPostsSingleColumn order={2} data={getSectionData(5)} />
           </Section>
 

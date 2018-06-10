@@ -41,7 +41,7 @@ class TagPostsSingleColumn extends PureComponent<Props> {
           link={sectionLink}
           title={sectionTitle}
         />
-        <Row style={{ marginTop: 30 }}>
+        <Row style={{ marginTop: 60 }}>
           <Post
             layoutVariant="overlay"
             detailsOffset={30}

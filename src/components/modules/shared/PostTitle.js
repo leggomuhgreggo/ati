@@ -13,7 +13,11 @@ class PostTitle extends PureComponent<TitleProps> {
   render() {
     const { title, style } = this.props;
     return (
-      <Text sizeRange={[16, 17]} style={[styles.text, style]}>
+      <Text
+        correctTextEdgeSpacing
+        sizeRange={[16, 17]}
+        style={[styles.text, style]}
+      >
         {title}
       </Text>
     );

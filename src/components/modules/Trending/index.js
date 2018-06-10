@@ -3,7 +3,7 @@
 import React, { PureComponent } from "react";
 import { View } from "react-native";
 
-import { Container, Row } from "components/primitives";
+import { Container } from "components/primitives";
 
 import Posts from "./Posts";
 import TitleSquare from "./TitleSquare";

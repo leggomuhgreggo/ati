@@ -20,7 +20,10 @@ class TitleRow extends PureComponent<Props> {
     return (
       <View style={styles.titleRow}>
         <View style={styles.titleWrap}>
-          <ModuleTitle patternColor={patternColor}>
+          <ModuleTitle
+            style={{ height: 110, justifyContent: "center" }}
+            patternColor={patternColor}
+          >
             <Text>{title}</Text>
           </ModuleTitle>
         </View>
