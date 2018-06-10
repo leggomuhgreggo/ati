@@ -1,5 +1,5 @@
 ```js
-const posts = require("./../../../data.js").getPostArray(9);
+const data = require("./../../../data.js").getSectionData(9);
 
-<Trending data={{ posts: posts }} />;
+<Trending data={data} />;
 ```

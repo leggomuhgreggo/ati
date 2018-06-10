@@ -9,5 +9,6 @@ export { default as MostRecent } from "./MostRecent";
 export { default as TagPostsSingleColumn } from "./TagPostsSingleColumn";
 export { default as TagTwoCol } from "./TagTwoCol";
 export { default as Newsletter } from "./Newsletter";
+export { default as Trending } from "./Trending";
 
 export * from "./shared/types";
