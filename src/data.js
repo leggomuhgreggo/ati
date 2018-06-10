@@ -29,6 +29,13 @@ casual.define("post", function() {
 export const getPostArray = length =>
   Array.from({ length }).map((u, i) => casual.post);
 
+export const getSectionData = length => ({
+  sectionTitle: capitalize(casual.title),
+  sectionLink: "#",
+  sectionColor: casual.random_value(CATEGORY_COLOR_MAP),
+  posts: getPostArray(length),
+});
+
 export const POST_LIST = getPostArray(5);
 
 export const TAG_SECTION = {
