@@ -6,12 +6,13 @@ import {
   TagPostsSingleColumn,
   MostRecent,
   Newsletter,
+  Trending,
 } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { LeaderBoard } from "./components/ads";
 import { Row } from "components/primitives";
 
-import { TAG_SECTION, POST_LIST } from "data.js";
+import { getSectionData, getPostArray } from "data.js";
 
 class App extends PureComponent {
   render() {
@@ -25,11 +26,11 @@ class App extends PureComponent {
           </Section>
 
           <Section style={{ marginTop: 30 }}>
-            <MostRecent posts={POST_LIST} />
+            <MostRecent posts={getPostArray(5)} />
           </Section>
 
           <Section style={{ marginTop: 100 }}>
-            <TagPostsSingleColumn order={1} data={TAG_SECTION} />
+            <TagPostsSingleColumn order={1} data={getSectionData(5)} />
           </Section>
 
           <Section style={{ marginTop: 100 }}>
@@ -37,7 +38,11 @@ class App extends PureComponent {
           </Section>
 
           <Section style={{ marginTop: 100 }}>
-            <TagPostsSingleColumn order={2} data={TAG_SECTION} />
+            <Trending data={getSectionData(9)} />
+          </Section>
+
+          <Section style={{ marginTop: 100 }}>
+            <TagPostsSingleColumn order={2} data={getSectionData(5)} />
           </Section>
 
           <Section>
