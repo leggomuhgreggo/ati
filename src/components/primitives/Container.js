@@ -48,5 +48,7 @@ const styles = StyleSheet.create({
     position: "relative",
     flex: 1,
     width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 });
