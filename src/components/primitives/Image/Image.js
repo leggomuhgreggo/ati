@@ -3,7 +3,7 @@
 import React, { PureComponent } from "react";
 import { Image as RNImage, StyleSheet } from "react-native";
 
-import Ratio from "./Ratio";
+import { Ratio } from "components/primitives";
 
 type Props = {
   src: string,

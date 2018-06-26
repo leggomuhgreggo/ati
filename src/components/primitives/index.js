@@ -1,7 +1,7 @@
-export { default as Text } from "./Text";
-export { default as View } from "./View";
-export { default as Container } from "./Container";
-export { default as Image } from "./Image";
-export { default as Ratio } from "./Ratio";
-export { default as Row } from "./Row";
+export { default as Text } from "./Text/Text";
+export { default as View } from "./View/View";
+export { default as Container } from "./Container/Container";
+export { default as Image } from "./Image/Image";
+export { default as Ratio } from "./Ratio/Ratio";
+export { default as Row } from "./Row/Row";
 export { default as Grid } from "./Grid/Grid";

@@ -1,6 +1,0 @@
-import { CATEGORY_COLOR_MAP } from "../constants";
-
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
-
-export type CategoryColors = $values<CATEGORY_COLOR_MAP>;
-export type Styles = StyleObjl;
