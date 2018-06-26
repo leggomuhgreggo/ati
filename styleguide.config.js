@@ -7,9 +7,8 @@ module.exports = {
   ignore: [
     path.resolve(__dirname, "src/components/ads/index.js"),
     path.resolve(__dirname, "src/components/primitives/index.js"),
-    path.resolve(__dirname, "src/components/primitives/Row.js"),
-    // path.resolve(__dirname, "src/components/primitives/Text.js"),
-    path.resolve(__dirname, "src/components/primitives/View.js"),
+    path.resolve(__dirname, "src/components/primitives/Row/Row.js"),
+    path.resolve(__dirname, "src/components/primitives/View/View.js"),
     path.resolve(__dirname, "src/components/general/index.js"),
   ],
   sections: [
@@ -25,27 +24,14 @@ module.exports = {
       name: "Post Types",
       components: "./src/components/modules/shared/Post/*.js",
     },
-    // {
-    //   name: "General App Components",
-    //   components: "./src/components/general/*.js",
-    // },
     {
       name: "Modules",
-      sections: [
-        {
-          components: "./src/components/modules/MostRecent/index.js",
-        },
-        {
-          components: "./src/components/modules/Tag*/index.js",
-        },
-        {
-          components: "./src/components/modules/Trending/index.js",
-        },
-        {
-          components: "./src/components/modules/Newsletter/index.js",
-        },
+      components: [
+        "./src/components/modules/MostRecent/index.js",
+        // "./src/components/modules/Tag*/index.js",
+        "./src/components/modules/Trending/index.js",
+        "./src/components/modules/Newsletter/index.js",
       ],
-      // "./src/components/modules/{*.js,!(shared)/**/*.js,!(shared)/*.js}",
     },
   ],
   template: {
