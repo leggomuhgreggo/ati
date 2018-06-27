@@ -3,7 +3,7 @@
 import React, { PureComponent } from "react";
 import { Text as RNText, StyleSheet, Dimensions } from "react-native";
 
-import createLockFunction from "../../../lock";
+import createLockFunction from "utils/lock";
 
 import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
