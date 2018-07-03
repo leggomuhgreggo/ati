@@ -10,5 +10,6 @@ export { default as TagPostsSingleColumn } from "./TagPostsSingleColumn";
 export { default as TagTwoCol } from "./TagTwoCol";
 export { default as Newsletter } from "./Newsletter";
 export { default as Trending } from "./Trending";
+export { default as Instagram } from "./Instagram";
 
 export * from "./shared/types";

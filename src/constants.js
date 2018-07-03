@@ -14,7 +14,7 @@ export const COLOR_MAP = {
   ORANGE: "#ffbb2c",
   RED: "#ff3000",
   LIGHT_RED: "#f1453d",
-  VERMILLION: "#f72666",
+  VERMILION: "#f72666",
   SITE_BG: "#f7f7f9",
   BLUE: "#0255f9",
   TEXT_COLOR: "#242424",

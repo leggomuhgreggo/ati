@@ -7,6 +7,7 @@ import {
   MostRecent,
   Newsletter,
   Trending,
+  Instagram,
 } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { LeaderBoard } from "./components/ads";
@@ -43,6 +44,10 @@ class App extends PureComponent {
 
           <Section style={{ marginTop: 70 }}>
             <TagPostsSingleColumn order={2} data={getSectionData(5)} />
+          </Section>
+
+          <Section>
+            <Instagram data={getPostArray(9)} />
           </Section>
 
           <Section>

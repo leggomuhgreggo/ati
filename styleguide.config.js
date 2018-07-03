@@ -28,6 +28,7 @@ module.exports = {
       name: "Modules",
       components: [
         "./src/components/modules/MostRecent/index.js",
+        "./src/components/modules/Instagram/index.js",
         // "./src/components/modules/Tag*/index.js",
         "./src/components/modules/Trending/index.js",
         "./src/components/modules/Newsletter/index.js",
