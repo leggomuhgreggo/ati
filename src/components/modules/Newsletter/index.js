@@ -2,10 +2,9 @@
 
 import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
+import { Dimensions } from "react-native";
 
-import { Container } from "components/primitives";
-
-import Illustration from "./Illustration";
+import { Container, Ratio, Image } from "components/primitives";
 import Callout from "./Callout";
 
 import { COLOR_MAP } from "constants.js";
@@ -17,8 +16,20 @@ class Newsletter extends PureComponent<Props> {
     return (
       <View style={styles.wrap}>
         <Container type="content" style={styles.container}>
-          <View style={[styles.column, styles.illustration]}>
-            <Illustration style={styles.illustration} />
+          <View
+            style={[
+              styles.column,
+              { justifyContent: "flex-end", alignItems: "flex-end" },
+            ]}
+          >
+            <View style={styles.imageWrap}>
+              <Image
+                width={332}
+                height={260}
+                resizeMode="contain"
+                source={{ uri: require("assets/images/newsletter.png") }}
+              />
+            </View>
           </View>
           <View style={styles.column}>
             <Callout style={styles.callout} />
@@ -43,14 +54,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "nowrap",
   },
+  imageWrap: {
+    maxWidth: 332,
+    width: "100%",
+  },
   column: {
     flex: 1,
     paddingHorizontal: 20,
     justifyContent: "center",
-  },
-  illustration: {
-    backgroundPosition: "right",
-    justifyContent: "flex-end",
   },
   callout: {},
 });

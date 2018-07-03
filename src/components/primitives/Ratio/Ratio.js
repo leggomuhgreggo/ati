@@ -28,7 +28,7 @@ class Ratio extends PureComponent<Props> {
 
   getRatioPercentageFromRatioString = () => {
     const { width, height } = this.getDimensionsFromRatio();
-    return height / width * 100 + "%";
+    return (height / width) * 100 + "%";
   };
 
   getDimensionsFromRatio = () => {
@@ -55,7 +55,7 @@ class Ratio extends PureComponent<Props> {
 
   render() {
     return (
-      <View>
+      <View style={{ width: "100%" }}>
         <View style={[styles.wrap, this.getPaddingBottom()]}>
           {this.renderChild()}
         </View>

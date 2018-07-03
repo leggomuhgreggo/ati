@@ -5,12 +5,14 @@ import { Image as RNImage, StyleSheet } from "react-native";
 
 import { Ratio } from "components/primitives";
 
+type Source = { src: string } | { src: object };
+
 type Props = {
-  src: string,
   alt: string,
   width: string,
   height: string,
-};
+  containerStyles: object,
+} & Source;
 
 /**
  * To Do
@@ -72,15 +74,19 @@ class Image extends PureComponent<Props> {
       : undefined;
   };
 
+  getSource = () => {
+    const { src, source } = this.props;
+
+    return source ? source : { uri: src };
+  };
+
   render() {
     const { style, src, alt, resizeMode, ...rest } = this.props;
 
     return (
       <Ratio ratio={this.getRatio()}>
         <RNImage
-          source={{
-            uri: src,
-          }}
+          source={this.getSource()}
           accessibilityLabel={alt}
           style={[styles.expand]}
           resizeMode={resizeMode}
@@ -98,5 +104,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     height: "100%",
+    maxWidth: "100%",
+    maxHeight: "100%",
   },
 });
