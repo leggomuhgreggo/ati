@@ -11,15 +11,46 @@ import { COLOR_MAP } from "constants.js";
 
 type Props = {};
 
+const BREAKPOINT = 970;
+
 class Newsletter extends PureComponent<Props> {
+  state = Dimensions.get("window");
+
+  handler = dims => this.setState(dims);
+
+  componentWillMount() {
+    Dimensions.addEventListener("change", this.handler);
+  }
+
+  componentWillUnmount() {
+    Dimensions.removeEventListener("change", this.handler);
+  }
   render() {
+    const { width } = Dimensions.get("window");
+
+    const containerStyles =
+      width > BREAKPOINT ? styles.container : { paddingVertical: 30 };
+
     return (
       <View style={styles.wrap}>
-        <Container type="content" style={styles.container}>
+        <Container
+          type="content"
+          style={[
+            width > BREAKPOINT
+              ? styles.container
+              : { paddingVertical: 30, width: 448, maxWidth: "100%" },
+          ]}
+        >
           <View
             style={[
               styles.column,
-              { justifyContent: "flex-end", alignItems: "flex-end" },
+              width > BREAKPOINT
+                ? {
+                    justifyContent: "flex-end",
+                    alignItems: "flex-end",
+                    paddingTop: "5%",
+                  }
+                : { alignItems: "center" },
             ]}
           >
             <View style={styles.imageWrap}>
@@ -32,7 +63,7 @@ class Newsletter extends PureComponent<Props> {
             </View>
           </View>
           <View style={styles.column}>
-            <Callout style={styles.callout} />
+            <Callout style={[styles.callout]} />
             <SignUp />
           </View>
         </Container>
@@ -47,7 +78,6 @@ const styles = StyleSheet.create({
   wrap: {
     backgroundColor: COLOR_MAP.BLUE,
     width: "100%",
-    height: 300,
     justifyContent: "center",
     alignItems: "center",
   },
