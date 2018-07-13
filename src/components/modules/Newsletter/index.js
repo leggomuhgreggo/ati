@@ -1,11 +1,11 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { StyleSheet, View } from "react-native";
-import { Dimensions } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 
-import { Container, Ratio, Image } from "components/primitives";
+import { Container, Image } from "components/primitives";
 import Callout from "./Callout";
+import SignUp from "./SignUp";
 
 import { COLOR_MAP } from "constants.js";
 
@@ -33,6 +33,7 @@ class Newsletter extends PureComponent<Props> {
           </View>
           <View style={styles.column}>
             <Callout style={styles.callout} />
+            <SignUp />
           </View>
         </Container>
       </View>
