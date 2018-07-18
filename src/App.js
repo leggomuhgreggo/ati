@@ -1,8 +1,6 @@
 // @flow
 
-import React, {
-  PureComponent,
-} from "../../../Library/Caches/typescript/2.9/node_modules/@types/react";
+import React, { PureComponent } from "react";
 
 // import {
 //   TagPostsSingleColumn,
