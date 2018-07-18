@@ -36,6 +36,11 @@ export const BREAKPOINTS = {
 };
 
 export const THEME_SPACING = {
+  MOBILE_CONTAINER_PADDING: 15,
+  MOBILE_OVERLAY_IMG_DIMS: {
+    width: 375,
+    height: 250,
+  },
   SECTION_SPACING: {
     LG: 70,
     SM: 30,

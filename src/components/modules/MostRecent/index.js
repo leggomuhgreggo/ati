@@ -7,7 +7,7 @@ import { ModuleBox, Post } from "components/modules";
 import { Container } from "components/primitives";
 import { Responsive } from "components/utils";
 
-import { BREAKPOINTS } from "constants.js";
+import { BREAKPOINTS, THEME_SPACING } from "constants.js";
 
 class MostRecent extends PureComponent<Props> {
   renderMobile = () => {
@@ -17,12 +17,15 @@ class MostRecent extends PureComponent<Props> {
     return (
       <Fragment>
         <Post
-          imageWidth={1397}
-          imageHeight={1091}
-          layoutVariant="overlay"
           {...mainPost}
+          imageWidth={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.WIDTH}
+          imageHeight={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.HEIGHT}
+          layoutVariant="overlay"
         />
-        <Container type="content" style={{ paddingHorizontal: 15 }}>
+        <Container
+          type="content"
+          style={{ paddingHorizontal: THEME_SPACING.MOBILE_CONTAINER_PADDING }}
+        >
           <ModuleBox patternColor={mainPost.categoryColor}>
             {secondaryPosts.map(post => (
               <Post layoutVariant="reduced" key={post.id} {...post} />
