@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { ModuleTitle } from "components/modules";
-import { LeaderBoard } from "components/ads";
+import { Leaderboard } from "components/ads";
 
 import { Text } from "components/primitives";
 
@@ -29,7 +29,7 @@ class TitleRow extends PureComponent<Props> {
         </View>
 
         <View>
-          <LeaderBoard />
+          <Leaderboard />
         </View>
       </View>
     );
