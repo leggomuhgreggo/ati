@@ -5,3 +5,4 @@ export { default as Image } from "./Image/Image";
 export { default as Ratio } from "./Ratio/Ratio";
 export { default as Row } from "./Row/Row";
 export { default as Grid } from "./Grid/Grid";
+export { default as Section } from "./Section/Section";
