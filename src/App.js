@@ -5,9 +5,9 @@ import React, { PureComponent, Fragment } from "react";
 import {
   MostRecent,
   TagPostsSingleColumn,
+  Instagram,
   // Newsletter,
   // Trending,
-  // Instagram,
 } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { ResponsiveLeaderboard as Leaderboard } from "./components/ads";
@@ -47,6 +47,10 @@ class App extends PureComponent {
 
                   <Section style={{ marginTop: marginBig }}>
                     <TagPostsSingleColumn order={1} data={getSectionData(5)} />
+                  </Section>
+
+                  <Section style={{ marginTop: marginBig }}>
+                    <Instagram data={getPostArray(9)} />
                   </Section>
                 </Fragment>
               );

@@ -10,8 +10,50 @@ import { Container, Text, Image } from "components/primitives";
 import { ModuleBox } from "components/modules";
 import { COLOR_MAP } from "constants.js";
 
+import { Responsive } from "components/utils";
+import createLockFunction from "utils/lock";
+import { BREAKPOINTS, THEME_SPACING } from "constants.js";
+
 export default class Instagram extends PureComponent {
-  render() {
+  renderMobile = () => {
+    const { data } = this.props;
+    return (
+      <Container type="content" style={{ paddingHorizontal: 30 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginBottom: 30,
+          }}
+        >
+          <View>
+            <Text size={2}>#ati</Text>
+          </View>
+
+          <View>
+            <InstagramButton />
+          </View>
+        </View>
+
+        <Carousel
+          frameOverflow={"visible"}
+          slidesToShow={1}
+          slidesToScroll={1}
+          wrapAround
+          heightMode="first"
+          renderBottomCenterControls={false}
+          renderCenterLeftControls={false}
+          renderCenterRightControls={false}
+          cellSpacing={10}
+        >
+          {data.map(({ id, ...post }, i) => (
+            <InstagramSlide key={id} {...post} />
+          ))}
+        </Carousel>
+      </Container>
+    );
+  };
+  renderDesktop = () => {
     const { data } = this.props;
     return (
       <Container type="content">
@@ -53,8 +95,27 @@ export default class Instagram extends PureComponent {
         </ModuleBox>
       </Container>
     );
+  };
+  render() {
+    return (
+      <Responsive>
+        {({ minWidth, width }) => {
+          const showMobileLayout = !minWidth(BREAKPOINTS.LG);
+          return showMobileLayout
+            ? this.renderMobile(width)
+            : this.renderDesktop();
+        }}
+      </Responsive>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 75,
+    paddingVertical: 45,
+  },
+});
 
 class InstagramSlide extends PureComponent {
   render() {
@@ -92,38 +153,6 @@ class InstagramSlide extends PureComponent {
     );
   }
 }
-
-class InstagramButton extends PureComponent {
-  render() {
-    const { imageSrc, title } = this.props;
-    return (
-      <View
-        style={{
-          backgroundColor: COLOR_MAP.VERMILION,
-          padding: 10,
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <InstagramIcon
-          style={{
-            marginRight: 10,
-            color: "white",
-          }}
-        />
-        <Text style={{ color: "white" }}>Follow Us</Text>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 75,
-    paddingVertical: 45,
-  },
-});
 
 class Arrow extends PureComponent {
   render() {
@@ -168,6 +197,31 @@ class Arrow extends PureComponent {
       >
         <Symbol />
       </TouchableOpacity>
+    );
+  }
+}
+
+class InstagramButton extends PureComponent {
+  render() {
+    const { imageSrc, title } = this.props;
+    return (
+      <View
+        style={{
+          backgroundColor: COLOR_MAP.VERMILION,
+          padding: 10,
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <InstagramIcon
+          style={{
+            marginRight: 10,
+            color: "white",
+          }}
+        />
+        <Text style={{ color: "white" }}>Follow Us</Text>
+      </View>
     );
   }
 }
