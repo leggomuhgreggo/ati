@@ -39,8 +39,10 @@ class Responsive extends PureComponent<Props> {
     const { 0: currentBreakpoint, 1: currentBreakpointWidth } = Object.entries(
       BREAKPOINTS,
     ).find(({ 1: currentBreakpoint }, index, breakpointsEntries) => {
-      const { 1: nextBreakpoint } = breakpointsEntries[index + 1];
-      return currentBreakpoint <= width && width < nextBreakpoint;
+      const { 1: nextBreakpoint = null } = breakpointsEntries[index + 1] || [];
+      return currentBreakpoint <= width && nextBreakpoint
+        ? width < nextBreakpoint
+        : true;
     });
 
     return {
