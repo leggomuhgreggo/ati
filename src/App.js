@@ -7,7 +7,7 @@ import {
   TagPostsSingleColumn,
   Instagram,
   Newsletter,
-  // Trending,
+  Trending,
 } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { ResponsiveLeaderboard as Leaderboard } from "./components/ads";
@@ -53,6 +53,18 @@ class App extends PureComponent {
 
                   <Section style={{ marginTop: marginBig }}>
                     <Newsletter />
+                  </Section>
+
+                  <Section style={{ marginTop: marginBig }}>
+                    <Trending data={getSectionData(9)} />
+                  </Section>
+
+                  <Section style={{ marginTop: marginBig }}>
+                    <TagPostsSingleColumn order={2} data={getSectionData(5)} />
+                  </Section>
+
+                  <Section style={{ marginTop: marginBig }}>
+                    <Header />
                   </Section>
                 </Fragment>
               );
