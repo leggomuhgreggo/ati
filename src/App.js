@@ -13,11 +13,7 @@ import { AppWrap, Header, Main } from "./components/general";
 import { ResponsiveLeaderboard as Leaderboard } from "./components/ads";
 import { Section } from "components/primitives";
 
-import createLockFunction from "utils/lock";
-
-import { Responsive } from "components/utils";
 import { getSectionData, getPostArray } from "data.js";
-import { THEME_SPACING } from "constants.js";
 
 class App extends PureComponent {
   render() {
@@ -25,51 +21,37 @@ class App extends PureComponent {
       <AppWrap>
         <Header />
         <Main>
-          <Responsive>
-            {({ width }) => {
-              const marginBig = createLockFunction({
-                min: THEME_SPACING.SECTION_SPACING.SM,
-                max: THEME_SPACING.SECTION_SPACING.LG,
-              })(width);
-              const marginSmall = THEME_SPACING.SECTION_SPACING.SM;
+          <Section spacingTop="sm">
+            <Leaderboard />
+          </Section>
 
-              return (
-                <Fragment>
-                  <Section style={{ marginTop: marginSmall }}>
-                    <Leaderboard />
-                  </Section>
+          <Section spacingTop="sm">
+            <MostRecent posts={getPostArray(5)} />
+          </Section>
 
-                  <Section style={{ marginTop: marginSmall }}>
-                    <MostRecent posts={getPostArray(5)} />
-                  </Section>
+          <Section spacingTop="lg">
+            <TagPostsSingleColumn order={1} data={getSectionData(5)} />
+          </Section>
 
-                  <Section style={{ marginTop: marginBig }}>
-                    <TagPostsSingleColumn order={1} data={getSectionData(5)} />
-                  </Section>
+          <Section spacingTop="lg">
+            <Instagram data={getPostArray(9)} />
+          </Section>
 
-                  <Section style={{ marginTop: marginBig }}>
-                    <Instagram data={getPostArray(9)} />
-                  </Section>
+          <Section spacingTop="lg">
+            <Newsletter />
+          </Section>
 
-                  <Section style={{ marginTop: marginBig }}>
-                    <Newsletter />
-                  </Section>
+          <Section spacingTop="lg">
+            <Trending data={getSectionData(9)} />
+          </Section>
 
-                  <Section style={{ marginTop: marginBig }}>
-                    <Trending data={getSectionData(9)} />
-                  </Section>
+          <Section spacingTop="lg">
+            <TagPostsSingleColumn order={2} data={getSectionData(5)} />
+          </Section>
 
-                  <Section style={{ marginTop: marginBig }}>
-                    <TagPostsSingleColumn order={2} data={getSectionData(5)} />
-                  </Section>
-
-                  <Section style={{ marginTop: marginBig }}>
-                    <Header />
-                  </Section>
-                </Fragment>
-              );
-            }}
-          </Responsive>
+          <Section spacingTop="lg">
+            <Header />
+          </Section>
         </Main>
       </AppWrap>
     );
