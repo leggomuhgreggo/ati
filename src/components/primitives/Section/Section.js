@@ -45,9 +45,11 @@ class Section extends PureComponent<Props> {
         {({ width: screenWidth }) => {
           const marginTop = this.getMarginTop(screenWidth);
 
-          <Row style={[{ alignItems: "center", marginTop }, style]}>
-            {children}
-          </Row>;
+          return (
+            <Row style={[{ alignItems: "center", marginTop }, style]}>
+              {children}
+            </Row>
+          );
         }}
       </Responsive>
     );
