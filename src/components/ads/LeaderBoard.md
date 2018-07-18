@@ -1,5 +1,5 @@
-LeaderBoard example:
+Leaderboard example:
 
 ```js
-<LeaderBoard  />
+<Leaderboard />
 ```

@@ -26,3 +26,23 @@ export const CATEGORY_COLOR_MAP = {
   [POST_CATEGORIES.BAD_NEWS]: COLOR_MAP.RED,
   [POST_CATEGORIES.BELIEVE_IT]: COLOR_MAP.GREEN,
 };
+
+export const BREAKPOINTS = {
+  XS: 0,
+  SM: 576,
+  MD: 768,
+  LG: 1020,
+  XL: 1200,
+};
+
+export const THEME_SPACING = {
+  MOBILE_CONTAINER_PADDING: 15,
+  MOBILE_OVERLAY_IMG_DIMS: {
+    width: 375,
+    height: 250,
+  },
+  SECTION_SPACING: {
+    LG: 70,
+    SM: 30,
+  },
+};

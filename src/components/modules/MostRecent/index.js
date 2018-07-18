@@ -1,13 +1,42 @@
 // @flow
 
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { ModuleBox, Post } from "components/modules";
 import { Container } from "components/primitives";
+import { Responsive } from "components/utils";
+
+import { BREAKPOINTS, THEME_SPACING } from "constants.js";
 
 class MostRecent extends PureComponent<Props> {
-  render() {
+  renderMobile = () => {
+    const {
+      posts: [mainPost, ...secondaryPosts],
+    } = this.props;
+    return (
+      <Fragment>
+        <Post
+          {...mainPost}
+          imageWidth={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.WIDTH}
+          imageHeight={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.HEIGHT}
+          layoutVariant="overlay"
+        />
+        <Container
+          type="content"
+          style={{ paddingHorizontal: THEME_SPACING.MOBILE_CONTAINER_PADDING }}
+        >
+          <ModuleBox patternColor={mainPost.categoryColor}>
+            {secondaryPosts.map(post => (
+              <Post layoutVariant="reduced" key={post.id} {...post} />
+            ))}
+          </ModuleBox>
+        </Container>
+      </Fragment>
+    );
+  };
+
+  renderDesktop = () => {
     const {
       posts: [mainPost, ...secondaryPosts],
     } = this.props;
@@ -31,6 +60,17 @@ class MostRecent extends PureComponent<Props> {
           </View>
         </ModuleBox>
       </Container>
+    );
+  };
+
+  render() {
+    return (
+      <Responsive>
+        {({ minWidth }) => {
+          const showMobileLayout = !minWidth(BREAKPOINTS.LG);
+          return showMobileLayout ? this.renderMobile() : this.renderDesktop();
+        }}
+      </Responsive>
     );
   }
 }

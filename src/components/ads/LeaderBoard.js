@@ -9,7 +9,7 @@ type Props = {
   style?: StyleObj,
 };
 
-class LeaderBoard extends PureComponent<Props> {
+class Leaderboard extends PureComponent<Props> {
   static defaultProps = {
     style: {},
   };
@@ -20,7 +20,7 @@ class LeaderBoard extends PureComponent<Props> {
   }
 }
 
-export default LeaderBoard;
+export default Leaderboard;
 
 const styles = StyleSheet.create({
   ad: {
