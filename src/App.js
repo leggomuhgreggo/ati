@@ -1,36 +1,57 @@
 // @flow
 
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 
-// import {
-//   TagPostsSingleColumn,
-//   MostRecent,
-//   Newsletter,
-//   Trending,
-//   Instagram,
-// } from "./components/modules";
+import {
+  MostRecent,
+  TagPostsSingleColumn,
+  // Newsletter,
+  // Trending,
+  // Instagram,
+} from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
 import { ResponsiveLeaderboard as Leaderboard } from "./components/ads";
 import { Section } from "components/primitives";
 
-// import { Responsive } from "components/utils";
-// import { BREAKPOINTS } from "constants.js";
-// import { getSectionData, getPostArray } from "data.js";
+import createLockFunction from "utils/lock";
+
+import { Responsive } from "components/utils";
+import { getSectionData, getPostArray } from "data.js";
+import { THEME_SPACING } from "constants.js";
 
 import { Image } from "components/primitives";
-
+// createLockFunction({ min, max })(screenWidth)
 class App extends PureComponent {
   render() {
     return (
       <AppWrap>
         <Header />
         <Main>
-          <Section style={{ marginTop: 30 }}>
-            <Leaderboard />
-          </Section>
-          <Section style={{ marginTop: 30 }}>
-            <Image width={375} height={250} />
-          </Section>
+          <Responsive>
+            {({ width }) => {
+              const marginBig = createLockFunction({
+                min: THEME_SPACING.SECTION_SPACING.SM,
+                max: THEME_SPACING.SECTION_SPACING.LG,
+              })(width);
+              const marginSmall = THEME_SPACING.SECTION_SPACING.SM;
+
+              return (
+                <Fragment>
+                  <Section style={{ marginTop: marginSmall }}>
+                    <Leaderboard />
+                  </Section>
+
+                  <Section style={{ marginTop: marginSmall }}>
+                    <MostRecent posts={getPostArray(5)} />
+                  </Section>
+
+                  <Section style={{ marginTop: marginBig }}>
+                    <TagPostsSingleColumn order={1} data={getSectionData(5)} />
+                  </Section>
+                </Fragment>
+              );
+            }}
+          </Responsive>
         </Main>
       </AppWrap>
     );
