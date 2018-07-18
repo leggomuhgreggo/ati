@@ -34,3 +34,10 @@ export const BREAKPOINTS = {
   LG: 1020,
   XL: 1200,
 };
+
+export const THEME_SPACING = {
+  SECTION_SPACING: {
+    LG: 70,
+    SM: 30,
+  },
+};
