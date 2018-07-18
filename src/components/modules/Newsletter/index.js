@@ -7,11 +7,9 @@ import { Container, Image } from "components/primitives";
 import Callout from "./Callout";
 import SignUp from "./SignUp";
 
-import { COLOR_MAP } from "constants.js";
+import { COLOR_MAP, BREAKPOINTS } from "constants.js";
 
 type Props = {};
-
-const BREAKPOINT = 970;
 
 class Newsletter extends PureComponent<Props> {
   state = Dimensions.get("window");
@@ -29,14 +27,14 @@ class Newsletter extends PureComponent<Props> {
     const { width } = Dimensions.get("window");
 
     const containerStyles =
-      width > BREAKPOINT ? styles.container : { paddingVertical: 30 };
+      width > BREAKPOINTS.LG ? styles.container : { paddingVertical: 30 };
 
     return (
       <View style={styles.wrap}>
         <Container
           type="content"
           style={[
-            width > BREAKPOINT
+            width > BREAKPOINTS.LG
               ? styles.container
               : { paddingVertical: 30, width: 448, maxWidth: "100%" },
           ]}
@@ -44,7 +42,7 @@ class Newsletter extends PureComponent<Props> {
           <View
             style={[
               styles.column,
-              width > BREAKPOINT
+              width > BREAKPOINTS.LG
                 ? {
                     justifyContent: "flex-end",
                     alignItems: "flex-end",
