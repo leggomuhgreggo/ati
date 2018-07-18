@@ -1,13 +1,39 @@
 // @flow
 
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { ModuleBox, Post } from "components/modules";
 import { Container } from "components/primitives";
+import { Responsive } from "components/utils";
+
+import { BREAKPOINTS } from "constants.js";
 
 class MostRecent extends PureComponent<Props> {
-  render() {
+  renderMobile = () => {
+    const {
+      posts: [mainPost, ...secondaryPosts],
+    } = this.props;
+    return (
+      <Fragment>
+        <Post
+          imageWidth={1397}
+          imageHeight={1091}
+          layoutVariant="overlay"
+          {...mainPost}
+        />
+        <Container type="content" style={{ paddingHorizontal: 15 }}>
+          <ModuleBox patternColor={mainPost.categoryColor}>
+            {secondaryPosts.map(post => (
+              <Post layoutVariant="reduced" key={post.id} {...post} />
+            ))}
+          </ModuleBox>
+        </Container>
+      </Fragment>
+    );
+  };
+
+  renderDesktop = () => {
     const {
       posts: [mainPost, ...secondaryPosts],
     } = this.props;
@@ -31,6 +57,17 @@ class MostRecent extends PureComponent<Props> {
           </View>
         </ModuleBox>
       </Container>
+    );
+  };
+
+  render() {
+    return (
+      <Responsive>
+        {({ minWidth }) => {
+          const showMobileLayout = !minWidth(BREAKPOINTS.LG);
+          return showMobileLayout ? this.renderMobile() : this.renderDesktop();
+        }}
+      </Responsive>
     );
   }
 }
