@@ -6,7 +6,7 @@ import {
   MostRecent,
   TagPostsSingleColumn,
   Instagram,
-  // Newsletter,
+  Newsletter,
   // Trending,
 } from "./components/modules";
 import { AppWrap, Header, Main } from "./components/general";
@@ -19,8 +19,6 @@ import { Responsive } from "components/utils";
 import { getSectionData, getPostArray } from "data.js";
 import { THEME_SPACING } from "constants.js";
 
-import { Image } from "components/primitives";
-// createLockFunction({ min, max })(screenWidth)
 class App extends PureComponent {
   render() {
     return (
@@ -51,6 +49,10 @@ class App extends PureComponent {
 
                   <Section style={{ marginTop: marginBig }}>
                     <Instagram data={getPostArray(9)} />
+                  </Section>
+
+                  <Section style={{ marginTop: marginBig }}>
+                    <Newsletter />
                   </Section>
                 </Fragment>
               );
