@@ -1,12 +1,17 @@
 // @flow
 
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { ModuleTitle } from "components/modules";
-import { Leaderboard } from "components/ads";
+import { ResponsiveLeaderboard } from "components/ads";
 
-import { Text } from "components/primitives";
+import { Text, Row } from "components/primitives";
+
+import { Responsive } from "components/utils";
+
+import { BREAKPOINTS, THEME_SPACING } from "constants.js";
+import createLockFunction from "utils/lock";
 
 type Props = {
   patternColor: string,
@@ -15,7 +20,33 @@ type Props = {
 };
 
 class TitleRow extends PureComponent<Props> {
-  render() {
+  renderMobile = width => {
+    const { patternColor, title } = this.props;
+    return (
+      <Fragment>
+        <Row style={{ alignItems: "center" }}>
+          <ResponsiveLeaderboard />
+        </Row>
+        <Row
+          style={{
+            marginTop: createLockFunction({
+              min: THEME_SPACING.SECTION_SPACING.SM,
+              max: THEME_SPACING.SECTION_SPACING.LG,
+            })(width),
+            alignItems: "center",
+          }}
+        >
+          <ModuleTitle
+            style={{ height: 110, justifyContent: "center", width: 300 }}
+            patternColor={patternColor}
+          >
+            <Text>{title}</Text>
+          </ModuleTitle>
+        </Row>
+      </Fragment>
+    );
+  };
+  renderDesktop = () => {
     const { patternColor, title } = this.props;
     return (
       <View style={styles.titleRow}>
@@ -29,9 +60,21 @@ class TitleRow extends PureComponent<Props> {
         </View>
 
         <View>
-          <Leaderboard />
+          <ResponsiveLeaderboard />
         </View>
       </View>
+    );
+  };
+  render() {
+    return (
+      <Responsive>
+        {({ minWidth, width }) => {
+          const showMobileLayout = !minWidth(BREAKPOINTS.LG);
+          return showMobileLayout
+            ? this.renderMobile(width)
+            : this.renderDesktop();
+        }}
+      </Responsive>
     );
   }
 }
