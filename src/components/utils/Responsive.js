@@ -1,28 +1,17 @@
 // @flow
 
-import { PureComponent } from "react";
+import React, { PureComponent, createContext } from "react";
 import { Dimensions } from "react-native";
 
 import type { Element } from "react";
 
-import { BREAKPOINTS } from "constants.js";
+const { Provider, Consumer } = createContext();
 
 type Props = {
   children: Element<any>,
-  onChange?: Function,
 };
-
-class Responsive extends PureComponent<Props> {
-  static defaultProps = {
-    onChange: null,
-  };
-
+export class ResponsiveProvider extends PureComponent<Props> {
   state = Dimensions.get("window");
-
-  handler = ({ window: windowDims }) => {
-    this.props.onChange && this.props.onChange(windowDims);
-    return this.setState(windowDims);
-  };
 
   componentWillMount() {
     Dimensions.addEventListener("change", this.handler);
@@ -32,42 +21,31 @@ class Responsive extends PureComponent<Props> {
     Dimensions.removeEventListener("change", this.handler);
   }
 
+  handler = ({ window: windowDims }) => {
+    return this.setState(windowDims);
+  };
+
   minWidth = breakpoint => breakpoint <= this.state.width;
   maxWidth = breakpoint => breakpoint > this.state.width;
-
-  getBreakpointFromWidth = width => {
-    const { 0: currentBreakpoint, 1: currentBreakpointWidth } = Object.entries(
-      BREAKPOINTS,
-    ).find(({ 1: currentBreakpoint }, index, breakpointsEntries) => {
-      const { 1: nextBreakpoint = null } = breakpointsEntries[index + 1] || [];
-      return currentBreakpoint <= width && nextBreakpoint
-        ? width < nextBreakpoint
-        : true;
-    });
-
-    return {
-      currentBreakpoint,
-      currentBreakpointWidth,
-    };
-  };
 
   render() {
     const { width, height } = this.state;
 
-    const {
-      currentBreakpoint,
-      currentBreakpointWidth,
-    } = this.getBreakpointFromWidth(width);
-
-    return this.props.children({
-      width,
-      height,
-      currentBreakpoint,
-      currentBreakpointWidth,
-      minWidth: this.minWidth,
-      maxWidth: this.maxWidth,
-    });
+    return (
+      <Provider
+        value={{
+          width,
+          height,
+          minWidth: this.minWidth,
+          maxWidth: this.maxWidth,
+        }}
+      >
+        {this.props.children}
+      </Provider>
+    );
   }
 }
 
-export default Responsive;
+export default ({ children }) => {
+  return <Consumer>{dimProps => children(dimProps)}</Consumer>;
+};
