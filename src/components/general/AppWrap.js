@@ -9,6 +9,8 @@ import {
   StyleSheet,
   SafeAreaView,
 } from "react-native";
+
+import { ResponsiveProvider } from "components/utils";
 import { COLOR_MAP } from "constants.js";
 
 import type { Node } from "react";
@@ -19,16 +21,18 @@ type Props = {
 class AppWrap extends PureComponent<Props> {
   render() {
     return (
-      <SafeAreaView style={styles.root}>
-        <StatusBar backgroundColor={"black"} barStyle="light-content" />
+      <ResponsiveProvider>
+        <SafeAreaView style={styles.root}>
+          <StatusBar backgroundColor={"black"} barStyle="light-content" />
 
-        <KeyboardAvoidingView
-          style={styles.keyboardAvoidWrap}
-          behavior="padding"
-        >
-          {this.props.children}
-        </KeyboardAvoidingView>
-      </SafeAreaView>
+          <KeyboardAvoidingView
+            style={styles.keyboardAvoidWrap}
+            behavior="padding"
+          >
+            {this.props.children}
+          </KeyboardAvoidingView>
+        </SafeAreaView>
+      </ResponsiveProvider>
     );
   }
 }
