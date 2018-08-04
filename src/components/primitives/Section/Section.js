@@ -7,7 +7,7 @@ import { Responsive } from "components/utils";
 
 import createLockFunction from "utils/lock";
 
-import { THEME_SPACING } from "constants.js";
+import { SECTION_SPACING } from "constants.js";
 
 const SPACING_TYPES = {
   SM: "sm",
@@ -23,28 +23,24 @@ class Section extends PureComponent<Props> {
     spacing: SPACING_TYPES.SM,
   };
 
-  getMarginTop = screenWidth => {
-    const { spacingTop } = this.props;
-    const {
-      SECTION_SPACING: { SM: smallSpacing, LG: largeSpacing },
-    } = THEME_SPACING;
-
-    const lock = createLockFunction({
-      min: smallSpacing,
-      max: largeSpacing,
-    })(screenWidth);
-
-    return spacingTop === SPACING_TYPES.SM ? smallSpacing : lock;
-  };
+  isSmall = () => this.props.spacingTop === SPACING_TYPES.SM;
 
   render() {
     const { children, style } = this.props;
 
-    return (
+    return this.isSmall() ? (
+      <Row
+        style={[{ alignItems: "center", marginTop: SECTION_SPACING.SM }, style]}
+      >
+        {children}
+      </Row>
+    ) : (
       <Responsive>
-        {({ width: screenWidth }) => {
-          const marginTop = this.getMarginTop(screenWidth);
-
+        {({ getLock }) => {
+          const marginTop = getLock({
+            min: SECTION_SPACING.SM,
+            max: SECTION_SPACING.LG,
+          });
           return (
             <Row style={[{ alignItems: "center", marginTop }, style]}>
               {children}

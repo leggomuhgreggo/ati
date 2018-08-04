@@ -11,7 +11,6 @@ import { ModuleBox } from "components/modules";
 import { COLOR_MAP } from "constants.js";
 
 import { Responsive } from "components/utils";
-import createLockFunction from "utils/lock";
 import { BREAKPOINTS, THEME_SPACING } from "constants.js";
 
 export default class Instagram extends PureComponent {

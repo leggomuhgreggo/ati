@@ -69,10 +69,8 @@ class TitleRow extends PureComponent<Props> {
     return (
       <Responsive>
         {({ minWidth, width }) => {
-          const showMobileLayout = !minWidth(BREAKPOINTS.LG);
-          return showMobileLayout
-            ? this.renderMobile(width)
-            : this.renderDesktop();
+          const isDesktop = minWidth(BREAKPOINTS.LG);
+          return isDesktop ? this.renderDesktop() : this.renderMobile(width);
         }}
       </Responsive>
     );

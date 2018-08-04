@@ -1,12 +1,11 @@
 // @flow
 
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { View } from "react-native";
 
 import { Container, Row } from "components/primitives";
 import { Post, ModuleBox } from "components/modules";
 import { Responsive } from "components/utils";
-import createLockFunction from "utils/lock";
 import { BREAKPOINTS, THEME_SPACING } from "constants.js";
 
 import TitleRow from "./TitleRow";
@@ -30,54 +29,62 @@ class TagPostsSingleColumn extends PureComponent<Props> {
 
   renderMobile = width => {
     const {
-      order,
       data: {
-        sectionTitle,
-        sectionLink,
         sectionColor,
         posts: [mainPost, ...posts],
       },
     } = this.props;
     return (
-      <Container type="content">
-        <TitleRow
-          patternColor={sectionColor}
-          link={sectionLink}
-          title={sectionTitle}
+      <Fragment>
+        <Post
+          layoutVariant="overlay"
+          detailsOffset={30}
+          containerStyle={{ zIndex: 10 }}
+          imageWidth={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.WIDTH}
+          imageHeight={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.HEIGHT}
+          {...mainPost}
         />
-
-        <Row
+        <View
           style={{
-            marginTop: createLockFunction({
-              min: THEME_SPACING.SECTION_SPACING.SM,
-              max: THEME_SPACING.SECTION_SPACING.LG,
-            })(width),
+            paddingHorizontal: THEME_SPACING.MOBILE_CONTAINER_PADDING,
           }}
         >
-          <Post
-            layoutVariant="overlay"
-            detailsOffset={30}
-            containerStyle={{ zIndex: 10 }}
-            imageWidth={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.WIDTH}
-            imageHeight={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.HEIGHT}
-            {...mainPost}
-          />
-          <View
-            style={{
-              paddingHorizontal: THEME_SPACING.MOBILE_CONTAINER_PADDING,
-            }}
-          >
-            <ModuleBox patternColor={sectionColor} offsetDirection="right">
-              {posts.map(post => (
-                <Post imageWidth={300} imageHeight={250} {...post} />
-              ))}
-            </ModuleBox>
-          </View>
-        </Row>
-      </Container>
+          <ModuleBox patternColor={sectionColor} offsetDirection="right">
+            {posts.map(post => (
+              <Post imageWidth={300} imageHeight={250} {...post} />
+            ))}
+          </ModuleBox>
+        </View>
+      </Fragment>
     );
   };
   renderDesktop = () => {
+    const {
+      order,
+      data: {
+        sectionColor,
+        posts: [mainPost, ...posts],
+      },
+    } = this.props;
+    return (
+      <Fragment>
+        <Post
+          layoutVariant="overlay"
+          detailsOffset={30}
+          containerStyle={{ zIndex: 10 }}
+          {...mainPost}
+        >
+          <OverlapSpoof />
+        </Post>
+
+        <OverlappingPostsWrap patternColor={sectionColor}>
+          <Posts order={order} posts={posts} />
+        </OverlappingPostsWrap>
+      </Fragment>
+    );
+  };
+
+  render() {
     const {
       order,
       data: {
@@ -88,38 +95,29 @@ class TagPostsSingleColumn extends PureComponent<Props> {
       },
     } = this.props;
     return (
-      <Container type="content">
-        <TitleRow
-          patternColor={sectionColor}
-          link={sectionLink}
-          title={sectionTitle}
-        />
-        <Row style={{ marginTop: 60 }}>
-          <Post
-            layoutVariant="overlay"
-            detailsOffset={30}
-            containerStyle={{ zIndex: 10 }}
-            {...mainPost}
-          >
-            <OverlapSpoof />
-          </Post>
-
-          <OverlappingPostsWrap patternColor={sectionColor}>
-            <Posts order={order} posts={posts} />
-          </OverlappingPostsWrap>
-        </Row>
-      </Container>
-    );
-  };
-
-  render() {
-    return (
       <Responsive>
-        {({ minWidth, width }) => {
-          const showMobileLayout = !minWidth(BREAKPOINTS.LG);
-          return showMobileLayout
-            ? this.renderMobile(width)
-            : this.renderDesktop();
+        {({ minWidth, width, getLock }) => {
+          const isDesktop = minWidth(BREAKPOINTS.LG);
+          const rowMargin = isDesktop
+            ? getLock({
+                min: THEME_SPACING.SECTION_SPACING.SM,
+                max: THEME_SPACING.SECTION_SPACING.LG,
+              })
+            : 60;
+
+          return (
+            <Container type="content">
+              <TitleRow
+                patternColor={sectionColor}
+                link={sectionLink}
+                title={sectionTitle}
+              />
+
+              <Row style={{ marginTop: rowMargin }}>
+                {isDesktop ? this.renderDesktop() : this.renderMobile()}
+              </Row>
+            </Container>
+          );
         }}
       </Responsive>
     );
