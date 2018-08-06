@@ -1,6 +1,9 @@
 import casual from "casual-browserify";
-
-import { POST_CATEGORIES, CATEGORY_COLOR_MAP } from "./constants";
+import {
+  SECTION_TYPES,
+  POST_CATEGORIES,
+  CATEGORY_COLOR_MAP,
+} from "./constants";
 
 const getCategory = () => {
   const category = casual.random_value(POST_CATEGORIES);
@@ -30,6 +33,7 @@ export const getPostArray = length =>
   Array.from({ length }).map((u, i) => casual.post);
 
 export const getSectionData = length => ({
+  titleTemplate: "1",
   sectionTitle: capitalize(casual.title),
   sectionLink: "#",
   sectionColor: casual.random_value(CATEGORY_COLOR_MAP),
@@ -44,3 +48,42 @@ export const TAG_SECTION = {
   sectionColor: casual.random_value(CATEGORY_COLOR_MAP),
   posts: getPostArray(5),
 };
+
+export const data = [
+  {
+    id: casual.uuid,
+    type: [SECTION_TYPES.AD],
+  },
+  {
+    id: casual.uuid,
+    type: [SECTION_TYPES.RECENT],
+    ...getSectionData(5),
+  },
+  {
+    id: casual.uuid,
+    type: [SECTION_TYPES.TAG_TILE_BOX],
+    typeVariant: 1,
+    ...getSectionData(5),
+  },
+  {
+    id: casual.uuid,
+    type: [SECTION_TYPES.INSTAGRAM],
+    ...getSectionData(5),
+  },
+  {
+    id: casual.uuid,
+    type: [SECTION_TYPES.NEWSLETTER],
+    ...getSectionData(5),
+  },
+  {
+    id: casual.uuid,
+    type: [SECTION_TYPES.TAG_TILE_BOX],
+    typeVariant: 2,
+    ...getSectionData(5),
+  },
+  {
+    id: casual.uuid,
+    type: [SECTION_TYPES.TRENDING],
+    ...getSectionData(5),
+  },
+];

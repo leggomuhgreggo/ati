@@ -48,7 +48,6 @@ export const SECTION_TYPE_COMPONENT_MAP = {
   [SECTION_TYPES.TAG_TILE_BOX]: TagPostsSingleColumn,
   [SECTION_TYPES.INSTAGRAM]: Instagram,
   [SECTION_TYPES.NEWSLETTER]: Newsletter,
-  [SECTION_TYPES.TAG_TILE_BOX]: TagPostsSingleColumn,
   [SECTION_TYPES.TRENDING]: Trending,
 };
 
@@ -71,10 +70,10 @@ class PageSections extends PureComponent {
             array,
           );
           const Component = getSectionComponentNameBySectionType(item.type);
+          const id = `${item.type}-${item.id}`;
 
           return (
-            <Section key={index} topSpacing={spacingVariant}>
-              {console.log({ Component, spacingVariant })}
+            <Section id={id} key={id} topSpacing={spacingVariant}>
               <Row style={{ backgroundColor: "gray", height: 100 }} />
             </Section>
           );

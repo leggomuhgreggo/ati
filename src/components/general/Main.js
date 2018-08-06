@@ -30,11 +30,7 @@ class Main extends PureComponent<Props, State> {
       <ScrollView
         keyboardShouldPersistTaps="handled"
         style={[styles.scrollView, style]}
-        contentContainerStyle={[
-          { paddingTop: PAGE_SPACING.TOP },
-          styles.contentContainer,
-          contentContainerStyle,
-        ]}
+        contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
       >
         {children}
       </ScrollView>
@@ -53,5 +49,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     width: "100%",
     alignItems: "center",
+    paddingTop: PAGE_SPACING.TOP,
+    paddingBottom: PAGE_SPACING.BOTTOM,
   },
 });
