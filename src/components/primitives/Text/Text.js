@@ -38,5 +38,7 @@ export default Text;
 const styles = StyleSheet.create({
   text: {
     color: COLOR_MAP.TEXT_COLOR,
+    fontSize: 17,
+    lineHeight: 20,
   },
 });
