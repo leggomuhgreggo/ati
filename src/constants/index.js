@@ -29,6 +29,11 @@ export const CATEGORY_COLOR_MAP = {
   [POST_CATEGORIES.BELIEVE_IT]: COLOR_MAP.GREEN,
 };
 
+export const FONT_FAMILIES = {
+  SANS_SERIF: "Work Sans",
+  SERIF: "Libre Baskerville",
+};
+
 export const BREAKPOINTS = {
   XS: 0,
   SM: 576,
@@ -40,6 +45,22 @@ export const BREAKPOINTS = {
 export const SECTION_SPACING = {
   LG: 70,
   SM: 30,
+};
+
+export const CONTAINER_PADDING = {
+  MOBILE: 15,
+};
+
+export const IMG_DIMS = {
+  // 375*250
+  MOBILE_MAIN: {
+    width: 1020,
+    height: 680,
+  },
+  MREC: {
+    width: 300,
+    height: 250,
+  },
 };
 
 export const THEME_SPACING = {
