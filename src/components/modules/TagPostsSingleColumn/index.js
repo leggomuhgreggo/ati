@@ -29,10 +29,8 @@ class TagPostsSingleColumn extends PureComponent<Props> {
 
   renderMobile = width => {
     const {
-      data: {
-        sectionColor,
-        posts: [mainPost, ...posts],
-      },
+      sectionColor,
+      posts: [mainPost, ...posts],
     } = this.props;
     return (
       <Fragment>
@@ -61,10 +59,8 @@ class TagPostsSingleColumn extends PureComponent<Props> {
   renderDesktop = () => {
     const {
       order,
-      data: {
-        sectionColor,
-        posts: [mainPost, ...posts],
-      },
+      sectionColor,
+      posts: [mainPost, ...posts],
     } = this.props;
     return (
       <Fragment>
@@ -86,13 +82,11 @@ class TagPostsSingleColumn extends PureComponent<Props> {
 
   render() {
     const {
-      order,
-      data: {
-        sectionTitle,
-        sectionLink,
-        sectionColor,
-        posts: [mainPost, ...posts],
-      },
+      typeVariant: order,
+      sectionTitle,
+      sectionLink,
+      sectionColor,
+      posts: [mainPost, ...posts],
     } = this.props;
     return (
       <Responsive>

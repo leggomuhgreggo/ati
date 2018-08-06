@@ -33,6 +33,7 @@ export const getPostArray = length =>
   Array.from({ length }).map((u, i) => casual.post);
 
 export const getSectionData = length => ({
+  id: casual.uuid,
   titleTemplate: "1",
   sectionTitle: capitalize(casual.title),
   sectionLink: "#",
@@ -51,39 +52,38 @@ export const TAG_SECTION = {
 
 export const data = [
   {
-    id: casual.uuid,
-    type: [SECTION_TYPES.AD],
+    moduleId: casual.uuid,
+    type: SECTION_TYPES.AD,
   },
   {
-    id: casual.uuid,
-    type: [SECTION_TYPES.RECENT],
+    moduleId: casual.uuid,
+    type: SECTION_TYPES.RECENT,
     ...getSectionData(5),
   },
   {
-    id: casual.uuid,
-    type: [SECTION_TYPES.TAG_TILE_BOX],
+    moduleId: casual.uuid,
+    type: SECTION_TYPES.TAG_TILE_BOX,
     typeVariant: 1,
     ...getSectionData(5),
   },
   {
-    id: casual.uuid,
-    type: [SECTION_TYPES.INSTAGRAM],
+    moduleId: casual.uuid,
+    type: SECTION_TYPES.INSTAGRAM,
     ...getSectionData(5),
   },
   {
-    id: casual.uuid,
-    type: [SECTION_TYPES.NEWSLETTER],
-    ...getSectionData(5),
+    moduleId: casual.uuid,
+    type: SECTION_TYPES.NEWSLETTER,
   },
   {
-    id: casual.uuid,
-    type: [SECTION_TYPES.TAG_TILE_BOX],
+    moduleId: casual.uuid,
+    type: SECTION_TYPES.TAG_TILE_BOX,
     typeVariant: 2,
     ...getSectionData(5),
   },
   {
-    id: casual.uuid,
-    type: [SECTION_TYPES.TRENDING],
+    moduleId: casual.uuid,
+    type: SECTION_TYPES.TRENDING,
     ...getSectionData(5),
   },
 ];

@@ -14,15 +14,13 @@ import {
 
 import { ResponsiveLeaderboard as Leaderboard } from "./components/ads";
 
-import { Text, Row, Section } from "components/primitives";
+import { Section } from "components/primitives";
 
 import {
   SECTION_TYPES,
   SMALL_SECTIONS,
   SECTION_SPACING_VARIANTS,
 } from "constants/index";
-
-import { getSectionData, getPostArray } from "data.js";
 
 export const isSmallType = ({ type }) => SMALL_SECTIONS.includes(type);
 
@@ -54,10 +52,6 @@ export const SECTION_TYPE_COMPONENT_MAP = {
 export const getSectionComponentNameBySectionType = sectionType =>
   SECTION_TYPE_COMPONENT_MAP[sectionType];
 
-// data.map((item, index, array) => {
-//   const spacingVariant = getSequenceAwareSpacingVariant(item, index, array);
-// });
-
 class PageSections extends PureComponent {
   render() {
     const { data } = this.props;
@@ -69,12 +63,12 @@ class PageSections extends PureComponent {
             index,
             array,
           );
-          const Component = getSectionComponentNameBySectionType(item.type);
-          const id = `${item.type}-${item.id}`;
+          const Module = getSectionComponentNameBySectionType(item.type);
+          const id = `${item.type}-${item.moduleId}`;
 
           return (
             <Section id={id} key={id} topSpacing={spacingVariant}>
-              <Row style={{ backgroundColor: "gray", height: 100 }} />
+              <Module {...item} />
             </Section>
           );
         })}

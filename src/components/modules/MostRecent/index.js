@@ -67,8 +67,8 @@ class MostRecent extends PureComponent<Props> {
     return (
       <Responsive>
         {({ minWidth }) => {
-          const showMobileLayout = !minWidth(BREAKPOINTS.LG);
-          return showMobileLayout ? this.renderMobile() : this.renderDesktop();
+          const isDesktop = minWidth(BREAKPOINTS.LG);
+          return isDesktop ? this.renderDesktop() : this.renderMobile();
         }}
       </Responsive>
     );

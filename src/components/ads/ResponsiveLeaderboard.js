@@ -9,7 +9,6 @@ export default class ResponsiveLeaderboard extends PureComponent {
     return (
       <Responsive>
         {({ minWidth }) => {
-          console.log(minWidth(adBreakpoint));
           return minWidth(adBreakpoint) ? <Leaderboard /> : <Mrec />;
         }}
       </Responsive>

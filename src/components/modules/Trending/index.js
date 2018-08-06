@@ -12,9 +12,7 @@ type Props = {};
 
 class Trending extends PureComponent<Props> {
   render() {
-    const {
-      data: { posts, sectionColor },
-    } = this.props;
+    const { posts, sectionColor } = this.props;
     return (
       <Container type="content">
         <View
