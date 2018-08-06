@@ -6,7 +6,7 @@ import { View } from "react-native";
 import { Container, Row } from "components/primitives";
 import { Post, ModuleBox } from "components/modules";
 import { Responsive } from "components/utils";
-import { BREAKPOINTS, THEME_SPACING } from "constants.js";
+import { BREAKPOINTS, THEME_SPACING } from "constants/index";
 
 import TitleRow from "./TitleRow";
 

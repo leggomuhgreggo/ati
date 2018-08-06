@@ -7,7 +7,7 @@ import { Responsive } from "components/utils";
 
 import createLockFunction from "utils/lock";
 
-import { SECTION_SPACING } from "constants.js";
+import { SECTION_SPACING } from "constants/index";
 
 const SPACING_TYPES = {
   SM: "sm",

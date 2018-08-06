@@ -10,7 +10,7 @@ import { Text, Row } from "components/primitives";
 
 import { Responsive } from "components/utils";
 
-import { BREAKPOINTS, THEME_SPACING } from "constants.js";
+import { BREAKPOINTS, THEME_SPACING } from "constants/index";
 import createLockFunction from "utils/lock";
 
 type Props = {

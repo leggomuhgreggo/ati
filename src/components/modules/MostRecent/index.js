@@ -7,7 +7,7 @@ import { ModuleBox, Post } from "components/modules";
 import { Container } from "components/primitives";
 import { Responsive } from "components/utils";
 
-import { BREAKPOINTS, THEME_SPACING } from "constants.js";
+import { BREAKPOINTS, THEME_SPACING } from "constants/index";
 
 class MostRecent extends PureComponent<Props> {
   renderMobile = () => {

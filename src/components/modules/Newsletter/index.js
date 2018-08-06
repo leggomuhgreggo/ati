@@ -9,7 +9,7 @@ import SignUp from "./SignUp";
 
 import { Responsive } from "components/utils";
 
-import { COLOR_MAP, BREAKPOINTS } from "constants.js";
+import { COLOR_MAP, BREAKPOINTS } from "constants/index";
 
 type Props = {};
 

@@ -8,10 +8,10 @@ import InstagramIcon from "react-icons/lib/fa/instagram";
 
 import { Container, Text, Image } from "components/primitives";
 import { ModuleBox } from "components/modules";
-import { COLOR_MAP } from "constants.js";
+import { COLOR_MAP } from "constants/index";
 
 import { Responsive } from "components/utils";
-import { BREAKPOINTS, THEME_SPACING } from "constants.js";
+import { BREAKPOINTS, THEME_SPACING } from "constants/index";
 
 export default class Instagram extends PureComponent {
   renderMobile = () => {
