@@ -10,8 +10,12 @@ import { Text, Row } from "components/primitives";
 
 import { Responsive } from "components/utils";
 
-import { BREAKPOINTS, THEME_SPACING } from "constants/index";
-import createLockFunction from "utils/lock";
+import {
+  BREAKPOINTS,
+  SECTION_SPACERS,
+  SECTION_SPACING_VARIANTS,
+} from "constants/index";
+// import createLockFunction from "utils/lock";
 
 type Props = {
   patternColor: string,
@@ -29,10 +33,7 @@ class TitleRow extends PureComponent<Props> {
         </Row>
         <Row
           style={{
-            marginTop: createLockFunction({
-              min: THEME_SPACING.SECTION_SPACING.SM,
-              max: THEME_SPACING.SECTION_SPACING.LG,
-            })(width),
+            marginTop: SECTION_SPACERS[SECTION_SPACING_VARIANTS.LARGE],
             alignItems: "center",
           }}
         >

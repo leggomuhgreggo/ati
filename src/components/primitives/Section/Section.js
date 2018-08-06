@@ -5,8 +5,6 @@ import React, { PureComponent } from "react";
 import { Row } from "components/primitives";
 import { Responsive } from "components/utils";
 
-import createLockFunction from "utils/lock";
-
 import { SECTION_SPACERS, SECTION_SPACING_VARIANTS } from "constants/index";
 
 type Props = {
