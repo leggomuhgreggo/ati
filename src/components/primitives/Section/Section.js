@@ -7,47 +7,28 @@ import { Responsive } from "components/utils";
 
 import createLockFunction from "utils/lock";
 
-import { SECTION_SPACING } from "constants/index";
-
-const SPACING_TYPES = {
-  SM: "sm",
-  LG: "lg",
-};
+import { SECTION_SPACERS, SECTION_SPACING_VARIANTS } from "constants/index";
 
 type Props = {
-  spacingTop: $Values<typeof SPACING_TYPES>,
+  topSpacing: $Values<typeof SECTION_SPACING_VARIANTS>,
 };
 
 class Section extends PureComponent<Props> {
   static defaultProps = {
-    spacing: SPACING_TYPES.SM,
+    topSpacing: SECTION_SPACING_VARIANTS.SM,
   };
 
-  isSmall = () => this.props.spacingTop === SPACING_TYPES.SM;
+  isSmall = () => this.props.topSpacing === SECTION_SPACING_VARIANTS.SM;
 
   render() {
-    const { children, style } = this.props;
+    const { children, style, topSpacing } = this.props;
 
-    return this.isSmall() ? (
-      <Row
-        style={[{ alignItems: "center", marginTop: SECTION_SPACING.SM }, style]}
-      >
+    const spacing = SECTION_SPACERS[topSpacing];
+
+    return (
+      <Row style={[{ alignItems: "center", marginTop: spacing }, style]}>
         {children}
       </Row>
-    ) : (
-      <Responsive>
-        {({ getLock }) => {
-          const marginTop = getLock({
-            min: SECTION_SPACING.SM,
-            max: SECTION_SPACING.LG,
-          });
-          return (
-            <Row style={[{ alignItems: "center", marginTop }, style]}>
-              {children}
-            </Row>
-          );
-        }}
-      </Responsive>
     );
   }
 }

@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from "react";
 import { ScrollView, StyleSheet } from "react-native";
+import { PAGE_SPACING } from "constants/index.js";
 
 import type { Node } from "react";
 
@@ -29,7 +30,11 @@ class Main extends PureComponent<Props, State> {
       <ScrollView
         keyboardShouldPersistTaps="handled"
         style={[styles.scrollView, style]}
-        contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
+        contentContainerStyle={[
+          { paddingTop: PAGE_SPACING.TOP },
+          styles.contentContainer,
+          contentContainerStyle,
+        ]}
       >
         {children}
       </ScrollView>
