@@ -90,9 +90,14 @@ class Post extends PureComponent<Props> {
       imageWidth,
       imageHeight,
       children,
+      link,
     } = this.props;
     return (
-      <View style={[styles.postBox, containerStyle]}>
+      <View
+        style={[styles.postBox, containerStyle]}
+        accessibilityRole="link"
+        href={link}
+      >
         <View>
           {this.showImage() && (
             <Image width={imageWidth} height={imageHeight} src={imageSrc} />

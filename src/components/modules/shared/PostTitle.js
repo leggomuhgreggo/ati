@@ -27,7 +27,11 @@ class PostTitle extends PureComponent<TitleProps> {
                 fontSize: 15,
                 lineHeight: 20,
               };
-          return <Text style={[styles.text, fontStyles, style]}>{title}</Text>;
+          return (
+            <Text aria-level={2} style={[styles.text, fontStyles, style]}>
+              {title}
+            </Text>
+          );
         }}
       </Responsive>
     );

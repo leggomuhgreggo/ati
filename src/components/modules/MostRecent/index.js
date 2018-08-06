@@ -36,7 +36,7 @@ class MostRecent extends PureComponent<Props> {
         <OverlapScaffold.Overlap>
           <ModuleBox patternColor={mainPost.categoryColor}>
             {secondaryPosts.map((post, index) => (
-              <View key={post.id} style={index === 0 ? {} : { marginTop: 40 }}>
+              <View key={post.id} style={index === 0 ? {} : { marginTop: 25 }}>
                 <Post {...post} />
               </View>
             ))}
@@ -58,14 +58,16 @@ class MostRecent extends PureComponent<Props> {
               <MainPost imageWidth={700} imageHeight={545} {...mainPost} />
             </View>
             <View style={styles.right}>
-              {secondaryPosts.map((post, index) => (
-                <View
-                  key={post.id}
-                  style={index === 0 ? {} : { marginTop: 40 }}
-                >
-                  <Post {...post} />
-                </View>
-              ))}
+              <View style={{ justifyContent: "space-between" }}>
+                {secondaryPosts.map((post, index) => (
+                  <View
+                    key={post.id}
+                    style={index === 0 ? {} : { marginTop: 25 }}
+                  >
+                    <Post {...post} />
+                  </View>
+                ))}
+              </View>
             </View>
           </View>
         </ModuleBox>

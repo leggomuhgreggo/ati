@@ -24,13 +24,13 @@ class PostLabel extends PureComponent<Props> {
           paddingHorizontal: 6,
           alignItems: "center",
           justifyContent: "center",
-          lineHeight: 1,
           backgroundColor: categoryColor,
         }}
       >
         <Text
           style={{
             fontSize: 11,
+            lineHeight: 1,
             color: "white",
           }}
         >

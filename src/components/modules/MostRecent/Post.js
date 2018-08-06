@@ -34,7 +34,9 @@ class Post extends PureComponent<Props> {
                 categoryColor={categoryColor}
               />
               <View style={{ marginTop: isDesktop ? 10 : 5 }}>
-                <Text style={fontStyles}>{title}</Text>
+                <Text aria-level={2} style={fontStyles}>
+                  {title}
+                </Text>
               </View>
             </View>
           );

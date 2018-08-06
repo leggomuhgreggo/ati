@@ -40,9 +40,9 @@ export default class Instagram extends PureComponent {
           slidesToScroll={1}
           wrapAround
           heightMode="first"
-          renderBottomCenterControls={false}
-          renderCenterLeftControls={false}
-          renderCenterRightControls={false}
+          renderBottomCenterControls={() => {}}
+          renderCenterLeftControls={() => {}}
+          renderCenterRightControls={() => {}}
           cellSpacing={10}
         >
           {posts.map(({ id, ...post }, i) => (
