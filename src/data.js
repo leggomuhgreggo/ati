@@ -8,7 +8,8 @@ import {
 const getCategory = () => {
   const category = casual.random_value(POST_CATEGORIES);
   return {
-    category,
+    category, // despricate
+    categoryName: category,
     categoryColor: CATEGORY_COLOR_MAP[category],
   };
 };
@@ -22,7 +23,7 @@ const capitalize = string =>
 casual.define("post", function() {
   return {
     id: casual.uuid,
-    title: capitalize(casual.words(7)),
+    title: capitalize(casual.words(Math.floor(Math.random() * 10) + 7)),
     imageSrc: "//fillmurray.com/1397/1091",
     link: "#",
     ...getCategory(),
@@ -52,37 +53,37 @@ export const TAG_SECTION = {
 
 export const data = [
   {
-    moduleId: casual.uuid,
+    id: casual.uuid,
     type: SECTION_TYPES.AD,
   },
   {
-    moduleId: casual.uuid,
+    id: casual.uuid,
     type: SECTION_TYPES.RECENT,
     ...getSectionData(5),
   },
   {
-    moduleId: casual.uuid,
+    id: casual.uuid,
     type: SECTION_TYPES.TAG_TILE_BOX,
     typeVariant: 1,
     ...getSectionData(5),
   },
   {
-    moduleId: casual.uuid,
+    id: casual.uuid,
     type: SECTION_TYPES.INSTAGRAM,
     ...getSectionData(5),
   },
   {
-    moduleId: casual.uuid,
+    id: casual.uuid,
     type: SECTION_TYPES.NEWSLETTER,
   },
   {
-    moduleId: casual.uuid,
+    id: casual.uuid,
     type: SECTION_TYPES.TAG_TILE_BOX,
     typeVariant: 2,
     ...getSectionData(5),
   },
   {
-    moduleId: casual.uuid,
+    id: casual.uuid,
     type: SECTION_TYPES.TRENDING,
     ...getSectionData(5),
   },
