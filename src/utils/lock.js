@@ -1,21 +1,23 @@
 // @flow
 
-type Coordinate = [number, number];
-type GetSlope = [Coordinate, Coordinate];
-type Slope = { slope: number };
-type GetIntercept = { point: Coordinate } & Slope;
+export type Coordinate = [number, number];
+export type GetSlope = [Coordinate, Coordinate];
+export type Slope = { slope: number };
+export type GetIntercept = { point: Coordinate } & Slope;
 
-type FluidSizeType = {
+export type FluidSizeType = {
   min: number,
   max: number,
   lockMin?: number,
   lockMax?: number,
 };
 
-const getSlope = ([[x1, y1], [x2, y2]]: GetSlope) => (y2 - y1) / (x2 - x1);
-const getIntercept = ({ point: [x, y], slope }: GetIntercept) => y - slope * x;
+export const getSlope = ([[x1, y1], [x2, y2]]: GetSlope) =>
+  (y2 - y1) / (x2 - x1);
+export const getIntercept = ({ point: [x, y], slope }: GetIntercept) =>
+  y - slope * x;
 
-const createLockFunction = ({
+export const createLockFunction = ({
   min: y1,
   max: y2,
   lockMin: x1 = 400,
