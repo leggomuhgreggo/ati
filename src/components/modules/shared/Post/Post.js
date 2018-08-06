@@ -83,7 +83,7 @@ class Post extends PureComponent<Props> {
     const {
       containerStyle,
       categoryColor,
-      category,
+      categoryName,
       title,
       imageSrc,
       layoutVariant,
@@ -105,7 +105,7 @@ class Post extends PureComponent<Props> {
               style={[styles.postLabel]}
               spacer={this.getLabelSpacer()}
               color={categoryColor}
-              category={category}
+              categoryName={categoryName}
               inline={layoutVariant !== POST_LAYOUT_VARIANT.OVERLAY}
               fill={layoutVariant === POST_LAYOUT_VARIANT.OVERLAY}
             />

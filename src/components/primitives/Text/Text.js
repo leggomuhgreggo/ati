@@ -16,7 +16,6 @@ type Props = {
 class Text extends PureComponent<Props> {
   static defaultProps = {
     style: {},
-    rest: {},
     serif: false,
     sansSerif: true,
   };
