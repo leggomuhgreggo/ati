@@ -4,11 +4,10 @@ import React, { PureComponent, Fragment } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { Container } from "components/primitives";
-import { ModuleBox } from "components/modules";
+import { ModuleBox, MainPost, OverlapScaffold } from "components/modules";
 import { Responsive } from "components/utils";
 
 import Post from "./Post";
-import MainPost from "./MainPost";
 
 import { BREAKPOINTS, CONTAINER_PADDING } from "constants/index";
 class MostRecent extends PureComponent<Props> {
@@ -27,22 +26,31 @@ class MostRecent extends PureComponent<Props> {
     const {
       posts: [mainPost, ...secondaryPosts],
     } = this.props;
+
     return (
-      <Fragment>
-        <MainPost {...mainPost} />
-        <Container
-          type="content"
-          style={{ marginTop: -5, paddingHorizontal: CONTAINER_PADDING.MOBILE }}
-        >
-          <ModuleBox patternColor={mainPost.categoryColor}>
-            {secondaryPosts.map((post, index) => (
-              <View key={post.id} style={index === 0 ? {} : { marginTop: 30 }}>
-                <Post {...post} />
-              </View>
-            ))}
-          </ModuleBox>
-        </Container>
-      </Fragment>
+      <OverlapScaffold overlap={3}>
+        <OverlapScaffold.Main>
+          <MainPost {...mainPost} />
+        </OverlapScaffold.Main>
+
+        <OverlapScaffold.Overlap>
+          <Container
+            type="content"
+            style={{ paddingHorizontal: CONTAINER_PADDING.MOBILE }}
+          >
+            <ModuleBox patternColor={mainPost.categoryColor}>
+              {secondaryPosts.map((post, index) => (
+                <View
+                  key={post.id}
+                  style={index === 0 ? {} : { marginTop: 40 }}
+                >
+                  <Post {...post} />
+                </View>
+              ))}
+            </ModuleBox>
+          </Container>
+        </OverlapScaffold.Overlap>
+      </OverlapScaffold>
     );
   };
 
@@ -55,7 +63,7 @@ class MostRecent extends PureComponent<Props> {
         <ModuleBox patternColor={mainPost.categoryColor}>
           <View style={styles.wrap}>
             <View style={styles.left}>
-              <MainPost {...mainPost} />
+              <MainPost imageWidth={700} imageHeight={545} {...mainPost} />
             </View>
             <View style={styles.right}>
               {secondaryPosts.map((post, index) => (
@@ -82,6 +90,7 @@ const styles = StyleSheet.create({
   },
   left: {
     width: "66%",
+    justifyContent: "flex-start",
   },
   right: {
     width: "33%",

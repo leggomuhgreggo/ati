@@ -4,19 +4,13 @@ import React, { PureComponent, Fragment } from "react";
 import { View } from "react-native";
 
 import { Container, Row } from "components/primitives";
-import { Post, ModuleBox } from "components/modules";
+import { MainPost, Post, ModuleBox, OverlapScaffold } from "components/modules";
 import { Responsive } from "components/utils";
-import { BREAKPOINTS, THEME_SPACING } from "constants/index";
+import { BREAKPOINTS, THEME_SPACING, CONTAINER_PADDING } from "constants/index";
 
 import TitleRow from "./TitleRow";
 
-import { getPostWrapComponents } from "./MakeOverlappingComponents";
-
 import Posts from "./Posts";
-
-const { OverlappingPostsWrap, OverlapSpoof } = getPostWrapComponents({
-  offset: 30,
-});
 
 type Props = {
   order: number,
@@ -30,53 +24,57 @@ class TagPostsSingleColumn extends PureComponent<Props> {
   renderMobile = width => {
     const {
       sectionColor,
-      posts: [mainPost, ...posts],
+      posts: [mainPost, ...secondaryPosts],
     } = this.props;
     return (
-      <Fragment>
-        <Post
-          layoutVariant="overlay"
-          detailsOffset={30}
-          containerStyle={{ zIndex: 10 }}
-          imageWidth={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.WIDTH}
-          imageHeight={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.HEIGHT}
-          {...mainPost}
-        />
-        <View
-          style={{
-            paddingHorizontal: THEME_SPACING.MOBILE_CONTAINER_PADDING,
-          }}
-        >
-          <ModuleBox patternColor={sectionColor} offsetDirection="right">
-            {posts.map(post => (
-              <Post imageWidth={300} imageHeight={250} {...post} />
-            ))}
-          </ModuleBox>
-        </View>
-      </Fragment>
+      <OverlapScaffold overlap={3}>
+        <OverlapScaffold.Main>
+          <MainPost imageWidth={1009} imageHeight={545} center {...mainPost} />
+        </OverlapScaffold.Main>
+
+        <OverlapScaffold.Overlap>
+          <Container
+            type="content"
+            style={{ paddingHorizontal: CONTAINER_PADDING.MOBILE }}
+          >
+            <ModuleBox
+              offsetDirection="right"
+              patternColor={mainPost.categoryColor}
+            >
+              {secondaryPosts.map((post, index) => (
+                <View
+                  key={post.id}
+                  style={index === 0 ? {} : { marginTop: 40 }}
+                >
+                  <Post {...post} />
+                </View>
+              ))}
+            </ModuleBox>
+          </Container>
+        </OverlapScaffold.Overlap>
+      </OverlapScaffold>
     );
   };
   renderDesktop = () => {
     const {
       order,
       sectionColor,
-      posts: [mainPost, ...posts],
+      posts: [mainPost, ...secondaryPosts],
     } = this.props;
     return (
-      <Fragment>
-        <Post
-          layoutVariant="overlay"
-          detailsOffset={30}
-          containerStyle={{ zIndex: 10 }}
-          {...mainPost}
-        >
-          <OverlapSpoof />
-        </Post>
+      <OverlapScaffold overlap={30}>
+        <OverlapScaffold.Main>
+          <MainPost center {...mainPost} />
+        </OverlapScaffold.Main>
 
-        <OverlappingPostsWrap patternColor={sectionColor}>
-          <Posts order={order} posts={posts} />
-        </OverlappingPostsWrap>
-      </Fragment>
+        <OverlapScaffold.Overlap>
+          <Container type="content" style={{ paddingHorizontal: 45 }}>
+            <ModuleBox offsetDirection="right" patternColor={sectionColor}>
+              <Posts order={order} posts={secondaryPosts} />
+            </ModuleBox>
+          </Container>
+        </OverlapScaffold.Overlap>
+      </OverlapScaffold>
     );
   };
 
