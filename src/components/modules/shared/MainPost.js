@@ -25,6 +25,7 @@ class MainPost extends PureComponent<Props> {
 
   render() {
     const {
+      containerPadding,
       bottomOverlap,
       center,
       imageSrc,
@@ -73,7 +74,15 @@ class MainPost extends PureComponent<Props> {
                 imageSrc={imageSrc}
               />
 
-              <View style={[styles.detailsWrap, { bottom: bottomOverlap }]}>
+              <View
+                style={[
+                  styles.detailsWrap,
+                  {
+                    bottom: bottomOverlap,
+                    paddingHorizontal: containerPadding ? containerPadding : 25,
+                  },
+                ]}
+              >
                 <View style={styles.detailsInner}>
                   <View style={[styles.labelWrap, labelWrap]}>
                     <PostLabel

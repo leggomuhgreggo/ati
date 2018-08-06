@@ -28,27 +28,19 @@ class MostRecent extends PureComponent<Props> {
     } = this.props;
 
     return (
-      <OverlapScaffold overlap={3}>
+      <OverlapScaffold containerPadding={CONTAINER_PADDING.MOBILE} overlap={3}>
         <OverlapScaffold.Main>
           <MainPost {...mainPost} />
         </OverlapScaffold.Main>
 
         <OverlapScaffold.Overlap>
-          <Container
-            type="content"
-            style={{ paddingHorizontal: CONTAINER_PADDING.MOBILE }}
-          >
-            <ModuleBox patternColor={mainPost.categoryColor}>
-              {secondaryPosts.map((post, index) => (
-                <View
-                  key={post.id}
-                  style={index === 0 ? {} : { marginTop: 40 }}
-                >
-                  <Post {...post} />
-                </View>
-              ))}
-            </ModuleBox>
-          </Container>
+          <ModuleBox patternColor={mainPost.categoryColor}>
+            {secondaryPosts.map((post, index) => (
+              <View key={post.id} style={index === 0 ? {} : { marginTop: 40 }}>
+                <Post {...post} />
+              </View>
+            ))}
+          </ModuleBox>
         </OverlapScaffold.Overlap>
       </OverlapScaffold>
     );

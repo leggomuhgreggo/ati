@@ -27,30 +27,22 @@ class TagPostsSingleColumn extends PureComponent<Props> {
       posts: [mainPost, ...secondaryPosts],
     } = this.props;
     return (
-      <OverlapScaffold overlap={3}>
+      <OverlapScaffold containerPadding={CONTAINER_PADDING.MOBILE} overlap={3}>
         <OverlapScaffold.Main>
           <MainPost imageWidth={1009} imageHeight={545} center {...mainPost} />
         </OverlapScaffold.Main>
 
         <OverlapScaffold.Overlap>
-          <Container
-            type="content"
-            style={{ paddingHorizontal: CONTAINER_PADDING.MOBILE }}
+          <ModuleBox
+            offsetDirection="right"
+            patternColor={mainPost.categoryColor}
           >
-            <ModuleBox
-              offsetDirection="right"
-              patternColor={mainPost.categoryColor}
-            >
-              {secondaryPosts.map((post, index) => (
-                <View
-                  key={post.id}
-                  style={index === 0 ? {} : { marginTop: 40 }}
-                >
-                  <Post {...post} />
-                </View>
-              ))}
-            </ModuleBox>
-          </Container>
+            {secondaryPosts.map((post, index) => (
+              <View key={post.id} style={index === 0 ? {} : { marginTop: 40 }}>
+                <Post {...post} />
+              </View>
+            ))}
+          </ModuleBox>
         </OverlapScaffold.Overlap>
       </OverlapScaffold>
     );
@@ -62,17 +54,15 @@ class TagPostsSingleColumn extends PureComponent<Props> {
       posts: [mainPost, ...secondaryPosts],
     } = this.props;
     return (
-      <OverlapScaffold overlap={30}>
+      <OverlapScaffold containerPadding={45} overlap={30}>
         <OverlapScaffold.Main>
           <MainPost center {...mainPost} />
         </OverlapScaffold.Main>
 
         <OverlapScaffold.Overlap>
-          <Container type="content" style={{ paddingHorizontal: 45 }}>
-            <ModuleBox offsetDirection="right" patternColor={sectionColor}>
-              <Posts order={order} posts={secondaryPosts} />
-            </ModuleBox>
-          </Container>
+          <ModuleBox offsetDirection="right" patternColor={sectionColor}>
+            <Posts order={order} posts={secondaryPosts} />
+          </ModuleBox>
         </OverlapScaffold.Overlap>
       </OverlapScaffold>
     );

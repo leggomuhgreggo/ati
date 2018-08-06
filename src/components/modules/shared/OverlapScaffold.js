@@ -1,61 +1,69 @@
 // @flow
 
 import React, { PureComponent, Fragment } from "react";
-import { Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+import { Container } from "components/primitives";
 
-import { ModuleBox } from "components/modules";
 type Props = {
   overlap: number,
+  containerPadding: number,
 };
-
 class OverlapScaffold extends PureComponent<Props> {
   static defaultProps = {
     overlap: 0,
+    containerPadding: 0,
   };
 
   static Main = ({ children }) => children;
   static Overlap = ({ children }) => children;
 
-  getScaffoldChildren = () => {
-    const { Main, Overlap } = OverlapScaffold;
-    const { overlap, children } = this.props;
-    const { getMainPost, getOverlap, getContainer } = this;
-    return React.Children.map(children, function(child) {
-      const grandchild = React.Children.toArray(child.props.children)[0];
-      if (child.type === Main) {
-        return getMainPost(grandchild);
-      }
-      if (child.type === Overlap) {
-        return [getOverlap(grandchild), getContainer(grandchild)];
-      }
+  getScaffoldContentByType = type => {
+    const ScaffoldChild = React.Children.toArray(this.props.children).find(
+      child => child.type === type,
+    );
+    return React.Children.toArray(ScaffoldChild.props.children)[0];
+  };
+
+  getMainPost = () => {
+    const MainPost = this.getScaffoldContentByType(OverlapScaffold.Main);
+    return React.cloneElement(MainPost, {
+      bottomOverlap: this.props.overlap,
+      containerPadding: this.props.containerPadding,
     });
   };
-  getOverlap = Container =>
-    React.cloneElement(Container, {
-      children: [<ModuleBox />],
-      key: "overlap",
-      style: [
-        Container.props.style,
-        {
-          marginTop: -this.props.overlap,
-          zIndex: 10,
-          overflow: "hidden",
-          height: this.props.overlap,
-        },
-      ],
-    });
-  getContainer = Container =>
-    React.cloneElement(Container, {
-      style: [Container.props.style, { marginTop: -this.props.overlap }],
-    });
-  getMainPost = MainPost =>
-    React.cloneElement(MainPost, {
-      bottomOverlap: this.props.overlap,
-    });
 
   render() {
     const { overlap } = this.props;
-    return this.getScaffoldChildren();
+
+    return (
+      <Fragment>
+        {this.getMainPost()}
+        <Container
+          style={{
+            marginTop: -this.props.overlap,
+            paddingHorizontal: this.props.containerPadding,
+            zIndex: 10,
+          }}
+          type="content"
+        >
+          <View
+            style={{
+              backgroundColor: "white",
+              height: this.props.overlap,
+            }}
+          />
+        </Container>
+        <Container
+          style={{
+            marginTop: -this.props.overlap,
+            paddingHorizontal: this.props.containerPadding,
+          }}
+          type="content"
+        >
+          {this.getScaffoldContentByType(OverlapScaffold.Overlap)}
+        </Container>
+      </Fragment>
+    );
   }
 }
 
