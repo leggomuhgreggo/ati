@@ -25,6 +25,7 @@ class MainPost extends PureComponent<Props> {
 
   render() {
     const {
+      fontStyles,
       containerPadding,
       bottomOverlap,
       center,
@@ -40,7 +41,7 @@ class MainPost extends PureComponent<Props> {
       <Responsive>
         {({ minWidth }) => {
           const isDesktop = minWidth(BREAKPOINTS.LG);
-          const fontStyles = isDesktop
+          const localFontStyles = isDesktop
             ? { fontSize: 34, lineHeight: 39 }
             : { fontSize: 20, lineHeight: 24 };
 
@@ -92,7 +93,10 @@ class MainPost extends PureComponent<Props> {
                     />
                   </View>
                   <View>
-                    <Text aria-level="2" style={[styles.titleText, fontStyles]}>
+                    <Text
+                      aria-level="2"
+                      style={[styles.titleText, localFontStyles, fontStyles]}
+                    >
                       {title}
                     </Text>
                   </View>

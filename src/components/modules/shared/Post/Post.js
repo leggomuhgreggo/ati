@@ -103,10 +103,8 @@ class Post extends PureComponent<Props> {
           <PostDetails style={this.getDetailsStyles()}>
             <PostLabel
               style={[styles.postLabel]}
-              spacer={this.getLabelSpacer()}
-              color={categoryColor}
+              categoryColor={categoryColor}
               categoryName={categoryName}
-              inline={layoutVariant !== POST_LAYOUT_VARIANT.OVERLAY}
               fill={layoutVariant === POST_LAYOUT_VARIANT.OVERLAY}
             />
             <PostTitle title={title} style={this.getTitleStyles()} />
