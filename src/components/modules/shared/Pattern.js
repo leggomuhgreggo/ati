@@ -3,7 +3,7 @@
 import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { COLOR_MAP } from "constants.js";
+import { COLOR_MAP } from "constants/index";
 
 const OFFSET = {
   LEFT: "left",
@@ -42,7 +42,7 @@ class Pattern extends PureComponent<Props> {
     const bg = COLOR_MAP.SITE_BG;
     const space = 5;
     const dot = 2;
-    const emptyPercent = `${100 - dot / space * 100}%`;
+    const emptyPercent = `${100 - (dot / space) * 100}%`;
 
     return {
       backgroundColor: color,

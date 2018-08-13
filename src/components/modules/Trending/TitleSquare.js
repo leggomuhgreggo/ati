@@ -3,7 +3,7 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
-import { COLOR_MAP } from "constants.js";
+import { COLOR_MAP } from "constants/index";
 import { Pattern } from "components/modules";
 import { Ratio, Text, Row } from "components/primitives";
 

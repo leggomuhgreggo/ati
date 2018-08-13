@@ -6,8 +6,10 @@ import { Grid } from "components/primitives";
 import { Post } from "components/modules";
 
 const COMPONENT_TYPES = {
-  MD: props => <Post imageWidth={286} imageHeight={286} {...props} />,
-  SM: props => <Post layoutVariant="reduced" {...props} />,
+  MD: props => (
+    <Post key={props.id} imageWidth={286} imageHeight={286} {...props} />
+  ),
+  SM: props => <Post key={props.id} layoutVariant="reduced" {...props} />,
 };
 
 type Props = {

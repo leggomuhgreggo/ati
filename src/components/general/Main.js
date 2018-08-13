@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from "react";
 import { ScrollView, StyleSheet } from "react-native";
+import { PAGE_SPACING } from "constants/index.js";
 
 import type { Node } from "react";
 
@@ -48,5 +49,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     width: "100%",
     alignItems: "center",
+    paddingTop: PAGE_SPACING.TOP,
+    paddingBottom: PAGE_SPACING.BOTTOM,
   },
 });

@@ -1,23 +1,16 @@
 // @flow
 
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { View } from "react-native";
 
 import { Container, Row } from "components/primitives";
-import { Post, ModuleBox } from "components/modules";
+import { MainPost, Post, ModuleBox, OverlapScaffold } from "components/modules";
 import { Responsive } from "components/utils";
-import createLockFunction from "utils/lock";
-import { BREAKPOINTS, THEME_SPACING } from "constants.js";
+import { BREAKPOINTS, THEME_SPACING, CONTAINER_PADDING } from "constants/index";
 
 import TitleRow from "./TitleRow";
 
-import { getPostWrapComponents } from "./MakeOverlappingComponents";
-
 import Posts from "./Posts";
-
-const { OverlappingPostsWrap, OverlapSpoof } = getPostWrapComponents({
-  offset: 30,
-});
 
 type Props = {
   order: number,
@@ -30,96 +23,83 @@ class TagPostsSingleColumn extends PureComponent<Props> {
 
   renderMobile = width => {
     const {
-      order,
-      data: {
-        sectionTitle,
-        sectionLink,
-        sectionColor,
-        posts: [mainPost, ...posts],
-      },
+      sectionColor,
+      posts: [mainPost, ...secondaryPosts],
     } = this.props;
     return (
-      <Container type="content">
-        <TitleRow
-          patternColor={sectionColor}
-          link={sectionLink}
-          title={sectionTitle}
-        />
+      <OverlapScaffold containerPadding={CONTAINER_PADDING.MOBILE} overlap={3}>
+        <OverlapScaffold.Main>
+          <MainPost imageWidth={1009} imageHeight={545} center {...mainPost} />
+        </OverlapScaffold.Main>
 
-        <Row
-          style={{
-            marginTop: createLockFunction({
-              min: THEME_SPACING.SECTION_SPACING.SM,
-              max: THEME_SPACING.SECTION_SPACING.LG,
-            })(width),
-          }}
-        >
-          <Post
-            layoutVariant="overlay"
-            detailsOffset={30}
-            containerStyle={{ zIndex: 10 }}
-            imageWidth={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.WIDTH}
-            imageHeight={THEME_SPACING.MOBILE_OVERLAY_IMG_DIMS.HEIGHT}
-            {...mainPost}
-          />
-          <View
-            style={{
-              paddingHorizontal: THEME_SPACING.MOBILE_CONTAINER_PADDING,
-            }}
+        <OverlapScaffold.Overlap>
+          <ModuleBox
+            offsetDirection="right"
+            patternColor={mainPost.categoryColor}
           >
-            <ModuleBox patternColor={sectionColor} offsetDirection="right">
-              {posts.map(post => (
-                <Post imageWidth={300} imageHeight={250} {...post} />
-              ))}
-            </ModuleBox>
-          </View>
-        </Row>
-      </Container>
+            {secondaryPosts.map((post, index) => (
+              <View key={post.id} style={index === 0 ? {} : { marginTop: 40 }}>
+                <Post {...post} />
+              </View>
+            ))}
+          </ModuleBox>
+        </OverlapScaffold.Overlap>
+      </OverlapScaffold>
     );
   };
   renderDesktop = () => {
     const {
       order,
-      data: {
-        sectionTitle,
-        sectionLink,
-        sectionColor,
-        posts: [mainPost, ...posts],
-      },
+      sectionColor,
+      posts: [mainPost, ...secondaryPosts],
     } = this.props;
     return (
-      <Container type="content">
-        <TitleRow
-          patternColor={sectionColor}
-          link={sectionLink}
-          title={sectionTitle}
-        />
-        <Row style={{ marginTop: 60 }}>
-          <Post
-            layoutVariant="overlay"
-            detailsOffset={30}
-            containerStyle={{ zIndex: 10 }}
-            {...mainPost}
-          >
-            <OverlapSpoof />
-          </Post>
+      <OverlapScaffold containerPadding={45} overlap={30}>
+        <OverlapScaffold.Main>
+          <MainPost center {...mainPost} />
+        </OverlapScaffold.Main>
 
-          <OverlappingPostsWrap patternColor={sectionColor}>
-            <Posts order={order} posts={posts} />
-          </OverlappingPostsWrap>
-        </Row>
-      </Container>
+        <OverlapScaffold.Overlap>
+          <ModuleBox offsetDirection="right" patternColor={sectionColor}>
+            <Posts order={order} posts={secondaryPosts} />
+          </ModuleBox>
+        </OverlapScaffold.Overlap>
+      </OverlapScaffold>
     );
   };
 
   render() {
+    const {
+      typeVariant: order,
+      sectionTitle,
+      sectionLink,
+      sectionColor,
+      posts: [mainPost, ...posts],
+    } = this.props;
     return (
       <Responsive>
-        {({ minWidth, width }) => {
-          const showMobileLayout = !minWidth(BREAKPOINTS.LG);
-          return showMobileLayout
-            ? this.renderMobile(width)
-            : this.renderDesktop();
+        {({ minWidth, width, getLock }) => {
+          const isDesktop = minWidth(BREAKPOINTS.LG);
+          const rowMargin = isDesktop
+            ? getLock({
+                min: THEME_SPACING.SECTION_SPACING.SM,
+                max: THEME_SPACING.SECTION_SPACING.LG,
+              })
+            : 60;
+
+          return (
+            <Container type="content">
+              <TitleRow
+                patternColor={sectionColor}
+                link={sectionLink}
+                title={sectionTitle}
+              />
+
+              <Row style={{ marginTop: rowMargin }}>
+                {isDesktop ? this.renderDesktop() : this.renderMobile()}
+              </Row>
+            </Container>
+          );
         }}
       </Responsive>
     );

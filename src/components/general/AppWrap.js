@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 import { ResponsiveProvider } from "components/utils";
-import { COLOR_MAP } from "constants.js";
+import { COLOR_MAP } from "constants/index";
 
 import type { Node } from "react";
 

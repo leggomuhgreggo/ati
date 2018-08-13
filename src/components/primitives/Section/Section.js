@@ -5,53 +5,28 @@ import React, { PureComponent } from "react";
 import { Row } from "components/primitives";
 import { Responsive } from "components/utils";
 
-import createLockFunction from "utils/lock";
-
-import { THEME_SPACING } from "constants.js";
-
-const SPACING_TYPES = {
-  SM: "sm",
-  LG: "lg",
-};
+import { SECTION_SPACERS, SECTION_SPACING_VARIANTS } from "constants/index";
 
 type Props = {
-  spacingTop: $Values<typeof SPACING_TYPES>,
+  topSpacing: $Values<typeof SECTION_SPACING_VARIANTS>,
 };
 
 class Section extends PureComponent<Props> {
   static defaultProps = {
-    spacing: SPACING_TYPES.SM,
+    topSpacing: SECTION_SPACING_VARIANTS.SM,
   };
 
-  getMarginTop = screenWidth => {
-    const { spacingTop } = this.props;
-    const {
-      SECTION_SPACING: { SM: smallSpacing, LG: largeSpacing },
-    } = THEME_SPACING;
-
-    const lock = createLockFunction({
-      min: smallSpacing,
-      max: largeSpacing,
-    })(screenWidth);
-
-    return spacingTop === SPACING_TYPES.SM ? smallSpacing : lock;
-  };
+  isSmall = () => this.props.topSpacing === SECTION_SPACING_VARIANTS.SM;
 
   render() {
-    const { children, style } = this.props;
+    const { children, style, topSpacing } = this.props;
+
+    const spacing = SECTION_SPACERS[topSpacing];
 
     return (
-      <Responsive>
-        {({ width: screenWidth }) => {
-          const marginTop = this.getMarginTop(screenWidth);
-
-          return (
-            <Row style={[{ alignItems: "center", marginTop }, style]}>
-              {children}
-            </Row>
-          );
-        }}
-      </Responsive>
+      <Row style={[{ alignItems: "center", marginTop: spacing }, style]}>
+        {children}
+      </Row>
     );
   }
 }

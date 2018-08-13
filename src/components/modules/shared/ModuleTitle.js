@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from "react";
 
-import { COLOR_MAP } from "constants.js";
+import { COLOR_MAP } from "constants/index";
 import { ModuleBox } from "components/modules";
 
 type Props = {

@@ -10,8 +10,12 @@ import { Text, Row } from "components/primitives";
 
 import { Responsive } from "components/utils";
 
-import { BREAKPOINTS, THEME_SPACING } from "constants.js";
-import createLockFunction from "utils/lock";
+import {
+  BREAKPOINTS,
+  SECTION_SPACERS,
+  SECTION_SPACING_VARIANTS,
+} from "constants/index";
+// import createLockFunction from "utils/lock";
 
 type Props = {
   patternColor: string,
@@ -21,7 +25,7 @@ type Props = {
 
 class TitleRow extends PureComponent<Props> {
   renderMobile = width => {
-    const { patternColor, title } = this.props;
+    const { patternColor, title, link } = this.props;
     return (
       <Fragment>
         <Row style={{ alignItems: "center" }}>
@@ -29,28 +33,27 @@ class TitleRow extends PureComponent<Props> {
         </Row>
         <Row
           style={{
-            marginTop: createLockFunction({
-              min: THEME_SPACING.SECTION_SPACING.SM,
-              max: THEME_SPACING.SECTION_SPACING.LG,
-            })(width),
+            marginTop: SECTION_SPACERS[SECTION_SPACING_VARIANTS.LARGE],
             alignItems: "center",
           }}
         >
-          <ModuleTitle
-            style={{ height: 110, justifyContent: "center", width: 300 }}
-            patternColor={patternColor}
-          >
-            <Text>{title}</Text>
-          </ModuleTitle>
+          <View accessibilityRole="link" href={link}>
+            <ModuleTitle
+              style={{ height: 110, justifyContent: "center", width: 300 }}
+              patternColor={patternColor}
+            >
+              <Text>{title}</Text>
+            </ModuleTitle>
+          </View>
         </Row>
       </Fragment>
     );
   };
   renderDesktop = () => {
-    const { patternColor, title } = this.props;
+    const { patternColor, title, link } = this.props;
     return (
       <View style={styles.titleRow}>
-        <View style={styles.titleWrap}>
+        <View style={styles.titleWrap} accessibilityRole="link" href={link}>
           <ModuleTitle
             style={{ height: 110, justifyContent: "center" }}
             patternColor={patternColor}
@@ -69,10 +72,8 @@ class TitleRow extends PureComponent<Props> {
     return (
       <Responsive>
         {({ minWidth, width }) => {
-          const showMobileLayout = !minWidth(BREAKPOINTS.LG);
-          return showMobileLayout
-            ? this.renderMobile(width)
-            : this.renderDesktop();
+          const isDesktop = minWidth(BREAKPOINTS.LG);
+          return isDesktop ? this.renderDesktop() : this.renderMobile(width);
         }}
       </Responsive>
     );

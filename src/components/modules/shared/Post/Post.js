@@ -83,16 +83,21 @@ class Post extends PureComponent<Props> {
     const {
       containerStyle,
       categoryColor,
-      category,
+      categoryName,
       title,
       imageSrc,
       layoutVariant,
       imageWidth,
       imageHeight,
       children,
+      link,
     } = this.props;
     return (
-      <View style={[styles.postBox, containerStyle]}>
+      <View
+        style={[styles.postBox, containerStyle]}
+        accessibilityRole="link"
+        href={link}
+      >
         <View>
           {this.showImage() && (
             <Image width={imageWidth} height={imageHeight} src={imageSrc} />
@@ -103,10 +108,8 @@ class Post extends PureComponent<Props> {
           <PostDetails style={this.getDetailsStyles()}>
             <PostLabel
               style={[styles.postLabel]}
-              spacer={this.getLabelSpacer()}
-              color={categoryColor}
-              category={category}
-              inline={layoutVariant !== POST_LAYOUT_VARIANT.OVERLAY}
+              categoryColor={categoryColor}
+              categoryName={categoryName}
               fill={layoutVariant === POST_LAYOUT_VARIANT.OVERLAY}
             />
             <PostTitle title={title} style={this.getTitleStyles()} />

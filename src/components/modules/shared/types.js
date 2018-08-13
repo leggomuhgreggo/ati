@@ -1,4 +1,4 @@
-import { CATEGORY_COLOR_MAP } from "constants.js";
+import { CATEGORY_COLOR_MAP } from "constants/index";
 
 export type {
   StyleObj,

@@ -3,14 +3,14 @@
 import React from "react";
 
 import { Mrec } from "components/ads";
-import { Post } from "components/modules";
+import { MainPost, Post } from "components/modules";
 
 export const POST_COMPONENTS = {
   LG: props => (
-    <Post
+    <MainPost
+      fontStyles={{ fontSize: 24, lineHeight: 30 }}
       imageWidth={735}
       imageHeight={430}
-      layoutVariant="overlay"
       multiplier={2}
       {...props}
     />

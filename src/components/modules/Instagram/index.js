@@ -8,15 +8,14 @@ import InstagramIcon from "react-icons/lib/fa/instagram";
 
 import { Container, Text, Image } from "components/primitives";
 import { ModuleBox } from "components/modules";
-import { COLOR_MAP } from "constants.js";
+import { COLOR_MAP } from "constants/index";
 
 import { Responsive } from "components/utils";
-import createLockFunction from "utils/lock";
-import { BREAKPOINTS, THEME_SPACING } from "constants.js";
+import { BREAKPOINTS, THEME_SPACING } from "constants/index";
 
 export default class Instagram extends PureComponent {
   renderMobile = () => {
-    const { data } = this.props;
+    const { posts } = this.props;
     return (
       <Container type="content" style={{ paddingHorizontal: 30 }}>
         <View
@@ -41,12 +40,12 @@ export default class Instagram extends PureComponent {
           slidesToScroll={1}
           wrapAround
           heightMode="first"
-          renderBottomCenterControls={false}
-          renderCenterLeftControls={false}
-          renderCenterRightControls={false}
+          renderBottomCenterControls={() => {}}
+          renderCenterLeftControls={() => {}}
+          renderCenterRightControls={() => {}}
           cellSpacing={10}
         >
-          {data.map(({ id, ...post }, i) => (
+          {posts.map(({ id, ...post }, i) => (
             <InstagramSlide key={id} {...post} />
           ))}
         </Carousel>
@@ -54,7 +53,7 @@ export default class Instagram extends PureComponent {
     );
   };
   renderDesktop = () => {
-    const { data } = this.props;
+    const { posts } = this.props;
     return (
       <Container type="content">
         <ModuleBox style={styles.container}>
@@ -83,12 +82,12 @@ export default class Instagram extends PureComponent {
             slidesToScroll={3}
             wrapAround
             heightMode="first"
-            renderBottomCenterControls={false}
+            renderBottomCenterControls={() => {}}
             renderCenterLeftControls={props => <Arrow dir="prev" {...props} />}
             renderCenterRightControls={props => <Arrow dir="next" {...props} />}
             cellSpacing={30}
           >
-            {data.map(({ id, ...post }, i) => (
+            {posts.map(({ id, ...post }, i) => (
               <InstagramSlide key={id} {...post} />
             ))}
           </Carousel>
@@ -100,10 +99,8 @@ export default class Instagram extends PureComponent {
     return (
       <Responsive>
         {({ minWidth, width }) => {
-          const showMobileLayout = !minWidth(BREAKPOINTS.LG);
-          return showMobileLayout
-            ? this.renderMobile(width)
-            : this.renderDesktop();
+          const isDesktop = minWidth(BREAKPOINTS.LG);
+          return isDesktop ? this.renderDesktop() : this.renderMobile(width);
         }}
       </Responsive>
     );
