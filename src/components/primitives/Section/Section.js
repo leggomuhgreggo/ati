@@ -3,7 +3,6 @@
 import React, { PureComponent } from "react";
 
 import { Row } from "components/primitives";
-import { Responsive } from "components/utils";
 
 import { SECTION_SPACERS, SECTION_SPACING_VARIANTS } from "constants/index";
 
@@ -15,8 +14,6 @@ class Section extends PureComponent<Props> {
   static defaultProps = {
     topSpacing: SECTION_SPACING_VARIANTS.SM,
   };
-
-  isSmall = () => this.props.topSpacing === SECTION_SPACING_VARIANTS.SM;
 
   render() {
     const { children, style, topSpacing } = this.props;

@@ -13,14 +13,10 @@ const COPY = {
 const Callout = ({ style }) => (
   <View style={style}>
     <View>
-      <Text sizeRange={[28, 40]} style={[styles.calloutText]}>
-        {COPY.HEADLINE}
-      </Text>
+      <Text style={[styles.calloutText]}>{COPY.HEADLINE}</Text>
     </View>
     <View>
-      <Text sizeRange={[16, 24]} style={[styles.calloutText]}>
-        {COPY.SUB_HEAD}
-      </Text>
+      <Text style={[styles.calloutText]}>{COPY.SUB_HEAD}</Text>
     </View>
   </View>
 );

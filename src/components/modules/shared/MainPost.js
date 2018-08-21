@@ -3,12 +3,10 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
-import { Text, Image } from "components/primitives";
-import { PostTitle, PostImage, PostLabel } from "components/modules";
+import { Text } from "components/primitives";
+import { PostImage, PostLabel } from "components/modules";
 import { Responsive } from "components/utils";
-import { BREAKPOINTS, CONTAINER_PADDING, IMG_DIMS } from "constants/index";
-
-import type { Category } from "components/modules";
+import { BREAKPOINTS, IMG_DIMS } from "constants/index";
 
 type Props = {
   style: object,

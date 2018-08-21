@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent } from "react";
 import { View } from "react-native";
 
 import { Container, Row } from "components/primitives";
@@ -23,7 +23,6 @@ class TagPostsSingleColumn extends PureComponent<Props> {
 
   renderMobile = width => {
     const {
-      sectionColor,
       posts: [mainPost, ...secondaryPosts],
     } = this.props;
     return (
@@ -69,13 +68,7 @@ class TagPostsSingleColumn extends PureComponent<Props> {
   };
 
   render() {
-    const {
-      typeVariant: order,
-      sectionTitle,
-      sectionLink,
-      sectionColor,
-      posts: [mainPost, ...posts],
-    } = this.props;
+    const { sectionTitle, sectionLink, sectionColor } = this.props;
     return (
       <Responsive>
         {({ minWidth, width, getLock }) => {

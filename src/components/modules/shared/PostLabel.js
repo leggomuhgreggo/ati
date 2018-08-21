@@ -4,8 +4,6 @@ import React, { PureComponent } from "react";
 import { View } from "react-native";
 
 import { Text } from "components/primitives";
-// import type { Categories } from "components/modules";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 type Props = {
   fill: boolean,

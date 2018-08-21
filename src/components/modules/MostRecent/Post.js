@@ -6,9 +6,7 @@ import { View, StyleSheet } from "react-native";
 import { PostLabel } from "components/modules";
 import { Text } from "components/primitives";
 import { Responsive } from "components/utils";
-import { BREAKPOINTS, CONTAINER_PADDING, IMG_DIMS } from "constants/index";
-
-import type { Category } from "components/modules";
+import { BREAKPOINTS } from "constants/index";
 
 class Post extends PureComponent<Props> {
   static defaultProps = {

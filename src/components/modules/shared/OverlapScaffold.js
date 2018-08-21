@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PureComponent, Fragment } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { Container } from "components/primitives";
 
 type Props = {
@@ -33,15 +33,15 @@ class OverlapScaffold extends PureComponent<Props> {
   };
 
   render() {
-    const { overlap } = this.props;
+    const { overlap, containerPadding } = this.props;
 
     return (
       <Fragment>
         {this.getMainPost()}
         <Container
           style={{
-            marginTop: -this.props.overlap,
-            paddingHorizontal: this.props.containerPadding,
+            marginTop: -overlap,
+            paddingHorizontal: containerPadding,
             zIndex: 10,
           }}
           type="content"
@@ -49,14 +49,14 @@ class OverlapScaffold extends PureComponent<Props> {
           <View
             style={{
               backgroundColor: "white",
-              height: this.props.overlap,
+              height: overlap,
             }}
           />
         </Container>
         <Container
           style={{
-            marginTop: -this.props.overlap,
-            paddingHorizontal: this.props.containerPadding,
+            marginTop: -overlap,
+            paddingHorizontal: containerPadding,
           }}
           type="content"
         >

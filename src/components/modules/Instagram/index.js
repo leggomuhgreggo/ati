@@ -11,7 +11,7 @@ import { ModuleBox } from "components/modules";
 import { COLOR_MAP } from "constants/index";
 
 import { Responsive } from "components/utils";
-import { BREAKPOINTS, THEME_SPACING } from "constants/index";
+import { BREAKPOINTS } from "constants/index";
 
 export default class Instagram extends PureComponent {
   renderMobile = () => {
@@ -200,7 +200,6 @@ class Arrow extends PureComponent {
 
 class InstagramButton extends PureComponent {
   render() {
-    const { imageSrc, title } = this.props;
     return (
       <View
         style={{
