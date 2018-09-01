@@ -1,10 +1,31 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text, Image } from "components/primitives";
+import { BREAKPOINTS } from "constants/index";
+
+/**
+ * Text Size
+ * -20/26, 18/20
+ * -italic
+ * -adellesans or whatever
+ */
+
+const SLIDE_SIZE = 306;
 
 class InstagramSlide extends PureComponent {
   render() {
-    const { imageSrc, title } = this.props;
+    const { imageSrc, title, breakpoint = BREAKPOINTS.LARGE } = this.props;
+    const isLarge = breakpoint === BREAKPOINTS.LARGE;
+
+    const fontStyles = isLarge
+      ? {
+          fontSize: 20,
+          lineHeight: 26,
+        }
+      : {
+          fontSize: 18,
+          lineHeight: 20,
+        };
     return (
       <View style={styles.wrap}>
         <Image
@@ -15,7 +36,7 @@ class InstagramSlide extends PureComponent {
         />
 
         <View style={styles.textBox}>
-          <Text style={styles.text}>{title}</Text>
+          <Text style={[styles.text, fontStyles]}>{title}</Text>
         </View>
       </View>
     );
@@ -32,16 +53,19 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   image: {
-    height: 310,
-    width: 310,
+    height: SLIDE_SIZE,
+    width: SLIDE_SIZE,
   },
   textBox: {
     backgroundColor: "black",
-    padding: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
     width: "100%",
     height: 110,
   },
   text: {
     color: "white",
+    fontStyle: "italic",
+    fontWeight: "100",
   },
 });

@@ -5,23 +5,39 @@ import Carousel from "nuka-carousel";
 import Arrow from "./Arrow";
 import Slide from "./Slide";
 
-// import { Responsive } from "components/utils";
-// import { BREAKPOINTS } from "constants/index";
+import { BREAKPOINTS } from "constants/index";
 
 class Instagram extends PureComponent {
+  configLg = {
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    wrapAround: true,
+    heightMode: "first",
+    renderBottomCenterControls: () => {},
+    renderCenterLeftControls: props => <Arrow dir="prev" {...props} />,
+    renderCenterRightControls: props => <Arrow dir="next" {...props} />,
+    cellSpacing: 30,
+  };
+
+  configSm = {
+    frameOverflow: "visible",
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    wrapAround: true,
+    heightMode: "first",
+    renderBottomCenterControls: () => {},
+    renderCenterLeftControls: () => {},
+    renderCenterRightControls: () => {},
+    cellSpacing: 10,
+  };
   render() {
     const { posts } = this.props;
+
+    const { breakpoint = BREAKPOINTS.LARGE } = this.props;
+    const isLarge = breakpoint === BREAKPOINTS.LARGE;
+
     return (
-      <Carousel
-        slidesToShow={3}
-        slidesToScroll={3}
-        wrapAround
-        heightMode="first"
-        renderBottomCenterControls={() => {}}
-        renderCenterLeftControls={props => <Arrow dir="prev" {...props} />}
-        renderCenterRightControls={props => <Arrow dir="next" {...props} />}
-        cellSpacing={30}
-      >
+      <Carousel {...(isLarge ? this.configLg : this.configSm)}>
         {posts.map(({ id, ...post }, i) => <Slide key={id} {...post} />)}
       </Carousel>
     );

@@ -1,12 +1,10 @@
 import React, { PureComponent } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import InstagramIcon from "react-icons/lib/fa/instagram";
-import { COLOR_MAP, BREAKPOINTS } from "constants/index";
+import { COLOR_MAP } from "constants/index";
 
 class InstagramButton extends PureComponent {
   render() {
-    const { breakpoint = BREAKPOINTS.LARGE } = this.props;
-    const isLarge = breakpoint === BREAKPOINTS.LARGE;
     return (
       <View style={styles.button}>
         <InstagramIcon fill="white" size={18} />
