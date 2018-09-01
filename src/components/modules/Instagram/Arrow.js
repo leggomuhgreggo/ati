@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
-import ChevronLeft from "react-icons/lib/fa/chevron-left";
-import ChevronRight from "react-icons/lib/fa/chevron-right";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 export default class Arrow extends PureComponent {
   render() {
@@ -20,7 +19,7 @@ export default class Arrow extends PureComponent {
       (isPrev && currentSlide === 0) ||
       (!isPrev && currentSlide === slideCount);
 
-    const ArrowComponent = isPrev ? ChevronLeft : ChevronRight;
+    const ArrowComponent = isPrev ? FaChevronLeft : FaChevronRight;
 
     return (
       <TouchableOpacity

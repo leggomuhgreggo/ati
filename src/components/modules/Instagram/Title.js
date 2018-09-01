@@ -1,20 +1,15 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
-import { COLOR_MAP, BREAKPOINTS } from "constants/index";
+import { COLOR_MAP } from "constants/index";
 
-/**
- * LyonDisplayWeb
- * 40, 38
- */
 class Title extends PureComponent {
   renderInstagram = () => <Text style={styles.text}>Instagram</Text>;
   render() {
-    const { breakpoint = BREAKPOINTS.LARGE } = this.props;
-    const isLarge = breakpoint === BREAKPOINTS.LARGE;
+    const { isDesktop } = this.props;
     return (
       <View>
-        {isLarge ? (
+        {isDesktop ? (
           <Text serif style={styles.text}>
             #ati on{" "}
             <Text serif style={[styles.text, styles.instagram]}>

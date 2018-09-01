@@ -1,11 +1,8 @@
 import React, { PureComponent } from "react";
-// import { StyleSheet } from "react-native";
 import Carousel from "nuka-carousel";
 
 import Arrow from "./Arrow";
 import Slide from "./Slide";
-
-import { BREAKPOINTS } from "constants/index";
 
 class Instagram extends PureComponent {
   configLg = {
@@ -31,13 +28,10 @@ class Instagram extends PureComponent {
     cellSpacing: 10,
   };
   render() {
-    const { posts } = this.props;
-
-    const { breakpoint = BREAKPOINTS.LARGE } = this.props;
-    const isLarge = breakpoint === BREAKPOINTS.LARGE;
+    const { posts, isDesktop } = this.props;
 
     return (
-      <Carousel {...(isLarge ? this.configLg : this.configSm)}>
+      <Carousel {...(isDesktop ? this.configLg : this.configSm)}>
         {posts.map(({ id, ...post }, i) => <Slide key={id} {...post} />)}
       </Carousel>
     );

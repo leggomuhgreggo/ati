@@ -1,23 +1,14 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text, Image } from "components/primitives";
-import { BREAKPOINTS } from "constants/index";
-
-/**
- * Text Size
- * -20/26, 18/20
- * -italic
- * -adellesans or whatever
- */
 
 const SLIDE_SIZE = 306;
 
 class InstagramSlide extends PureComponent {
   render() {
-    const { imageSrc, title, breakpoint = BREAKPOINTS.LARGE } = this.props;
-    const isLarge = breakpoint === BREAKPOINTS.LARGE;
+    const { imageSrc, title, isDesktop } = this.props;
 
-    const fontStyles = isLarge
+    const fontStyles = isDesktop
       ? {
           fontSize: 20,
           lineHeight: 26,
