@@ -1,17 +1,29 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
-import { COLOR_MAP } from "constants/index";
+import { COLOR_MAP, BREAKPOINTS } from "constants/index";
 
-const { VERMILION } = COLOR_MAP;
-
+/**
+ * LyonDisplayWeb
+ * 40, 38
+ */
 class Title extends PureComponent {
+  renderInstagram = () => <Text style={styles.text}>Instagram</Text>;
   render() {
+    const { breakpoint = BREAKPOINTS.LARGE } = this.props;
+    const isLarge = breakpoint === BREAKPOINTS.LARGE;
     return (
       <View>
-        <Text>
-          #ati on <Text style={styles.text}>Instagram</Text>
-        </Text>
+        {isLarge ? (
+          <Text serif style={styles.text}>
+            #ati on{" "}
+            <Text serif style={[styles.text, styles.instagram]}>
+              instagram
+            </Text>
+          </Text>
+        ) : (
+          <Text style={styles.text}>#ati</Text>
+        )}
       </View>
     );
   }
@@ -21,6 +33,10 @@ export default Title;
 
 const styles = StyleSheet.create({
   text: {
-    color: VERMILION,
+    fontSize: 40,
+    fontWeight: "600",
+  },
+  instagram: {
+    color: COLOR_MAP.VERMILION,
   },
 });
