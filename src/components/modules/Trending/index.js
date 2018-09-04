@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent } from "react";
 import { View } from "react-native";
 
 import { Container } from "components/primitives";
@@ -55,7 +55,6 @@ class Trending extends PureComponent<Props> {
     );
   };
   render() {
-    const { posts, sectionColor } = this.props;
     return (
       <Responsive>
         {({ minWidth }) => {
