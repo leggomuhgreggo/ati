@@ -1,11 +1,12 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 
 import { COLOR_MAP } from "constants/index";
 import { Pattern } from "components/modules";
 import { Ratio, Text, Row } from "components/primitives";
+import TrendingLine from "assets/images/trending-line.svg";
 
 type Props = {
   patternColor: $Values<typeof COLOR_MAP>,
@@ -25,14 +26,13 @@ class ModuleTitle extends PureComponent<Props> {
             ]}
           >
             <Row>
-              <Text style={{ color: "white" }} size={1}>
-                Symbol
-              </Text>
+              <Image
+                style={{ width: 45, height: 27 }}
+                source={{ uri: TrendingLine }}
+              />
             </Row>
-            <Row>
-              <Text style={{ color: "white" }} size={2}>
-                Trending News
-              </Text>
+            <Row style={{ marginTop: 20 }}>
+              <Text style={styles.text}>Trending News</Text>
             </Row>
           </View>
         </Ratio>
@@ -49,5 +49,11 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "flex-end",
+  },
+  text: {
+    lineHeight: 37,
+    fontSize: 40,
+    color: "white",
+    fontWeight: "600",
   },
 });
