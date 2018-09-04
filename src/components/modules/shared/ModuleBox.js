@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     ...elevation(1),
     padding: 30,
     width: "100%",
+    maxWidth: "100%",
     backgroundColor: "white",
   },
 });
