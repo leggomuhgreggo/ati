@@ -6,7 +6,7 @@ export { default as OverlapScaffold } from "./shared/OverlapScaffold";
 export { default as PostLabel } from "./shared/PostLabel";
 export { default as PostTitle } from "./shared/PostTitle";
 export { default as PostImage } from "./shared/PostImage";
-export { default as Post } from "./shared/Post/Post";
+export { default as Post } from "./shared/Post";
 
 export { default as MostRecent } from "./MostRecent";
 export { default as TagPostsSingleColumn } from "./TagPostsSingleColumn";
