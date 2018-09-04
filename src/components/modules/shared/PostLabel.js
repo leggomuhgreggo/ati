@@ -27,8 +27,9 @@ class PostLabel extends PureComponent<Props> {
       >
         <Text
           style={{
-            fontSize: 11,
-            lineHeight: 1,
+            fontSize: 12,
+            lineHeight: 12,
+            letterSpacing: 1,
             color: "white",
           }}
         >
