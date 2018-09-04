@@ -6,12 +6,15 @@ import { Text } from "components/primitives";
 import { ModuleBox } from "components/modules";
 import { COLOR_MAP } from "constants/index";
 
+import type { RNW$Styles } from "react-native";
+
 type Props = {
   children: string,
-  patternColor: $Values<typeof COLOR_MAP>,
-  style: any,
+  patternColor: $Values<COLOR_MAP>,
+  style: RNW$Styles,
   title: string,
   template: string,
+  isDesktop: boolean,
 };
 
 class ModuleTitle extends PureComponent<Props> {

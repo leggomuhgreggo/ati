@@ -8,8 +8,10 @@ import { PostImage, PostLabel } from "components/modules";
 import { Responsive } from "components/utils";
 import { BREAKPOINTS, IMG_DIMS } from "constants/index";
 
+import type { RNW$Styles } from "react-native";
+
 type Props = {
-  style: object,
+  style: RNW$Styles,
   bottomOverlap: number,
   center: boolean,
   imageWidth: number,
@@ -25,13 +27,13 @@ class MainPost extends PureComponent<Props> {
     const {
       fontStyles,
       containerPadding,
-      bottomOverlap,
-      center,
       imageSrc,
       title,
       categoryName,
       categoryColor,
       link,
+      bottomOverlap,
+      center,
       imageWidth,
       imageHeight,
     } = this.props;

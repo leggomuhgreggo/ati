@@ -4,12 +4,12 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
 
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { RNW$Styles } from "react-native";
 
 const HEADER_HEIGHT = 60;
 
 type Props = {
-  style?: StyleObj,
+  style?: RNW$Styles,
 };
 
 class Header extends PureComponent<Props> {

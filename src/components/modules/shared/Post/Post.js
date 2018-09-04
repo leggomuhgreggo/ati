@@ -3,10 +3,11 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
-import { PostDetails, PostLabel } from "components/modules";
+import { PostLabel } from "components/modules";
 import { Image } from "components/primitives";
 import PostTitle from "../PostTitle";
-// import PostImage from "../PostImage";
+
+import type { RNW$Styles } from "react-native";
 
 import type { Category } from "components/modules";
 
@@ -22,14 +23,17 @@ const POST_TYPE = {
 };
 
 type Props = {
+  link: string,
+  children: any,
   category: Category,
   title: string,
+  categoryName: string,
   categoryColor: string,
   imageSrc?: string,
-  containerStyle?: any,
+  containerStyle?: RNW$Styles,
   detailsOffset?: number,
-  layoutVariant?: $values<typeof POST_LAYOUT_VARIANT>,
-  postType?: $values<typeof POST_TYPE>,
+  layoutVariant?: $Values<POST_LAYOUT_VARIANT>,
+  postType?: $Values<POST_TYPE>,
   imageWidth?: number,
   imageHeight?: number,
 };
@@ -105,7 +109,7 @@ class Post extends PureComponent<Props> {
 
           {this.showOverlay() && <ContrastOverlay />}
 
-          <PostDetails style={this.getDetailsStyles()}>
+          <View style={[styles.detailsWrap, this.getDetailsStyles()]}>
             <PostLabel
               style={[styles.postLabel]}
               categoryColor={categoryColor}
@@ -113,7 +117,7 @@ class Post extends PureComponent<Props> {
               fill={layoutVariant === POST_LAYOUT_VARIANT.OVERLAY}
             />
             <PostTitle title={title} style={this.getTitleStyles()} />
-          </PostDetails>
+          </View>
           {children}
         </View>
 
@@ -126,6 +130,10 @@ class Post extends PureComponent<Props> {
 export default Post;
 
 const styles = StyleSheet.create({
+  detailsWrap: {
+    position: "relative",
+    width: "100%",
+  },
   postBox: {
     width: "100%",
     flex: 1,

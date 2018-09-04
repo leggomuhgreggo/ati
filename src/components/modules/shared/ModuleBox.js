@@ -7,7 +7,7 @@ import elevation from "elevation.js";
 import { Pattern } from "components/modules";
 
 import type { CategoryColors } from "components/types";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { RNW$Styles } from "react-native";
 import type { Node } from "react";
 
 const OFFSET = {
@@ -16,15 +16,14 @@ const OFFSET = {
 };
 
 type Props = {
-  style?: StyleObj,
+  style?: RNW$Styles,
   children: Node,
   patternColor: CategoryColors,
-  offsetDirection?: OFFSET.LEFT | OFFSET.RIGHT,
+  offsetDirection?: $Values<OFFSET>,
 };
 
 class ModuleBox extends PureComponent<Props> {
   static defaultProps = {
-    style: {},
     offsetDirection: OFFSET.LEFT,
   };
 

@@ -7,9 +7,11 @@ import { Text } from "components/primitives";
 import { Responsive } from "components/utils";
 import { BREAKPOINTS } from "constants/index.js";
 
+import type { RNW$Styles } from "react-native";
+
 type TitleProps = {
   title: string,
-  style: {},
+  style?: RNW$Styles,
 };
 
 class PostTitle extends PureComponent<TitleProps> {

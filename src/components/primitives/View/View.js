@@ -4,13 +4,13 @@ import React, { PureComponent } from "react";
 import { View as RNView, StyleSheet } from "react-native";
 
 import type { Node } from "react";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { RNW$Styles } from "react-native";
 
 type Direction = { row?: boolean } | { col?: boolean };
 // type ContentPositioning = { centerX?: boolean } | { centerY?: boolean } | { center?: boolean };
 
 type Props = {
-  style?: StyleObj,
+  style?: RNW$Styles,
   spacer?: number,
   children: Node,
 } & Direction;

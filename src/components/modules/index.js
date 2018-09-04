@@ -4,7 +4,6 @@ export { default as Pattern } from "./shared/Pattern";
 export { default as MainPost } from "./shared/MainPost";
 export { default as OverlapScaffold } from "./shared/OverlapScaffold";
 export { default as PostLabel } from "./shared/PostLabel";
-export { default as PostDetails } from "./shared/PostDetails";
 export { default as PostTitle } from "./shared/PostTitle";
 export { default as PostImage } from "./shared/PostImage";
 export { default as Post } from "./shared/Post/Post";

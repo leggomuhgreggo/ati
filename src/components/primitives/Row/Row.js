@@ -4,10 +4,10 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import type { Node } from "react";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { RNW$Styles } from "react-native";
 
 type Props = {
-  style?: StyleObj,
+  style?: RNW$Styles,
   children: Node,
   rest: any,
 };

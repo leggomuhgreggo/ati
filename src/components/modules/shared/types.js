@@ -1,7 +1,7 @@
 import { CATEGORY_COLOR_MAP } from "constants/index";
 
 export type {
-  StyleObj,
+  RNW$Styles,
 } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
 
 export type Categories = $Keys<typeof CATEGORY_COLOR_MAP>;

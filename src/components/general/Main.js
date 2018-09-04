@@ -6,12 +6,12 @@ import { PAGE_SPACING } from "constants/index.js";
 
 import type { Node } from "react";
 
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { RNW$Styles } from "react-native";
 
 type Props = {
   children: Node,
-  contentContainerStyle?: StyleObj,
-  style?: StyleObj,
+  contentContainerStyle?: RNW$Styles,
+  style?: RNW$Styles,
 };
 
 type State = {
