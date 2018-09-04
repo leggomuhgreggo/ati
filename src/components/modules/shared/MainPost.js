@@ -93,7 +93,12 @@ class MainPost extends PureComponent<Props> {
                   <View>
                     <Text
                       aria-level="2"
-                      style={[styles.titleText, localFontStyles, fontStyles]}
+                      style={[
+                        styles.titleText,
+                        localFontStyles,
+                        fontStyles,
+                        center && { textAlign: "center" },
+                      ]}
                     >
                       {title}
                     </Text>
