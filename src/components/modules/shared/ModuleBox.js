@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import elevation from "elevation.js";
 import { Pattern } from "components/modules";
-import type { CategoryColors } from "components/types";
+
 import type { RNW$Styles } from "react-native";
 import type { Node } from "react";
 
