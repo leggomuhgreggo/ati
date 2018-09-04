@@ -6,14 +6,18 @@ import { View } from "react-native";
 import { Container, Row } from "components/primitives";
 import { MainPost, Post, ModuleBox, OverlapScaffold } from "components/modules";
 import { Responsive } from "components/utils";
-import { BREAKPOINTS, THEME_SPACING, CONTAINER_PADDING } from "constants/index";
+import { BREAKPOINTS, CONTAINER_PADDING } from "constants/index";
 
 import TitleRow from "./TitleRow";
-
 import Posts from "./Posts";
 
 type Props = {
   order: number,
+  sectionTitle: string,
+  sectionLink: string,
+  sectionColor: string,
+  titleTemplate: string,
+  posts: any,
 };
 
 class TagPostsSingleColumn extends PureComponent<Props> {
@@ -21,64 +25,43 @@ class TagPostsSingleColumn extends PureComponent<Props> {
     order: 1,
   };
 
-  renderMobile = width => {
-    const {
-      posts: [mainPost, ...secondaryPosts],
-    } = this.props;
-    return (
-      <OverlapScaffold containerPadding={CONTAINER_PADDING.MOBILE} overlap={3}>
-        <OverlapScaffold.Main>
-          <MainPost imageWidth={1009} imageHeight={545} center {...mainPost} />
-        </OverlapScaffold.Main>
-
-        <OverlapScaffold.Overlap>
-          <ModuleBox
-            offsetDirection="right"
-            patternColor={mainPost.categoryColor}
-          >
-            {secondaryPosts.map((post, index) => (
-              <View key={post.id} style={index === 0 ? {} : { marginTop: 40 }}>
-                <Post {...post} />
-              </View>
-            ))}
-          </ModuleBox>
-        </OverlapScaffold.Overlap>
-      </OverlapScaffold>
-    );
-  };
-  renderDesktop = () => {
-    const {
-      order,
-      sectionColor,
-      posts: [mainPost, ...secondaryPosts],
-    } = this.props;
-    return (
-      <OverlapScaffold containerPadding={45} overlap={30}>
-        <OverlapScaffold.Main>
-          <MainPost center {...mainPost} />
-        </OverlapScaffold.Main>
-
-        <OverlapScaffold.Overlap>
-          <ModuleBox offsetDirection="right" patternColor={sectionColor}>
-            <Posts order={order} posts={secondaryPosts} />
-          </ModuleBox>
-        </OverlapScaffold.Overlap>
-      </OverlapScaffold>
-    );
-  };
-
   render() {
-    const { sectionTitle, sectionLink, sectionColor } = this.props;
+    const {
+      sectionTitle,
+      sectionLink,
+      sectionColor,
+      titleTemplate,
+      order,
+      posts: [mainPost, ...secondaryPosts],
+    } = this.props;
     return (
       <Responsive>
-        {({ minWidth, width, getLock }) => {
+        {({ minWidth }) => {
           const isDesktop = minWidth(BREAKPOINTS.LG);
-          const rowMargin = isDesktop
-            ? getLock({
-                min: THEME_SPACING.SECTION_SPACING.SM,
-                max: THEME_SPACING.SECTION_SPACING.LG,
-              })
-            : 60;
+
+          const scaffoldProps = isDesktop
+            ? {
+                containerPadding: 45,
+                overlap: 30,
+              }
+            : {
+                containerPadding: CONTAINER_PADDING.MOBILE,
+                overlap: 3,
+              };
+
+          const ResponsivePosts = () =>
+            isDesktop ? (
+              <Posts order={order} posts={secondaryPosts} />
+            ) : (
+              secondaryPosts.map((post, index) => (
+                <View
+                  key={post.id}
+                  style={index === 0 ? {} : { marginTop: 40 }}
+                >
+                  <Post {...post} />
+                </View>
+              ))
+            );
 
           return (
             <Container type="content">
@@ -86,10 +69,30 @@ class TagPostsSingleColumn extends PureComponent<Props> {
                 patternColor={sectionColor}
                 link={sectionLink}
                 title={sectionTitle}
+                titleTemplate={titleTemplate}
+                isDesktop={isDesktop}
               />
 
-              <Row style={{ marginTop: rowMargin }}>
-                {isDesktop ? this.renderDesktop() : this.renderMobile()}
+              <Row style={{ marginTop: 60 }}>
+                <OverlapScaffold {...scaffoldProps}>
+                  <OverlapScaffold.Main>
+                    <MainPost
+                      imageWidth={1009}
+                      imageHeight={545}
+                      center
+                      {...mainPost}
+                    />
+                  </OverlapScaffold.Main>
+
+                  <OverlapScaffold.Overlap>
+                    <ModuleBox
+                      offsetDirection="right"
+                      patternColor={sectionColor}
+                    >
+                      <ResponsivePosts />
+                    </ModuleBox>
+                  </OverlapScaffold.Overlap>
+                </OverlapScaffold>
               </Row>
             </Container>
           );
