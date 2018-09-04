@@ -7,21 +7,13 @@ import { Container } from "components/primitives";
 import { ModuleBox, MainPost, OverlapScaffold } from "components/modules";
 import { Responsive } from "components/utils";
 
-import Post from "./Post";
+import PostList from "./PostList";
 
 import { BREAKPOINTS, CONTAINER_PADDING } from "constants/index";
-class MostRecent extends PureComponent<Props> {
-  render() {
-    return (
-      <Responsive>
-        {({ minWidth }) => {
-          const isDesktop = minWidth(BREAKPOINTS.LG);
-          return isDesktop ? this.renderDesktop() : this.renderMobile();
-        }}
-      </Responsive>
-    );
-  }
 
+type Props = { posts: any };
+
+class MostRecent extends PureComponent<Props> {
   renderMobile = () => {
     const {
       posts: [mainPost, ...secondaryPosts],
@@ -35,11 +27,7 @@ class MostRecent extends PureComponent<Props> {
 
         <OverlapScaffold.Overlap>
           <ModuleBox patternColor={mainPost.categoryColor}>
-            {secondaryPosts.map((post, index) => (
-              <View key={post.id} style={index === 0 ? {} : { marginTop: 25 }}>
-                <Post {...post} />
-              </View>
-            ))}
+            <PostList posts={secondaryPosts} isDesktop={false} />
           </ModuleBox>
         </OverlapScaffold.Overlap>
       </OverlapScaffold>
@@ -58,22 +46,24 @@ class MostRecent extends PureComponent<Props> {
               <MainPost imageWidth={700} imageHeight={545} {...mainPost} />
             </View>
             <View style={styles.right}>
-              <View style={{ justifyContent: "space-between" }}>
-                {secondaryPosts.map((post, index) => (
-                  <View
-                    key={post.id}
-                    style={index === 0 ? {} : { marginTop: 25 }}
-                  >
-                    <Post {...post} />
-                  </View>
-                ))}
-              </View>
+              <PostList posts={secondaryPosts} isDesktop={true} />
             </View>
           </View>
         </ModuleBox>
       </Container>
     );
   };
+
+  render() {
+    return (
+      <Responsive>
+        {({ minWidth }) => {
+          const isDesktop = minWidth(BREAKPOINTS.LG);
+          return isDesktop ? this.renderDesktop() : this.renderMobile();
+        }}
+      </Responsive>
+    );
+  }
 }
 
 export default MostRecent;
