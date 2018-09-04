@@ -13,7 +13,7 @@ type Props = {
   title: string,
 };
 
-class ModuleTitle extends PureComponent<Props> {
+class TitleSquare extends PureComponent<Props> {
   render() {
     const { patternColor } = this.props;
     return (
@@ -41,7 +41,7 @@ class ModuleTitle extends PureComponent<Props> {
   }
 }
 
-export default ModuleTitle;
+export default TitleSquare;
 
 const styles = StyleSheet.create({
   colorBackground: {

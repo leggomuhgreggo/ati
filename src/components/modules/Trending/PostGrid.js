@@ -7,9 +7,15 @@ import { Post } from "components/modules";
 
 const COMPONENT_TYPES = {
   MD: props => (
-    <Post key={props.id} imageWidth={286} imageHeight={286} {...props} />
+    <Post
+      layoutVariant="medium"
+      key={props.id}
+      imageWidth={286}
+      imageHeight={286}
+      {...props}
+    />
   ),
-  SM: props => <Post key={props.id} layoutVariant="reduced" {...props} />,
+  SM: props => <Post layoutVariant="reduced" key={props.id} {...props} />,
 };
 
 type Props = {
