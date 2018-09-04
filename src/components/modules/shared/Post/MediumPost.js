@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { PostImage } from "components/modules";
@@ -24,13 +24,19 @@ class MediumPost extends PureComponent<Props> {
   render() {
     const { imageSrc, ...rest } = this.props;
     return (
-      <View>
+      <Fragment>
         <PostImage width={300} height={250} imageSrc={imageSrc} />
-        <View style={{ marginTop: 15, justifyContent: "space-between" }}>
+        <View
+          style={{
+            marginTop: 15,
+            justifyContent: "space-between",
+            flexGrow: 1,
+          }}
+        >
           <SmallPost {...rest} />
           <View style={styles.postLine} />
         </View>
-      </View>
+      </Fragment>
     );
   }
 }
