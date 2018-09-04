@@ -9,6 +9,7 @@ import { BREAKPOINTS } from "constants/index.js";
 
 type TitleProps = {
   title: string,
+  style: {},
 };
 
 class PostTitle extends PureComponent<TitleProps> {
