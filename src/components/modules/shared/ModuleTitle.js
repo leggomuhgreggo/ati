@@ -2,12 +2,16 @@
 
 import React, { PureComponent } from "react";
 
-import { COLOR_MAP } from "constants/index";
+import { Text } from "components/primitives";
 import { ModuleBox } from "components/modules";
+import { COLOR_MAP } from "constants/index";
 
 type Props = {
-  patternColor: $Values<typeof COLOR_MAP>,
   children: string,
+  patternColor: $Values<typeof COLOR_MAP>,
+  style: any,
+  title: string,
+  template: string,
 };
 
 class ModuleTitle extends PureComponent<Props> {
@@ -20,14 +24,27 @@ class ModuleTitle extends PureComponent<Props> {
     borderTopWidth: 2,
   });
 
+  getTextStyles = () => {
+    const { isDesktop } = this.props;
+    return isDesktop
+      ? { fontSize: 40, lineHeight: 44 }
+      : { fontSize: 38, lineHeight: 36 };
+  };
+
   render() {
-    const { patternColor, style } = this.props;
+    const { patternColor, style, children, title } = this.props;
     return (
       <ModuleBox
         patternColor={patternColor}
         style={[this.getBorderTop(), style]}
       >
-        {this.props.children}
+        {children ? (
+          children
+        ) : (
+          <Text serif style={[{ fontWeight: "600" }, this.getTextStyles()]}>
+            {title}
+          </Text>
+        )}
       </ModuleBox>
     );
   }
