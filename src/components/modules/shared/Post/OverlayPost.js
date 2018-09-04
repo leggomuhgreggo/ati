@@ -17,6 +17,11 @@ type Props = {
   imageWidth: number,
   imageHeight: number,
   isDesktop: boolean,
+  fontStyles: any,
+  containerPadding: string,
+  title: string,
+  categoryName: string,
+  categoryColor: string,
 };
 class OverlayPost extends PureComponent<Props> {
   static defaultProps = {

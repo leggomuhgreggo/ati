@@ -7,10 +7,6 @@ import SmallPost from "./SmallPost";
 import MediumPost from "./MediumPost";
 import OverlayPost from "./OverlayPost";
 
-import type { RNW$Styles } from "react-native";
-
-import type { Category } from "components/modules";
-
 const LAYOUT_VARIANT = {
   REDUCED: "reduced",
   MEDIUM: "medium",
@@ -51,5 +47,3 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
 });
-
-const Line = () => <View style={styles.postLine} />;

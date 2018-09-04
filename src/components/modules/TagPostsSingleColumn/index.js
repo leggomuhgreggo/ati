@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
 import { View } from "react-native";
 
 import { Container, Row } from "components/primitives";
-import { MainPost, Post, ModuleBox, OverlapScaffold } from "components/modules";
+import { Post, ModuleBox, OverlapScaffold } from "components/modules";
 import { Responsive } from "components/utils";
 import { BREAKPOINTS, CONTAINER_PADDING } from "constants/index";
 
@@ -73,7 +73,9 @@ class TagPostsSingleColumn extends PureComponent<Props> {
               <Row style={{ marginTop: isDesktop ? 60 : 30 }}>
                 <OverlapScaffold {...this.scaffoldProps(isDesktop)}>
                   <OverlapScaffold.Main>
-                    <MainPost
+                    <Post
+                      layoutVariant="overlay"
+                      isDesktop={isDesktop}
                       center
                       {...this.MainPostImageProps(isDesktop)}
                       {...mainPost}

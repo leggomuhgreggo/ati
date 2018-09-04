@@ -4,7 +4,7 @@ import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { Container } from "components/primitives";
-import { ModuleBox, MainPost, OverlapScaffold } from "components/modules";
+import { Post, ModuleBox, OverlapScaffold } from "components/modules";
 import { Responsive } from "components/utils";
 
 import PostList from "./PostList";
@@ -22,7 +22,7 @@ class MostRecent extends PureComponent<Props> {
     return (
       <OverlapScaffold containerPadding={CONTAINER_PADDING.MOBILE} overlap={3}>
         <OverlapScaffold.Main>
-          <MainPost {...mainPost} />
+          <Post layoutVariant="overlay" {...mainPost} />
         </OverlapScaffold.Main>
 
         <OverlapScaffold.Overlap>
@@ -43,7 +43,13 @@ class MostRecent extends PureComponent<Props> {
         <ModuleBox patternColor={mainPost.categoryColor}>
           <View style={styles.wrap}>
             <View style={styles.left}>
-              <MainPost imageWidth={700} imageHeight={545} {...mainPost} />
+              <Post
+                layoutVariant="overlay"
+                isDesktop={true}
+                imageWidth={700}
+                imageHeight={545}
+                {...mainPost}
+              />
             </View>
             <View style={styles.right}>
               <PostList posts={secondaryPosts} isDesktop={true} />
