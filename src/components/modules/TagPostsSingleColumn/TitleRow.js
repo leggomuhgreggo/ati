@@ -29,9 +29,10 @@ class TitleRow extends PureComponent<Props> {
           style={{
             marginTop: SECTION_SPACERS[SECTION_SPACING_VARIANTS.LARGE],
             alignItems: "center",
+            paddingHorizontal: 40,
           }}
         >
-          <View>{this.renderTitle()}</View>
+          {this.renderTitle()}
         </Row>
       </Fragment>
     );
@@ -51,12 +52,12 @@ class TitleRow extends PureComponent<Props> {
   renderTitle = () => {
     const { link, title, patternColor, titleTemplate } = this.props;
     return (
-      <View accessibilityRole="link" href={link}>
+      <View style={{ width: "100%" }} accessibilityRole="link" href={link}>
         <ModuleTitle
           title={title}
           template={titleTemplate}
           patternColor={patternColor}
-          style={{ height: 110, justifyContent: "center" }}
+          style={{ minHeight: 110, justifyContent: "center" }}
         />
       </View>
     );

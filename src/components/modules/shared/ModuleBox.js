@@ -3,12 +3,15 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import elevation from "elevation.js";
-
 import { Pattern } from "components/modules";
-
 import type { CategoryColors } from "components/types";
 import type { RNW$Styles } from "react-native";
 import type { Node } from "react";
+
+/**
+ * To Do
+ * padding should be 22 on mobile
+ */
 
 const OFFSET = {
   LEFT: "left",
