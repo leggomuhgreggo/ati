@@ -82,9 +82,9 @@ export const data = [
     typeVariant: 2,
     ...getSectionData(5),
   },
-  {
-    id: casual.uuid,
-    type: SECTION_TYPES.TRENDING,
-    ...getSectionData(5),
-  },
+  // {
+  //   id: casual.uuid,
+  //   type: SECTION_TYPES.TRENDING,
+  //   ...getSectionData(5),
+  // },
 ];

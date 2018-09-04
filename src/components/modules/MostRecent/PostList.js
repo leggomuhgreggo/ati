@@ -7,7 +7,7 @@ type Props = {
   isDesktop: boolean,
 };
 
-class PostList extends PureComponent {
+class PostList extends PureComponent<Props> {
   render() {
     const { posts, isDesktop } = this.props;
 

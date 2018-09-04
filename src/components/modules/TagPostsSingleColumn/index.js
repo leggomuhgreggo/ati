@@ -1,7 +1,6 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { View } from "react-native";
 
 import { Container, Row } from "components/primitives";
 import { Post, ModuleBox, OverlapScaffold } from "components/modules";

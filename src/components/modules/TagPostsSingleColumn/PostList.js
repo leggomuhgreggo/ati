@@ -6,7 +6,7 @@ type Props = {
   posts: any,
 };
 
-class PostList extends PureComponent {
+class PostList extends PureComponent<Props> {
   render() {
     const { posts } = this.props;
 

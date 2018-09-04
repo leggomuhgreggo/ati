@@ -5,7 +5,6 @@ import { View, StyleSheet } from "react-native";
 
 import { Text } from "components/primitives";
 import { PostImage, PostLabel } from "components/modules";
-import { BREAKPOINTS, IMG_DIMS } from "constants/index";
 
 import type { RNW$Styles } from "react-native";
 

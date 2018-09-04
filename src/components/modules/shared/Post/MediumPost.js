@@ -4,7 +4,6 @@ import React, { PureComponent, Fragment } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { PostImage } from "components/modules";
-import { Text } from "components/primitives";
 import SmallPost from "./SmallPost";
 
 type Props = {
