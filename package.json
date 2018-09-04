@@ -1,6 +1,5 @@
 {
   "name": "ati",
-  "main": "./src/index.expo.js",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,14 +15,8 @@
     "flow:coverage": "flow coverage",
     "flow:report": "flow-coverage-report -i 'src/**/*.js' -x 'src/test/**' -x 'src/**/*.test.js' -x 'src/**/*.spec.js' -t html -t json -t text --threshold 90 -o ./reports/flow/",
     "build": "react-scripts build",
-    "build:report": "source-map-explorer  --html ./build/static/js/main.* > ./reports/bundle-report.html",
-    "debugger": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081'",
     "eject:cra-dont-do": "react-scripts eject",
-    "cz": "git-cz",
-    "appr": "appr",
-    "terraform": "cd ./terrafuzz && sudo ./terrafuzz.sh apply && cd ..",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "terraform": "cd ./terrafuzz && sudo ./terrafuzz.sh apply && cd .."
   },
   "dependencies": {
     "nuka-carousel": "^4.3.4",

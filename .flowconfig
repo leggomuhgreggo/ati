@@ -1,4 +1,2 @@
-
 [options]
-# Point react-native (alias in babel) to react-native-web for flow support
-module.name_mapper='^react-native$' -> '<PROJECT_ROOT>/node_modules/react-native-web'[options] # Poin
+module.system.node.resolve_dirname=src
