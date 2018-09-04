@@ -9,7 +9,8 @@ import { Responsive } from "components/utils";
 import { BREAKPOINTS, CONTAINER_PADDING } from "constants/index";
 
 import TitleRow from "./TitleRow";
-import Posts from "./Posts";
+import PostList from "./PostList";
+import PostGrid from "./PostGrid";
 
 type Props = {
   order: number,
@@ -24,7 +25,27 @@ class TagPostsSingleColumn extends PureComponent<Props> {
   static defaultProps = {
     order: 1,
   };
+  scaffoldProps = (isDesktop: boolean) =>
+    isDesktop
+      ? {
+          containerPadding: 45,
+          overlap: 30,
+        }
+      : {
+          containerPadding: CONTAINER_PADDING.MOBILE,
+          overlap: 3,
+        };
 
+  MainPostImageProps = (isDesktop: boolean) =>
+    isDesktop
+      ? {
+          imageWidth: 1200,
+          imageHeight: 627,
+        }
+      : {
+          imageWidth: 375,
+          imageHeight: 250,
+        };
   render() {
     const {
       sectionTitle,
@@ -39,30 +60,6 @@ class TagPostsSingleColumn extends PureComponent<Props> {
         {({ minWidth }) => {
           const isDesktop = minWidth(BREAKPOINTS.LG);
 
-          const scaffoldProps = isDesktop
-            ? {
-                containerPadding: 45,
-                overlap: 30,
-              }
-            : {
-                containerPadding: CONTAINER_PADDING.MOBILE,
-                overlap: 3,
-              };
-
-          const ResponsivePosts = () =>
-            isDesktop ? (
-              <Posts order={order} posts={secondaryPosts} />
-            ) : (
-              secondaryPosts.map((post, index) => (
-                <View
-                  key={post.id}
-                  style={index === 0 ? {} : { marginTop: 40 }}
-                >
-                  <Post {...post} />
-                </View>
-              ))
-            );
-
           return (
             <Container type="content">
               <TitleRow
@@ -73,13 +70,12 @@ class TagPostsSingleColumn extends PureComponent<Props> {
                 isDesktop={isDesktop}
               />
 
-              <Row style={{ marginTop: 60 }}>
-                <OverlapScaffold {...scaffoldProps}>
+              <Row style={{ marginTop: isDesktop ? 60 : 30 }}>
+                <OverlapScaffold {...this.scaffoldProps(isDesktop)}>
                   <OverlapScaffold.Main>
                     <MainPost
-                      imageWidth={1009}
-                      imageHeight={545}
                       center
+                      {...this.MainPostImageProps(isDesktop)}
                       {...mainPost}
                     />
                   </OverlapScaffold.Main>
@@ -89,7 +85,11 @@ class TagPostsSingleColumn extends PureComponent<Props> {
                       offsetDirection="right"
                       patternColor={sectionColor}
                     >
-                      <ResponsivePosts />
+                      {isDesktop ? (
+                        <PostGrid order={order} posts={secondaryPosts} />
+                      ) : (
+                        <PostList posts={secondaryPosts} />
+                      )}
                     </ModuleBox>
                   </OverlapScaffold.Overlap>
                 </OverlapScaffold>

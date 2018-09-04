@@ -26,7 +26,7 @@ type Props = {
   order: 1 | 2,
 };
 
-class Posts extends PureComponent<Props> {
+class PostGird extends PureComponent<Props> {
   static defaultProps = {
     order: 1,
   };
@@ -47,4 +47,4 @@ class Posts extends PureComponent<Props> {
   }
 }
 
-export default Posts;
+export default PostGird;

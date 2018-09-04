@@ -15,7 +15,7 @@ export const POST_COMPONENTS = {
       {...props}
     />
   ),
-  MD: props => <Post imageWidth={300} imageHeight={250} {...props} />,
+  MD: props => <Post layoutVariant="medium" {...props} />,
 };
 
 export const GRID_COMPONENTS = {
