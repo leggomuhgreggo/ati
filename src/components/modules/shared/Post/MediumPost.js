@@ -13,18 +13,26 @@ type Props = {
   link: string,
   isDesktop: boolean,
   imageSrc: string,
+  imageWidth: number,
+  imageHeight: number,
 };
 
 class MediumPost extends PureComponent<Props> {
   static defaultProps = {
     style: {},
+    imageWidth: 300,
+    imageHeight: 250,
   };
 
   render() {
-    const { imageSrc, ...rest } = this.props;
+    const { imageSrc, imageHeight, imageWidth, ...rest } = this.props;
     return (
       <Fragment>
-        <PostImage width={300} height={250} imageSrc={imageSrc} />
+        <PostImage
+          width={imageWidth}
+          height={imageHeight}
+          imageSrc={imageSrc}
+        />
         <View
           style={{
             marginTop: 15,
