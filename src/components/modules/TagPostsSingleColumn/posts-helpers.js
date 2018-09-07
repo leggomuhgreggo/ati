@@ -3,11 +3,12 @@
 import React from "react";
 
 import { Mrec } from "components/ads";
-import { MainPost, Post } from "components/modules";
+import { Post } from "components/modules";
 
 export const POST_COMPONENTS = {
   LG: props => (
-    <MainPost
+    <Post
+      layoutVariant="overlay"
       fontStyles={{ fontSize: 24, lineHeight: 30 }}
       imageWidth={735}
       imageHeight={430}
@@ -15,7 +16,7 @@ export const POST_COMPONENTS = {
       {...props}
     />
   ),
-  MD: props => <Post imageWidth={300} imageHeight={250} {...props} />,
+  MD: props => <Post layoutVariant="medium" {...props} />,
 };
 
 export const GRID_COMPONENTS = {

@@ -18,7 +18,7 @@ class PostLabel extends PureComponent<Props> {
     return fill ? (
       <View
         style={{
-          height: 20,
+          height: 25,
           paddingHorizontal: 6,
           alignItems: "center",
           justifyContent: "center",
@@ -28,7 +28,8 @@ class PostLabel extends PureComponent<Props> {
         <Text
           style={{
             fontSize: 11,
-            lineHeight: 1,
+            lineHeight: 11,
+            letterSpacing: 1,
             color: "white",
           }}
         >
@@ -39,8 +40,9 @@ class PostLabel extends PureComponent<Props> {
       <View>
         <Text
           style={{
-            fontSize: 12,
+            fontSize: 11,
             fontWeight: "600",
+            letterSpacing: 1,
             color: categoryColor,
           }}
         >

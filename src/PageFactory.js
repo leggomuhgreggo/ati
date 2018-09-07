@@ -26,8 +26,21 @@ export const SECTION_TYPE_COMPONENT_MAP = {
   [SECTION_TYPES.TRENDING]: Trending,
 };
 
-const getSectionID = ({ type, id }) => `${type}-${id}`;
-class PageSections extends PureComponent {
+type SectionType = $Values<SECTION_TYPES>;
+
+const getSectionID = ({
+  type,
+  id,
+}: {
+  type: SectionType,
+  id: string,
+}): string => `${type}-${id}`;
+
+type Props = {
+  data: any,
+};
+
+class PageSections extends PureComponent<Props> {
   render() {
     const { data } = this.props;
     return (
@@ -56,23 +69,28 @@ class PageSections extends PureComponent {
 
 export default PageSections;
 
-export const isSmallType = ({ type }) => SMALL_SECTIONS.includes(type);
+type Sections = {
+  type: SectionType,
+};
+export const isSmallType = ({ type }: Sections): boolean =>
+  SMALL_SECTIONS.includes(type);
 
 export const getSequenceAwareSpacingVariant = (
-  currentSection,
-  index,
-  array,
+  currentSection: SectionType,
+  index: number,
+  array: Array<any>,
 ) => {
   if (index === 0) {
     return SECTION_SPACING_VARIANTS.NONE;
   }
 
-  const prevSection = array[index - 1];
+  const prevSection: SectionType = array[index - 1];
 
   return isSmallType(currentSection) || isSmallType(prevSection)
     ? SECTION_SPACING_VARIANTS.SMALL
     : SECTION_SPACING_VARIANTS.LARGE;
 };
 
-export const getSectionComponentNameBySectionType = sectionType =>
-  SECTION_TYPE_COMPONENT_MAP[sectionType];
+export const getSectionComponentNameBySectionType = (
+  sectionType: SectionType,
+) => SECTION_TYPE_COMPONENT_MAP[sectionType];

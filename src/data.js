@@ -87,4 +87,8 @@ export const data = [
     type: SECTION_TYPES.TRENDING,
     ...getSectionData(5),
   },
+  {
+    id: casual.uuid,
+    type: SECTION_TYPES.AD,
+  },
 ];

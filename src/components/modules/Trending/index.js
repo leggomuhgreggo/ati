@@ -4,14 +4,36 @@ import React, { PureComponent } from "react";
 import { View } from "react-native";
 
 import { Container } from "components/primitives";
+import { ModuleBox } from "components/modules";
 
-import Posts from "./Posts";
+import PostList from "./PostList";
+import PostGrid from "./PostGrid";
+
 import TitleSquare from "./TitleSquare";
 
-type Props = {};
+import { Responsive } from "components/utils";
+
+import { BREAKPOINTS } from "constants/index";
+
+type Props = { posts: any, sectionColor: string };
 
 class Trending extends PureComponent<Props> {
-  render() {
+  renderMobile = () => {
+    const { posts, sectionColor } = this.props;
+    return (
+      <Container type="content" style={{ padding: 15 }}>
+        <View style={{ paddingHorizontal: 40 }}>
+          <TitleSquare title="Trending" patternColor={sectionColor} />
+        </View>
+        <View style={{ marginTop: 30 }}>
+          <ModuleBox>
+            <PostList posts={posts} isDesktop={false} />
+          </ModuleBox>
+        </View>
+      </Container>
+    );
+  };
+  renderDesktop = () => {
     const { posts, sectionColor } = this.props;
     return (
       <Container type="content">
@@ -26,10 +48,20 @@ class Trending extends PureComponent<Props> {
           </View>
 
           <View style={{ width: "75%", padding: 15 }}>
-            <Posts posts={posts} />
+            <PostGrid posts={posts} />
           </View>
         </View>
       </Container>
+    );
+  };
+  render() {
+    return (
+      <Responsive>
+        {({ minWidth }) => {
+          const isDesktop = minWidth(BREAKPOINTS.LG);
+          return isDesktop ? this.renderDesktop() : this.renderMobile();
+        }}
+      </Responsive>
     );
   }
 }

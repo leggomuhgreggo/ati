@@ -3,12 +3,12 @@
 import React, { PureComponent } from "react";
 import { Text as RNText, StyleSheet } from "react-native";
 
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { RNW$Styles } from "react-native";
 
 import { FONT_FAMILIES, COLOR_MAP } from "constants/index";
 
 type Props = {
-  style?: StyleObj,
+  style?: RNW$Styles,
   serif?: boolean,
   sansSerif?: boolean,
 };

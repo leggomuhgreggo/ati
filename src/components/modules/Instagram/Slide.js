@@ -6,7 +6,7 @@ const SLIDE_SIZE = 306;
 
 class InstagramSlide extends PureComponent {
   render() {
-    const { imageSrc, title, isDesktop } = this.props;
+    const { imageSrc, title, link, isDesktop } = this.props;
 
     const fontStyles = isDesktop
       ? {
@@ -18,7 +18,7 @@ class InstagramSlide extends PureComponent {
           lineHeight: 20,
         };
     return (
-      <View style={styles.wrap}>
+      <View style={[styles.wrap]} accessibilityRole="link" href={link}>
         <Image
           style={styles.image}
           source={{

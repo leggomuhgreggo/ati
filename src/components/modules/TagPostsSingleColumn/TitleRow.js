@@ -6,26 +6,20 @@ import { View, StyleSheet } from "react-native";
 import { ModuleTitle } from "components/modules";
 import { ResponsiveLeaderboard } from "components/ads";
 
-import { Text, Row } from "components/primitives";
+import { Row } from "components/primitives";
 
-import { Responsive } from "components/utils";
-
-import {
-  BREAKPOINTS,
-  SECTION_SPACERS,
-  SECTION_SPACING_VARIANTS,
-} from "constants/index";
-// import createLockFunction from "utils/lock";
+import { SECTION_SPACERS, SECTION_SPACING_VARIANTS } from "constants/index";
 
 type Props = {
   patternColor: string,
   title: string,
   link: string,
+  titleTemplate: string,
+  isDesktop: boolean,
 };
 
 class TitleRow extends PureComponent<Props> {
-  renderMobile = width => {
-    const { patternColor, title, link } = this.props;
+  renderMobile = () => {
     return (
       <Fragment>
         <Row style={{ alignItems: "center" }}>
@@ -35,48 +29,42 @@ class TitleRow extends PureComponent<Props> {
           style={{
             marginTop: SECTION_SPACERS[SECTION_SPACING_VARIANTS.LARGE],
             alignItems: "center",
+            paddingHorizontal: 40,
           }}
         >
-          <View accessibilityRole="link" href={link}>
-            <ModuleTitle
-              style={{ height: 110, justifyContent: "center", width: 300 }}
-              patternColor={patternColor}
-            >
-              <Text>{title}</Text>
-            </ModuleTitle>
-          </View>
+          {this.renderTitle()}
         </Row>
       </Fragment>
     );
   };
   renderDesktop = () => {
-    const { patternColor, title, link } = this.props;
     return (
       <View style={styles.titleRow}>
-        <View style={styles.titleWrap} accessibilityRole="link" href={link}>
-          <ModuleTitle
-            style={{ height: 110, justifyContent: "center" }}
-            patternColor={patternColor}
-          >
-            <Text>{title}</Text>
-          </ModuleTitle>
-        </View>
+        <View style={styles.titleWrap}>{this.renderTitle()}</View>
 
-        <View>
+        <View style={{ flexShrink: 0 }}>
           <ResponsiveLeaderboard />
         </View>
       </View>
     );
   };
-  render() {
+
+  renderTitle = () => {
+    const { link, title, patternColor, titleTemplate } = this.props;
     return (
-      <Responsive>
-        {({ minWidth, width }) => {
-          const isDesktop = minWidth(BREAKPOINTS.LG);
-          return isDesktop ? this.renderDesktop() : this.renderMobile(width);
-        }}
-      </Responsive>
+      <View style={{ width: "100%" }} accessibilityRole="link" href={link}>
+        <ModuleTitle
+          title={title}
+          template={titleTemplate}
+          patternColor={patternColor}
+          style={{ minHeight: 110, justifyContent: "center" }}
+        />
+      </View>
     );
+  };
+  render() {
+    const { isDesktop } = this.props;
+    return isDesktop ? this.renderDesktop() : this.renderMobile();
   }
 }
 
@@ -86,9 +74,12 @@ const styles = StyleSheet.create({
   titleRow: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
   },
   titleWrap: {
     flexGrow: 1,
+    flexShrink: 1,
     marginRight: 30,
   },
 });

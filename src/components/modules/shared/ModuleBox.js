@@ -3,12 +3,15 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import elevation from "elevation.js";
-
 import { Pattern } from "components/modules";
 
-import type { CategoryColors } from "components/types";
-import type { StyleObj } from "react-native/Libraries/StyleSheet/StyleSheetTypes";
+import type { RNW$Styles } from "react-native";
 import type { Node } from "react";
+
+/**
+ * To Do
+ * padding should be 22 on mobile
+ */
 
 const OFFSET = {
   LEFT: "left",
@@ -16,15 +19,14 @@ const OFFSET = {
 };
 
 type Props = {
-  style?: StyleObj,
+  style?: RNW$Styles,
   children: Node,
   patternColor: CategoryColors,
-  offsetDirection?: OFFSET.LEFT | OFFSET.RIGHT,
+  offsetDirection?: $Values<OFFSET>,
 };
 
 class ModuleBox extends PureComponent<Props> {
   static defaultProps = {
-    style: {},
     offsetDirection: OFFSET.LEFT,
   };
 
@@ -48,6 +50,7 @@ const styles = StyleSheet.create({
     ...elevation(1),
     padding: 30,
     width: "100%",
+    maxWidth: "100%",
     backgroundColor: "white",
   },
 });

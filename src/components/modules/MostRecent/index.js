@@ -4,24 +4,16 @@ import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { Container } from "components/primitives";
-import { ModuleBox, MainPost, OverlapScaffold } from "components/modules";
+import { Post, ModuleBox, OverlapScaffold } from "components/modules";
 import { Responsive } from "components/utils";
 
-import Post from "./Post";
+import PostList from "./PostList";
 
 import { BREAKPOINTS, CONTAINER_PADDING } from "constants/index";
-class MostRecent extends PureComponent<Props> {
-  render() {
-    return (
-      <Responsive>
-        {({ minWidth }) => {
-          const isDesktop = minWidth(BREAKPOINTS.LG);
-          return isDesktop ? this.renderDesktop() : this.renderMobile();
-        }}
-      </Responsive>
-    );
-  }
 
+type Props = { posts: any };
+
+class MostRecent extends PureComponent<Props> {
   renderMobile = () => {
     const {
       posts: [mainPost, ...secondaryPosts],
@@ -30,16 +22,12 @@ class MostRecent extends PureComponent<Props> {
     return (
       <OverlapScaffold containerPadding={CONTAINER_PADDING.MOBILE} overlap={3}>
         <OverlapScaffold.Main>
-          <MainPost {...mainPost} />
+          <Post layoutVariant="overlay" {...mainPost} />
         </OverlapScaffold.Main>
 
         <OverlapScaffold.Overlap>
           <ModuleBox patternColor={mainPost.categoryColor}>
-            {secondaryPosts.map((post, index) => (
-              <View key={post.id} style={index === 0 ? {} : { marginTop: 25 }}>
-                <Post {...post} />
-              </View>
-            ))}
+            <PostList posts={secondaryPosts} isDesktop={false} />
           </ModuleBox>
         </OverlapScaffold.Overlap>
       </OverlapScaffold>
@@ -55,25 +43,33 @@ class MostRecent extends PureComponent<Props> {
         <ModuleBox patternColor={mainPost.categoryColor}>
           <View style={styles.wrap}>
             <View style={styles.left}>
-              <MainPost imageWidth={700} imageHeight={545} {...mainPost} />
+              <Post
+                layoutVariant="overlay"
+                isDesktop={true}
+                imageWidth={700}
+                imageHeight={545}
+                {...mainPost}
+              />
             </View>
             <View style={styles.right}>
-              <View style={{ justifyContent: "space-between" }}>
-                {secondaryPosts.map((post, index) => (
-                  <View
-                    key={post.id}
-                    style={index === 0 ? {} : { marginTop: 25 }}
-                  >
-                    <Post {...post} />
-                  </View>
-                ))}
-              </View>
+              <PostList posts={secondaryPosts} isDesktop={true} />
             </View>
           </View>
         </ModuleBox>
       </Container>
     );
   };
+
+  render() {
+    return (
+      <Responsive>
+        {({ minWidth }) => {
+          const isDesktop = minWidth(BREAKPOINTS.LG);
+          return isDesktop ? this.renderDesktop() : this.renderMobile();
+        }}
+      </Responsive>
+    );
+  }
 }
 
 export default MostRecent;
