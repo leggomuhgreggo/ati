@@ -31,6 +31,7 @@ class OverlayPost extends PureComponent<Props> {
 
   render() {
     const {
+      numberOfLines,
       fontStyles,
       containerPadding,
       title,
@@ -96,6 +97,7 @@ class OverlayPost extends PureComponent<Props> {
             </View>
             <View>
               <Text
+                numberOfLines={numberOfLines}
                 aria-level="2"
                 style={[
                   styles.titleText,

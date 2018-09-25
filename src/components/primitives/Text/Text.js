@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from "react";
 import { Text as RNText, StyleSheet } from "react-native";
+import Clamp from "./Clamp";
 
 import type { RNW$Styles } from "react-native";
 
@@ -11,6 +12,7 @@ type Props = {
   style?: RNW$Styles,
   serif?: boolean,
   sansSerif?: boolean,
+  children: any,
 };
 
 class Text extends PureComponent<Props> {
@@ -21,11 +23,26 @@ class Text extends PureComponent<Props> {
   };
 
   render() {
-    const { serif, sansSerif, style, children, ...rest } = this.props;
+    const {
+      numberOfLines,
+      serif,
+      sansSerif,
+      style,
+      children,
+      ...rest
+    } = this.props;
     const fontFamily = this.props.serif
       ? FONT_FAMILIES.SERIF
       : FONT_FAMILIES.SANS_SERIF;
-    return (
+    return numberOfLines ? (
+      <Clamp
+        numberOfLines={numberOfLines}
+        {...rest}
+        style={[styles.text, { fontFamily }, style]}
+      >
+        {children}
+      </Clamp>
+    ) : (
       <RNText {...rest} style={[styles.text, { fontFamily }, style]}>
         {children}
       </RNText>

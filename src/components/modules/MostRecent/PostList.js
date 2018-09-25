@@ -13,7 +13,12 @@ class PostList extends PureComponent<Props> {
 
     return posts.map((post, index) => (
       <View key={post.id} style={index === 0 ? {} : { marginTop: 20 }}>
-        <Post layoutVariant="reduced" isDesktop={isDesktop} {...post} />
+        <Post
+          numberOfLines={2}
+          layoutVariant="reduced"
+          isDesktop={isDesktop}
+          {...post}
+        />
       </View>
     ));
   }
