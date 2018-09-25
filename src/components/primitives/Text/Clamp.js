@@ -1,15 +1,31 @@
+// @flow
+
 import React, { PureComponent, Fragment } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export default class Clamp extends PureComponent {
+import type { RNW$Styles } from "react-native";
+
+type Props = {
+  numberOfLines: number,
+  children: string,
+  style: RNW$Styles,
+};
+type State = {
+  isTruncating: boolean,
+  containerWidth: number,
+  preEllipsisText: string,
+  restOfText: string,
+};
+
+export default class Clamp extends PureComponent<Props, State> {
   state = {
-    isTruncating: null,
-    containerWidth: null,
-    preEllipsisText: null,
-    restOfText: null,
+    isTruncating: false,
+    containerWidth: 0,
+    preEllipsisText: "",
+    restOfText: "",
   };
 
-  handleSingleLineLayout = event => {
+  handleSingleLineLayout = (event: any) => {
     const singleLineWidth = event.nativeEvent.layout.width;
     const {
       numberOfLines,
@@ -41,7 +57,7 @@ export default class Clamp extends PureComponent {
     nativeEvent: {
       layout: { width },
     },
-  }) => {
+  }: any) => {
     if (width === this.state.containerWidth) {
       return;
     }
@@ -111,7 +127,16 @@ const getLineBreakIndex = ({ charsPerLine, text }) => {
   return draftSlice;
 };
 
-const getText = config => {
+type getTextProps = {
+  text: string,
+  numberOfLines: number,
+  averageCharsPerLine: number,
+};
+type getTextReturn = {
+  preEllipsisText: string,
+  restOfText: string,
+};
+const getText = (config: getTextProps): getTextReturn => {
   const { text: fullText, numberOfLines, averageCharsPerLine } = config;
 
   const preEllipsisLineCountArray = Array.from({ length: numberOfLines - 1 });
@@ -124,7 +149,10 @@ const getText = config => {
   return preEllipsisLineCountArray.reduce(reducer, initial);
 };
 
-const getReducer = charsPerLine => ({ preEllipsisText, restOfText }) => {
+const getReducer = charsPerLine => ({
+  preEllipsisText,
+  restOfText,
+}: getTextReturn): getTextReturn => {
   const lineBreakIndex =
     restOfText.length < charsPerLine
       ? restOfText.length
