@@ -27,16 +27,12 @@ export default class Clamp extends PureComponent<Props, State> {
 
   handleSingleLineLayout = (event: any) => {
     const singleLineWidth = event.nativeEvent.layout.width;
-    const {
-      numberOfLines,
-      children: text,
-      children: { length: totalCharCount },
-    } = this.props;
+    const { numberOfLines, children: text } = this.props;
     const { containerWidth } = this.state;
 
     const averageCharsPerLine = getAverageCharsPerLine({
       singleLineWidth,
-      totalCharCount,
+      textLength: text.length,
       containerWidth,
     });
 
@@ -115,11 +111,11 @@ const EllipsisLine = ({ text, ...rest }) => {
 };
 
 const getAverageCharsPerLine = ({
-  totalCharCount,
+  textLength,
   singleLineWidth,
   containerWidth,
 }) => {
-  return (totalCharCount * containerWidth) / singleLineWidth;
+  return (textLength * containerWidth) / singleLineWidth;
 };
 
 const getLineBreakIndex = ({ charsPerLine, text }) => {
