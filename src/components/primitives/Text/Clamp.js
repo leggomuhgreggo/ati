@@ -119,8 +119,7 @@ const getAverageCharsPerLine = ({
 };
 
 const getLineBreakIndex = ({ charsPerLine, text }) => {
-  const draftSlice = text.slice(0, charsPerLine).lastIndexOf(" ");
-  return draftSlice;
+  return text.slice(0, charsPerLine).lastIndexOf(" ");
 };
 
 type getTextProps = {
