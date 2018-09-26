@@ -20,7 +20,14 @@ class SmallPost extends PureComponent<Props> {
   };
 
   render() {
-    const { title, categoryName, categoryColor, link, isDesktop } = this.props;
+    const {
+      numberOfLines,
+      title,
+      categoryName,
+      categoryColor,
+      link,
+      isDesktop,
+    } = this.props;
     const fontStyles = isDesktop
       ? { fontSize: 17, lineHeight: 24 }
       : { fontSize: 15, lineHeight: 20 };
@@ -28,7 +35,11 @@ class SmallPost extends PureComponent<Props> {
       <View style={[styles.postBox]} accessibilityRole="link" href={link}>
         <PostLabel categoryName={categoryName} categoryColor={categoryColor} />
         <View style={{ marginTop: 6 }}>
-          <Text aria-level={2} style={[{ fontWeight: "600" }, fontStyles]}>
+          <Text
+            numberOfLines={numberOfLines}
+            aria-level={2}
+            style={[{ fontWeight: "600" }, fontStyles]}
+          >
             {title}
           </Text>
         </View>
