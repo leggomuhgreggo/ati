@@ -9,7 +9,7 @@ type Props = {};
 class SignUp extends PureComponent<Props> {
   render() {
     return (
-      <View accessibilityRole="form" style={styles.inputWrap}>
+      <View accessibilityRole="form">
         <TextInput style={styles.input} />
         <TouchableOpacity
           accessibilityRole="submit"
@@ -29,10 +29,6 @@ class SignUp extends PureComponent<Props> {
 export default SignUp;
 
 const styles = StyleSheet.create({
-  inputWrap: {
-    marginTop: 30,
-    position: "relative",
-  },
   input: {
     backgroundColor: "white",
     height: 55,

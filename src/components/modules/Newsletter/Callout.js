@@ -1,6 +1,6 @@
 // @flow
 
-import React from "react";
+import React, { PureComponent, Fragment } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { Text } from "components/primitives";
@@ -10,21 +10,34 @@ const COPY = {
   SUB_HEAD: `Just enter your email and stay updated`,
 };
 
-const Callout = ({ style }) => (
-  <View style={style}>
-    <View>
-      <Text style={[styles.calloutText]}>{COPY.HEADLINE}</Text>
-    </View>
-    <View>
-      <Text style={[styles.calloutText]}>{COPY.SUB_HEAD}</Text>
-    </View>
-  </View>
-);
+class Callout extends PureComponent {
+  render() {
+    return (
+      <Fragment>
+        <View>
+          <Text style={[styles.title]}>{COPY.HEADLINE}</Text>
+        </View>
+        <View>
+          <Text style={[styles.instructions]}>{COPY.SUB_HEAD}</Text>
+        </View>
+      </Fragment>
+    );
+  }
+}
 
 export default Callout;
 
 const styles = StyleSheet.create({
-  calloutText: {
+  title: {
     color: "white",
+    fontSize: 30,
+    lineHeight: 40,
+    fontWeight: "600",
+  },
+  instructions: {
+    color: "white",
+    fontSize: 24,
+    lineHeight: 31,
+    fontWeight: "300",
   },
 });

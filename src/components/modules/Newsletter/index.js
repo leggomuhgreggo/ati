@@ -4,10 +4,10 @@ import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { Container, Image } from "components/primitives";
+import { Responsive } from "components/utils";
+
 import Callout from "./Callout";
 import SignUp from "./SignUp";
-
-import { Responsive } from "components/utils";
 
 import { COLOR_MAP, BREAKPOINTS } from "constants/index";
 
@@ -23,7 +23,7 @@ class Newsletter extends PureComponent<Props> {
               <Container
                 type="content"
                 style={[
-                  width > BREAKPOINTS.LG
+                  width > BREAKPOINTS.MD
                     ? styles.container
                     : { paddingVertical: 30, width: 448, maxWidth: "100%" },
                 ]}
@@ -31,7 +31,7 @@ class Newsletter extends PureComponent<Props> {
                 <View
                   style={[
                     styles.column,
-                    width > BREAKPOINTS.LG
+                    width > BREAKPOINTS.MD
                       ? {
                           justifyContent: "flex-end",
                           alignItems: "flex-end",
@@ -50,8 +50,10 @@ class Newsletter extends PureComponent<Props> {
                   </View>
                 </View>
                 <View style={styles.column}>
-                  <Callout style={[styles.callout]} />
-                  <SignUp />
+                  <Callout />
+                  <View style={styles.signupWrap}>
+                    <SignUp />
+                  </View>
                 </View>
               </Container>
             </View>
@@ -65,6 +67,10 @@ class Newsletter extends PureComponent<Props> {
 export default Newsletter;
 
 const styles = StyleSheet.create({
+  signupWrap: {
+    marginTop: 20,
+    position: "relative",
+  },
   wrap: {
     backgroundColor: COLOR_MAP.BLUE,
     width: "100%",
