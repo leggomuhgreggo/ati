@@ -25,7 +25,7 @@ class MediumPost extends PureComponent<Props> {
     const { imageSrc, imageHeight, imageWidth, link, ...rest } = this.props;
     const linkProps = link ? { accessibilityRole: "link", href: link } : {};
     return (
-      <View {...linkProps}>
+      <View {...linkProps} style={{ flex: 1 }}>
         <PostImage
           width={imageWidth}
           height={imageHeight}
