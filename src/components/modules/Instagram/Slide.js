@@ -27,7 +27,9 @@ class InstagramSlide extends PureComponent {
         />
 
         <View style={styles.textBox}>
-          <Text style={[styles.text, fontStyles]}>{title}</Text>
+          <Text numberOfLines={3} style={[styles.text, fontStyles]}>
+            {title}
+          </Text>
         </View>
       </View>
     );
@@ -53,6 +55,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     width: "100%",
     height: 110,
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     color: "white",
