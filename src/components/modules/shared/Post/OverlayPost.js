@@ -21,6 +21,7 @@ type Props = {
   title: string,
   categoryName: string,
   categoryColor: string,
+  numberOfLines: number,
 };
 class OverlayPost extends PureComponent<Props> {
   static defaultProps = {
