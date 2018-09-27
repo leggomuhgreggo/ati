@@ -1,21 +1,46 @@
+// @flow
+
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text, Image } from "components/primitives";
 
 const SLIDE_SIZE = 306;
+const TEXTBOX_PADDING = {
+  VERTICAL: 15,
+  HORIZONTAL: 20,
+};
+const TEXTBOX_HEIGHT = 110;
 
-class InstagramSlide extends PureComponent {
+const FONT = {
+  MOBILE: {
+    SIZE: 18,
+    LINE_HEIGHT: 20,
+  },
+  DESKTOP: {
+    SIZE: 20,
+    LINE_HEIGHT: 26,
+  },
+};
+
+type Props = {
+  imageSrc: string,
+  title: string,
+  link: string,
+  isDesktop: boolean,
+};
+
+class InstagramSlide extends PureComponent<Props> {
   render() {
     const { imageSrc, title, link, isDesktop } = this.props;
 
     const fontStyles = isDesktop
       ? {
-          fontSize: 20,
-          lineHeight: 26,
+          fontSize: FONT.DESKTOP.SIZE,
+          lineHeight: FONT.DESKTOP.LINE_HEIGHT,
         }
       : {
-          fontSize: 18,
-          lineHeight: 20,
+          fontSize: FONT.MOBILE.SIZE,
+          lineHeight: FONT.MOBILE.LINE_HEIGHT,
         };
     return (
       <View style={[styles.wrap]} accessibilityRole="link" href={link}>
@@ -51,10 +76,10 @@ const styles = StyleSheet.create({
   },
   textBox: {
     backgroundColor: "black",
-    paddingVertical: 15,
-    paddingHorizontal: 20,
+    paddingVertical: TEXTBOX_PADDING.VERTICAL,
+    paddingHorizontal: TEXTBOX_PADDING.HORIZONTAL,
     width: "100%",
-    height: 110,
+    height: TEXTBOX_HEIGHT,
     alignItems: "center",
     justifyContent: "center",
   },

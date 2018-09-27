@@ -21,6 +21,8 @@ type Props = {
   title: string,
   categoryName: string,
   categoryColor: string,
+  numberOfLines: number,
+  link: string,
 };
 class OverlayPost extends PureComponent<Props> {
   static defaultProps = {
@@ -38,39 +40,23 @@ class OverlayPost extends PureComponent<Props> {
       categoryName,
       categoryColor,
       bottomOverlap,
-      center,
       imageSrc,
       imageWidth,
       imageHeight,
       isDesktop,
+      link,
+      center,
     } = this.props;
 
     const localFontStyles = isDesktop
       ? { fontSize: 34, lineHeight: 39 }
       : { fontSize: 20, lineHeight: 24 };
 
-    const labelWrap = center
-      ? {
-          left: "50%",
-          transform: [
-            {
-              translateY: "-100%",
-            },
-            {
-              translateX: "-50%",
-            },
-          ],
-        }
-      : {
-          left: 0,
-          transform: [
-            {
-              translateY: "-100%",
-            },
-          ],
-        };
+    const labelWrapPosition = getLabelWrapPositionStyles(center);
+    const linkProps = link ? { accessibilityRole: "link", href: link } : {};
+
     return (
-      <Fragment>
+      <View {...linkProps}>
         <PostImage
           contrastOverlay
           width={imageWidth}
@@ -88,7 +74,7 @@ class OverlayPost extends PureComponent<Props> {
           ]}
         >
           <View style={styles.detailsInner}>
-            <View style={[styles.labelWrap, labelWrap]}>
+            <View style={[styles.labelWrap, labelWrapPosition]}>
               <PostLabel
                 fill
                 categoryColor={categoryColor}
@@ -111,7 +97,7 @@ class OverlayPost extends PureComponent<Props> {
             </View>
           </View>
         </View>
-      </Fragment>
+      </View>
     );
   }
 }
@@ -142,3 +128,25 @@ const styles = StyleSheet.create({
     top: -8,
   },
 });
+
+const getLabelWrapPositionStyles = (center: boolean) =>
+  center
+    ? {
+        left: "50%",
+        transform: [
+          {
+            translateY: "-100%",
+          },
+          {
+            translateX: "-50%",
+          },
+        ],
+      }
+    : {
+        left: 0,
+        transform: [
+          {
+            translateY: "-100%",
+          },
+        ],
+      };

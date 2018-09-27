@@ -1,10 +1,22 @@
+// @flow
+
 import React, { PureComponent } from "react";
 import Carousel from "nuka-carousel";
 
 import Arrow from "./Arrow";
 import Slide from "./Slide";
 
-class Instagram extends PureComponent {
+type Props = {
+  posts: any,
+  isDesktop: boolean,
+};
+
+const SPACE_BETWEEN_SLIDES = {
+  MOBILE: 10,
+  DESKTOP: 30,
+};
+
+class Instagram extends PureComponent<Props> {
   configLg = {
     slidesToShow: 3,
     slidesToScroll: 3,
@@ -13,7 +25,7 @@ class Instagram extends PureComponent {
     renderBottomCenterControls: () => {},
     renderCenterLeftControls: props => <Arrow dir="prev" {...props} />,
     renderCenterRightControls: props => <Arrow dir="next" {...props} />,
-    cellSpacing: 30,
+    cellSpacing: SPACE_BETWEEN_SLIDES.DESKTOP,
   };
 
   configSm = {
@@ -25,7 +37,7 @@ class Instagram extends PureComponent {
     renderBottomCenterControls: () => {},
     renderCenterLeftControls: () => {},
     renderCenterRightControls: () => {},
-    cellSpacing: 10,
+    cellSpacing: SPACE_BETWEEN_SLIDES.MOBILE,
   };
   render() {
     const { posts, isDesktop } = this.props;

@@ -1,21 +1,18 @@
 // @flow
 
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { PostImage } from "components/modules";
 import SmallPost from "./SmallPost";
+import type SmallPostProps from "./SmallPost";
 
 type Props = {
-  title: string,
-  categoryName: string,
-  categoryColor: string,
   link: string,
-  isDesktop: boolean,
   imageSrc: string,
   imageWidth: number,
   imageHeight: number,
-};
+} & SmallPostProps;
 
 class MediumPost extends PureComponent<Props> {
   static defaultProps = {
@@ -25,9 +22,10 @@ class MediumPost extends PureComponent<Props> {
   };
 
   render() {
-    const { imageSrc, imageHeight, imageWidth, ...rest } = this.props;
+    const { imageSrc, imageHeight, imageWidth, link, ...rest } = this.props;
+    const linkProps = link ? { accessibilityRole: "link", href: link } : {};
     return (
-      <Fragment>
+      <View {...linkProps}>
         <PostImage
           width={imageWidth}
           height={imageHeight}
@@ -43,7 +41,7 @@ class MediumPost extends PureComponent<Props> {
           <SmallPost {...rest} />
           <View style={styles.postLine} />
         </View>
-      </Fragment>
+      </View>
     );
   }
 }

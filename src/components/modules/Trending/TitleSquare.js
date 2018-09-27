@@ -11,32 +11,39 @@ import TrendingLine from "assets/images/trending-line.svg";
 type Props = {
   patternColor: $Values<typeof COLOR_MAP>,
   title: string,
+  sectionLink: string,
 };
 
 class TitleSquare extends PureComponent<Props> {
   render() {
-    const { patternColor } = this.props;
+    const { patternColor, sectionLink } = this.props;
+    const linkProps = sectionLink
+      ? { accessibilityRole: "link", href: sectionLink }
+      : {};
+
     return (
-      <Pattern color={patternColor}>
-        <Ratio ratio="1:1">
-          <View
-            style={[
-              styles.colorBackground,
-              { padding: 30, backgroundColor: patternColor },
-            ]}
-          >
-            <Row>
-              <Image
-                style={{ width: 45, height: 27 }}
-                source={{ uri: TrendingLine }}
-              />
-            </Row>
-            <Row style={{ marginTop: 20 }}>
-              <Text style={styles.text}>Trending News</Text>
-            </Row>
-          </View>
-        </Ratio>
-      </Pattern>
+      <View {...linkProps}>
+        <Pattern color={patternColor}>
+          <Ratio ratio="1:1">
+            <View
+              style={[
+                styles.colorBackground,
+                { padding: 30, backgroundColor: patternColor },
+              ]}
+            >
+              <Row>
+                <Image
+                  style={{ width: 45, height: 27 }}
+                  source={{ uri: TrendingLine }}
+                />
+              </Row>
+              <Row style={{ marginTop: 20 }}>
+                <Text style={styles.text}>Trending News</Text>
+              </Row>
+            </View>
+          </Ratio>
+        </Pattern>
+      </View>
     );
   }
 }

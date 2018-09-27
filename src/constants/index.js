@@ -1,5 +1,8 @@
 export * from "./section-constants.js";
 
+export const ATI_INSTAGRAM_URL =
+  "https://www.instagram.com/all_thats_interesting/";
+
 export const POST_CATEGORIES = {
   MYSTERY: "mystery",
   WEIRD: "weird",
