@@ -6,16 +6,16 @@ import { View, StyleSheet } from "react-native";
 import { PostLabel } from "components/modules";
 import { Text } from "components/primitives";
 
-type Props = {
+export type SmallPostProps = {
   title: string,
   categoryName: string,
   categoryColor: string,
-  link: string,
-  isDesktop: boolean,
-  numberOfLines: number,
+  numberOfLines?: number,
+  link?: string,
+  isDesktop?: boolean,
 };
 
-class SmallPost extends PureComponent<Props> {
+class SmallPost extends PureComponent<SmallPostProps> {
   static defaultProps = {
     style: {},
   };
