@@ -28,19 +28,7 @@ export const SECTION_TYPE_COMPONENT_MAP = {
 
 type SectionType = $Values<SECTION_TYPES>;
 
-const getSectionID = ({
-  type,
-  id,
-}: {
-  type: SectionType,
-  id: string,
-}): string => `${type}-${id}`;
-
-type Props = {
-  data: any,
-};
-
-class PageSections extends PureComponent<Props> {
+class PageSections extends PureComponent<{ data: any }> {
   render() {
     const { data } = this.props;
     return (
@@ -52,12 +40,10 @@ class PageSections extends PureComponent<Props> {
             array,
           );
 
-          const id = getSectionID(item);
-
           const Module = getSectionComponentNameBySectionType(item.type);
 
           return (
-            <Section id={id} key={id} topSpacing={spacingVariant}>
+            <Section key={index + item.type} topSpacing={spacingVariant}>
               <Module {...item} />
             </Section>
           );
