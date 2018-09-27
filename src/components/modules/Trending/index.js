@@ -15,7 +15,7 @@ import { Responsive } from "components/utils";
 
 import { BREAKPOINTS } from "constants/index";
 
-type Props = { posts: any, sectionColor: string };
+type Props = { posts: any, sectionColor: string, sectionLink: string };
 
 class Trending extends PureComponent<Props> {
   renderMobile = () => {
