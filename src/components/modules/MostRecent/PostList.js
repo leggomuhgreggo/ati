@@ -14,7 +14,7 @@ class PostList extends PureComponent<Props> {
     return posts.map((post, index) => (
       <View key={post.id} style={index === 0 ? {} : { marginTop: 20 }}>
         <Post
-          numberOfLines={2}
+          numberOfLines={3}
           layoutVariant="reduced"
           isDesktop={isDesktop}
           {...post}
