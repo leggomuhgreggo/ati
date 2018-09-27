@@ -19,11 +19,15 @@ type Props = { posts: any, sectionColor: string };
 
 class Trending extends PureComponent<Props> {
   renderMobile = () => {
-    const { posts, sectionColor } = this.props;
+    const { posts, sectionColor, sectionLink } = this.props;
     return (
       <Container type="content" style={{ padding: 15 }}>
         <View style={{ paddingHorizontal: 40 }}>
-          <TitleSquare title="Trending" patternColor={sectionColor} />
+          <TitleSquare
+            title="Trending"
+            patternColor={sectionColor}
+            sectionLink={sectionLink}
+          />
         </View>
         <View style={{ marginTop: 30 }}>
           <ModuleBox>
@@ -34,7 +38,7 @@ class Trending extends PureComponent<Props> {
     );
   };
   renderDesktop = () => {
-    const { posts, sectionColor } = this.props;
+    const { posts, sectionColor, sectionLink } = this.props;
     return (
       <Container type="content">
         <View
@@ -44,7 +48,11 @@ class Trending extends PureComponent<Props> {
           }}
         >
           <View style={{ width: "25%", padding: 15 }}>
-            <TitleSquare title="Trending" patternColor={sectionColor} />
+            <TitleSquare
+              title="Trending"
+              patternColor={sectionColor}
+              sectionLink={sectionLink}
+            />
           </View>
 
           <View style={{ width: "75%", padding: 15 }}>
