@@ -31,8 +31,9 @@ class SmallPost extends PureComponent<Props> {
     const fontStyles = isDesktop
       ? { fontSize: 17, lineHeight: 24 }
       : { fontSize: 15, lineHeight: 20 };
+    const linkProps = link ? { accessibilityRole: "link", href: link } : {};
     return (
-      <View style={[styles.postBox]} accessibilityRole="link" href={link}>
+      <View style={[styles.postBox]} {...linkProps}>
         <PostLabel categoryName={categoryName} categoryColor={categoryColor} />
         <View style={{ marginTop: 6 }}>
           <Text
