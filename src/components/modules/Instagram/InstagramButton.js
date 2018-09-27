@@ -1,12 +1,16 @@
 import React, { PureComponent } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { FaInstagram } from "react-icons/fa";
-import { COLOR_MAP } from "constants/index";
+import { COLOR_MAP, ATI_INSTAGRAM_URL } from "constants/index";
 
 class InstagramButton extends PureComponent {
   render() {
     return (
-      <View style={styles.button}>
+      <View
+        style={styles.button}
+        accessibilityRole="link"
+        href={ATI_INSTAGRAM_URL}
+      >
         <FaInstagram fill="white" size={18} />
         <Text style={styles.text}>FOLLOW US</Text>
       </View>
