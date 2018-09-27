@@ -19,7 +19,7 @@ const COMPONENT_TYPES = {
 };
 
 type Props = {
-  posts: Array,
+  posts: Array<any>,
 };
 
 class Posts extends PureComponent<Props> {
