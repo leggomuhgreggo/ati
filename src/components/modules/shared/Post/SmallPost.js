@@ -12,6 +12,7 @@ type Props = {
   categoryColor: string,
   link: string,
   isDesktop: boolean,
+  numberOfLines: number,
 };
 
 class SmallPost extends PureComponent<Props> {
