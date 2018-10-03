@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import type { RNW$Styles } from "react-native";
@@ -85,21 +85,21 @@ export default class Clamp extends PureComponent<Props, State> {
 
     return (
       <View onLayout={this.handleContainerLayout} style={styles.container}>
-        {isTruncating ? (
-          this.renderTextOnSingleLine()
-        ) : (
-          <Fragment>
-            <PreEllipsisLines {...rest} text={preEllipsisText} />
-            <EllipsisLine {...rest} text={restOfText} />
-          </Fragment>
-        )}
+        {isTruncating && this.renderTextOnSingleLine()}
+
+        <PreEllipsisLines {...rest} text={preEllipsisText} />
+        <EllipsisLine {...rest} text={restOfText} />
       </View>
     );
   }
 }
 
 const PreEllipsisLines = ({ text, ...rest }) => {
-  return <Text {...rest}>{text}</Text>;
+  return (
+    <Text importantForAccessibility="no" {...rest}>
+      {text}
+    </Text>
+  );
 };
 
 const EllipsisLine = ({ text, ...rest }) => {
@@ -167,6 +167,6 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
-  singleLineContainer: { position: "absolute" },
+  singleLineContainer: { position: "absolute", visibility: "hidden" },
   singleLineText: { flex: 1 },
 });
