@@ -2,6 +2,7 @@
   "name": "ati",
   "version": "0.1.0",
   "private": true,
+  "homepage": "wordpress/wp-content/themes/ati-2018/frontpage",
   "scripts": {
     "analyze": "yarn build:report && yarn flow:report",
     "start": "react-scripts start",
@@ -14,7 +15,7 @@
     "flow:stop": "flow stop",
     "flow:coverage": "flow coverage",
     "flow:report": "flow-coverage-report -i 'src/**/*.js' -x 'src/test/**' -x 'src/**/*.test.js' -x 'src/**/*.spec.js' -t html -t json -t text --threshold 90 -o ./reports/flow/",
-    "build": "react-scripts build",
+    "build": "react-scripts build && mv build/index.html build/index.php",
     "eject:cra-dont-do": "react-scripts eject",
     "terraform": "cd ./terrafuzz && sudo ./terrafuzz.sh apply && cd .."
   },
