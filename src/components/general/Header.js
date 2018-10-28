@@ -8,14 +8,54 @@ import {
   FaTwitter,
   FaEnvelope,
   FaPinterest,
+  FaRubleSign,
 } from "react-icons/fa";
 
 import { Responsive } from "components/utils";
 import { Text } from "components/primitives";
 
+import NavDrawer from "./Nav/NavDrawer";
+import DrawerAnimationToggle from "./Nav/DrawerAnimationToggle";
+
 import { BREAKPOINTS, HEADER_HEIGHT } from "constants/index.js";
 
-import NavDrawer from "./Nav/NavDrawer";
+const TAG_LINKS = [
+  {
+    href: "/tag/history/",
+    text: "history",
+  },
+  {
+    href: "/tag/science/",
+    text: "science",
+  },
+  {
+    href: "/tag/news/",
+    text: "news",
+  },
+];
+
+const SOCIAL_LINKS = [
+  {
+    href: "https://www.facebook.com/allthatsinteresting",
+    text: "facebook",
+    iconComponent: FaFacebookF,
+  },
+  {
+    href: "https://twitter.com/ATInteresting",
+    text: "twitter",
+    iconComponent: FaTwitter,
+  },
+  {
+    href: "https://www.pinterest.com/allthatisintere/",
+    text: "pinterest",
+    iconComponent: FaPinterest,
+  },
+  {
+    href: "http://interestin.gg/AN2pn3",
+    text: "Newsletter",
+    iconComponent: FaEnvelope,
+  },
+];
 
 type Props = {};
 type State = {
@@ -26,9 +66,7 @@ class Header extends PureComponent<Props, State> {
   state = {
     drawerOpen: false,
   };
-  toggleDrawer = () => {
-    this.setState({ drawerOpen: !this.state.drawerOpen });
-  };
+
   render() {
     return (
       <Responsive>
@@ -42,27 +80,66 @@ class Header extends PureComponent<Props, State> {
                   <Text style={[styles.headerText]}>ATI</Text>
                 </View>
               ) : (
-                <>
-                  <View style={[styles.headerBar]}>
-                    <View sytle={styles.right}>
-                      <Text
-                        onClick={this.toggleDrawer}
-                        style={[styles.headerText]}
-                      >
-                        <FaBars />
-                      </Text>
-                    </View>
+                <DrawerAnimationToggle>
+                  {({ toggleDrawer, isDrawerOpen, drawerAnimation }) => {
+                    return (
+                      <>
+                        <View style={[styles.headerBar]}>
+                          <View sytle={styles.right}>
+                            <Text
+                              onClick={toggleDrawer}
+                              style={[styles.headerText]}
+                            >
+                              <FaBars />
+                            </Text>
+                          </View>
 
-                    <View sytle={styles.center}>
-                      <Text style={[styles.headerText]}>ATI</Text>
-                    </View>
+                          <View sytle={styles.center}>
+                            <Text style={[styles.headerText]}>ATI</Text>
+                          </View>
 
-                    <View sytle={styles.left}>
-                      <Text style={[styles.headerText]}>ATI</Text>
-                    </View>
-                  </View>
-                  <NavDrawer drawerOpen={this.state.drawerOpen} />
-                </>
+                          <View sytle={styles.left}>
+                            <Text style={[styles.headerText]}>ATI</Text>
+                          </View>
+                        </View>
+
+                        <NavDrawer
+                          isDrawerOpen={isDrawerOpen}
+                          toggleDrawer={toggleDrawer}
+                          drawerAnimation={drawerAnimation}
+                        >
+                          <View style={styles.inner}>
+                            <View style={styles.linkGroupsWrap}>
+                              <View style={styles.linkGroup}>
+                                {TAG_LINKS.map(({ href, text }) => (
+                                  <Link key={text} href={href}>
+                                    {text}
+                                  </Link>
+                                ))}
+                              </View>
+
+                              <View style={styles.line} />
+
+                              <View style={styles.linkGroup}>
+                                {SOCIAL_LINKS.map(
+                                  ({ href, text, iconComponent: Icon }) => (
+                                    <Link key={text} href={href}>
+                                      <Icon /> {text}
+                                    </Link>
+                                  ),
+                                )}
+                              </View>
+                            </View>
+
+                            <View>
+                              <Link href="/">Report a Bad Ad</Link>
+                            </View>
+                          </View>
+                        </NavDrawer>
+                      </>
+                    );
+                  }}
+                </DrawerAnimationToggle>
               )}
             </View>
           );
@@ -73,6 +150,14 @@ class Header extends PureComponent<Props, State> {
 }
 
 export default Header;
+
+type LinkProps = { href: string, children: any, style?: any };
+
+const Link = ({ href, children, style }: LinkProps) => (
+  <Text style={[styles.link, style]} accessibilityRole="link" href={href}>
+    {children}
+  </Text>
+);
 
 const styles = StyleSheet.create({
   headerWrap: {
@@ -92,4 +177,17 @@ const styles = StyleSheet.create({
   headerText: {
     color: "white",
   },
+  inner: {
+    backgroundColor: "white",
+    padding: 15,
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  linkGroup: {
+    paddingVertical: 10,
+  },
+  linkGroupsWrap: {},
+  link: {},
+  icon: {},
+  reportWrap: {},
 });
