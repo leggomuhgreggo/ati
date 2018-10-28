@@ -1,5 +1,0 @@
-Mrec example:
-
-```js
-<Mrec />
-```
