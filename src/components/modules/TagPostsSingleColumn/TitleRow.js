@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { ModuleTitle } from "components/modules";
@@ -21,7 +21,7 @@ type Props = {
 class TitleRow extends PureComponent<Props> {
   renderMobile = () => {
     return (
-      <Fragment>
+      <>
         <Row style={{ alignItems: "center" }}>
           <ResponsiveLeaderboard />
         </Row>
@@ -34,7 +34,7 @@ class TitleRow extends PureComponent<Props> {
         >
           {this.renderTitle()}
         </Row>
-      </Fragment>
+      </>
     );
   };
   renderDesktop = () => {
