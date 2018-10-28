@@ -5,7 +5,7 @@ import { Platform } from "react-native";
 const penumbraOpacity = 0.14;
 const umbraOpacity = 0.2;
 
-const elevations = {
+const ELEVATIONS = {
   ios: {
     zero: {
       shadowColor: "transparent",
@@ -90,20 +90,18 @@ const elevations = {
 };
 
 // eslint-disable-next-line
-const elevation = (level: number) => {
+export const elevation = (level: number) => {
   switch (level) {
     case 0:
-      return elevations[Platform.OS].zero;
+      return ELEVATIONS[Platform.OS].zero;
     case 1:
-      return elevations[Platform.OS].one;
+      return ELEVATIONS[Platform.OS].one;
     case 2:
-      return elevations[Platform.OS].two;
+      return ELEVATIONS[Platform.OS].two;
     case 3:
-      return elevations[Platform.OS].three;
+      return ELEVATIONS[Platform.OS].three;
     case 4:
-      return elevations[Platform.OS].four;
+      return ELEVATIONS[Platform.OS].four;
     default:
   }
 };
-
-export default elevation;
