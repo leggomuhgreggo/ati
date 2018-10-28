@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
-import elevation from "elevation.js";
+import { elevation } from "constants/index.js";
 import { Pattern } from "components/modules";
 
 import type { RNW$Styles } from "react-native";

@@ -6,7 +6,7 @@ import { Text } from "components/primitives";
 
 import type { RNW$Styles } from "react-native";
 
-const HEADER_HEIGHT = 60;
+const HEADER_HEIGHT = 50;
 
 type Props = {
   style?: RNW$Styles,
