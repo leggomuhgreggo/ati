@@ -4,23 +4,14 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
 
-import type { RNW$Styles } from "react-native";
+import { HEADER_HEIGHT } from "constants/index.js";
 
-const HEADER_HEIGHT = 50;
-
-type Props = {
-  style?: RNW$Styles,
-};
+type Props = {};
 
 class Header extends PureComponent<Props> {
-  static defaultProps = {
-    style: {},
-  };
-
   render() {
-    const { style } = this.props;
     return (
-      <View style={[styles.headerWrap, style]}>
+      <View style={[styles.headerWrap]}>
         <Text style={[styles.headerText]}>ATI</Text>
       </View>
     );
