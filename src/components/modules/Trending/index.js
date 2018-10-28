@@ -21,8 +21,19 @@ class Trending extends PureComponent<Props> {
   renderMobile = () => {
     const { posts, sectionColor, sectionLink } = this.props;
     return (
-      <Container type="content" style={{ padding: 15 }}>
-        <View style={{ paddingHorizontal: 40 }}>
+      <Container
+        type="content"
+        style={{
+          padding: 15,
+          alignItems: "center",
+        }}
+      >
+        <View
+          style={{
+            maxWidth: 300,
+            width: "100%",
+          }}
+        >
           <TitleSquare
             title="Trending"
             patternColor={sectionColor}
