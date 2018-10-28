@@ -2,7 +2,7 @@
   "name": "ati",
   "version": "0.1.0",
   "private": true,
-  "homepage": "wordpress/wp-content/themes/ati-2018/frontpage",
+  "homepage": "wordpress/wp-content/themes/mirror2-ati-theme/frontpage",
   "scripts": {
     "analyze": "yarn build:report && yarn flow:report",
     "start": "react-scripts start",
