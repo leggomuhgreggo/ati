@@ -50,6 +50,5 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     paddingTop: PAGE_SPACING.TOP,
-    paddingBottom: PAGE_SPACING.BOTTOM,
   },
 });
