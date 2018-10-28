@@ -1,5 +1,0 @@
-Leaderboard example:
-
-```js
-<Leaderboard />
-```

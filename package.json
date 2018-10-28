@@ -4,20 +4,10 @@
   "private": true,
   "homepage": "wordpress/wp-content/themes/mirror2-ati-theme/frontpage",
   "scripts": {
-    "analyze": "yarn build:report && yarn flow:report",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
-    "cypress": "cypress open",
-    "cypress:run": "cypress run",
     "lint": "./node_modules/eslint/bin/eslint.js ./src",
-    "flow": "flow",
-    "flow:start": "flow start",
-    "flow:stop": "flow stop",
-    "flow:coverage": "flow coverage",
-    "flow:report": "flow-coverage-report -i 'src/**/*.js' -x 'src/test/**' -x 'src/**/*.test.js' -x 'src/**/*.spec.js' -t html -t json -t text --threshold 90 -o ./reports/flow/",
-    "build": "react-scripts build && mv build/index.html build/index.php",
-    "eject:cra-dont-do": "react-scripts eject",
-    "terraform": "cd ./terrafuzz && sudo ./terrafuzz.sh apply && cd .."
+    "build": "react-scripts build && mv build/index.html build/index.php"
   },
   "dependencies": {
     "nuka-carousel": "^4.4.1",
@@ -42,7 +32,6 @@
     "eslint-plugin-react": "^7.10.0",
     "flow-bin": "^0.84.0",
     "prettier": "1.14.3",
-    "react-styleguidist": "^8.0.2",
     "react-test-renderer": "^16.6.0"
   },
   "browserslist": {
