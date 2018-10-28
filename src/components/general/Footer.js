@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
-import { FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaTwitter } from "react-icons/fa";
 
 import { Text } from "components/primitives";
 import { Responsive } from "components/utils";
@@ -39,7 +39,7 @@ const SOCIAL_LINKS = [
   {
     href: "https://www.facebook.com/allthatsinteresting",
     type: "facebook",
-    componentType: FaFacebook,
+    componentType: FaFacebookF,
   },
   {
     href: "https://twitter.com/ATInteresting",
