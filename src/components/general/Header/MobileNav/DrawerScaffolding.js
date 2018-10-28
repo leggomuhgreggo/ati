@@ -1,7 +1,7 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { View, StyleSheet, Animated, Easing } from "react-native";
+import { StyleSheet, Animated } from "react-native";
 
 import { HEADER_HEIGHT, elevation } from "constants/index.js";
 

@@ -1,7 +1,7 @@
 // @flow
 
-import React, { PureComponent } from "react";
-import { View, Animated, Easing } from "react-native";
+import { PureComponent } from "react";
+import { Animated, Easing } from "react-native";
 
 type Props = { children: any };
 
