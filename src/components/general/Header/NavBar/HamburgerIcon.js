@@ -5,8 +5,8 @@ import { FaBars } from "react-icons/fa";
 import { Text } from "components/primitives";
 
 const HamburgerIcon = ({ onClick }) => (
-  <TouchableOpacity style={styles.button}>
-    <Text onClick={onClick} style={[styles.text]}>
+  <TouchableOpacity onClick={onClick} style={styles.button}>
+    <Text style={[styles.text]}>
       <FaBars />
     </Text>
   </TouchableOpacity>
