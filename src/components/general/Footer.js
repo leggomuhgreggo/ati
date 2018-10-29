@@ -11,33 +11,11 @@ import {
   BREAKPOINTS,
   FOOTER_HEIGHT,
   SOCIAL_LINKS_REDUCED,
+  HOME_LINK,
+  PBH_NETWORK_LINKS,
 } from "constants/index.js";
 
 type Props = {};
-
-const HOME_LINK = {
-  text: "ATI",
-  href: "/",
-};
-
-const PBH_NETWORK_LINKS = [
-  {
-    text: "About",
-    href: "/about-all-thats-interesting",
-  },
-  {
-    text: "Advertise",
-    href: "https://about.pbh-network.com/",
-  },
-  {
-    text: "Jobs",
-    href: "/jobs",
-  },
-  {
-    text: "Privacy Policy",
-    href: "/privacy-policy",
-  },
-];
 
 class Footer extends PureComponent<Props> {
   render() {
