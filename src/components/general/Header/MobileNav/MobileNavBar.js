@@ -3,6 +3,8 @@ import { View, StyleSheet } from "react-native";
 import { FaBars } from "react-icons/fa";
 import { Text } from "components/primitives";
 import NavBar from "../NavBar";
+import NavBarSocialLinks from "../NavBarSocialLinks";
+import { SOCIAL_LINKS, SOCIAL_TYPES } from "../nav-constants";
 
 export default class MobileNavBar extends PureComponent {
   render() {
@@ -11,7 +13,7 @@ export default class MobileNavBar extends PureComponent {
       <NavBar
         renderRight={() => <HamburgerMenuIcon onClick={onMenuButtonClick} />}
         renderCenter={() => <AtiLogo />}
-        renderLeft={() => <SocialLinks />}
+        renderLeft={() => <NavBarSocialLinks links={SOCIAL_LINKS} />}
       />
     );
   }
@@ -24,8 +26,6 @@ const HamburgerMenuIcon = ({ onClick }) => (
 );
 
 const AtiLogo = () => <Text style={[styles.headerText]}>ATI</Text>;
-
-const SocialLinks = () => <Text style={[styles.headerText]}>SOCIAL</Text>;
 
 const styles = StyleSheet.create({
   headerText: {

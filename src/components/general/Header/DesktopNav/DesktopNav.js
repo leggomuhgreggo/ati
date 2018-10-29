@@ -2,7 +2,8 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
 import NavBar from "../NavBar";
-import { TAG_LINKS } from "../nav-constants";
+import NavBarSocialLinks from "../NavBarSocialLinks";
+import { TAG_LINKS, SOCIAL_LINKS } from "../nav-constants";
 
 export default class DesktopNav extends PureComponent {
   render() {
@@ -11,7 +12,7 @@ export default class DesktopNav extends PureComponent {
       <NavBar
         renderRight={() => <AtiLogo />}
         renderCenter={() => <TagLinks links={TAG_LINKS} />}
-        renderLeft={() => <SocialLinks />}
+        renderLeft={() => <NavBarSocialLinks links={SOCIAL_LINKS} />}
       />
     );
   }
@@ -30,8 +31,6 @@ const TagLinks = ({ links }) => {
 };
 
 const AtiLogo = () => <Text style={[styles.headerText]}>ATI</Text>;
-
-const SocialLinks = () => <Text style={[styles.headerText]}>SOCIAL</Text>;
 
 const styles = StyleSheet.create({
   tagLinks: {
