@@ -7,11 +7,11 @@ export default class NavBar extends PureComponent {
     const { renderRight, renderCenter, renderLeft } = this.props;
     return (
       <View style={[styles.wrap]}>
-        <View sytle={[styles.navGroup, styles.right]}>{renderRight()}</View>
+        <View style={[styles.navGroup, styles.right]}>{renderRight()}</View>
 
-        <View sytle={[styles.navGroup, styles.center]}>{renderCenter()}</View>
+        <View style={[styles.navGroup, styles.center]}>{renderCenter()}</View>
 
-        <View sytle={[styles.navGroup, styles.left]}>{renderLeft()}</View>
+        <View style={[styles.navGroup, styles.left]}>{renderLeft()}</View>
       </View>
     );
   }
@@ -30,11 +30,11 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   navGroup: {
-    alignItems: "center",
-    backgroundColor: "white",
-    flex: 1,
+    justifyContent: "center",
+    flexBasis: "33%",
+    height: "100%",
   },
-  right: { justifyContent: "flex-start" },
-  center: { justifyContent: "center" },
-  left: { justifyContent: "flex-end" },
+  right: { alignItems: "flex-start" },
+  center: { alignItems: "center" },
+  left: { alignItems: "flex-end" },
 });
