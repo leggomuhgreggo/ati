@@ -15,15 +15,18 @@ export const SOCIAL_TYPES = {
 export const TAG_LINKS = [
   {
     href: "/tag/history/",
-    text: "history",
+    type: "history",
+    text: "History",
   },
   {
     href: "/tag/science/",
-    text: "science",
+    type: "science",
+    text: "Science",
   },
   {
     href: "/tag/news/",
-    text: "news",
+    type: "news",
+    text: "News",
   },
 ];
 
