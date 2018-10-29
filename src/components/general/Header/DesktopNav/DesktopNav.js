@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   linkItem: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     fontSize: 21,
   },
   headerText: {
