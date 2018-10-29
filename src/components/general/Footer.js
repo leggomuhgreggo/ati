@@ -12,6 +12,7 @@ import {
   SOCIAL_LINKS_REDUCED,
   HOME_LINK,
   PBH_NETWORK_LINKS,
+  SECTION_SPACING,
 } from "constants/index.js";
 
 type Props = {};
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 30,
+    marginTop: SECTION_SPACING.SM,
   },
   linkList: {
     flexDirection: "row",
