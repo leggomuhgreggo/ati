@@ -2,7 +2,6 @@
 
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
-import { FaFacebookF, FaTwitter } from "react-icons/fa";
 
 import { Text } from "components/primitives";
 import { Responsive } from "components/utils";
