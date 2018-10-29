@@ -35,8 +35,8 @@ export default class DrawerContents extends PureComponent<Props> {
             <Line />
 
             <LinkGroup>
-              {SOCIAL_LINKS.map(({ href, text, iconComponent: Icon }) => (
-                <Text key={text} href={href}>
+              {SOCIAL_LINKS.map(({ type, href, text, iconComponent: Icon }) => (
+                <Text key={type} href={href}>
                   <Icon /> {text}
                 </Text>
               ))}
