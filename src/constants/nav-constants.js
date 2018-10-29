@@ -5,6 +5,8 @@ import {
   FaPinterest,
 } from "react-icons/fa";
 
+export const BUG_REPORT_STRING = "Report a Bad Ad";
+
 export const SOCIAL_TYPES = {
   FACEBOOK: "facebook",
   TWITTER: "twitter",

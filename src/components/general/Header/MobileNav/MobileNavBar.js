@@ -4,7 +4,7 @@ import { Text } from "components/primitives";
 
 import { NavBar, SocialLinks, Logo, HamburgerIcon } from "../NavBar/index.js";
 
-import { SOCIAL_LINKS } from "../nav-constants";
+import { SOCIAL_LINKS } from "constants";
 
 export default class MobileNavBar extends PureComponent {
   render() {

@@ -5,7 +5,7 @@ import DrawerScaffolding from "./DrawerScaffolding";
 
 import { FaBug } from "react-icons/fa";
 
-import { TAG_LINKS, SOCIAL_LINKS } from "../nav-constants";
+import { TAG_LINKS, SOCIAL_LINKS, BUG_REPORT_STRING } from "constants";
 
 type Props = {
   isDrawerOpen: boolean,
@@ -38,16 +38,18 @@ export default class DrawerContents extends PureComponent<Props> {
             <Line />
 
             <LinkGroup>
-              {SOCIAL_LINKS.map(({ type, href, text, iconComponent: Icon }) => (
-                <View style={styles.linkItem}>
-                  <View style={styles.icon}>
-                    <Icon />
+              {SOCIAL_LINKS.map(
+                ({ type, href, text, iconComponent: SocialIcon }) => (
+                  <View style={styles.linkItem}>
+                    <View style={styles.icon}>
+                      <SocialIcon />
+                    </View>
+                    <Text style={styles.text} key={type} href={href}>
+                      {text}
+                    </Text>
                   </View>
-                  <Text style={styles.text} key={type} href={href}>
-                    {text}
-                  </Text>
-                </View>
-              ))}
+                ),
+              )}
             </LinkGroup>
           </View>
 
@@ -61,12 +63,9 @@ export default class DrawerContents extends PureComponent<Props> {
 const styles = StyleSheet.create({
   inner: {
     backgroundColor: "white",
-    padding: 15,
+    padding: 30,
     flex: 1,
     justifyContent: "space-between",
-  },
-  linkGroup: {
-    paddingVertical: 10,
   },
   linkItem: {
     flexDirection: "row",
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
     width: 50,
     height: 2,
     backgroundColor: "#CCC",
-    marginVertical: 15,
+    marginVertical: 25,
   },
   icon: {
     marginRight: 10,
@@ -98,7 +97,7 @@ const AdReportLink = () => (
     <View style={styles.icon}>
       <FaBug />
     </View>
-    <Text href="/">Report a Bad Ad</Text>
+    <Text href="/">{BUG_REPORT_STRING}</Text>
   </View>
 );
 
