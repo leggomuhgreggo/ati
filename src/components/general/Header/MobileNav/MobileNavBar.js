@@ -1,10 +1,8 @@
 import React, { PureComponent } from "react";
-import { StyleSheet } from "react-native";
-import { Text } from "components/primitives";
 
 import { NavBar, SocialLinks, Logo, HamburgerIcon } from "../NavBar/index.js";
 
-import { SOCIAL_LINKS } from "constants";
+import { SOCIAL_LINKS } from "constants/index.js";
 
 export default class MobileNavBar extends PureComponent {
   render() {

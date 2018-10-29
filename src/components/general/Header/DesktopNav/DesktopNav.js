@@ -1,8 +1,8 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
-import { NavBar, SocialLinks, Logo, HamburgerIcon } from "../NavBar/index.js";
-import { TAG_LINKS, SOCIAL_LINKS } from "constants";
+import { NavBar, SocialLinks, Logo } from "../NavBar/index.js";
+import { TAG_LINKS, SOCIAL_LINKS } from "constants/index.js";
 
 export default class DesktopNav extends PureComponent {
   render() {

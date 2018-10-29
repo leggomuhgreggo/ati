@@ -5,7 +5,7 @@ import DrawerScaffolding from "./DrawerScaffolding";
 
 import { FaBug } from "react-icons/fa";
 
-import { TAG_LINKS, SOCIAL_LINKS, BUG_REPORT_STRING } from "constants";
+import { TAG_LINKS, SOCIAL_LINKS, BUG_REPORT_STRING } from "constants/index.js";
 
 type Props = {
   isDrawerOpen: boolean,
