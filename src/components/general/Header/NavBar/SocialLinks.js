@@ -6,9 +6,11 @@ const SocialLinks = ({ links }) => {
   return (
     <View style={[styles.tagLinks]}>
       {links.map(({ type, href, iconComponent: Icon }) => (
-        <Text style={styles.headerText} key={type} href={href}>
-          <Icon />
-        </Text>
+        <View style={styles.linkItem}>
+          <Text style={styles.headerText} key={type} href={href}>
+            <Icon />
+          </Text>
+        </View>
       ))}
     </View>
   );
@@ -19,9 +21,10 @@ export default SocialLinks;
 const styles = StyleSheet.create({
   tagLinks: {
     flexDirection: "row",
+    paddingHorizontal: 10,
   },
   linkItem: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
   },
   headerText: {
     color: "white",
