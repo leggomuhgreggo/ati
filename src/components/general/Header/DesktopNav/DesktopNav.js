@@ -19,8 +19,12 @@ export default class DesktopNav extends PureComponent {
 const TagLinks = ({ links }) => {
   return (
     <View style={[styles.tagLinks]}>
-      {links.map(({ text, href }) => (
-        <Text style={[styles.headerText, styles.linkItem]} href={href}>
+      {links.map(({ type, text, href }) => (
+        <Text
+          key={type}
+          style={[styles.headerText, styles.linkItem]}
+          href={href}
+        >
           {text}
         </Text>
       ))}
@@ -34,6 +38,7 @@ const styles = StyleSheet.create({
   },
   linkItem: {
     paddingHorizontal: 10,
+    fontSize: 21,
   },
   headerText: {
     color: "white",

@@ -3,6 +3,8 @@ import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
 import DrawerScaffolding from "./DrawerScaffolding";
 
+import { FaBug } from "react-icons/fa";
+
 import { TAG_LINKS, SOCIAL_LINKS } from "../nav-constants";
 
 type Props = {
@@ -21,13 +23,15 @@ export default class DrawerContents extends PureComponent<Props> {
         toggleDrawer={toggleDrawer}
         drawerAnimation={drawerAnimation}
       >
-        <View style={styles.inner}>
+        <DrawerInner>
           <View>
             <LinkGroup>
-              {TAG_LINKS.map(({ href, text }) => (
-                <Text key={text} href={href}>
-                  {text}
-                </Text>
+              {TAG_LINKS.map(({ type, href, text }) => (
+                <View style={styles.linkItem}>
+                  <Text style={styles.tagText} key={type} href={href}>
+                    {text}
+                  </Text>
+                </View>
               ))}
             </LinkGroup>
 
@@ -35,24 +39,26 @@ export default class DrawerContents extends PureComponent<Props> {
 
             <LinkGroup>
               {SOCIAL_LINKS.map(({ type, href, text, iconComponent: Icon }) => (
-                <Text key={type} href={href}>
-                  <Icon /> {text}
-                </Text>
+                <View style={styles.linkItem}>
+                  <View style={styles.icon}>
+                    <Icon />
+                  </View>
+                  <Text style={styles.text} key={type} href={href}>
+                    {text}
+                  </Text>
+                </View>
               ))}
             </LinkGroup>
           </View>
 
           <AdReportLink />
-        </View>
+        </DrawerInner>
       </DrawerScaffolding>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  headerText: {
-    color: "white",
-  },
   inner: {
     backgroundColor: "white",
     padding: 15,
@@ -62,10 +68,23 @@ const styles = StyleSheet.create({
   linkGroup: {
     paddingVertical: 10,
   },
-  linkGroupsWrap: {},
-  link: {},
-  icon: {},
-  reportWrap: {},
+  linkItem: {
+    flexDirection: "row",
+    paddingVertical: 10,
+    alignItems: "center",
+  },
+  tagText: {
+    fontSize: 21,
+  },
+  line: {
+    width: 50,
+    height: 2,
+    backgroundColor: "#CCC",
+    marginVertical: 15,
+  },
+  icon: {
+    marginRight: 10,
+  },
 });
 
 const Line = () => <View style={styles.line} />;
@@ -75,7 +94,14 @@ const LinkGroup = ({ children }) => (
 );
 
 const AdReportLink = () => (
-  <View>
+  <View style={styles.linkItem}>
+    <View style={styles.icon}>
+      <FaBug />
+    </View>
     <Text href="/">Report a Bad Ad</Text>
   </View>
+);
+
+const DrawerInner = ({ children }) => (
+  <View style={styles.inner}>{children}</View>
 );
