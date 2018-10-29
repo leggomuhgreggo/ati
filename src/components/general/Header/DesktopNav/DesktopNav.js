@@ -23,6 +23,7 @@ const TagLinks = ({ links }) => {
         <Text
           key={type}
           style={[styles.headerText, styles.linkItem]}
+          accessibilityRole="link"
           href={href}
         >
           {text}

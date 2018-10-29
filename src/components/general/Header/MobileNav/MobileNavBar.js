@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 
 import { NavBar, SocialLinks, Logo, HamburgerIcon } from "../NavBar/index.js";
 
-import { SOCIAL_LINKS } from "constants/index.js";
+import { SOCIAL_LINKS_REDUCED } from "constants/index.js";
 
 export default class MobileNavBar extends PureComponent {
   render() {
@@ -11,7 +11,7 @@ export default class MobileNavBar extends PureComponent {
       <NavBar
         renderRight={() => <HamburgerIcon onClick={onMenuButtonClick} />}
         renderCenter={() => <Logo />}
-        renderLeft={() => <SocialLinks links={SOCIAL_LINKS} />}
+        renderLeft={() => <SocialLinks links={SOCIAL_LINKS_REDUCED} />}
       />
     );
   }
