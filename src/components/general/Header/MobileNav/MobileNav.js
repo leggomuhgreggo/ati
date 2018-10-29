@@ -1,7 +1,6 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { View, StyleSheet } from "react-native";
 
 import MobileNavBar from "./MobileNavBar";
 import DrawerAnimationToggle from "./DrawerAnimationToggle";

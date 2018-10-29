@@ -3,7 +3,6 @@ import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
 import DrawerScaffolding from "./DrawerScaffolding";
 
-import { HEADER_HEIGHT } from "constants/index.js";
 import { TAG_LINKS, SOCIAL_LINKS } from "../nav-constants";
 
 type Props = {

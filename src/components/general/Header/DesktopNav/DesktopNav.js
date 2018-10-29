@@ -7,7 +7,6 @@ import { TAG_LINKS, SOCIAL_LINKS } from "../nav-constants";
 
 export default class DesktopNav extends PureComponent {
   render() {
-    const { onMenuButtonClick } = this.props;
     return (
       <NavBar
         renderRight={() => <AtiLogo />}

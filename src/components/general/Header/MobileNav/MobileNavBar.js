@@ -1,10 +1,10 @@
 import React, { PureComponent } from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { FaBars } from "react-icons/fa";
 import { Text } from "components/primitives";
 import NavBar from "../NavBar";
 import NavBarSocialLinks from "../NavBarSocialLinks";
-import { SOCIAL_LINKS, SOCIAL_TYPES } from "../nav-constants";
+import { SOCIAL_LINKS } from "../nav-constants";
 
 export default class MobileNavBar extends PureComponent {
   render() {

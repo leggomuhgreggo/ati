@@ -4,12 +4,11 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
 import { Responsive } from "components/utils";
-import { Text } from "components/primitives";
 
 import MobileNav from "./MobileNav/MobileNav";
 import DesktopNav from "./DesktopNav/DesktopNav";
 
-import { BREAKPOINTS, HEADER_HEIGHT } from "constants/index.js";
+import { BREAKPOINTS } from "constants/index.js";
 
 const HEADER_Z_INDEX = 999;
 
