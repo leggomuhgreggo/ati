@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
 
-const NavBarSocialLinks = ({ links }) => {
+const SocialLinks = ({ links }) => {
   return (
     <View style={[styles.tagLinks]}>
       {links.map(({ type, href, iconComponent: Icon }) => (
@@ -14,7 +14,7 @@ const NavBarSocialLinks = ({ links }) => {
   );
 };
 
-export default NavBarSocialLinks;
+export default SocialLinks;
 
 const styles = StyleSheet.create({
   tagLinks: {

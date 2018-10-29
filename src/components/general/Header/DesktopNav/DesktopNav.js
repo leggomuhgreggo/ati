@@ -1,17 +1,16 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 import { Text } from "components/primitives";
-import NavBar from "../NavBar";
-import NavBarSocialLinks from "../NavBarSocialLinks";
+import { NavBar, SocialLinks, Logo, HamburgerIcon } from "../NavBar/index.js";
 import { TAG_LINKS, SOCIAL_LINKS } from "../nav-constants";
 
 export default class DesktopNav extends PureComponent {
   render() {
     return (
       <NavBar
-        renderRight={() => <AtiLogo />}
+        renderRight={() => <Logo />}
         renderCenter={() => <TagLinks links={TAG_LINKS} />}
-        renderLeft={() => <NavBarSocialLinks links={SOCIAL_LINKS} />}
+        renderLeft={() => <SocialLinks links={SOCIAL_LINKS} />}
       />
     );
   }
@@ -28,8 +27,6 @@ const TagLinks = ({ links }) => {
     </View>
   );
 };
-
-const AtiLogo = () => <Text style={[styles.headerText]}>ATI</Text>;
 
 const styles = StyleSheet.create({
   tagLinks: {
