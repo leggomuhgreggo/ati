@@ -4,11 +4,12 @@ import React, { PureComponent } from "react";
 import PageSections from "PageFactory";
 import { AppWrap, Header, Footer, Main } from "./components/general";
 
-import { data } from "data.js";
 type Props = {};
 
 class App extends PureComponent<Props> {
   render() {
+    const data = window.fp_data;
+
     return (
       <AppWrap>
         <Header />
