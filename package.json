@@ -2,7 +2,7 @@
   "name": "ati",
   "version": "0.1.0",
   "private": true,
-  "homepage": "wordpress/wp-content/themes/mirror2-ati-theme/frontpage",
+  "homepage": "wordpress/wp-content/themes/ati-2018/frontpage",
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
