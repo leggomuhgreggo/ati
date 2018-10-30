@@ -43,11 +43,13 @@ class Instagram extends PureComponent<Props> {
     const { posts, isDesktop } = this.props;
 
     return (
-      <Carousel {...(isDesktop ? this.configLg : this.configSm)}>
-        {posts.map(({ id, ...post }, index) => (
-          <Slide key={`slide-${index}`} isDesktop={isDesktop} {...post} />
-        ))}
-      </Carousel>
+      posts && (
+        <Carousel {...(isDesktop ? this.configLg : this.configSm)}>
+          {posts.map(({ id, ...post }, index) => (
+            <Slide key={`slide-${index}`} isDesktop={isDesktop} {...post} />
+          ))}
+        </Carousel>
+      )
     );
   }
 }
