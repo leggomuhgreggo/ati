@@ -4,9 +4,15 @@ import React, { PureComponent } from "react";
 import PageSections from "PageFactory";
 import { AppWrap, Header, Footer, Main } from "./components/general";
 
+import { startAds } from "./utils/ads";
+
 type Props = {};
 
 class App extends PureComponent<Props> {
+  componentDidMount() {
+    startAds();
+  }
+
   render() {
     const data =
       process.env.NODE_ENV &&
