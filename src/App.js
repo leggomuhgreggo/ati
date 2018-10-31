@@ -8,7 +8,15 @@ type Props = {};
 
 class App extends PureComponent<Props> {
   render() {
-    const data = window.fp_data;
+    const data =
+      process.env.NODE_ENV &&
+      process.env.NODE_ENV.toLowerCase().startsWith("dev")
+        ? require("./data").data
+        : window.fp_data;
+
+    if (!data) {
+      throw new Error("cannot load post data");
+    }
 
     return (
       <AppWrap>
