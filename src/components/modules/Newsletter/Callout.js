@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { Text } from "components/primitives";
@@ -13,14 +13,14 @@ const COPY = {
 class Callout extends PureComponent {
   render() {
     return (
-      <Fragment>
+      <>
         <View>
           <Text style={[styles.title]}>{COPY.HEADLINE}</Text>
         </View>
         <View>
           <Text style={[styles.instructions]}>{COPY.SUB_HEAD}</Text>
         </View>
-      </Fragment>
+      </>
     );
   }
 }

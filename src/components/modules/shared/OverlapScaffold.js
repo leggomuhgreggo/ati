@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent, Fragment } from "react";
+import React, { PureComponent } from "react";
 import { View } from "react-native";
 import { Container } from "components/primitives";
 
@@ -36,7 +36,7 @@ class OverlapScaffold extends PureComponent<Props> {
     const { overlap, containerPadding } = this.props;
 
     return (
-      <Fragment>
+      <>
         {this.getMainPost()}
         <Container
           style={{
@@ -62,7 +62,7 @@ class OverlapScaffold extends PureComponent<Props> {
         >
           {this.getScaffoldContentByType(OverlapScaffold.Overlap)}
         </Container>
-      </Fragment>
+      </>
     );
   }
 }
