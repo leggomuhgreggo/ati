@@ -6,13 +6,8 @@ const SocialLinks = ({ links }) => {
   return (
     <View style={[styles.tagLinks]}>
       {links.map(({ type, href, iconComponent: Icon }) => (
-        <View style={styles.linkItem}>
-          <Text
-            style={styles.headerText}
-            key={type}
-            accessibilityRole="link"
-            href={href}
-          >
+        <View key={type} style={styles.linkItem}>
+          <Text style={styles.headerText} accessibilityRole="link" href={href}>
             <Icon />
           </Text>
         </View>

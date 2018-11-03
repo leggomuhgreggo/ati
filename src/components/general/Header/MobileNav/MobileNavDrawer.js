@@ -27,10 +27,9 @@ export default class DrawerContents extends PureComponent<Props> {
           <View>
             <LinkGroup>
               {TAG_LINKS.map(({ type, href, text }) => (
-                <View style={styles.linkItem}>
+                <View key={type} style={styles.linkItem}>
                   <Text
                     style={styles.tagText}
-                    key={type}
                     accessibilityRole="link"
                     href={href}
                   >
@@ -45,13 +44,12 @@ export default class DrawerContents extends PureComponent<Props> {
             <LinkGroup>
               {SOCIAL_LINKS.map(
                 ({ type, href, text, iconComponent: SocialIcon }) => (
-                  <View style={styles.linkItem}>
+                  <View key={type} style={styles.linkItem}>
                     <View style={styles.icon}>
                       <SocialIcon />
                     </View>
                     <Text
                       style={styles.text}
-                      key={type}
                       accessibilityRole="link"
                       href={href}
                     >
