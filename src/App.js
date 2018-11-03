@@ -4,11 +4,26 @@ import React, { PureComponent } from "react";
 import PageSections from "PageFactory";
 import { AppWrap, Header, Footer, Main } from "./components/general";
 
-import { data } from "data.js";
+import { startAds } from "./utils/ads";
+
 type Props = {};
 
 class App extends PureComponent<Props> {
+  componentDidMount() {
+    startAds();
+  }
+
   render() {
+    const data =
+      process.env.NODE_ENV &&
+      process.env.NODE_ENV.toLowerCase().startsWith("dev")
+        ? require("./data").data
+        : window.fp_data;
+
+    if (!data) {
+      throw new Error("cannot load post data");
+    }
+
     return (
       <AppWrap>
         <Header />

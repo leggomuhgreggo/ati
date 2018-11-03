@@ -2,13 +2,13 @@
 
 import { StyleSheet } from "react-native";
 import { makeAdComponent } from "./Ad";
-import { createLboard } from "../../utils/ads";
+import { createMobileMrec } from "../../utils/ads";
 
 const styles = StyleSheet.create({
   ad: {
-    width: 728,
-    height: 90,
+    minWidth: 300,
+    height: 250,
   },
 });
 
-export default makeAdComponent(createLboard, styles);
+export default makeAdComponent(createMobileMrec, styles);

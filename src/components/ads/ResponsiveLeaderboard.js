@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Responsive } from "components/utils";
-import { Leaderboard, Mrec } from "./";
+import { Leaderboard, MobileMrec } from "./";
 import { BREAKPOINTS } from "constants/index";
 
 export default class ResponsiveLeaderboard extends PureComponent {
@@ -9,7 +9,7 @@ export default class ResponsiveLeaderboard extends PureComponent {
     return (
       <Responsive>
         {({ minWidth }) => {
-          return minWidth(adBreakpoint) ? <Leaderboard /> : <Mrec />;
+          return minWidth(adBreakpoint) ? <Leaderboard /> : <MobileMrec />;
         }}
       </Responsive>
     );
