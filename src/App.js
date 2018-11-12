@@ -3,6 +3,10 @@
 import React, { PureComponent } from "react";
 import PageSections from "PageFactory";
 import { AppWrap, Header, Footer, Main } from "./components/general";
+import { Leaderboard } from "./components/ads";
+import { Section } from "components/primitives";
+
+import { SECTION_SPACERS, SECTION_SPACING_VARIANTS } from "constants/index";
 
 import { startAds } from "./utils/ads";
 
@@ -28,7 +32,20 @@ class App extends PureComponent<Props> {
       <AppWrap>
         <Header />
         <Main>
+          <Section>
+            <Leaderboard />
+          </Section>
+
           <PageSections data={data} />
+
+          <Section
+            style={{
+              marginTop: SECTION_SPACERS[SECTION_SPACING_VARIANTS.LARGE],
+            }}
+          >
+            <Leaderboard />
+          </Section>
+
           <Footer />
         </Main>
       </AppWrap>
