@@ -45,10 +45,6 @@ export default Container;
 
 const styles = StyleSheet.create({
   container: {
-    position: "relative",
-    flex: 1,
     width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
   },
 });
