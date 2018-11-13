@@ -3,7 +3,7 @@
 import React, { PureComponent } from "react";
 import PageSections from "PageFactory";
 import { AppWrap, Header, Footer, Main } from "./components/general";
-import { Leaderboard } from "./components/ads";
+import { ResponsiveLeaderboard } from "./components/ads";
 import { Section } from "components/primitives";
 
 import { SECTION_SPACERS, SECTION_SPACING_VARIANTS } from "constants/index";
@@ -33,7 +33,7 @@ class App extends PureComponent<Props> {
         <Header />
         <Main>
           <Section>
-            <Leaderboard />
+            <ResponsiveLeaderboard />
           </Section>
 
           <PageSections data={data} />
@@ -43,7 +43,7 @@ class App extends PureComponent<Props> {
               marginTop: SECTION_SPACERS[SECTION_SPACING_VARIANTS.LARGE],
             }}
           >
-            <Leaderboard />
+            <ResponsiveLeaderboard />
           </Section>
 
           <Footer />
