@@ -67,10 +67,10 @@ export const getSequenceAwareSpacingVariant = (
   array: Array<any>,
 ) => {
   if (index === 0) {
-    return SECTION_SPACING_VARIANTS.NONE;
+    return SECTION_SPACING_VARIANTS.SMALL;
   }
 
-  const prevSection: SectionType = array[index - 1];
+  const prevSection: SectionType = index === 0 ? null : array[index - 1];
 
   return isSmallType(currentSection) || isSmallType(prevSection)
     ? SECTION_SPACING_VARIANTS.SMALL
