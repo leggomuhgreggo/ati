@@ -3,6 +3,8 @@ import { Text, View, StyleSheet } from "react-native";
 import { FaInstagram } from "react-icons/fa";
 import { COLOR_MAP, ATI_INSTAGRAM_URL } from "constants/index";
 
+const FOLLOW_STRING = "FOLLOW US";
+
 class InstagramButton extends PureComponent {
   render() {
     return (
@@ -10,9 +12,10 @@ class InstagramButton extends PureComponent {
         style={styles.button}
         accessibilityRole="link"
         href={ATI_INSTAGRAM_URL}
+        target="_blank"
       >
         <FaInstagram fill="white" size={18} />
-        <Text style={styles.text}>FOLLOW US</Text>
+        <Text style={styles.text}>{FOLLOW_STRING}</Text>
       </View>
     );
   }
