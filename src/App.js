@@ -38,11 +38,7 @@ class App extends PureComponent<Props> {
 
           <PageSections data={data} />
 
-          <Section
-            style={{
-              marginTop: SECTION_SPACERS[SECTION_SPACING_VARIANTS.LARGE],
-            }}
-          >
+          <Section topSpacing={SECTION_SPACING_VARIANTS.LARGE}>
             <ResponsiveLeaderboard />
           </Section>
 
