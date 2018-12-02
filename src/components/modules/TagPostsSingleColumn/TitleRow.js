@@ -27,7 +27,7 @@ class TitleRow extends PureComponent<Props> {
         </Row>
         <Row
           style={{
-            marginTop: SECTION_SPACERS[SECTION_SPACING_VARIANTS.LARGE],
+            marginTop: SECTION_SPACERS[SECTION_SPACING_VARIANTS.SMALL],
             alignItems: "center",
             paddingHorizontal: 40,
           }}

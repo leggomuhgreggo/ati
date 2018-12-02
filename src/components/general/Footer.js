@@ -23,10 +23,10 @@ class Footer extends PureComponent<Props> {
       <Responsive>
         {({ minWidth }) => {
           const isDesktop = minWidth(BREAKPOINTS.LG);
-
+          const marginTop = isDesktop ? SECTION_SPACING.LG : SECTION_SPACING.SM;
           const hPadding = { paddingHorizontal: isDesktop ? 30 : 10 };
           return (
-            <View style={[styles.wrap]}>
+            <View style={[styles.wrap, { marginTop }]}>
               {isDesktop && (
                 <View style={styles.linkList}>
                   <Text
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: SECTION_SPACING.LG,
+    // marginTop: SECTION_SPACING.LG,
   },
   linkList: {
     flexDirection: "row",

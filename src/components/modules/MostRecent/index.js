@@ -20,7 +20,7 @@ class MostRecent extends PureComponent<Props> {
     } = this.props;
 
     return (
-      <OverlapScaffold containerPadding={CONTAINER_PADDING.MOBILE} overlap={3}>
+      <OverlapScaffold containerPadding={CONTAINER_PADDING.MOBILE} overlap={15}>
         <OverlapScaffold.Main>
           <Post layoutVariant="overlay" {...mainPost} />
         </OverlapScaffold.Main>

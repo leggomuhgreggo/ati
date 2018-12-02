@@ -4,7 +4,12 @@ import React, { PureComponent } from "react";
 
 import { Row } from "components/primitives";
 
-import { SECTION_SPACERS, SECTION_SPACING_VARIANTS } from "constants/index";
+import { Responsive } from "components/utils";
+import {
+  BREAKPOINTS,
+  SECTION_SPACERS,
+  SECTION_SPACING_VARIANTS,
+} from "constants/index";
 
 type Props = {
   topSpacing: $Values<typeof SECTION_SPACING_VARIANTS>,
@@ -12,18 +17,26 @@ type Props = {
 
 class Section extends PureComponent<Props> {
   static defaultProps = {
-    topSpacing: SECTION_SPACING_VARIANTS.SM,
+    topSpacing: SECTION_SPACING_VARIANTS.SMALL,
   };
 
   render() {
     const { children, style, topSpacing } = this.props;
 
-    const spacing = SECTION_SPACERS[topSpacing];
-
     return (
-      <Row style={[{ alignItems: "center", marginTop: spacing }, style]}>
-        {children}
-      </Row>
+      <Responsive>
+        {({ minWidth }) => {
+          const isDesktop = minWidth(BREAKPOINTS.LG);
+          const spacing = isDesktop
+            ? SECTION_SPACERS[topSpacing]
+            : SECTION_SPACERS[SECTION_SPACING_VARIANTS.SMALL];
+          return (
+            <Row style={[{ alignItems: "center", marginTop: spacing }, style]}>
+              {children}
+            </Row>
+          );
+        }}
+      </Responsive>
     );
   }
 }

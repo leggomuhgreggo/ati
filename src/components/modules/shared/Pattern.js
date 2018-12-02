@@ -54,7 +54,9 @@ class Pattern extends PureComponent<Props> {
   render() {
     const { style } = this.props;
     return (
-      <View style={[styles.wrap, style]}>
+      <View
+        style={[styles.wrap, { marginBottom: this.getOffsetDistance() }, style]}
+      >
         <View
           style={[styles.pattern, this.getGradient(), this.getOffsetStyles()]}
         />

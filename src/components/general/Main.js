@@ -49,6 +49,5 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     width: "100%",
     alignItems: "center",
-    paddingTop: PAGE_SPACING.TOP,
   },
 });

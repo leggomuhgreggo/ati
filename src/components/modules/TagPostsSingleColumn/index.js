@@ -32,7 +32,7 @@ class TagPostsSingleColumn extends PureComponent<Props> {
         }
       : {
           containerPadding: CONTAINER_PADDING.MOBILE,
-          overlap: 3,
+          overlap: 15,
         };
 
   MainPostImageProps = (isDesktop: boolean) =>
