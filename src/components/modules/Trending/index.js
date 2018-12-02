@@ -24,7 +24,7 @@ class Trending extends PureComponent<Props> {
       <Container
         type="content"
         style={{
-          padding: 15,
+          paddingHorizontal: 15,
           alignItems: "center",
         }}
       >
