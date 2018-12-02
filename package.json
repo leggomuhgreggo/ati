@@ -12,28 +12,28 @@
     "build": "npm run pre-build && react-scripts build && npm run post-build"
   },
   "dependencies": {
-    "nuka-carousel": "^4.4.1",
-    "react": "^16.6.0",
-    "react-art": "^16.6.0",
-    "react-dom": "^16.6.0",
+    "nuka-carousel": "^4.4.3",
+    "react": "^16.6.3",
+    "react-art": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-icons": "^3.2.2",
-    "react-native-web": "^0.9.4",
-    "react-scripts": "^2.0.5"
+    "react-native-web": "^0.9.8",
+    "react-scripts": "^2.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "babel-jest": "23.6.0",
-    "eslint": "5.6.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-config-prettier": "3.1.0",
-    "eslint-plugin-flowtype": "^3.1.1",
-    "eslint-plugin-import": "^2.13.0",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
-    "eslint-plugin-react": "^7.10.0",
-    "flow-bin": "^0.84.0",
-    "prettier": "1.14.3",
-    "react-test-renderer": "^16.6.0"
+    "eslint-plugin-react": "^7.11.1",
+    "flow-bin": "^0.87.0",
+    "prettier": "^1.15.3",
+    "react-test-renderer": "^16.6.3"
   },
   "browserslist": {
     "development": [
