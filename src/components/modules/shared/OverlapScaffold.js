@@ -37,7 +37,9 @@ class OverlapScaffold extends PureComponent<Props> {
 
     return (
       <>
-        {this.getMainPost()}
+        <View style={{ zIndex: 10, flex: 1, flexShrink: 0, width: "100%" }}>
+          {this.getMainPost()}
+        </View>
         <Container
           style={{
             marginTop: -overlap,
