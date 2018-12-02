@@ -7,7 +7,7 @@ import { createMobileMrec } from "../../utils/ads";
 const styles = StyleSheet.create({
   ad: {
     minWidth: 300,
-    height: 250,
+    minHeight: 250,
   },
 });
 
