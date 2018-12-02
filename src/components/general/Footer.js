@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: SECTION_SPACING.SM,
+    marginTop: SECTION_SPACING.LG,
   },
   linkList: {
     flexDirection: "row",
