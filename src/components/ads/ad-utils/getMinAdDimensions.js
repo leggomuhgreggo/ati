@@ -11,12 +11,9 @@ import { AD_SIZES_MAP } from "../ad-constants";
  * @returns Array of values corresponding to min width and height
  */
 
-const DEFAULT_DIMS_ARR = [0, 0];
-
 export const getMinAdDimensions = adType => {
   const [minWidth, minHeight] = getSizeOptionsForType(adType).reduce(
     minDimsReducer,
-    DEFAULT_DIMS_ARR,
   );
 
   return { minWidth, minHeight };
@@ -27,7 +24,6 @@ const getSizeOptionsForType = adType => AD_SIZES_MAP[adType];
 const minDimsReducer = (acc, item) => {
   const [itemWidth, itemHeight] = item;
   const [accWidth, accHeight] = acc;
-
   return [
     itemWidth < accWidth ? itemWidth : accWidth,
     itemHeight < accHeight ? itemHeight : accHeight,

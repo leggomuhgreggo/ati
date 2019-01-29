@@ -4,6 +4,9 @@ import { getAdId } from "./getAdId";
 
 export const getAdRegistrationID = adType => {
   const adFunc = getCreateAdFuncForType(adType);
+
+  if (!adFunc) return;
+
   const adId = getAdId();
 
   registerAdFunctionWithId(adFunc, adId);
