@@ -4,18 +4,31 @@ import React, { PureComponent } from "react";
 import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import { Text } from "components/primitives";
 
-type Props = {};
+type Props = {
+  signUp(): void,
+  email: string,
+  setEmail(email: string): void,
+};
 
 class SignUp extends PureComponent<Props> {
   render() {
+    const { email, signUp, setEmail } = this.props;
+
     return (
       <View accessibilityRole="form">
-        <TextInput style={styles.input} />
+        <TextInput
+          style={styles.input}
+          keyboardType="email-address"
+          textContentType="emailAddress"
+          value={email}
+          onChangeText={setEmail}
+        />
         <TouchableOpacity
           accessibilityRole="submit"
           accessibilityLabel={"Sign up for ATI newsletter"}
           accessible={true}
           style={styles.buttonWrap}
+          onPress={signUp}
         >
           <View style={styles.button}>
             <Text style={styles.buttonText}>Sign Up</Text>
@@ -32,6 +45,7 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "white",
     height: 55,
+    padding: 10,
   },
   buttonWrap: {
     padding: 5,
