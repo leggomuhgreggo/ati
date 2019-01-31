@@ -52,7 +52,7 @@ class Newsletter extends PureComponent<Props, State> {
   renderLoading = () => <ActivityIndicator size="large" color="white" />;
 
   renderResult = () =>
-    this.state.result == "OK" ? (
+    this.state.result === "OK" ? (
       <Text style={[styles.successMsg]}>
         <FaCheckCircle />
         {COPY.SUCCESS}
@@ -80,7 +80,7 @@ class Newsletter extends PureComponent<Props, State> {
   render() {
     const { result } = this.state;
     const curView =
-      result == "LOADING"
+      result === "LOADING"
         ? this.renderLoading()
         : result
           ? this.renderResult()
