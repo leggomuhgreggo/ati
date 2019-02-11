@@ -1,40 +1,25 @@
 // @flow
 
 import React, { PureComponent } from "react";
-import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
-import { Text } from "components/primitives";
+import { StyleSheet, TextInput } from "react-native";
 
 type Props = {
-  signUp: () => void,
-  email: string,
-  setEmail: (email: string) => void,
+  value: string,
+  onChangeText: (email: string) => void,
 };
 
 class EmailInput extends PureComponent<Props> {
   render() {
-    const { email, signUp, setEmail } = this.props;
+    const { value, onChangeText } = this.props;
 
     return (
-      <View accessibilityRole="form">
-        <TextInput
-          style={styles.input}
-          keyboardType="email-address"
-          textContentType="emailAddress"
-          value={email}
-          onChangeText={setEmail}
-        />
-        <TouchableOpacity
-          accessibilityRole="submit"
-          accessibilityLabel={"Sign up for ATI newsletter"}
-          accessible={true}
-          style={styles.buttonWrap}
-          onPress={signUp}
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Sign Up</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
+      <TextInput
+        style={styles.input}
+        keyboardType="email-address"
+        textContentType="emailAddress"
+        value={value}
+        onChangeText={onChangeText}
+      />
     );
   }
 }
@@ -46,22 +31,5 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     height: 55,
     padding: 10,
-  },
-  buttonWrap: {
-    padding: 5,
-    position: "absolute",
-    top: 0,
-    right: 0,
-    height: "100%",
-  },
-  button: {
-    backgroundColor: "black",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 20,
-  },
-  buttonText: {
-    color: "white",
   },
 });
