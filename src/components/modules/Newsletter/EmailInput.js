@@ -10,7 +10,7 @@ type Props = {
   setEmail: (email: string) => void,
 };
 
-class SignUp extends PureComponent<Props> {
+class EmailInput extends PureComponent<Props> {
   render() {
     const { email, signUp, setEmail } = this.props;
 
@@ -39,7 +39,7 @@ class SignUp extends PureComponent<Props> {
   }
 }
 
-export default SignUp;
+export default EmailInput;
 
 const styles = StyleSheet.create({
   input: {
