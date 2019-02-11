@@ -1,2 +1,6 @@
-export { getAdRegistrationID, startAds, displayAd } from "./pbhAdFunctions";
+export {
+  getIdFromGlobalAdRegistration,
+  startAds,
+  displayAd,
+} from "./pbhAdFunctions";
 export { getMinAdDimensions } from "./getMinAdDimensions";

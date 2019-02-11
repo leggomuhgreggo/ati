@@ -3,7 +3,7 @@ import { getCreateAdFuncForType } from "./getCreateAdFuncForType";
 import { getAdId } from "./getAdId";
 
 /**
- * getAdRegistrationID
+ * getIdFromGlobalAdRegistration
  *
  * Registers instance of PBH ad function for given ad type and returns the
  * associated ID. Used in the MakeAdComponent HOC.
@@ -11,7 +11,7 @@ import { getAdId } from "./getAdId";
  * @param {String} adType - the type of add from the AD_TYPE enum in constants
  * @returns {String} id
  */
-export const getAdRegistrationID = adType => {
+export const getIdFromGlobalAdRegistration = adType => {
   const adFunc = getCreateAdFuncForType(adType);
 
   if (!adFunc) return;

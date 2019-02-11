@@ -3,7 +3,11 @@
 import React, { PureComponent } from "react";
 import { View, StyleSheet } from "react-native";
 
-import { getMinAdDimensions, getAdRegistrationID, displayAd } from "./ad-utils";
+import {
+  getMinAdDimensions,
+  getIdFromGlobalAdRegistration,
+  displayAd,
+} from "./ad-utils";
 
 type Props = {
   style?: RNW$Styles,
@@ -17,7 +21,7 @@ const MakeAdComponent = adType => {
       style: {},
     };
 
-    adId = getAdRegistrationID(adType);
+    adId = getIdFromGlobalAdRegistration(adType);
 
     componentDidMount = () => {
       displayAd(this.adId);
