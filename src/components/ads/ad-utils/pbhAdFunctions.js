@@ -58,9 +58,9 @@ const registerAdFunctionWithId = (adFunc, adId) => {
 /**
  * getAdLoadArray
  *
- * Functional wrapper to resolve PbhAdUnit_cmd array from window
+ * Functional wrapper to resolve PbhAdUnit_load array from window
  */
-const getAdLoadArray = () => window.PbhAdUnit_cmd || [];
+const getAdLoadArray = () => window.PbhAdUnit_load || [];
 
 /**
  * getAdCommandArray
