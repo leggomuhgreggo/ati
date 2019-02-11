@@ -23,7 +23,7 @@ const ASYNC_STATES = {
 
 type Props = {};
 type State = {
-  result: $Values<typeof ASYNC_STATES>,
+  submissionStatus: $Values<typeof ASYNC_STATES>,
   email: string,
 };
 
@@ -36,7 +36,7 @@ const COPY = {
 class Newsletter extends PureComponent<Props, State> {
   state = {
     email: "",
-    result: ASYNC_STATES.DEFAULT,
+    submissionStatus: ASYNC_STATES.DEFAULT,
   };
 
   setEmail = (email: string) => this.setState({ email });
@@ -47,12 +47,13 @@ class Newsletter extends PureComponent<Props, State> {
       return;
     }
 
-    this.setState({ result: ASYNC_STATES.LOADING });
+    this.setState({ submissionStatus: ASYNC_STATES.LOADING });
 
-    const resp = await subscribe(email);
+    const { status } = await subscribe(email);
 
     this.setState({
-      result: resp.status === 200 ? ASYNC_STATES.SUCCESS : ASYNC_STATES.ERROR,
+      submissionStatus:
+        status === 200 ? ASYNC_STATES.SUCCESS : ASYNC_STATES.ERROR,
     });
   };
 
@@ -85,20 +86,20 @@ class Newsletter extends PureComponent<Props, State> {
     );
   };
 
-  renderBySubmissionStatus = status => {
+  renderBySubmissionStatus = submissionStatus => {
     const MAP = {
       [ASYNC_STATES.DEFAULT]: this.renderForm(),
       [ASYNC_STATES.LOADING]: this.renderLoading(),
       [ASYNC_STATES.SUCCESS]: this.renderSuccess(),
       [ASYNC_STATES.ERROR]: this.renderError(),
     };
-    return MAP[status];
+    return MAP[submissionStatus];
   };
 
   render() {
-    const { result } = this.state;
+    const { submissionStatus } = this.state;
 
-    const curView = this.renderBySubmissionStatus(result);
+    const curView = this.renderBySubmissionStatus(submissionStatus);
 
     return (
       <Responsive>
