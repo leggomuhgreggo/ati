@@ -58,18 +58,19 @@ class Newsletter extends PureComponent<Props, State> {
 
   renderLoading = () => <ActivityIndicator size="large" color="white" />;
 
-  renderResult = () =>
-    this.state.result === ASYNC_STATES.SUCCESS ? (
-      <Text style={[styles.successMsg]}>
-        <FaCheckCircle />
-        {COPY.SUCCESS}
-      </Text>
-    ) : (
-      <Text style={[styles.errorMsg]}>
-        <FaExclamationTriangle />
-        {COPY.ERROR}
-      </Text>
-    );
+  renderSuccess = () => (
+    <Text style={[styles.successMsg]}>
+      <FaCheckCircle />
+      {COPY.SUCCESS}
+    </Text>
+  );
+
+  renderError = () => (
+    <Text style={[styles.errorMsg]}>
+      <FaExclamationTriangle />
+      {COPY.ERROR}
+    </Text>
+  );
 
   renderForm = () => {
     const { email } = this.state;
@@ -84,14 +85,20 @@ class Newsletter extends PureComponent<Props, State> {
     );
   };
 
+  renderBySubmissionStatus = status => {
+    const MAP = {
+      [ASYNC_STATES.DEFAULT]: this.renderForm(),
+      [ASYNC_STATES.LOADING]: this.renderLoading(),
+      [ASYNC_STATES.SUCCESS]: this.renderSuccess(),
+      [ASYNC_STATES.ERROR]: this.renderError(),
+    };
+    return MAP[status];
+  };
+
   render() {
     const { result } = this.state;
-    const curView =
-      result === ASYNC_STATES.DEFAULT
-        ? this.renderForm()
-        : result === ASYNC_STATES.LOADING
-          ? this.renderLoading()
-          : this.renderResult();
+
+    const curView = this.renderBySubmissionStatus(result);
 
     return (
       <Responsive>
