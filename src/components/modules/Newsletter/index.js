@@ -32,7 +32,7 @@ class Newsletter extends PureComponent<Props, State> {
     result: undefined,
   };
 
-  setEmail = email => this.setState({ email });
+  setEmail = (email: string) => this.setState({ email });
 
   signUp = async () => {
     const { email } = this.state;
