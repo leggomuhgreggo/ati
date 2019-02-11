@@ -8,7 +8,7 @@ import { Container, Image } from "components/primitives";
 import { Responsive } from "components/utils";
 
 import Callout from "./Callout";
-import SignUp from "./SignUp";
+import EmailInput from "./EmailInput";
 
 import { subscribe } from "./subscribe";
 
@@ -80,7 +80,11 @@ class Newsletter extends PureComponent<Props, State> {
       <React.Fragment>
         <Callout />
         <View style={styles.signupWrap}>
-          <SignUp signUp={this.signUp} email={email} setEmail={this.setEmail} />
+          <EmailInput
+            signUp={this.signUp}
+            email={email}
+            setEmail={this.setEmail}
+          />
         </View>
       </React.Fragment>
     );
