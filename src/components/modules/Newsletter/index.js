@@ -62,10 +62,6 @@ class Newsletter extends PureComponent<Props> {
 export default Newsletter;
 
 const styles = StyleSheet.create({
-  signupWrap: {
-    marginTop: 20,
-    position: "relative",
-  },
   wrap: {
     backgroundColor: COLOR_MAP.BLUE,
     width: "100%",
@@ -84,17 +80,5 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     justifyContent: "center",
-  },
-  errorMsg: {
-    color: "white",
-    fontSize: 30,
-    lineHeight: 40,
-    fontWeight: "600",
-  },
-  successMsg: {
-    color: "white",
-    fontSize: 24,
-    lineHeight: 31,
-    fontWeight: "300",
   },
 });
