@@ -4,11 +4,10 @@ import React, { PureComponent } from "react";
 import PageSections from "PageFactory";
 import { AppWrap, Header, Footer, Main } from "./components/general";
 import { ResponsiveLeaderboard } from "./components/ads";
+import { startAds } from "./components/ads/ad-utils";
 import { Section } from "components/primitives";
 
 import { SECTION_SPACERS, SECTION_SPACING_VARIANTS } from "constants/index";
-
-import { startAds } from "./utils/ads";
 
 type Props = {};
 
