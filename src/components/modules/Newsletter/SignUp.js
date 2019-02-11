@@ -5,9 +5,9 @@ import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import { Text } from "components/primitives";
 
 type Props = {
-  signUp(): void,
+  signUp: () => void,
   email: string,
-  setEmail(email: string): void,
+  setEmail: (email: string) => void,
 };
 
 class SignUp extends PureComponent<Props> {
