@@ -14,9 +14,16 @@ import { subscribe } from "./subscribe";
 
 import { COLOR_MAP, BREAKPOINTS } from "constants/index";
 
+const ASYNC_STATES = {
+  LOADING: "LOADING",
+  SUCCESS: "SUCCESS",
+  ERROR: "ERROR",
+  DEFAULT: "DEFAULT",
+};
+
 type Props = {};
 type State = {
-  result: "LOADING" | "OK" | "ERROR" | undefined,
+  result: $Values<typeof ASYNC_STATES>,
   email: string,
 };
 
@@ -29,7 +36,7 @@ const COPY = {
 class Newsletter extends PureComponent<Props, State> {
   state = {
     email: "",
-    result: undefined,
+    result: ASYNC_STATES.DEFAULT,
   };
 
   setEmail = (email: string) => this.setState({ email });
@@ -40,19 +47,19 @@ class Newsletter extends PureComponent<Props, State> {
       return;
     }
 
-    this.setState({ result: "LOADING" });
+    this.setState({ result: ASYNC_STATES.LOADING });
 
     const resp = await subscribe(email);
 
     this.setState({
-      result: resp.status === 200 ? "OK" : "ERROR",
+      result: resp.status === 200 ? ASYNC_STATES.SUCCESS : ASYNC_STATES.ERROR,
     });
   };
 
   renderLoading = () => <ActivityIndicator size="large" color="white" />;
 
   renderResult = () =>
-    this.state.result === "OK" ? (
+    this.state.result === ASYNC_STATES.SUCCESS ? (
       <Text style={[styles.successMsg]}>
         <FaCheckCircle />
         {COPY.SUCCESS}
@@ -80,11 +87,11 @@ class Newsletter extends PureComponent<Props, State> {
   render() {
     const { result } = this.state;
     const curView =
-      result === "LOADING"
-        ? this.renderLoading()
-        : result
-          ? this.renderResult()
-          : this.renderForm();
+      result === ASYNC_STATES.DEFAULT
+        ? this.renderForm()
+        : result === ASYNC_STATES.LOADING
+          ? this.renderLoading()
+          : this.renderResult();
 
     return (
       <Responsive>
