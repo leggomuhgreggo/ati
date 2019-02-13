@@ -6,13 +6,11 @@ import { StyleSheet, View } from "react-native";
 import { Container, Image } from "components/primitives";
 import { Responsive } from "components/utils";
 
-import Callout from "./Callout";
-import SignUp from "./SignUp";
+import SignUpForm from "./SignUpForm";
 
 import { COLOR_MAP, BREAKPOINTS } from "constants/index";
 
 type Props = {};
-
 class Newsletter extends PureComponent<Props> {
   render() {
     return (
@@ -50,10 +48,7 @@ class Newsletter extends PureComponent<Props> {
                   </View>
                 </View>
                 <View style={styles.column}>
-                  <Callout />
-                  <View style={styles.signupWrap}>
-                    <SignUp />
-                  </View>
+                  <SignUpForm />
                 </View>
               </Container>
             </View>
@@ -67,10 +62,6 @@ class Newsletter extends PureComponent<Props> {
 export default Newsletter;
 
 const styles = StyleSheet.create({
-  signupWrap: {
-    marginTop: 20,
-    position: "relative",
-  },
   wrap: {
     backgroundColor: COLOR_MAP.BLUE,
     width: "100%",

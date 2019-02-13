@@ -82,3 +82,10 @@ export const THEME_SPACING = {
     SM: 30,
   },
 };
+
+export const ASYNC_STATES = {
+  LOADING: "LOADING",
+  SUCCESS: "SUCCESS",
+  ERROR: "ERROR",
+  DEFAULT: "DEFAULT",
+};
