@@ -8,7 +8,7 @@ export default class DesktopNav extends PureComponent {
   render() {
     return (
       <NavBar
-        renderRight={() => <Logo />}
+        renderRight={() => <Logo style={{ marginLeft: 15 }} />}
         renderCenter={() => <TagLinks links={TAG_LINKS} />}
         renderLeft={() => <SocialLinks links={SOCIAL_LINKS} />}
       />
