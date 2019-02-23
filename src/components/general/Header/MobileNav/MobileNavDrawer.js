@@ -58,6 +58,8 @@ export default class DrawerContents extends PureComponent<Props> {
                   </View>
                 ),
               )}
+
+              <AdReportLink />
             </LinkGroup>
           </View>
 
