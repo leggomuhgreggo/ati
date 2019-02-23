@@ -21,9 +21,8 @@ export default SocialLinks;
 const styles = StyleSheet.create({
   tagLinks: {
     flexDirection: "row",
-    paddingHorizontal: 5,
   },
   linkItem: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
   },
 });
