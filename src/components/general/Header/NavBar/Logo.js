@@ -23,6 +23,11 @@ const Logo = () => (
 
 export default Logo;
 
+const svgOffsetCorrection = () => {
+  const OFFSET_COEF = -0.05;
+  return { transform: [{ translateY: OFFSET_COEF * LOGO_DIMS.HEIGHT }] };
+};
+
 const styles = StyleSheet.create({
   wrap: {
     width: LOGO_DIMS.WIDTH,
@@ -30,7 +35,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     alignItems: "center",
     justifyContent: "center",
-    transform: [{ translateY: -LOGO_DIMS.HEIGHT * 0.05 }],
+    ...svgOffsetCorrection(),
   },
   headerText: {
     color: "white",
