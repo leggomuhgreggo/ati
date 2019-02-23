@@ -49,7 +49,7 @@ export default class DrawerContents extends PureComponent<Props> {
                       <SocialIcon />
                     </View>
                     <Text
-                      style={styles.text}
+                      style={styles.tagText}
                       accessibilityRole="link"
                       href={href}
                     >
@@ -102,7 +102,7 @@ const LinkGroup = ({ children }) => (
 
 const AdReportLink = () => (
   <View style={styles.linkItem}>
-    <Text accessibilityRole="link" href="/">
+    <Text style={styles.tagText} accessibilityRole="link" href="/">
       {BUG_REPORT_STRING}
     </Text>
   </View>
