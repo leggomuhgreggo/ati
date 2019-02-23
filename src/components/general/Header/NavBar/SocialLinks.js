@@ -7,8 +7,8 @@ const SocialLinks = ({ links }) => {
     <View style={[styles.tagLinks]}>
       {links.map(({ type, href, iconComponent: Icon }) => (
         <View key={type} style={styles.linkItem}>
-          <Text style={styles.headerText} accessibilityRole="link" href={href}>
-            <Icon />
+          <Text accessibilityRole="link" href={href}>
+            <Icon fill="white" />
           </Text>
         </View>
       ))}
@@ -25,8 +25,5 @@ const styles = StyleSheet.create({
   },
   linkItem: {
     paddingHorizontal: 10,
-  },
-  headerText: {
-    color: "white",
   },
 });
