@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     fontSize: 21,
   },
   line: {
-    width: 50,
-    height: 2,
+    width: 25,
+    height: 1,
     backgroundColor: "#CCC",
     marginVertical: 25,
   },
