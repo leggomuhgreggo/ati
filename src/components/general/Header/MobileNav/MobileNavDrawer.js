@@ -46,7 +46,7 @@ export default class DrawerContents extends PureComponent<Props> {
                 ({ type, href, text, iconComponent: SocialIcon }) => (
                   <View key={type} style={styles.linkItem}>
                     <View style={styles.icon}>
-                      <SocialIcon />
+                      <SocialIcon size={21} />
                     </View>
                     <Text
                       style={styles.tagText}
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     marginVertical: 25,
   },
   icon: {
-    marginRight: 10,
+    marginRight: 21,
   },
 });
 
