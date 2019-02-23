@@ -62,8 +62,6 @@ export default class DrawerContents extends PureComponent<Props> {
               <AdReportLink />
             </LinkGroup>
           </View>
-
-          <AdReportLink />
         </DrawerInner>
       </DrawerScaffolding>
     );
@@ -104,9 +102,6 @@ const LinkGroup = ({ children }) => (
 
 const AdReportLink = () => (
   <View style={styles.linkItem}>
-    <View style={styles.icon}>
-      <FaBug />
-    </View>
     <Text accessibilityRole="link" href="/">
       {BUG_REPORT_STRING}
     </Text>
