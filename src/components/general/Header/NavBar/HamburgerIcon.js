@@ -6,9 +6,7 @@ import { Text } from "components/primitives";
 
 const HamburgerIcon = ({ onClick }) => (
   <TouchableOpacity onClick={onClick} style={styles.button}>
-    <Text style={[styles.text]}>
-      <FaBars />
-    </Text>
+    <FaBars fill="white" />
   </TouchableOpacity>
 );
 
