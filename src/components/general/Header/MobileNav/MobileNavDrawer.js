@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   linkItem: {
     flexDirection: "row",
-    paddingVertical: 10,
+    height: 50,
     alignItems: "center",
   },
   tagText: {
