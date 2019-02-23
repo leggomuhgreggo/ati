@@ -4,8 +4,8 @@ import { View, StyleSheet } from "react-native";
 import { HOME_LINK } from "constants/index.js";
 
 const LOGO_DIMS = {
-  WIDTH: 38,
-  HEIGHT: 50,
+  WIDTH: 34.52,
+  HEIGHT: 28,
 };
 
 const Logo = () => (
