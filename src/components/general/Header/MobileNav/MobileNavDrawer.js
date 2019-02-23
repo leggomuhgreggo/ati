@@ -71,7 +71,7 @@ export default class DrawerContents extends PureComponent<Props> {
 const styles = StyleSheet.create({
   inner: {
     backgroundColor: "white",
-    padding: 30,
+    padding: 25,
     flex: 1,
     justifyContent: "space-between",
   },
