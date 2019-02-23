@@ -91,7 +91,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    fontSize: 12,
+    fontSize: 12.5,
+    letterSpacing: 1,
   },
   socialLink: {
     fontSize: 16,
