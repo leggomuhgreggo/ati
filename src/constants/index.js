@@ -2,7 +2,7 @@ export * from "./section-constants.js";
 export * from "./nav-constants.js";
 export * from "./elevation.js";
 
-export const HEADER_HEIGHT = 60;
+export const HEADER_HEIGHT = 50;
 export const FOOTER_HEIGHT = HEADER_HEIGHT;
 
 export const ATI_INSTAGRAM_URL =
