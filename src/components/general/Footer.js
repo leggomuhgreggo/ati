@@ -18,45 +18,71 @@ import {
 type Props = {};
 
 class Footer extends PureComponent<Props> {
+  renderHomeLink = () => {
+    return (
+      <View style={styles.linkList}>
+        <Text
+          accessibilityRole="link"
+          style={[styles.text, { paddingHorizontal: 30 }]}
+          href={HOME_LINK.href}
+        >
+          {HOME_LINK.text.toUpperCase()}
+        </Text>
+      </View>
+    );
+  };
+
+  vwStyles = isDesktop => ({
+    spacerTop: {
+      marginTop: SECTION_SPACING[isDesktop ? "LG" : "SM"],
+    },
+    hPadding: {
+      paddingHorizontal: isDesktop ? 30 : 8,
+    },
+    siteLinkSize: {
+      fontSize: isDesktop ? 12.5 : 10,
+    },
+    socialLinkSize: {
+      fontSize: isDesktop ? 16 : 13,
+    },
+  });
+
   render() {
     return (
       <Responsive>
         {({ minWidth }) => {
           const isDesktop = minWidth(BREAKPOINTS.LG);
-          const marginTop = isDesktop ? SECTION_SPACING.LG : SECTION_SPACING.SM;
-          const hPadding = { paddingHorizontal: isDesktop ? 30 : 10 };
+          const {
+            spacerTop,
+            hPadding,
+            siteLinkSize,
+            socialLinkSize,
+          } = this.vwStyles(isDesktop);
+
           return (
-            <View style={[styles.wrap, { marginTop }]}>
-              {isDesktop && (
-                <View style={styles.linkList}>
-                  <Text
-                    accessibilityRole="link"
-                    style={[styles.text, hPadding]}
-                    href={HOME_LINK.href}
-                  >
-                    {HOME_LINK.text.toUpperCase()}
-                  </Text>
-                </View>
-              )}
+            <View style={[styles.wrap, spacerTop]}>
+              {isDesktop && this.renderHomeLink()}
+
               <View style={styles.linkList}>
                 {PBH_NETWORK_LINKS.map(({ href, text }) => (
                   <Text
                     key={text}
                     href={href}
-                    style={[styles.text, hPadding]}
+                    style={[styles.text, hPadding, siteLinkSize]}
                     accessibilityRole="link"
                   >
                     {text.toUpperCase()}
                   </Text>
                 ))}
               </View>
+
               <View style={styles.linkList}>
                 {SOCIAL_LINKS_REDUCED.map(
-                  ({ href, type, iconComponent: SocialIcon }) => (
+                  ({ text, href, iconComponent: SocialIcon }) => (
                     <Text
-                      key={type}
+                      key={text}
                       href={href}
-                      style={[styles.text, styles.socialLink, hPadding]}
+                      style={[styles.text, hPadding, socialLinkSize]}
                       accessibilityRole="link"
                     >
                       <SocialIcon />
@@ -82,7 +108,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    // marginTop: SECTION_SPACING.LG,
   },
   linkList: {
     flexDirection: "row",
@@ -91,9 +116,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "white",
-    fontSize: 12,
-  },
-  socialLink: {
-    fontSize: 16,
+    fontSize: 12.5,
+    letterSpacing: 1,
   },
 });

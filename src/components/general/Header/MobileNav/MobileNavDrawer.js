@@ -5,7 +5,11 @@ import DrawerScaffolding from "./DrawerScaffolding";
 
 import { FaBug } from "react-icons/fa";
 
-import { TAG_LINKS, SOCIAL_LINKS, BUG_REPORT_STRING } from "constants/index.js";
+import {
+  TAG_LINKS,
+  SOCIAL_LINKS_STANDARD,
+  BUG_REPORT_STRING,
+} from "constants/index.js";
 
 type Props = {
   isDrawerOpen: boolean,
@@ -42,14 +46,14 @@ export default class DrawerContents extends PureComponent<Props> {
             <Line />
 
             <LinkGroup>
-              {SOCIAL_LINKS.map(
-                ({ type, href, text, iconComponent: SocialIcon }) => (
-                  <View key={type} style={styles.linkItem}>
+              {SOCIAL_LINKS_STANDARD.map(
+                ({ href, text, iconComponent: SocialIcon }) => (
+                  <View key={text} style={styles.linkItem}>
                     <View style={styles.icon}>
-                      <SocialIcon />
+                      <SocialIcon size={21} />
                     </View>
                     <Text
-                      style={styles.text}
+                      style={styles.tagText}
                       accessibilityRole="link"
                       href={href}
                     >
@@ -58,10 +62,10 @@ export default class DrawerContents extends PureComponent<Props> {
                   </View>
                 ),
               )}
+
+              <AdReportLink />
             </LinkGroup>
           </View>
-
-          <AdReportLink />
         </DrawerInner>
       </DrawerScaffolding>
     );
@@ -71,26 +75,26 @@ export default class DrawerContents extends PureComponent<Props> {
 const styles = StyleSheet.create({
   inner: {
     backgroundColor: "white",
-    padding: 30,
+    padding: 25,
     flex: 1,
     justifyContent: "space-between",
   },
   linkItem: {
     flexDirection: "row",
-    paddingVertical: 10,
+    height: 50,
     alignItems: "center",
   },
   tagText: {
     fontSize: 21,
   },
   line: {
-    width: 50,
-    height: 2,
+    width: 25,
+    height: 1,
     backgroundColor: "#CCC",
     marginVertical: 25,
   },
   icon: {
-    marginRight: 10,
+    marginRight: 21,
   },
 });
 
@@ -102,10 +106,7 @@ const LinkGroup = ({ children }) => (
 
 const AdReportLink = () => (
   <View style={styles.linkItem}>
-    <View style={styles.icon}>
-      <FaBug />
-    </View>
-    <Text accessibilityRole="link" href="/">
+    <Text style={styles.tagText} accessibilityRole="link" href="/">
       {BUG_REPORT_STRING}
     </Text>
   </View>

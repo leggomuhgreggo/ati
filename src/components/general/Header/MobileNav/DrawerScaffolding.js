@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
     left: 0,
     height: "100vh",
     width: "100%",
-    maxWidth: 300,
     paddingTop: HEADER_HEIGHT,
   },
 });

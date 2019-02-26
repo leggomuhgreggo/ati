@@ -1,15 +1,13 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { FaBars } from "react-icons/fa";
 
 import { Text } from "components/primitives";
 
 const HamburgerIcon = ({ onClick }) => (
-  <TouchableOpacity onClick={onClick} style={styles.button}>
-    <Text style={[styles.text]}>
-      <FaBars />
-    </Text>
-  </TouchableOpacity>
+  <View accessibilityRole="button" onClick={onClick} style={styles.button}>
+    <FaBars fill="white" />
+  </View>
 );
 
 export default HamburgerIcon;

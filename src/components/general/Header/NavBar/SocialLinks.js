@@ -5,10 +5,10 @@ import { Text } from "components/primitives";
 const SocialLinks = ({ links }) => {
   return (
     <View style={[styles.tagLinks]}>
-      {links.map(({ type, href, iconComponent: Icon }) => (
-        <View key={type} style={styles.linkItem}>
-          <Text style={styles.headerText} accessibilityRole="link" href={href}>
-            <Icon />
+      {links.map(({ text, href, iconComponent: Icon }) => (
+        <View key={text} style={styles.linkItem}>
+          <Text accessibilityRole="link" href={href}>
+            <Icon fill="white" />
           </Text>
         </View>
       ))}
@@ -21,12 +21,8 @@ export default SocialLinks;
 const styles = StyleSheet.create({
   tagLinks: {
     flexDirection: "row",
-    paddingHorizontal: 5,
   },
   linkItem: {
-    paddingHorizontal: 10,
-  },
-  headerText: {
-    color: "white",
+    paddingHorizontal: 15,
   },
 });
