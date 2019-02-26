@@ -1,5 +1,6 @@
 export * from "./section-constants.js";
 export * from "./nav-constants.js";
+export * from "./social-links.js";
 export * from "./elevation.js";
 
 export const HEADER_HEIGHT = 50;
