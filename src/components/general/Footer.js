@@ -78,9 +78,9 @@ class Footer extends PureComponent<Props> {
 
               <View style={styles.linkList}>
                 {SOCIAL_LINKS_REDUCED.map(
-                  ({ href, type, iconComponent: SocialIcon }) => (
+                  ({ text, href, iconComponent: SocialIcon }) => (
                     <Text
-                      key={type}
+                      key={text}
                       href={href}
                       style={[styles.text, hPadding, socialLinkSize]}
                       accessibilityRole="link"
