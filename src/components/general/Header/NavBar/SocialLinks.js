@@ -5,8 +5,8 @@ import { Text } from "components/primitives";
 const SocialLinks = ({ links }) => {
   return (
     <View style={[styles.tagLinks]}>
-      {links.map(({ type, href, iconComponent: Icon }) => (
-        <View key={type} style={styles.linkItem}>
+      {links.map(({ text, href, iconComponent: Icon }) => (
+        <View key={text} style={styles.linkItem}>
           <Text accessibilityRole="link" href={href}>
             <Icon fill="white" />
           </Text>
