@@ -5,7 +5,11 @@ import DrawerScaffolding from "./DrawerScaffolding";
 
 import { FaBug } from "react-icons/fa";
 
-import { TAG_LINKS, SOCIAL_LINKS, BUG_REPORT_STRING } from "constants/index.js";
+import {
+  TAG_LINKS,
+  SOCIAL_LINKS_STANDARD,
+  BUG_REPORT_STRING,
+} from "constants/index.js";
 
 type Props = {
   isDrawerOpen: boolean,
@@ -42,9 +46,9 @@ export default class DrawerContents extends PureComponent<Props> {
             <Line />
 
             <LinkGroup>
-              {SOCIAL_LINKS.map(
-                ({ type, href, text, iconComponent: SocialIcon }) => (
-                  <View key={type} style={styles.linkItem}>
+              {SOCIAL_LINKS_STANDARD.map(
+                ({ href, text, iconComponent: SocialIcon }) => (
+                  <View key={text} style={styles.linkItem}>
                     <View style={styles.icon}>
                       <SocialIcon size={21} />
                     </View>
